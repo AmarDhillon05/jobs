@@ -1,0 +1,36 @@
+# BLOCKERS
+
+Living log of every blocker hit during implementation, per PRD §18.
+
+Statuses: `open` · `deferred` · `revisiting` · `resolved` · `accepted-limitation`
+
+Severity: `critical` (blocks a hard completion gate) · `major` · `minor`
+
+---
+
+## Summary
+
+| ID | Component | Severity | Status |
+| --- | --- | --- | --- |
+| _none yet_ | | | |
+
+---
+
+<!-- New entries appended below, newest last. Template:
+
+## BLK-000 - short title
+
+- **Timestamp / stage:** YYYY-MM-DD, Phase X
+- **Requirement affected:** PRD §N - ...
+- **Component:** ...
+- **Observed failure:** ...
+- **Expected behaviour:** ...
+- **Attempts made:**
+  1. ...
+- **Evidence / logs:** ...
+- **Current hypothesis:** ...
+- **Alternative hypotheses:** ...
+- **Next actions:** ...
+- **Severity:** ...
+- **Status:** ...
+-->

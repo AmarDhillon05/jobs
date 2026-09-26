@@ -1,0 +1,35 @@
+# LocalStack environment used for Level-7 "local AWS architecture" tests.
+# Community-edition services only - no LocalStack Pro licence is required.
+#
+#   docker compose up -d localstack
+#   make local-provision
+#   make e2e-aws
+#   docker compose down -v
+services:
+  localstack:
+    image: localstack/localstack:3.8
+    container_name: jobmonitor-localstack
+    ports:
+      - "4566:4566"
+    environment:
+      # Services this project actually exercises. EventBridge Scheduler is NOT
+      # listed: its community emulation is unreliable, so the scheduled trigger
+      # boundary is simulated by injecting the identical event payload.
+      # See ARCHITECTURE.md -> "Local emulation gaps".
+      - SERVICES=dynamodb,sqs,sns,lambda,apigateway,events,iam,logs,sts,cloudformation
+      - DEBUG=${LOCALSTACK_DEBUG:-0}
+      - LAMBDA_RUNTIME_ENVIRONMENT_TIMEOUT=120
+      # Run Lambdas as sibling containers on the host docker socket.
+      - LAMBDA_EXECUTOR=docker
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "./.localstack:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - 'curl -sf http://localhost:4566/_localstack/health | grep -q "\"dynamodb\": \"available\"\|\"dynamodb\": \"running\""'
+      interval: 5s
+      timeout: 5s
+      retries: 40
+      start_period: 10s

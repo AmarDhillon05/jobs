@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Build artifacts
+build/
+dist/
+*.zip
+
+# CDK
+infrastructure/cdk.out/
+cdk.out/
+.cdk.staging/
+
+# Node / tooling
+node_modules/
+tools/node_modules/
+tools/package-lock.json
+mobile/node_modules/
+mobile/dist/
+mobile/coverage/
+mobile/test-results/
+mobile/playwright-report/
+mobile/.vite/
+
+# Local state / secrets
+.env
+.env.local
+*.local.json
+.localstack/
+volume/
+
+# Scratch / reports
+.verify/
+*.log
