@@ -1,0 +1,935 @@
+{
+  "_comment": [
+    "Editorial company universe (PRD §3). Metadata only: industry, monitoring",
+    "priority and known aliases. Provider configuration is NOT hand-written here -",
+    "scripts/build_company_registry.py resolves it from real application URLs",
+    "observed in the two mandated seed repositories, then writes companies.json.",
+    "`backlog` entries are companies we deliberately want but could not configure",
+    "from public evidence; they land in companies.json as research-needed."
+  ],
+  "monitored": [
+    {
+      "company": "Anthropic",
+      "industry": "AI Labs",
+      "priority": "high"
+    },
+    {
+      "company": "OpenAI",
+      "industry": "AI Labs",
+      "priority": "high"
+    },
+    {
+      "company": "Scale AI",
+      "industry": "AI Data Infrastructure",
+      "priority": "high"
+    },
+    {
+      "company": "Cohere",
+      "industry": "AI Labs",
+      "priority": "high"
+    },
+    {
+      "company": "Mistral AI",
+      "industry": "AI Labs",
+      "priority": "high",
+      "aliases": [
+        "Mistral"
+      ]
+    },
+    {
+      "company": "Perplexity AI",
+      "industry": "AI Search",
+      "priority": "high",
+      "aliases": [
+        "Perplexity"
+      ]
+    },
+    {
+      "company": "Together AI",
+      "industry": "AI Infrastructure",
+      "priority": "high"
+    },
+    {
+      "company": "Sierra",
+      "industry": "Applied AI",
+      "priority": "high"
+    },
+    {
+      "company": "Harvey",
+      "industry": "Applied AI (Legal)",
+      "priority": "high"
+    },
+    {
+      "company": "Abridge",
+      "industry": "Applied AI (Health)",
+      "priority": "high"
+    },
+    {
+      "company": "Physical Intelligence",
+      "industry": "Robotics Foundation Models",
+      "priority": "high"
+    },
+    {
+      "company": "Figure",
+      "industry": "Humanoid Robotics",
+      "priority": "high",
+      "aliases": [
+        "Figure AI"
+      ]
+    },
+    {
+      "company": "Tenstorrent",
+      "industry": "AI Accelerators",
+      "priority": "medium"
+    },
+    {
+      "company": "NVIDIA",
+      "industry": "Semiconductors / AI",
+      "priority": "high"
+    },
+    {
+      "company": "Netflix",
+      "industry": "Consumer Streaming",
+      "priority": "high"
+    },
+    {
+      "company": "Adobe",
+      "industry": "Creative Software",
+      "priority": "medium"
+    },
+    {
+      "company": "Salesforce",
+      "industry": "Enterprise SaaS",
+      "priority": "medium"
+    },
+    {
+      "company": "Autodesk",
+      "industry": "Design Software",
+      "priority": "medium"
+    },
+    {
+      "company": "Red Hat",
+      "industry": "Open Source Infrastructure",
+      "priority": "medium"
+    },
+    {
+      "company": "Zoom",
+      "industry": "Communications",
+      "priority": "medium"
+    },
+    {
+      "company": "DoorDash",
+      "industry": "Consumer Marketplace",
+      "priority": "high"
+    },
+    {
+      "company": "Spotify",
+      "industry": "Consumer Audio",
+      "priority": "medium"
+    },
+    {
+      "company": "Verkada",
+      "industry": "Physical Security",
+      "priority": "medium"
+    },
+    {
+      "company": "Cloudflare",
+      "industry": "Edge / Network Infrastructure",
+      "priority": "high"
+    },
+    {
+      "company": "Vercel",
+      "industry": "Developer Platform",
+      "priority": "high"
+    },
+    {
+      "company": "Figma",
+      "industry": "Design Tools",
+      "priority": "high"
+    },
+    {
+      "company": "Notion",
+      "industry": "Productivity Software",
+      "priority": "high"
+    },
+    {
+      "company": "Replit",
+      "industry": "Developer Platform",
+      "priority": "high"
+    },
+    {
+      "company": "Sentry",
+      "industry": "Developer Observability",
+      "priority": "high",
+      "aliases": [
+        "Functional Software"
+      ]
+    },
+    {
+      "company": "Postman",
+      "industry": "API Tooling",
+      "priority": "medium"
+    },
+    {
+      "company": "Snowflake",
+      "industry": "Data Warehouse",
+      "priority": "high"
+    },
+    {
+      "company": "Confluent",
+      "industry": "Streaming Data",
+      "priority": "high"
+    },
+    {
+      "company": "SingleStore",
+      "industry": "Databases",
+      "priority": "medium"
+    },
+    {
+      "company": "PlanetScale",
+      "industry": "Databases",
+      "priority": "medium"
+    },
+    {
+      "company": "CrowdStrike",
+      "industry": "Endpoint Security",
+      "priority": "high",
+      "aliases": [
+        "Crowdstrike"
+      ]
+    },
+    {
+      "company": "Palo Alto Networks",
+      "industry": "Network Security",
+      "priority": "high"
+    },
+    {
+      "company": "Zscaler",
+      "industry": "Cloud Security",
+      "priority": "medium"
+    },
+    {
+      "company": "1Password",
+      "industry": "Identity / Secrets",
+      "priority": "medium",
+      "aliases": [
+        "AgileBits"
+      ]
+    },
+    {
+      "company": "Snyk",
+      "industry": "Developer Security",
+      "priority": "medium"
+    },
+    {
+      "company": "Semgrep",
+      "industry": "Code Security",
+      "priority": "medium"
+    },
+    {
+      "company": "Ramp",
+      "industry": "Fintech",
+      "priority": "high"
+    },
+    {
+      "company": "Mercury",
+      "industry": "Fintech",
+      "priority": "high"
+    },
+    {
+      "company": "Affirm",
+      "industry": "Consumer Lending",
+      "priority": "medium"
+    },
+    {
+      "company": "Robinhood",
+      "industry": "Brokerage",
+      "priority": "high"
+    },
+    {
+      "company": "Marqeta",
+      "industry": "Card Issuing",
+      "priority": "medium"
+    },
+    {
+      "company": "Visa",
+      "industry": "Payment Networks",
+      "priority": "medium"
+    },
+    {
+      "company": "Mastercard",
+      "industry": "Payment Networks",
+      "priority": "medium"
+    },
+    {
+      "company": "Capital One",
+      "industry": "Banking / Technology",
+      "priority": "medium"
+    },
+    {
+      "company": "BlackRock",
+      "industry": "Asset Management",
+      "priority": "medium"
+    },
+    {
+      "company": "Klaviyo",
+      "industry": "Marketing Infrastructure",
+      "priority": "medium"
+    },
+    {
+      "company": "Twilio",
+      "industry": "Communications APIs",
+      "priority": "medium"
+    },
+    {
+      "company": "Rippling",
+      "industry": "HR / Fintech Platform",
+      "priority": "high"
+    },
+    {
+      "company": "Zocdoc",
+      "industry": "Health Marketplace",
+      "priority": "medium"
+    },
+    {
+      "company": "Benchling",
+      "industry": "Life Sciences Software",
+      "priority": "medium"
+    },
+    {
+      "company": "Persona",
+      "industry": "Identity Verification",
+      "priority": "medium"
+    },
+    {
+      "company": "Jane Street",
+      "industry": "Quantitative Trading",
+      "priority": "high"
+    },
+    {
+      "company": "Optiver",
+      "industry": "Market Making",
+      "priority": "high"
+    },
+    {
+      "company": "IMC Trading",
+      "industry": "Market Making",
+      "priority": "high",
+      "aliases": [
+        "IMC"
+      ]
+    },
+    {
+      "company": "Belvedere Trading",
+      "industry": "Market Making",
+      "priority": "medium"
+    },
+    {
+      "company": "Five Rings",
+      "industry": "Quantitative Trading",
+      "priority": "high"
+    },
+    {
+      "company": "Point72",
+      "industry": "Hedge Fund",
+      "priority": "high"
+    },
+    {
+      "company": "Radix Trading",
+      "industry": "Quantitative Trading",
+      "priority": "medium"
+    },
+    {
+      "company": "XTX Markets",
+      "industry": "Market Making",
+      "priority": "high"
+    },
+    {
+      "company": "DRW",
+      "industry": "Quantitative Trading",
+      "priority": "high"
+    },
+    {
+      "company": "Virtu",
+      "industry": "Market Making",
+      "priority": "medium",
+      "aliases": [
+        "Virtu Financial"
+      ]
+    },
+    {
+      "company": "Man Group",
+      "industry": "Asset Management",
+      "priority": "medium"
+    },
+    {
+      "company": "PEAK6",
+      "industry": "Quantitative Trading",
+      "priority": "medium",
+      "aliases": [
+        "Peak6"
+      ]
+    },
+    {
+      "company": "Zoox",
+      "industry": "Autonomous Vehicles",
+      "priority": "high"
+    },
+    {
+      "company": "Applied Intuition",
+      "industry": "Autonomy Software",
+      "priority": "high"
+    },
+    {
+      "company": "Lucid Motors",
+      "industry": "Electric Vehicles",
+      "priority": "medium"
+    },
+    {
+      "company": "SpaceX",
+      "industry": "Aerospace",
+      "priority": "high"
+    },
+    {
+      "company": "Blue Origin",
+      "industry": "Aerospace",
+      "priority": "high"
+    },
+    {
+      "company": "Anduril",
+      "industry": "Defense Technology",
+      "priority": "high",
+      "aliases": [
+        "Anduril Industries"
+      ]
+    },
+    {
+      "company": "Rocket Lab",
+      "industry": "Aerospace",
+      "priority": "medium"
+    },
+    {
+      "company": "Astranis",
+      "industry": "Satellites",
+      "priority": "medium"
+    },
+    {
+      "company": "Varda Space Industries",
+      "industry": "Space Manufacturing",
+      "priority": "experimental",
+      "aliases": [
+        "Varda"
+      ]
+    },
+    {
+      "company": "Planet",
+      "industry": "Earth Observation",
+      "priority": "medium",
+      "aliases": [
+        "Planet Labs"
+      ]
+    },
+    {
+      "company": "Shield AI",
+      "industry": "Defense Autonomy",
+      "priority": "high"
+    },
+    {
+      "company": "Saronic",
+      "industry": "Defense Autonomy",
+      "priority": "medium"
+    },
+    {
+      "company": "Skydio",
+      "industry": "Drones",
+      "priority": "medium"
+    },
+    {
+      "company": "Boston Dynamics",
+      "industry": "Robotics",
+      "priority": "high"
+    },
+    {
+      "company": "Symbotic",
+      "industry": "Warehouse Robotics",
+      "priority": "medium"
+    },
+    {
+      "company": "Bright Machines",
+      "industry": "Industrial Robotics",
+      "priority": "experimental"
+    },
+    {
+      "company": "Intel",
+      "industry": "Semiconductors",
+      "priority": "medium"
+    },
+    {
+      "company": "Marvell",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "aliases": [
+        "Marvell Technology"
+      ]
+    },
+    {
+      "company": "Micron",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "aliases": [
+        "Micron Technology"
+      ]
+    },
+    {
+      "company": "Cadence",
+      "industry": "EDA",
+      "priority": "medium",
+      "aliases": [
+        "Cadence Design Systems"
+      ]
+    },
+    {
+      "company": "Analog Devices",
+      "industry": "Semiconductors",
+      "priority": "medium"
+    },
+    {
+      "company": "Astera Labs",
+      "industry": "Semiconductors",
+      "priority": "medium"
+    },
+    {
+      "company": "Lightmatter",
+      "industry": "Photonic Computing",
+      "priority": "experimental"
+    },
+    {
+      "company": "IonQ",
+      "industry": "Quantum Computing",
+      "priority": "experimental"
+    },
+    {
+      "company": "Rigetti",
+      "industry": "Quantum Computing",
+      "priority": "experimental",
+      "aliases": [
+        "Rigetti Computing"
+      ]
+    },
+    {
+      "company": "Quantinuum",
+      "industry": "Quantum Computing",
+      "priority": "experimental"
+    },
+    {
+      "company": "Palantir",
+      "industry": "Data Platforms",
+      "priority": "high",
+      "aliases": [
+        "Palantir Technologies"
+      ]
+    },
+    {
+      "company": "ServiceNow",
+      "industry": "Enterprise SaaS",
+      "priority": "medium"
+    },
+    {
+      "company": "Canva",
+      "industry": "Design Software",
+      "priority": "medium"
+    },
+    {
+      "company": "Zendesk",
+      "industry": "Customer Software",
+      "priority": "medium"
+    },
+    {
+      "company": "Etched",
+      "industry": "AI Accelerators",
+      "priority": "high"
+    },
+    {
+      "company": "Toyota Research Institute",
+      "industry": "Applied Research",
+      "priority": "high",
+      "aliases": [
+        "TRI"
+      ]
+    },
+    {
+      "company": "Schonfeld",
+      "industry": "Hedge Fund",
+      "priority": "high",
+      "aliases": [
+        "Schonfeld Strategic Advisors"
+      ]
+    },
+    {
+      "company": "Chicago Trading Company",
+      "industry": "Market Making",
+      "priority": "high",
+      "aliases": [
+        "CTC"
+      ]
+    },
+    {
+      "company": "G-Research",
+      "industry": "Quantitative Research",
+      "priority": "high",
+      "aliases": [
+        "G Research",
+        "Gresearch"
+      ]
+    },
+    {
+      "company": "Cisco",
+      "industry": "Networking",
+      "priority": "medium",
+      "aliases": [
+        "Cisco Systems"
+      ]
+    },
+    {
+      "company": "F5",
+      "industry": "Application Networking",
+      "priority": "medium",
+      "aliases": [
+        "F5 Networks"
+      ]
+    },
+    {
+      "company": "Proofpoint",
+      "industry": "Email Security",
+      "priority": "medium"
+    },
+    {
+      "company": "Ambarella",
+      "industry": "Semiconductors",
+      "priority": "medium"
+    },
+    {
+      "company": "NXP Semiconductors",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "aliases": [
+        "NXP"
+      ]
+    },
+    {
+      "company": "Western Digital",
+      "industry": "Storage",
+      "priority": "medium"
+    },
+    {
+      "company": "Sandisk",
+      "industry": "Storage",
+      "priority": "medium",
+      "aliases": [
+        "SanDisk"
+      ]
+    },
+    {
+      "company": "GlobalFoundries",
+      "industry": "Semiconductor Manufacturing",
+      "priority": "medium"
+    },
+    {
+      "company": "Altera Corporation",
+      "industry": "Programmable Logic",
+      "priority": "medium",
+      "aliases": [
+        "Altera"
+      ]
+    },
+    {
+      "company": "KLA",
+      "industry": "Semiconductor Equipment",
+      "priority": "medium",
+      "aliases": [
+        "KLA-Tencor"
+      ]
+    },
+    {
+      "company": "Applied Materials",
+      "industry": "Semiconductor Equipment",
+      "priority": "medium"
+    },
+    {
+      "company": "Samsung Research America",
+      "industry": "Applied Research",
+      "priority": "medium",
+      "aliases": [
+        "SRA"
+      ]
+    },
+    {
+      "company": "PlusAI",
+      "industry": "Autonomous Trucking",
+      "priority": "medium",
+      "aliases": [
+        "Plus AI",
+        "Plus"
+      ]
+    },
+    {
+      "company": "Kodiak Robotics",
+      "industry": "Autonomous Trucking",
+      "priority": "medium",
+      "aliases": [
+        "Kodiak"
+      ]
+    },
+    {
+      "company": "Bedrock Robotics",
+      "industry": "Robotics",
+      "priority": "experimental"
+    },
+    {
+      "company": "Apptronik",
+      "industry": "Humanoid Robotics",
+      "priority": "medium"
+    },
+    {
+      "company": "Atomic Semi",
+      "industry": "Semiconductors",
+      "priority": "experimental"
+    },
+    {
+      "company": "CesiumAstro",
+      "industry": "Aerospace",
+      "priority": "medium"
+    },
+    {
+      "company": "Hermeus",
+      "industry": "Aerospace",
+      "priority": "medium"
+    },
+    {
+      "company": "Voyager Technologies",
+      "industry": "Aerospace",
+      "priority": "medium",
+      "aliases": [
+        "Voyager Space"
+      ]
+    },
+    {
+      "company": "Sigma Computing",
+      "industry": "Analytics",
+      "priority": "medium"
+    },
+    {
+      "company": "Walleye Capital",
+      "industry": "Hedge Fund",
+      "priority": "medium",
+      "aliases": [
+        "Walleye"
+      ]
+    },
+    {
+      "company": "DV Trading",
+      "industry": "Proprietary Trading",
+      "priority": "medium"
+    },
+    {
+      "company": "Jain Global",
+      "industry": "Hedge Fund",
+      "priority": "medium"
+    },
+    {
+      "company": "Integra FEC",
+      "industry": "Quantitative Trading",
+      "priority": "experimental"
+    },
+    {
+      "company": "CME Group",
+      "industry": "Exchanges",
+      "priority": "medium",
+      "aliases": [
+        "CME"
+      ]
+    },
+    {
+      "company": "Nasdaq",
+      "industry": "Exchanges",
+      "priority": "medium"
+    },
+    {
+      "company": "Castleton Commodities International",
+      "industry": "Commodities Trading",
+      "priority": "medium",
+      "aliases": [
+        "Castleton Commodities"
+      ]
+    },
+    {
+      "company": "Wellington Management",
+      "industry": "Asset Management",
+      "priority": "medium"
+    },
+    {
+      "company": "Dell Technologies",
+      "industry": "Enterprise Hardware",
+      "priority": "medium",
+      "aliases": [
+        "Dell"
+      ]
+    },
+    {
+      "company": "Cirrus Logic",
+      "industry": "Semiconductors",
+      "priority": "medium"
+    },
+    {
+      "company": "Veeam Software",
+      "industry": "Data Protection",
+      "priority": "medium",
+      "aliases": [
+        "Veeam"
+      ]
+    },
+    {
+      "company": "Intuitive Surgical",
+      "industry": "Medical Robotics",
+      "priority": "medium",
+      "aliases": [
+        "Intuitive"
+      ]
+    },
+    {
+      "company": "Draper",
+      "industry": "Applied Research",
+      "priority": "medium",
+      "aliases": [
+        "Draper Laboratory"
+      ]
+    },
+    {
+      "company": "AeroVironment",
+      "industry": "Defense / UAS",
+      "priority": "medium"
+    },
+    {
+      "company": "Northrop Grumman",
+      "industry": "Aerospace & Defense",
+      "priority": "medium"
+    },
+    {
+      "company": "RTX",
+      "industry": "Aerospace & Defense",
+      "priority": "medium",
+      "aliases": [
+        "Raytheon Technologies"
+      ]
+    },
+    {
+      "company": "The Boeing Company",
+      "industry": "Aerospace",
+      "priority": "medium",
+      "aliases": [
+        "Boeing"
+      ]
+    }
+  ],
+  "backlog": [
+    {
+      "company": "Stripe",
+      "industry": "Payments",
+      "priority": "high",
+      "provider": "custom",
+      "careers_url": "https://stripe.com/jobs",
+      "support_status": "research-needed",
+      "notes": "company-owned careers site; no public JSON feed discovered"
+    },
+    {
+      "company": "Databricks",
+      "industry": "Data / AI Platform",
+      "priority": "high",
+      "provider": "custom",
+      "careers_url": "https://www.databricks.com/company/careers",
+      "support_status": "research-needed",
+      "notes": "only embed-style Greenhouse URLs observed; board token not recoverable"
+    },
+    {
+      "company": "Coinbase",
+      "industry": "Crypto Exchange",
+      "priority": "high",
+      "provider": "custom",
+      "careers_url": "https://www.coinbase.com/careers",
+      "support_status": "research-needed",
+      "notes": "only embed-style Greenhouse URLs observed; board token not recoverable"
+    },
+    {
+      "company": "Waymo",
+      "industry": "Autonomous Vehicles",
+      "priority": "high",
+      "provider": "custom",
+      "careers_url": "https://careers.withwaymo.com",
+      "support_status": "research-needed",
+      "notes": "company-owned careers site"
+    },
+    {
+      "company": "Citadel",
+      "industry": "Hedge Fund",
+      "priority": "high",
+      "provider": "custom",
+      "careers_url": "https://www.citadel.com/careers/open-opportunities/",
+      "support_status": "research-needed",
+      "notes": "company-owned careers site"
+    },
+    {
+      "company": "Citadel Securities",
+      "industry": "Market Making",
+      "priority": "high",
+      "provider": "custom",
+      "careers_url": "https://www.citadelsecurities.com/careers/open-opportunities/",
+      "support_status": "research-needed",
+      "notes": "company-owned careers site"
+    },
+    {
+      "company": "Hudson River Trading",
+      "industry": "Quantitative Trading",
+      "priority": "high",
+      "provider": "custom",
+      "careers_url": "https://www.hudsonrivertrading.com/careers/",
+      "support_status": "research-needed",
+      "notes": "company-owned careers site"
+    },
+    {
+      "company": "Two Sigma",
+      "industry": "Quantitative Trading",
+      "priority": "high",
+      "provider": "custom",
+      "careers_url": "https://careers.twosigma.com",
+      "support_status": "research-needed",
+      "notes": "Avature tenant; no stable public feed"
+    },
+    {
+      "company": "DE Shaw",
+      "industry": "Quantitative Trading",
+      "priority": "high",
+      "provider": "custom",
+      "careers_url": "https://www.deshaw.com/careers",
+      "support_status": "research-needed",
+      "notes": "company-owned careers site"
+    },
+    {
+      "company": "Datadog",
+      "industry": "Observability",
+      "priority": "high",
+      "provider": "custom",
+      "careers_url": "https://careers.datadoghq.com",
+      "support_status": "research-needed",
+      "notes": "company-owned careers site"
+    },
+    {
+      "company": "Apple",
+      "industry": "Consumer Technology",
+      "priority": "high",
+      "provider": "custom",
+      "careers_url": "https://jobs.apple.com/en-us/search",
+      "support_status": "research-needed",
+      "notes": "company-owned careers site with bot protection"
+    }
+  ]
+}

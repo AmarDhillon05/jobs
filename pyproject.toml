@@ -68,6 +68,9 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["E501"]
+# The en/em dashes in the alias-splitting regex are intentional: real company
+# names in the seed data use them.
+"src/jobmonitor/discovery.py" = ["RUF001"]
 
 [tool.mypy]
 python_version = "3.11"

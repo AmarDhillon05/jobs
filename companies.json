@@ -1,0 +1,2500 @@
+[
+  {
+    "company": "1Password",
+    "careers_url": "https://jobs.ashbyhq.com/1password",
+    "industry": "Identity / Secrets",
+    "priority": "medium",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "1password"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 18 observed posting URL(s); seed name(s): 1Password",
+    "aliases": [
+      "AgileBits"
+    ]
+  },
+  {
+    "company": "Abridge",
+    "careers_url": "https://jobs.ashbyhq.com/abridge",
+    "industry": "Applied AI (Health)",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "abridge"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Abridge"
+  },
+  {
+    "company": "Adobe",
+    "careers_url": "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced",
+    "industry": "Creative Software",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "adobe",
+      "host": "adobe.wd5.myworkdayjobs.com",
+      "site": "external_experienced"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 12 observed posting URL(s); seed name(s): Adobe"
+  },
+  {
+    "company": "AeroVironment",
+    "careers_url": "https://avav.wd1.myworkdayjobs.com/en-US/avav",
+    "industry": "Defense / UAS",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "avav",
+      "host": "avav.wd1.myworkdayjobs.com",
+      "site": "avav"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 23 observed posting URL(s); seed name(s): AeroVironment"
+  },
+  {
+    "company": "Affirm",
+    "careers_url": "https://job-boards.greenhouse.io/affirm",
+    "industry": "Consumer Lending",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "affirm"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Affirm"
+  },
+  {
+    "company": "Altera Corporation",
+    "careers_url": "https://altera.wd1.myworkdayjobs.com/en-US/altera",
+    "industry": "Programmable Logic",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "altera",
+      "host": "altera.wd1.myworkdayjobs.com",
+      "site": "altera"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 24 observed posting URL(s); seed name(s): Altera, Altera Corporation",
+    "aliases": [
+      "Altera"
+    ]
+  },
+  {
+    "company": "Ambarella",
+    "careers_url": "https://ambarella.wd108.myworkdayjobs.com/en-US/ambarella",
+    "industry": "Semiconductors",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "ambarella",
+      "host": "ambarella.wd108.myworkdayjobs.com",
+      "site": "ambarella"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 18 observed posting URL(s); seed name(s): Ambarella"
+  },
+  {
+    "company": "Analog Devices",
+    "careers_url": "https://analogdevices.wd1.myworkdayjobs.com/en-US/External",
+    "industry": "Semiconductors",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "analogdevices",
+      "host": "analogdevices.wd1.myworkdayjobs.com",
+      "site": "External"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 24 observed posting URL(s); seed name(s): Analog Devices"
+  },
+  {
+    "company": "Anduril",
+    "careers_url": "https://job-boards.greenhouse.io/andurilindustries",
+    "industry": "Defense Technology",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "andurilindustries"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 13 observed posting URL(s); seed name(s): Anduril",
+    "aliases": [
+      "Anduril Industries"
+    ]
+  },
+  {
+    "company": "Anthropic",
+    "careers_url": "https://job-boards.greenhouse.io/anthropic",
+    "industry": "AI Labs",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "anthropic"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Anthropic"
+  },
+  {
+    "company": "Apple",
+    "careers_url": "https://jobs.apple.com/en-us/search",
+    "industry": "Consumer Technology",
+    "priority": "high",
+    "provider": "custom",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated"
+    ],
+    "support_status": "research-needed",
+    "notes": "company-owned careers site with bot protection"
+  },
+  {
+    "company": "Applied Intuition",
+    "careers_url": "https://jobs.ashbyhq.com/applied",
+    "industry": "Autonomy Software",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "applied"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 8 observed posting URL(s); seed name(s): Applied Intuition"
+  },
+  {
+    "company": "Applied Materials",
+    "careers_url": "https://amat.wd1.myworkdayjobs.com/en-US/External",
+    "industry": "Semiconductor Equipment",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "amat",
+      "host": "amat.wd1.myworkdayjobs.com",
+      "site": "External"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 67 observed posting URL(s); seed name(s): Applied Materials"
+  },
+  {
+    "company": "Apptronik",
+    "careers_url": "https://job-boards.greenhouse.io/apptronik",
+    "industry": "Humanoid Robotics",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "apptronik"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Apptronik"
+  },
+  {
+    "company": "Astera Labs",
+    "careers_url": "https://job-boards.greenhouse.io/asteraearlycareer2026",
+    "industry": "Semiconductors",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "asteraearlycareer2026"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Astera, Astera Labs"
+  },
+  {
+    "company": "Astranis",
+    "careers_url": "https://job-boards.greenhouse.io/astranis",
+    "industry": "Satellites",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "astranis"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 43 observed posting URL(s); seed name(s): Astranis"
+  },
+  {
+    "company": "Atomic Semi",
+    "careers_url": "https://jobs.ashbyhq.com/atomicsemi",
+    "industry": "Semiconductors",
+    "priority": "experimental",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "atomicsemi"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Atomic Semi"
+  },
+  {
+    "company": "Autodesk",
+    "careers_url": "https://autodesk.wd1.myworkdayjobs.com/en-US/uni",
+    "industry": "Design Software",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "autodesk",
+      "host": "autodesk.wd1.myworkdayjobs.com",
+      "site": "uni"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 51 observed posting URL(s); seed name(s): Autodesk"
+  },
+  {
+    "company": "Bedrock Robotics",
+    "careers_url": "https://jobs.ashbyhq.com/bedrock-robotics",
+    "industry": "Robotics",
+    "priority": "experimental",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "bedrock-robotics"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 10 observed posting URL(s); seed name(s): Bedrock Robotics"
+  },
+  {
+    "company": "Belvedere Trading",
+    "careers_url": "https://jobs.lever.co/belvederetrading",
+    "industry": "Market Making",
+    "priority": "medium",
+    "provider": "lever",
+    "provider_config": {
+      "site": "belvederetrading"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Belvedere Trading"
+  },
+  {
+    "company": "Benchling",
+    "careers_url": "https://jobs.ashbyhq.com/benchling",
+    "industry": "Life Sciences Software",
+    "priority": "medium",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "benchling"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Benchling"
+  },
+  {
+    "company": "BlackRock",
+    "careers_url": "https://blackrock.wd1.myworkdayjobs.com/en-US/BlackRock_Professional",
+    "industry": "Asset Management",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "blackrock",
+      "host": "blackrock.wd1.myworkdayjobs.com",
+      "site": "BlackRock_Professional"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 14 observed posting URL(s); seed name(s): BlackRock"
+  },
+  {
+    "company": "Blue Origin",
+    "careers_url": "https://blueorigin.wd5.myworkdayjobs.com/en-US/blueorigin",
+    "industry": "Aerospace",
+    "priority": "high",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "blueorigin",
+      "host": "blueorigin.wd5.myworkdayjobs.com",
+      "site": "blueorigin"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Blue Origin"
+  },
+  {
+    "company": "Boston Dynamics",
+    "careers_url": "https://bostondynamics.wd1.myworkdayjobs.com/en-US/Boston_Dynamics",
+    "industry": "Robotics",
+    "priority": "high",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "bostondynamics",
+      "host": "bostondynamics.wd1.myworkdayjobs.com",
+      "site": "Boston_Dynamics"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 7 observed posting URL(s); seed name(s): Boston Dynamics"
+  },
+  {
+    "company": "Bright Machines",
+    "careers_url": "https://jobs.lever.co/brightmachines",
+    "industry": "Industrial Robotics",
+    "priority": "experimental",
+    "provider": "lever",
+    "provider_config": {
+      "site": "brightmachines"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Bright Machines"
+  },
+  {
+    "company": "Cadence",
+    "careers_url": "https://cadence.wd1.myworkdayjobs.com/en-US/external_careers",
+    "industry": "EDA",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "cadence",
+      "host": "cadence.wd1.myworkdayjobs.com",
+      "site": "external_careers"
+    },
+    "source_discovered_from": [
+      "ouckah"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Cadence",
+    "aliases": [
+      "Cadence Design Systems"
+    ]
+  },
+  {
+    "company": "Canva",
+    "careers_url": "https://jobs.smartrecruiters.com/Canva",
+    "industry": "Design Software",
+    "priority": "medium",
+    "provider": "smartrecruiters",
+    "provider_config": {
+      "company_id": "Canva"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 6 observed posting URL(s); seed name(s): Canva"
+  },
+  {
+    "company": "Capital One",
+    "careers_url": "https://capitalone.wd12.myworkdayjobs.com/en-US/Capital_One",
+    "industry": "Banking / Technology",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "capitalone",
+      "host": "capitalone.wd12.myworkdayjobs.com",
+      "site": "Capital_One"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 36 observed posting URL(s); seed name(s): Capital One"
+  },
+  {
+    "company": "Castleton Commodities International",
+    "careers_url": "https://osv-cci.wd1.myworkdayjobs.com/en-US/CCICareers",
+    "industry": "Commodities Trading",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "osv-cci",
+      "host": "osv-cci.wd1.myworkdayjobs.com",
+      "site": "CCICareers"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Castleton Commodities International",
+    "aliases": [
+      "Castleton Commodities"
+    ]
+  },
+  {
+    "company": "CesiumAstro",
+    "careers_url": "https://jobs.lever.co/CesiumAstro",
+    "industry": "Aerospace",
+    "priority": "medium",
+    "provider": "lever",
+    "provider_config": {
+      "site": "CesiumAstro"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 14 observed posting URL(s); seed name(s): CesiumAstro"
+  },
+  {
+    "company": "Chicago Trading Company",
+    "careers_url": "https://job-boards.greenhouse.io/ctccampusboard",
+    "industry": "Market Making",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "ctccampusboard"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Chicago Trading Company",
+    "aliases": [
+      "CTC"
+    ]
+  },
+  {
+    "company": "Cirrus Logic",
+    "careers_url": "https://jobs.lever.co/cirrus",
+    "industry": "Semiconductors",
+    "priority": "medium",
+    "provider": "lever",
+    "provider_config": {
+      "site": "cirrus"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 15 observed posting URL(s); seed name(s): Cirrus Logic"
+  },
+  {
+    "company": "Cisco",
+    "careers_url": "https://cisco.wd5.myworkdayjobs.com/en-US/cisco_careers",
+    "industry": "Networking",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "cisco",
+      "host": "cisco.wd5.myworkdayjobs.com",
+      "site": "cisco_careers"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 26 observed posting URL(s); seed name(s): Cisco",
+    "aliases": [
+      "Cisco Systems"
+    ]
+  },
+  {
+    "company": "Citadel",
+    "careers_url": "https://www.citadel.com/careers/open-opportunities/",
+    "industry": "Hedge Fund",
+    "priority": "high",
+    "provider": "custom",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated"
+    ],
+    "support_status": "research-needed",
+    "notes": "company-owned careers site"
+  },
+  {
+    "company": "Citadel Securities",
+    "careers_url": "https://www.citadelsecurities.com/careers/open-opportunities/",
+    "industry": "Market Making",
+    "priority": "high",
+    "provider": "custom",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated"
+    ],
+    "support_status": "research-needed",
+    "notes": "company-owned careers site"
+  },
+  {
+    "company": "Cloudflare",
+    "careers_url": "https://job-boards.greenhouse.io/cloudflare",
+    "industry": "Edge / Network Infrastructure",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "cloudflare"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 23 observed posting URL(s); seed name(s): Cloudflare"
+  },
+  {
+    "company": "CME Group",
+    "careers_url": "https://cmegroup.wd1.myworkdayjobs.com/en-US/cme_careers",
+    "industry": "Exchanges",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "cmegroup",
+      "host": "cmegroup.wd1.myworkdayjobs.com",
+      "site": "cme_careers"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 11 observed posting URL(s); seed name(s): CME Group",
+    "aliases": [
+      "CME"
+    ]
+  },
+  {
+    "company": "Cohere",
+    "careers_url": "https://jobs.ashbyhq.com/cohere",
+    "industry": "AI Labs",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "cohere"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Cohere"
+  },
+  {
+    "company": "Coinbase",
+    "careers_url": "https://www.coinbase.com/careers",
+    "industry": "Crypto Exchange",
+    "priority": "high",
+    "provider": "custom",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated"
+    ],
+    "support_status": "research-needed",
+    "notes": "only embed-style Greenhouse URLs observed; board token not recoverable"
+  },
+  {
+    "company": "Confluent",
+    "careers_url": "https://jobs.ashbyhq.com/confluent",
+    "industry": "Streaming Data",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "confluent"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Confluent"
+  },
+  {
+    "company": "CrowdStrike",
+    "careers_url": "https://crowdstrike.wd5.myworkdayjobs.com/en-US/crowdstrikecareers",
+    "industry": "Endpoint Security",
+    "priority": "high",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "crowdstrike",
+      "host": "crowdstrike.wd5.myworkdayjobs.com",
+      "site": "crowdstrikecareers"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 6 observed posting URL(s); seed name(s): Crowdstrike",
+    "aliases": [
+      "Crowdstrike"
+    ]
+  },
+  {
+    "company": "Databricks",
+    "careers_url": "https://www.databricks.com/company/careers",
+    "industry": "Data / AI Platform",
+    "priority": "high",
+    "provider": "custom",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated"
+    ],
+    "support_status": "research-needed",
+    "notes": "only embed-style Greenhouse URLs observed; board token not recoverable"
+  },
+  {
+    "company": "Datadog",
+    "careers_url": "https://careers.datadoghq.com",
+    "industry": "Observability",
+    "priority": "high",
+    "provider": "custom",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated"
+    ],
+    "support_status": "research-needed",
+    "notes": "company-owned careers site"
+  },
+  {
+    "company": "DE Shaw",
+    "careers_url": "https://www.deshaw.com/careers",
+    "industry": "Quantitative Trading",
+    "priority": "high",
+    "provider": "custom",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated"
+    ],
+    "support_status": "research-needed",
+    "notes": "company-owned careers site"
+  },
+  {
+    "company": "Dell Technologies",
+    "careers_url": "https://dell.wd1.myworkdayjobs.com/en-US/External",
+    "industry": "Enterprise Hardware",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "dell",
+      "host": "dell.wd1.myworkdayjobs.com",
+      "site": "External"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Dell Technologies",
+    "aliases": [
+      "Dell"
+    ]
+  },
+  {
+    "company": "DoorDash",
+    "careers_url": "https://job-boards.greenhouse.io/doordashusa",
+    "industry": "Consumer Marketplace",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "doordashusa"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): DoorDash"
+  },
+  {
+    "company": "Draper",
+    "careers_url": "https://draper.wd5.myworkdayjobs.com/en-US/Draper_Careers",
+    "industry": "Applied Research",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "draper",
+      "host": "draper.wd5.myworkdayjobs.com",
+      "site": "Draper_Careers"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 25 observed posting URL(s); seed name(s): Draper",
+    "aliases": [
+      "Draper Laboratory"
+    ]
+  },
+  {
+    "company": "DRW",
+    "careers_url": "https://job-boards.greenhouse.io/drweng",
+    "industry": "Quantitative Trading",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "drweng"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 20 observed posting URL(s); seed name(s): DRW"
+  },
+  {
+    "company": "DV Trading",
+    "careers_url": "https://job-boards.greenhouse.io/dvtrading",
+    "industry": "Proprietary Trading",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "dvtrading"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 11 observed posting URL(s); seed name(s): DV Trading"
+  },
+  {
+    "company": "Etched",
+    "careers_url": "https://jobs.ashbyhq.com/Etched",
+    "industry": "AI Accelerators",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "Etched"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 38 observed posting URL(s); seed name(s): Etched"
+  },
+  {
+    "company": "F5",
+    "careers_url": "https://ffive.wd5.myworkdayjobs.com/en-US/f5jobs",
+    "industry": "Application Networking",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "ffive",
+      "host": "ffive.wd5.myworkdayjobs.com",
+      "site": "f5jobs"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 13 observed posting URL(s); seed name(s): F5",
+    "aliases": [
+      "F5 Networks"
+    ]
+  },
+  {
+    "company": "Figma",
+    "careers_url": "https://job-boards.greenhouse.io/figma",
+    "industry": "Design Tools",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "figma"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 8 observed posting URL(s); seed name(s): Figma"
+  },
+  {
+    "company": "Figure",
+    "careers_url": "https://job-boards.greenhouse.io/figureai",
+    "industry": "Humanoid Robotics",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "figureai"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 12 observed posting URL(s); seed name(s): Figure",
+    "aliases": [
+      "Figure AI"
+    ]
+  },
+  {
+    "company": "Five Rings",
+    "careers_url": "https://job-boards.greenhouse.io/fiveringsllc",
+    "industry": "Quantitative Trading",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "fiveringsllc"
+    },
+    "source_discovered_from": [
+      "ouckah"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Five Rings"
+  },
+  {
+    "company": "G-Research",
+    "careers_url": "https://gresearch.wd103.myworkdayjobs.com/en-US/G-Research",
+    "industry": "Quantitative Research",
+    "priority": "high",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "gresearch",
+      "host": "gresearch.wd103.myworkdayjobs.com",
+      "site": "G-Research"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 12 observed posting URL(s); seed name(s): G-Research",
+    "aliases": [
+      "G Research",
+      "Gresearch"
+    ]
+  },
+  {
+    "company": "GlobalFoundries",
+    "careers_url": "https://globalfoundries.wd1.myworkdayjobs.com/en-US/External",
+    "industry": "Semiconductor Manufacturing",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "globalfoundries",
+      "host": "globalfoundries.wd1.myworkdayjobs.com",
+      "site": "External"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 12 observed posting URL(s); seed name(s): GlobalFoundries"
+  },
+  {
+    "company": "Harvey",
+    "careers_url": "https://jobs.ashbyhq.com/harvey",
+    "industry": "Applied AI (Legal)",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "harvey"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Harvey"
+  },
+  {
+    "company": "Hermeus",
+    "careers_url": "https://jobs.lever.co/hermeus",
+    "industry": "Aerospace",
+    "priority": "medium",
+    "provider": "lever",
+    "provider_config": {
+      "site": "hermeus"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 10 observed posting URL(s); seed name(s): Hermeus"
+  },
+  {
+    "company": "Hudson River Trading",
+    "careers_url": "https://www.hudsonrivertrading.com/careers/",
+    "industry": "Quantitative Trading",
+    "priority": "high",
+    "provider": "custom",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated"
+    ],
+    "support_status": "research-needed",
+    "notes": "company-owned careers site"
+  },
+  {
+    "company": "IMC Trading",
+    "careers_url": "https://job-boards.greenhouse.io/imc",
+    "industry": "Market Making",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "imc"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 12 observed posting URL(s); seed name(s): IMC Trading",
+    "aliases": [
+      "IMC"
+    ]
+  },
+  {
+    "company": "Integra FEC",
+    "careers_url": "https://job-boards.greenhouse.io/integrainterns",
+    "industry": "Quantitative Trading",
+    "priority": "experimental",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "integrainterns"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Integra FEC"
+  },
+  {
+    "company": "Intel",
+    "careers_url": "https://intel.wd1.myworkdayjobs.com/en-US/external",
+    "industry": "Semiconductors",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "intel",
+      "host": "intel.wd1.myworkdayjobs.com",
+      "site": "external"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 95 observed posting URL(s); seed name(s): Intel, Intel Corporation"
+  },
+  {
+    "company": "Intuitive Surgical",
+    "careers_url": "https://jobs.smartrecruiters.com/Intuitive",
+    "industry": "Medical Robotics",
+    "priority": "medium",
+    "provider": "smartrecruiters",
+    "provider_config": {
+      "company_id": "Intuitive"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 16 observed posting URL(s); seed name(s): Intuitive Surgical",
+    "aliases": [
+      "Intuitive"
+    ]
+  },
+  {
+    "company": "IonQ",
+    "careers_url": "https://job-boards.greenhouse.io/ionq",
+    "industry": "Quantum Computing",
+    "priority": "experimental",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "ionq"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): IonQ"
+  },
+  {
+    "company": "Jain Global",
+    "careers_url": "https://jainglobal.wd5.myworkdayjobs.com/en-US/ExternalSite",
+    "industry": "Hedge Fund",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "jainglobal",
+      "host": "jainglobal.wd5.myworkdayjobs.com",
+      "site": "ExternalSite"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Jain Global"
+  },
+  {
+    "company": "Jane Street",
+    "careers_url": "https://job-boards.greenhouse.io/janestreet",
+    "industry": "Quantitative Trading",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "janestreet"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 37 observed posting URL(s); seed name(s): Jane Street"
+  },
+  {
+    "company": "KLA",
+    "careers_url": "https://kla.wd1.myworkdayjobs.com/en-US/UR",
+    "industry": "Semiconductor Equipment",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "kla",
+      "host": "kla.wd1.myworkdayjobs.com",
+      "site": "UR"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 55 observed posting URL(s); seed name(s): KLA, KLA Corporation",
+    "aliases": [
+      "KLA-Tencor"
+    ]
+  },
+  {
+    "company": "Klaviyo",
+    "careers_url": "https://job-boards.greenhouse.io/klaviyocampus",
+    "industry": "Marketing Infrastructure",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "klaviyocampus"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Klaviyo"
+  },
+  {
+    "company": "Kodiak Robotics",
+    "careers_url": "https://job-boards.greenhouse.io/kodiak",
+    "industry": "Autonomous Trucking",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "kodiak"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 10 observed posting URL(s); seed name(s): Kodiak Robotics",
+    "aliases": [
+      "Kodiak"
+    ]
+  },
+  {
+    "company": "Lightmatter",
+    "careers_url": "https://job-boards.greenhouse.io/lightmatter",
+    "industry": "Photonic Computing",
+    "priority": "experimental",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "lightmatter"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Lightmatter"
+  },
+  {
+    "company": "Lucid Motors",
+    "careers_url": "https://job-boards.greenhouse.io/lucidmotors",
+    "industry": "Electric Vehicles",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "lucidmotors"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Lucid Motors"
+  },
+  {
+    "company": "Man Group",
+    "careers_url": "https://job-boards.greenhouse.io/mangroup",
+    "industry": "Asset Management",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "mangroup"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Man Group"
+  },
+  {
+    "company": "Marqeta",
+    "careers_url": "https://job-boards.greenhouse.io/mqreferrals",
+    "industry": "Card Issuing",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "mqreferrals"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Marqeta"
+  },
+  {
+    "company": "Marvell",
+    "careers_url": "https://marvell.wd1.myworkdayjobs.com/en-US/MarvellCareers",
+    "industry": "Semiconductors",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "marvell",
+      "host": "marvell.wd1.myworkdayjobs.com",
+      "site": "MarvellCareers"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 91 observed posting URL(s); seed name(s): Marvell",
+    "aliases": [
+      "Marvell Technology"
+    ]
+  },
+  {
+    "company": "Mastercard",
+    "careers_url": "https://mastercard.wd1.myworkdayjobs.com/en-US/Campus",
+    "industry": "Payment Networks",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "mastercard",
+      "host": "mastercard.wd1.myworkdayjobs.com",
+      "site": "Campus"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 16 observed posting URL(s); seed name(s): Mastercard"
+  },
+  {
+    "company": "Mercury",
+    "careers_url": "https://job-boards.greenhouse.io/mercury",
+    "industry": "Fintech",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "mercury"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 6 observed posting URL(s); seed name(s): Mercury"
+  },
+  {
+    "company": "Micron",
+    "careers_url": "https://micron.wd1.myworkdayjobs.com/en-US/External",
+    "industry": "Semiconductors",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "micron",
+      "host": "micron.wd1.myworkdayjobs.com",
+      "site": "External"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 85 observed posting URL(s); seed name(s): Micron Technology",
+    "aliases": [
+      "Micron Technology"
+    ]
+  },
+  {
+    "company": "Mistral AI",
+    "careers_url": "https://jobs.ashbyhq.com/mistral.ai",
+    "industry": "AI Labs",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "mistral.ai"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Mistral AI",
+    "aliases": [
+      "Mistral"
+    ]
+  },
+  {
+    "company": "Nasdaq",
+    "careers_url": "https://nasdaq.wd1.myworkdayjobs.com/en-US/Global_External_Site",
+    "industry": "Exchanges",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "nasdaq",
+      "host": "nasdaq.wd1.myworkdayjobs.com",
+      "site": "Global_External_Site"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Nasdaq"
+  },
+  {
+    "company": "Netflix",
+    "careers_url": "https://netflix.wd1.myworkdayjobs.com/en-US/Netflix",
+    "industry": "Consumer Streaming",
+    "priority": "high",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "netflix",
+      "host": "netflix.wd1.myworkdayjobs.com",
+      "site": "Netflix"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 14 observed posting URL(s); seed name(s): Netflix"
+  },
+  {
+    "company": "Northrop Grumman",
+    "careers_url": "https://ngc.wd1.myworkdayjobs.com/en-US/Northrop_Grumman_External_Site",
+    "industry": "Aerospace & Defense",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "ngc",
+      "host": "ngc.wd1.myworkdayjobs.com",
+      "site": "Northrop_Grumman_External_Site"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 51 observed posting URL(s); seed name(s): Northrop Grumman"
+  },
+  {
+    "company": "Notion",
+    "careers_url": "https://jobs.ashbyhq.com/notion",
+    "industry": "Productivity Software",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "notion"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 10 observed posting URL(s); seed name(s): Notion"
+  },
+  {
+    "company": "NVIDIA",
+    "careers_url": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite",
+    "industry": "Semiconductors / AI",
+    "priority": "high",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "nvidia",
+      "host": "nvidia.wd5.myworkdayjobs.com",
+      "site": "NVIDIAExternalCareerSite"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 83 observed posting URL(s); seed name(s): NVIDIA"
+  },
+  {
+    "company": "NXP Semiconductors",
+    "careers_url": "https://nxp.wd3.myworkdayjobs.com/en-US/careers",
+    "industry": "Semiconductors",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "nxp",
+      "host": "nxp.wd3.myworkdayjobs.com",
+      "site": "careers"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 35 observed posting URL(s); seed name(s): NXP Semiconductors",
+    "aliases": [
+      "NXP"
+    ]
+  },
+  {
+    "company": "OpenAI",
+    "careers_url": "https://jobs.ashbyhq.com/openai",
+    "industry": "AI Labs",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "openai"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): OpenAI"
+  },
+  {
+    "company": "Optiver",
+    "careers_url": "https://job-boards.greenhouse.io/optiverprivate",
+    "industry": "Market Making",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "optiverprivate"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 16 observed posting URL(s); seed name(s): Optiver"
+  },
+  {
+    "company": "Palantir",
+    "careers_url": "https://jobs.lever.co/palantir",
+    "industry": "Data Platforms",
+    "priority": "high",
+    "provider": "lever",
+    "provider_config": {
+      "site": "palantir"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 51 observed posting URL(s); seed name(s): Palantir, Palantir Technologies",
+    "aliases": [
+      "Palantir Technologies"
+    ]
+  },
+  {
+    "company": "Palo Alto Networks",
+    "careers_url": "https://paloaltonetworks.wd5.myworkdayjobs.com/en-US/panwexternalcareers",
+    "industry": "Network Security",
+    "priority": "high",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "paloaltonetworks",
+      "host": "paloaltonetworks.wd5.myworkdayjobs.com",
+      "site": "panwexternalcareers"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Palo Alto Networks"
+  },
+  {
+    "company": "PEAK6",
+    "careers_url": "https://peak6group.wd1.myworkdayjobs.com/en-US/CapMan",
+    "industry": "Quantitative Trading",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "peak6group",
+      "host": "peak6group.wd1.myworkdayjobs.com",
+      "site": "CapMan"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 3 observed posting URL(s); seed name(s): PEAK6",
+    "aliases": [
+      "Peak6"
+    ]
+  },
+  {
+    "company": "Perplexity AI",
+    "careers_url": "https://jobs.ashbyhq.com/Perplexity",
+    "industry": "AI Search",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "Perplexity"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Perplexity AI",
+    "aliases": [
+      "Perplexity"
+    ]
+  },
+  {
+    "company": "Persona",
+    "careers_url": "https://jobs.ashbyhq.com/persona",
+    "industry": "Identity Verification",
+    "priority": "medium",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "persona"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Persona"
+  },
+  {
+    "company": "Physical Intelligence",
+    "careers_url": "https://jobs.ashbyhq.com/physicalintelligence",
+    "industry": "Robotics Foundation Models",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "physicalintelligence"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Physical Intelligence"
+  },
+  {
+    "company": "Planet",
+    "careers_url": "https://job-boards.greenhouse.io/planetlabs",
+    "industry": "Earth Observation",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "planetlabs"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 12 observed posting URL(s); seed name(s): Planet",
+    "aliases": [
+      "Planet Labs"
+    ]
+  },
+  {
+    "company": "PlanetScale",
+    "careers_url": "https://job-boards.greenhouse.io/planetscale",
+    "industry": "Databases",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "planetscale"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): PlanetScale"
+  },
+  {
+    "company": "PlusAI",
+    "careers_url": "https://jobs.lever.co/plus-2",
+    "industry": "Autonomous Trucking",
+    "priority": "medium",
+    "provider": "lever",
+    "provider_config": {
+      "site": "plus-2"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 21 observed posting URL(s); seed name(s): PlusAI",
+    "aliases": [
+      "Plus AI",
+      "Plus"
+    ]
+  },
+  {
+    "company": "Point72",
+    "careers_url": "https://job-boards.greenhouse.io/point72",
+    "industry": "Hedge Fund",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "point72"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 15 observed posting URL(s); seed name(s): Point72"
+  },
+  {
+    "company": "Postman",
+    "careers_url": "https://job-boards.greenhouse.io/postman",
+    "industry": "API Tooling",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "postman"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Postman"
+  },
+  {
+    "company": "Proofpoint",
+    "careers_url": "https://proofpoint.wd5.myworkdayjobs.com/en-US/proofpointcareers",
+    "industry": "Email Security",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "proofpoint",
+      "host": "proofpoint.wd5.myworkdayjobs.com",
+      "site": "proofpointcareers"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 18 observed posting URL(s); seed name(s): Proofpoint"
+  },
+  {
+    "company": "Quantinuum",
+    "careers_url": "https://jobs.lever.co/quantinuum",
+    "industry": "Quantum Computing",
+    "priority": "experimental",
+    "provider": "lever",
+    "provider_config": {
+      "site": "quantinuum"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 7 observed posting URL(s); seed name(s): Quantinuum"
+  },
+  {
+    "company": "Radix Trading",
+    "careers_url": "https://job-boards.greenhouse.io/radixuniversity",
+    "industry": "Quantitative Trading",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "radixuniversity"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Radix Trading"
+  },
+  {
+    "company": "Ramp",
+    "careers_url": "https://jobs.ashbyhq.com/ramp",
+    "industry": "Fintech",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "ramp"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Ramp"
+  },
+  {
+    "company": "Red Hat",
+    "careers_url": "https://redhat.wd5.myworkdayjobs.com/en-US/jobs",
+    "industry": "Open Source Infrastructure",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "redhat",
+      "host": "redhat.wd5.myworkdayjobs.com",
+      "site": "jobs"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 6 observed posting URL(s); seed name(s): Red Hat"
+  },
+  {
+    "company": "Replit",
+    "careers_url": "https://jobs.ashbyhq.com/replit",
+    "industry": "Developer Platform",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "replit"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Replit"
+  },
+  {
+    "company": "Rigetti",
+    "careers_url": "https://jobs.lever.co/rigetti",
+    "industry": "Quantum Computing",
+    "priority": "experimental",
+    "provider": "lever",
+    "provider_config": {
+      "site": "rigetti"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Rigetti",
+    "aliases": [
+      "Rigetti Computing"
+    ]
+  },
+  {
+    "company": "Rippling",
+    "careers_url": "https://ats.rippling.com/rippling/jobs",
+    "industry": "HR / Fintech Platform",
+    "priority": "high",
+    "provider": "rippling",
+    "provider_config": {
+      "board_slug": "rippling"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 10 observed posting URL(s); seed name(s): Rippling"
+  },
+  {
+    "company": "Robinhood",
+    "careers_url": "https://job-boards.greenhouse.io/robinhood",
+    "industry": "Brokerage",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "robinhood"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Robinhood"
+  },
+  {
+    "company": "Rocket Lab",
+    "careers_url": "https://job-boards.greenhouse.io/rocketlab",
+    "industry": "Aerospace",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "rocketlab"
+    },
+    "source_discovered_from": [
+      "ouckah"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Rocket Lab"
+  },
+  {
+    "company": "RTX",
+    "careers_url": "https://globalhr.wd5.myworkdayjobs.com/en-US/rec_rtx_ext_gateway",
+    "industry": "Aerospace & Defense",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "globalhr",
+      "host": "globalhr.wd5.myworkdayjobs.com",
+      "site": "rec_rtx_ext_gateway"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 344 observed posting URL(s); seed name(s): RTX",
+    "aliases": [
+      "Raytheon Technologies"
+    ]
+  },
+  {
+    "company": "Salesforce",
+    "careers_url": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site",
+    "industry": "Enterprise SaaS",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "salesforce",
+      "host": "salesforce.wd12.myworkdayjobs.com",
+      "site": "External_Career_Site"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 28 observed posting URL(s); seed name(s): Salesforce"
+  },
+  {
+    "company": "Samsung Research America",
+    "careers_url": "https://job-boards.greenhouse.io/samsungresearchamericainternship",
+    "industry": "Applied Research",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "samsungresearchamericainternship"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 16 observed posting URL(s); seed name(s): Samsung Research America",
+    "aliases": [
+      "SRA"
+    ]
+  },
+  {
+    "company": "Sandisk",
+    "careers_url": "https://jobs.smartrecruiters.com/Sandisk",
+    "industry": "Storage",
+    "priority": "medium",
+    "provider": "smartrecruiters",
+    "provider_config": {
+      "company_id": "Sandisk"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 15 observed posting URL(s); seed name(s): Sandisk",
+    "aliases": [
+      "SanDisk"
+    ]
+  },
+  {
+    "company": "Saronic",
+    "careers_url": "https://jobs.ashbyhq.com/saronic",
+    "industry": "Defense Autonomy",
+    "priority": "medium",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "saronic"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 6 observed posting URL(s); seed name(s): Saronic"
+  },
+  {
+    "company": "Scale AI",
+    "careers_url": "https://job-boards.greenhouse.io/scaleai",
+    "industry": "AI Data Infrastructure",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "scaleai"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Scale AI"
+  },
+  {
+    "company": "Schonfeld",
+    "careers_url": "https://job-boards.greenhouse.io/schonfeld",
+    "industry": "Hedge Fund",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "schonfeld"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 13 observed posting URL(s); seed name(s): Schonfeld",
+    "aliases": [
+      "Schonfeld Strategic Advisors"
+    ]
+  },
+  {
+    "company": "Semgrep",
+    "careers_url": "https://jobs.ashbyhq.com/semgrep",
+    "industry": "Code Security",
+    "priority": "medium",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "semgrep"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Semgrep"
+  },
+  {
+    "company": "Sentry",
+    "careers_url": "https://jobs.ashbyhq.com/sentry",
+    "industry": "Developer Observability",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "sentry"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Sentry",
+    "aliases": [
+      "Functional Software"
+    ]
+  },
+  {
+    "company": "ServiceNow",
+    "careers_url": "https://jobs.smartrecruiters.com/ServiceNow",
+    "industry": "Enterprise SaaS",
+    "priority": "medium",
+    "provider": "smartrecruiters",
+    "provider_config": {
+      "company_id": "ServiceNow"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): ServiceNow"
+  },
+  {
+    "company": "Shield AI",
+    "careers_url": "https://jobs.lever.co/shieldai",
+    "industry": "Defense Autonomy",
+    "priority": "high",
+    "provider": "lever",
+    "provider_config": {
+      "site": "shieldai"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Shield AI"
+  },
+  {
+    "company": "Sierra",
+    "careers_url": "https://jobs.ashbyhq.com/Sierra",
+    "industry": "Applied AI",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "Sierra"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Sierra"
+  },
+  {
+    "company": "Sigma Computing",
+    "careers_url": "https://job-boards.greenhouse.io/sigmacomputing",
+    "industry": "Analytics",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "sigmacomputing"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 20 observed posting URL(s); seed name(s): Sigma Computing"
+  },
+  {
+    "company": "SingleStore",
+    "careers_url": "https://job-boards.greenhouse.io/singlestore",
+    "industry": "Databases",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "singlestore"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): SingleStore"
+  },
+  {
+    "company": "Skydio",
+    "careers_url": "https://jobs.ashbyhq.com/skydio",
+    "industry": "Drones",
+    "priority": "medium",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "skydio"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Skydio"
+  },
+  {
+    "company": "Snowflake",
+    "careers_url": "https://jobs.ashbyhq.com/snowflake",
+    "industry": "Data Warehouse",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "snowflake"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Snowflake"
+  },
+  {
+    "company": "Snyk",
+    "careers_url": "https://snyk.wd103.myworkdayjobs.com/en-US/External",
+    "industry": "Developer Security",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "snyk",
+      "host": "snyk.wd103.myworkdayjobs.com",
+      "site": "External"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Snyk"
+  },
+  {
+    "company": "SpaceX",
+    "careers_url": "https://job-boards.greenhouse.io/spacex",
+    "industry": "Aerospace",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "spacex"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 9 observed posting URL(s); seed name(s): SpaceX"
+  },
+  {
+    "company": "Spotify",
+    "careers_url": "https://jobs.lever.co/spotify",
+    "industry": "Consumer Audio",
+    "priority": "medium",
+    "provider": "lever",
+    "provider_config": {
+      "site": "spotify"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Spotify"
+  },
+  {
+    "company": "Stripe",
+    "careers_url": "https://stripe.com/jobs",
+    "industry": "Payments",
+    "priority": "high",
+    "provider": "custom",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated"
+    ],
+    "support_status": "research-needed",
+    "notes": "company-owned careers site; no public JSON feed discovered"
+  },
+  {
+    "company": "Symbotic",
+    "careers_url": "https://symbotic.wd504.myworkdayjobs.com/en-US/Symbotic",
+    "industry": "Warehouse Robotics",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "symbotic",
+      "host": "symbotic.wd504.myworkdayjobs.com",
+      "site": "Symbotic"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 12 observed posting URL(s); seed name(s): Symbotic"
+  },
+  {
+    "company": "Tenstorrent",
+    "careers_url": "https://job-boards.greenhouse.io/tenstorrentuniversity",
+    "industry": "AI Accelerators",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "tenstorrentuniversity"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Tenstorrent"
+  },
+  {
+    "company": "The Boeing Company",
+    "careers_url": "https://boeing.wd1.myworkdayjobs.com/en-US/EXTERNAL_CAREERS",
+    "industry": "Aerospace",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "boeing",
+      "host": "boeing.wd1.myworkdayjobs.com",
+      "site": "EXTERNAL_CAREERS"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 38 observed posting URL(s); seed name(s): Boeing, The Boeing Company",
+    "aliases": [
+      "Boeing"
+    ]
+  },
+  {
+    "company": "Together AI",
+    "careers_url": "https://job-boards.greenhouse.io/togetherai",
+    "industry": "AI Infrastructure",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "togetherai"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 16 observed posting URL(s); seed name(s): Together AI"
+  },
+  {
+    "company": "Toyota Research Institute",
+    "careers_url": "https://jobs.lever.co/tri",
+    "industry": "Applied Research",
+    "priority": "high",
+    "provider": "lever",
+    "provider_config": {
+      "site": "tri"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Toyota Research Institute",
+    "aliases": [
+      "TRI"
+    ]
+  },
+  {
+    "company": "Twilio",
+    "careers_url": "https://job-boards.greenhouse.io/twilio",
+    "industry": "Communications APIs",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "twilio"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Twilio"
+  },
+  {
+    "company": "Two Sigma",
+    "careers_url": "https://careers.twosigma.com",
+    "industry": "Quantitative Trading",
+    "priority": "high",
+    "provider": "custom",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated"
+    ],
+    "support_status": "research-needed",
+    "notes": "Avature tenant; no stable public feed"
+  },
+  {
+    "company": "Varda Space Industries",
+    "careers_url": "https://job-boards.greenhouse.io/vardaspace",
+    "industry": "Space Manufacturing",
+    "priority": "experimental",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "vardaspace"
+    },
+    "source_discovered_from": [
+      "ouckah"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Varda Space Industries",
+    "aliases": [
+      "Varda"
+    ]
+  },
+  {
+    "company": "Veeam Software",
+    "careers_url": "https://job-boards.greenhouse.io/veeamsoftware",
+    "industry": "Data Protection",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "veeamsoftware"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 14 observed posting URL(s); seed name(s): Veeam Software",
+    "aliases": [
+      "Veeam"
+    ]
+  },
+  {
+    "company": "Vercel",
+    "careers_url": "https://job-boards.greenhouse.io/vercel",
+    "industry": "Developer Platform",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "vercel"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Vercel"
+  },
+  {
+    "company": "Verkada",
+    "careers_url": "https://job-boards.greenhouse.io/verkada",
+    "industry": "Physical Security",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "verkada"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Verkada"
+  },
+  {
+    "company": "Virtu",
+    "careers_url": "https://job-boards.greenhouse.io/virtu",
+    "industry": "Market Making",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "virtu"
+    },
+    "source_discovered_from": [
+      "ouckah"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Virtu",
+    "aliases": [
+      "Virtu Financial"
+    ]
+  },
+  {
+    "company": "Visa",
+    "careers_url": "https://visa.wd5.myworkdayjobs.com/en-US/Visa",
+    "industry": "Payment Networks",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "visa",
+      "host": "visa.wd5.myworkdayjobs.com",
+      "site": "Visa"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 31 observed posting URL(s); seed name(s): Visa"
+  },
+  {
+    "company": "Voyager Technologies",
+    "careers_url": "https://job-boards.greenhouse.io/voyagertechnologiesinc",
+    "industry": "Aerospace",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "voyagertechnologiesinc"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Voyager Technologies",
+    "aliases": [
+      "Voyager Space"
+    ]
+  },
+  {
+    "company": "Walleye Capital",
+    "careers_url": "https://job-boards.greenhouse.io/walleyecapital-external-students",
+    "industry": "Hedge Fund",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "walleyecapital-external-students"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 13 observed posting URL(s); seed name(s): Walleye Capital",
+    "aliases": [
+      "Walleye"
+    ]
+  },
+  {
+    "company": "Waymo",
+    "careers_url": "https://careers.withwaymo.com",
+    "industry": "Autonomous Vehicles",
+    "priority": "high",
+    "provider": "custom",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated"
+    ],
+    "support_status": "research-needed",
+    "notes": "company-owned careers site"
+  },
+  {
+    "company": "Wellington Management",
+    "careers_url": "https://wellington.wd5.myworkdayjobs.com/en-US/external",
+    "industry": "Asset Management",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "wellington",
+      "host": "wellington.wd5.myworkdayjobs.com",
+      "site": "external"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 17 observed posting URL(s); seed name(s): Wellington Management"
+  },
+  {
+    "company": "Western Digital",
+    "careers_url": "https://jobs.smartrecruiters.com/WesternDigital",
+    "industry": "Storage",
+    "priority": "medium",
+    "provider": "smartrecruiters",
+    "provider_config": {
+      "company_id": "WesternDigital"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 59 observed posting URL(s); seed name(s): Western Digital"
+  },
+  {
+    "company": "XTX Markets",
+    "careers_url": "https://job-boards.greenhouse.io/xtxmarketstechnologies",
+    "industry": "Market Making",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "xtxmarketstechnologies"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): XTX Markets"
+  },
+  {
+    "company": "Zendesk",
+    "careers_url": "https://zendesk.wd1.myworkdayjobs.com/en-US/zendesk",
+    "industry": "Customer Software",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "zendesk",
+      "host": "zendesk.wd1.myworkdayjobs.com",
+      "site": "zendesk"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Zendesk"
+  },
+  {
+    "company": "Zocdoc",
+    "careers_url": "https://job-boards.greenhouse.io/zocdoc",
+    "industry": "Health Marketplace",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "zocdoc"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Zocdoc"
+  },
+  {
+    "company": "Zoom",
+    "careers_url": "https://zoom.wd5.myworkdayjobs.com/en-US/zoom",
+    "industry": "Communications",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "tenant": "zoom",
+      "host": "zoom.wd5.myworkdayjobs.com",
+      "site": "zoom"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 13 observed posting URL(s); seed name(s): Zoom"
+  },
+  {
+    "company": "Zoox",
+    "careers_url": "https://jobs.lever.co/zoox",
+    "industry": "Autonomous Vehicles",
+    "priority": "high",
+    "provider": "lever",
+    "provider_config": {
+      "site": "zoox"
+    },
+    "source_discovered_from": [
+      "ouckah",
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 31 observed posting URL(s); seed name(s): Zoox"
+  },
+  {
+    "company": "Zscaler",
+    "careers_url": "https://job-boards.greenhouse.io/zscaler",
+    "industry": "Cloud Security",
+    "priority": "medium",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "zscaler"
+    },
+    "source_discovered_from": [
+      "simplify"
+    ],
+    "support_status": "supported",
+    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Zscaler"
+  }
+]
