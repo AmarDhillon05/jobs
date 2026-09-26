@@ -13,6 +13,7 @@ Severity: `critical` (blocks a hard completion gate) · `major` · `minor`
 | ID | Component | Severity | Status |
 | --- | --- | --- | --- |
 | [BLK-001](#blk-001---outbound-egress-policy-blocks-all-third-party-careersats-hosts) | Live scraper validation | major | accepted-limitation |
+| [BLK-002](#blk-002---provider-fixtures-could-not-be-captured-from-live-responses) | Provider fixtures | major | accepted-limitation |
 
 ---
 
@@ -93,3 +94,42 @@ Severity: `critical` (blocks a hard completion gate) · `major` · `minor`
 - **Severity:** ...
 - **Status:** ...
 -->
+
+## BLK-002 - Provider fixtures could not be captured from live responses
+
+- **Timestamp / stage:** 2026-09-26, Phase D (provider coverage)
+- **Requirement affected:** PRD §7 ("include fixture-based tests using saved
+  representative responses"), §35 (no unverified claims)
+- **Component:** `tests/fixtures/*`
+- **Observed failure:** a downstream consequence of BLK-001. Fixtures are normally
+  captured by recording one real response per provider. Every ATS host is
+  403-blocked at the egress proxy, so nothing could be recorded.
+- **Expected behaviour:** `curl <provider api> > tests/fixtures/<provider>/...`,
+  giving byte-exact captures of live payloads.
+- **What was done instead:** each fixture was authored to the provider's
+  documented/public response shape, and each adapter's module docstring states
+  the endpoint and the exact shape its fixture encodes, so a reviewer can diff
+  the assumption against a real response in one command. Adapters read fields
+  tolerantly (several accepted spellings, objects-or-strings, wrapped-or-bare
+  arrays), so a single renamed key degrades one column instead of failing a
+  company. Confidence is highest for Greenhouse / Lever / Ashby / SmartRecruiters
+  / Workday, whose shapes are widely documented and stable, and is explicitly
+  lowest for **Rippling** (1 registry entry), which is noted in its docstring.
+- **Attempts made:**
+  1. Direct capture from the four main provider APIs - 403 at CONNECT.
+  2. Looked for the payloads inside the seed repositories: they publish
+     *normalized* listings, not raw ATS responses, so they cannot substitute.
+  3. Wrote `scripts/validate_companies.py`, which performs the real fetch through
+     the same adapters and rewrites `support_status` + `last_validated`. Running
+     it on a normal network both validates the slugs and surfaces any fixture
+     that has drifted from reality.
+- **Evidence / logs:** see BLK-001's proxy output.
+- **Current hypothesis:** shapes are correct for the five major providers;
+  Rippling carries real residual risk.
+- **Next actions (for the user):** `make validate-companies` then
+  `make coverage-report`. Any adapter whose real payload differs will show up
+  immediately as `research-needed` with the parse error attached.
+- **Severity:** major (bounded: affects 1 company materially; blocks no gate)
+- **Status:** accepted-limitation
+
+---

@@ -174,13 +174,18 @@
     "careers_url": "https://jobs.apple.com/en-us/search",
     "industry": "Consumer Technology",
     "priority": "high",
-    "provider": "custom",
-    "provider_config": {},
+    "provider": "simplify_fallback",
+    "provider_config": {
+      "company_names": [
+        "Apple"
+      ]
+    },
     "source_discovered_from": [
+      "simplify",
       "curated"
     ],
-    "support_status": "research-needed",
-    "notes": "company-owned careers site with bot protection"
+    "support_status": "partial",
+    "notes": "company-owned careers site with bot protection; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "Applied Intuition",
@@ -557,26 +562,36 @@
     "careers_url": "https://www.citadel.com/careers/open-opportunities/",
     "industry": "Hedge Fund",
     "priority": "high",
-    "provider": "custom",
-    "provider_config": {},
+    "provider": "simplify_fallback",
+    "provider_config": {
+      "company_names": [
+        "Citadel"
+      ]
+    },
     "source_discovered_from": [
+      "simplify",
       "curated"
     ],
-    "support_status": "research-needed",
-    "notes": "company-owned careers site"
+    "support_status": "partial",
+    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "Citadel Securities",
     "careers_url": "https://www.citadelsecurities.com/careers/open-opportunities/",
     "industry": "Market Making",
     "priority": "high",
-    "provider": "custom",
-    "provider_config": {},
+    "provider": "simplify_fallback",
+    "provider_config": {
+      "company_names": [
+        "Citadel Securities"
+      ]
+    },
     "source_discovered_from": [
+      "simplify",
       "curated"
     ],
-    "support_status": "research-needed",
-    "notes": "company-owned careers site"
+    "support_status": "partial",
+    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "Cloudflare",
@@ -634,13 +649,18 @@
     "careers_url": "https://www.coinbase.com/careers",
     "industry": "Crypto Exchange",
     "priority": "high",
-    "provider": "custom",
-    "provider_config": {},
+    "provider": "simplify_fallback",
+    "provider_config": {
+      "company_names": [
+        "Coinbase"
+      ]
+    },
     "source_discovered_from": [
+      "simplify",
       "curated"
     ],
-    "support_status": "research-needed",
-    "notes": "only embed-style Greenhouse URLs observed; board token not recoverable"
+    "support_status": "partial",
+    "notes": "only embed-style Greenhouse URLs observed; board token not recoverable; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "Confluent",
@@ -682,39 +702,54 @@
     "careers_url": "https://www.databricks.com/company/careers",
     "industry": "Data / AI Platform",
     "priority": "high",
-    "provider": "custom",
-    "provider_config": {},
+    "provider": "simplify_fallback",
+    "provider_config": {
+      "company_names": [
+        "Databricks"
+      ]
+    },
     "source_discovered_from": [
+      "simplify",
       "curated"
     ],
-    "support_status": "research-needed",
-    "notes": "only embed-style Greenhouse URLs observed; board token not recoverable"
+    "support_status": "partial",
+    "notes": "only embed-style Greenhouse URLs observed; board token not recoverable; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "Datadog",
     "careers_url": "https://careers.datadoghq.com",
     "industry": "Observability",
     "priority": "high",
-    "provider": "custom",
-    "provider_config": {},
+    "provider": "simplify_fallback",
+    "provider_config": {
+      "company_names": [
+        "Datadog"
+      ]
+    },
     "source_discovered_from": [
+      "simplify",
       "curated"
     ],
-    "support_status": "research-needed",
-    "notes": "company-owned careers site"
+    "support_status": "partial",
+    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "DE Shaw",
     "careers_url": "https://www.deshaw.com/careers",
     "industry": "Quantitative Trading",
     "priority": "high",
-    "provider": "custom",
-    "provider_config": {},
+    "provider": "simplify_fallback",
+    "provider_config": {
+      "company_names": [
+        "DE Shaw"
+      ]
+    },
     "source_discovered_from": [
+      "simplify",
       "curated"
     ],
-    "support_status": "research-needed",
-    "notes": "company-owned careers site"
+    "support_status": "partial",
+    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "Dell Technologies",
@@ -750,27 +785,6 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 5 observed posting URL(s); seed name(s): DoorDash"
-  },
-  {
-    "company": "Draper",
-    "careers_url": "https://draper.wd5.myworkdayjobs.com/en-US/Draper_Careers",
-    "industry": "Applied Research",
-    "priority": "medium",
-    "provider": "workday",
-    "provider_config": {
-      "tenant": "draper",
-      "host": "draper.wd5.myworkdayjobs.com",
-      "site": "Draper_Careers"
-    },
-    "source_discovered_from": [
-      "ouckah",
-      "simplify"
-    ],
-    "support_status": "supported",
-    "notes": "config recovered from 25 observed posting URL(s); seed name(s): Draper",
-    "aliases": [
-      "Draper Laboratory"
-    ]
   },
   {
     "company": "DRW",
@@ -963,13 +977,18 @@
     "careers_url": "https://www.hudsonrivertrading.com/careers/",
     "industry": "Quantitative Trading",
     "priority": "high",
-    "provider": "custom",
-    "provider_config": {},
+    "provider": "simplify_fallback",
+    "provider_config": {
+      "company_names": [
+        "Hudson River Trading"
+      ]
+    },
     "source_discovered_from": [
+      "simplify",
       "curated"
     ],
-    "support_status": "research-needed",
-    "notes": "company-owned careers site"
+    "support_status": "partial",
+    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "IMC Trading",
@@ -2093,13 +2112,18 @@
     "careers_url": "https://stripe.com/jobs",
     "industry": "Payments",
     "priority": "high",
-    "provider": "custom",
-    "provider_config": {},
+    "provider": "simplify_fallback",
+    "provider_config": {
+      "company_names": [
+        "Stripe"
+      ]
+    },
     "source_discovered_from": [
+      "simplify",
       "curated"
     ],
-    "support_status": "research-needed",
-    "notes": "company-owned careers site; no public JSON feed discovered"
+    "support_status": "partial",
+    "notes": "company-owned careers site; no public JSON feed discovered; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "Symbotic",
@@ -2209,13 +2233,18 @@
     "careers_url": "https://careers.twosigma.com",
     "industry": "Quantitative Trading",
     "priority": "high",
-    "provider": "custom",
-    "provider_config": {},
+    "provider": "simplify_fallback",
+    "provider_config": {
+      "company_names": [
+        "Two Sigma"
+      ]
+    },
     "source_discovered_from": [
+      "simplify",
       "curated"
     ],
-    "support_status": "research-needed",
-    "notes": "Avature tenant; no stable public feed"
+    "support_status": "partial",
+    "notes": "Avature tenant; no stable public feed; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "Varda Space Industries",
@@ -2362,13 +2391,18 @@
     "careers_url": "https://careers.withwaymo.com",
     "industry": "Autonomous Vehicles",
     "priority": "high",
-    "provider": "custom",
-    "provider_config": {},
+    "provider": "simplify_fallback",
+    "provider_config": {
+      "company_names": [
+        "Waymo"
+      ]
+    },
     "source_discovered_from": [
+      "simplify",
       "curated"
     ],
-    "support_status": "research-needed",
-    "notes": "company-owned careers site"
+    "support_status": "partial",
+    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "Wellington Management",

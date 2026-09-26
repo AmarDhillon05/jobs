@@ -1,0 +1,2807 @@
+{
+ "offset": 100,
+ "limit": 100,
+ "totalFound": 250,
+ "content": [
+  {
+   "id": "744000000000100",
+   "uuid": "uuid-100",
+   "name": "Platform Engineer Intern 0",
+   "refNumber": "REF-100",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000100"
+  },
+  {
+   "id": "744000000000101",
+   "uuid": "uuid-101",
+   "name": "Platform Engineer Intern 1",
+   "refNumber": "REF-101",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000101"
+  },
+  {
+   "id": "744000000000102",
+   "uuid": "uuid-102",
+   "name": "Platform Engineer Intern 2",
+   "refNumber": "REF-102",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000102"
+  },
+  {
+   "id": "744000000000103",
+   "uuid": "uuid-103",
+   "name": "Platform Engineer Intern 3",
+   "refNumber": "REF-103",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000103"
+  },
+  {
+   "id": "744000000000104",
+   "uuid": "uuid-104",
+   "name": "Platform Engineer Intern 4",
+   "refNumber": "REF-104",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000104"
+  },
+  {
+   "id": "744000000000105",
+   "uuid": "uuid-105",
+   "name": "Platform Engineer Intern 5",
+   "refNumber": "REF-105",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000105"
+  },
+  {
+   "id": "744000000000106",
+   "uuid": "uuid-106",
+   "name": "Platform Engineer Intern 6",
+   "refNumber": "REF-106",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000106"
+  },
+  {
+   "id": "744000000000107",
+   "uuid": "uuid-107",
+   "name": "Platform Engineer Intern 7",
+   "refNumber": "REF-107",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000107"
+  },
+  {
+   "id": "744000000000108",
+   "uuid": "uuid-108",
+   "name": "Platform Engineer Intern 8",
+   "refNumber": "REF-108",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000108"
+  },
+  {
+   "id": "744000000000109",
+   "uuid": "uuid-109",
+   "name": "Platform Engineer Intern 9",
+   "refNumber": "REF-109",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000109"
+  },
+  {
+   "id": "744000000000110",
+   "uuid": "uuid-110",
+   "name": "Platform Engineer Intern 10",
+   "refNumber": "REF-110",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000110"
+  },
+  {
+   "id": "744000000000111",
+   "uuid": "uuid-111",
+   "name": "Platform Engineer Intern 11",
+   "refNumber": "REF-111",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000111"
+  },
+  {
+   "id": "744000000000112",
+   "uuid": "uuid-112",
+   "name": "Platform Engineer Intern 12",
+   "refNumber": "REF-112",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000112"
+  },
+  {
+   "id": "744000000000113",
+   "uuid": "uuid-113",
+   "name": "Platform Engineer Intern 13",
+   "refNumber": "REF-113",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000113"
+  },
+  {
+   "id": "744000000000114",
+   "uuid": "uuid-114",
+   "name": "Platform Engineer Intern 14",
+   "refNumber": "REF-114",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000114"
+  },
+  {
+   "id": "744000000000115",
+   "uuid": "uuid-115",
+   "name": "Platform Engineer Intern 15",
+   "refNumber": "REF-115",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000115"
+  },
+  {
+   "id": "744000000000116",
+   "uuid": "uuid-116",
+   "name": "Platform Engineer Intern 16",
+   "refNumber": "REF-116",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000116"
+  },
+  {
+   "id": "744000000000117",
+   "uuid": "uuid-117",
+   "name": "Platform Engineer Intern 17",
+   "refNumber": "REF-117",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000117"
+  },
+  {
+   "id": "744000000000118",
+   "uuid": "uuid-118",
+   "name": "Platform Engineer Intern 18",
+   "refNumber": "REF-118",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000118"
+  },
+  {
+   "id": "744000000000119",
+   "uuid": "uuid-119",
+   "name": "Platform Engineer Intern 19",
+   "refNumber": "REF-119",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000119"
+  },
+  {
+   "id": "744000000000120",
+   "uuid": "uuid-120",
+   "name": "Platform Engineer Intern 20",
+   "refNumber": "REF-120",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000120"
+  },
+  {
+   "id": "744000000000121",
+   "uuid": "uuid-121",
+   "name": "Platform Engineer Intern 21",
+   "refNumber": "REF-121",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000121"
+  },
+  {
+   "id": "744000000000122",
+   "uuid": "uuid-122",
+   "name": "Platform Engineer Intern 22",
+   "refNumber": "REF-122",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000122"
+  },
+  {
+   "id": "744000000000123",
+   "uuid": "uuid-123",
+   "name": "Platform Engineer Intern 23",
+   "refNumber": "REF-123",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000123"
+  },
+  {
+   "id": "744000000000124",
+   "uuid": "uuid-124",
+   "name": "Platform Engineer Intern 24",
+   "refNumber": "REF-124",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000124"
+  },
+  {
+   "id": "744000000000125",
+   "uuid": "uuid-125",
+   "name": "Platform Engineer Intern 25",
+   "refNumber": "REF-125",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000125"
+  },
+  {
+   "id": "744000000000126",
+   "uuid": "uuid-126",
+   "name": "Platform Engineer Intern 26",
+   "refNumber": "REF-126",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000126"
+  },
+  {
+   "id": "744000000000127",
+   "uuid": "uuid-127",
+   "name": "Platform Engineer Intern 27",
+   "refNumber": "REF-127",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000127"
+  },
+  {
+   "id": "744000000000128",
+   "uuid": "uuid-128",
+   "name": "Platform Engineer Intern 28",
+   "refNumber": "REF-128",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000128"
+  },
+  {
+   "id": "744000000000129",
+   "uuid": "uuid-129",
+   "name": "Platform Engineer Intern 29",
+   "refNumber": "REF-129",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000129"
+  },
+  {
+   "id": "744000000000130",
+   "uuid": "uuid-130",
+   "name": "Platform Engineer Intern 30",
+   "refNumber": "REF-130",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000130"
+  },
+  {
+   "id": "744000000000131",
+   "uuid": "uuid-131",
+   "name": "Platform Engineer Intern 31",
+   "refNumber": "REF-131",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000131"
+  },
+  {
+   "id": "744000000000132",
+   "uuid": "uuid-132",
+   "name": "Platform Engineer Intern 32",
+   "refNumber": "REF-132",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000132"
+  },
+  {
+   "id": "744000000000133",
+   "uuid": "uuid-133",
+   "name": "Platform Engineer Intern 33",
+   "refNumber": "REF-133",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000133"
+  },
+  {
+   "id": "744000000000134",
+   "uuid": "uuid-134",
+   "name": "Platform Engineer Intern 34",
+   "refNumber": "REF-134",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000134"
+  },
+  {
+   "id": "744000000000135",
+   "uuid": "uuid-135",
+   "name": "Platform Engineer Intern 35",
+   "refNumber": "REF-135",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000135"
+  },
+  {
+   "id": "744000000000136",
+   "uuid": "uuid-136",
+   "name": "Platform Engineer Intern 36",
+   "refNumber": "REF-136",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000136"
+  },
+  {
+   "id": "744000000000137",
+   "uuid": "uuid-137",
+   "name": "Platform Engineer Intern 37",
+   "refNumber": "REF-137",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000137"
+  },
+  {
+   "id": "744000000000138",
+   "uuid": "uuid-138",
+   "name": "Platform Engineer Intern 38",
+   "refNumber": "REF-138",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000138"
+  },
+  {
+   "id": "744000000000139",
+   "uuid": "uuid-139",
+   "name": "Platform Engineer Intern 39",
+   "refNumber": "REF-139",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000139"
+  },
+  {
+   "id": "744000000000140",
+   "uuid": "uuid-140",
+   "name": "Platform Engineer Intern 40",
+   "refNumber": "REF-140",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000140"
+  },
+  {
+   "id": "744000000000141",
+   "uuid": "uuid-141",
+   "name": "Platform Engineer Intern 41",
+   "refNumber": "REF-141",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000141"
+  },
+  {
+   "id": "744000000000142",
+   "uuid": "uuid-142",
+   "name": "Platform Engineer Intern 42",
+   "refNumber": "REF-142",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000142"
+  },
+  {
+   "id": "744000000000143",
+   "uuid": "uuid-143",
+   "name": "Platform Engineer Intern 43",
+   "refNumber": "REF-143",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000143"
+  },
+  {
+   "id": "744000000000144",
+   "uuid": "uuid-144",
+   "name": "Platform Engineer Intern 44",
+   "refNumber": "REF-144",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000144"
+  },
+  {
+   "id": "744000000000145",
+   "uuid": "uuid-145",
+   "name": "Platform Engineer Intern 45",
+   "refNumber": "REF-145",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000145"
+  },
+  {
+   "id": "744000000000146",
+   "uuid": "uuid-146",
+   "name": "Platform Engineer Intern 46",
+   "refNumber": "REF-146",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000146"
+  },
+  {
+   "id": "744000000000147",
+   "uuid": "uuid-147",
+   "name": "Platform Engineer Intern 47",
+   "refNumber": "REF-147",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000147"
+  },
+  {
+   "id": "744000000000148",
+   "uuid": "uuid-148",
+   "name": "Platform Engineer Intern 48",
+   "refNumber": "REF-148",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000148"
+  },
+  {
+   "id": "744000000000149",
+   "uuid": "uuid-149",
+   "name": "Platform Engineer Intern 49",
+   "refNumber": "REF-149",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000149"
+  },
+  {
+   "id": "744000000000150",
+   "uuid": "uuid-150",
+   "name": "Platform Engineer Intern 50",
+   "refNumber": "REF-150",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000150"
+  },
+  {
+   "id": "744000000000151",
+   "uuid": "uuid-151",
+   "name": "Platform Engineer Intern 51",
+   "refNumber": "REF-151",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000151"
+  },
+  {
+   "id": "744000000000152",
+   "uuid": "uuid-152",
+   "name": "Platform Engineer Intern 52",
+   "refNumber": "REF-152",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000152"
+  },
+  {
+   "id": "744000000000153",
+   "uuid": "uuid-153",
+   "name": "Platform Engineer Intern 53",
+   "refNumber": "REF-153",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000153"
+  },
+  {
+   "id": "744000000000154",
+   "uuid": "uuid-154",
+   "name": "Platform Engineer Intern 54",
+   "refNumber": "REF-154",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000154"
+  },
+  {
+   "id": "744000000000155",
+   "uuid": "uuid-155",
+   "name": "Platform Engineer Intern 55",
+   "refNumber": "REF-155",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000155"
+  },
+  {
+   "id": "744000000000156",
+   "uuid": "uuid-156",
+   "name": "Platform Engineer Intern 56",
+   "refNumber": "REF-156",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000156"
+  },
+  {
+   "id": "744000000000157",
+   "uuid": "uuid-157",
+   "name": "Platform Engineer Intern 57",
+   "refNumber": "REF-157",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000157"
+  },
+  {
+   "id": "744000000000158",
+   "uuid": "uuid-158",
+   "name": "Platform Engineer Intern 58",
+   "refNumber": "REF-158",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000158"
+  },
+  {
+   "id": "744000000000159",
+   "uuid": "uuid-159",
+   "name": "Platform Engineer Intern 59",
+   "refNumber": "REF-159",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000159"
+  },
+  {
+   "id": "744000000000160",
+   "uuid": "uuid-160",
+   "name": "Platform Engineer Intern 60",
+   "refNumber": "REF-160",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000160"
+  },
+  {
+   "id": "744000000000161",
+   "uuid": "uuid-161",
+   "name": "Platform Engineer Intern 61",
+   "refNumber": "REF-161",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000161"
+  },
+  {
+   "id": "744000000000162",
+   "uuid": "uuid-162",
+   "name": "Platform Engineer Intern 62",
+   "refNumber": "REF-162",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000162"
+  },
+  {
+   "id": "744000000000163",
+   "uuid": "uuid-163",
+   "name": "Platform Engineer Intern 63",
+   "refNumber": "REF-163",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000163"
+  },
+  {
+   "id": "744000000000164",
+   "uuid": "uuid-164",
+   "name": "Platform Engineer Intern 64",
+   "refNumber": "REF-164",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000164"
+  },
+  {
+   "id": "744000000000165",
+   "uuid": "uuid-165",
+   "name": "Platform Engineer Intern 65",
+   "refNumber": "REF-165",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000165"
+  },
+  {
+   "id": "744000000000166",
+   "uuid": "uuid-166",
+   "name": "Platform Engineer Intern 66",
+   "refNumber": "REF-166",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000166"
+  },
+  {
+   "id": "744000000000167",
+   "uuid": "uuid-167",
+   "name": "Platform Engineer Intern 67",
+   "refNumber": "REF-167",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000167"
+  },
+  {
+   "id": "744000000000168",
+   "uuid": "uuid-168",
+   "name": "Platform Engineer Intern 68",
+   "refNumber": "REF-168",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000168"
+  },
+  {
+   "id": "744000000000169",
+   "uuid": "uuid-169",
+   "name": "Platform Engineer Intern 69",
+   "refNumber": "REF-169",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000169"
+  },
+  {
+   "id": "744000000000170",
+   "uuid": "uuid-170",
+   "name": "Platform Engineer Intern 70",
+   "refNumber": "REF-170",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000170"
+  },
+  {
+   "id": "744000000000171",
+   "uuid": "uuid-171",
+   "name": "Platform Engineer Intern 71",
+   "refNumber": "REF-171",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000171"
+  },
+  {
+   "id": "744000000000172",
+   "uuid": "uuid-172",
+   "name": "Platform Engineer Intern 72",
+   "refNumber": "REF-172",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000172"
+  },
+  {
+   "id": "744000000000173",
+   "uuid": "uuid-173",
+   "name": "Platform Engineer Intern 73",
+   "refNumber": "REF-173",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000173"
+  },
+  {
+   "id": "744000000000174",
+   "uuid": "uuid-174",
+   "name": "Platform Engineer Intern 74",
+   "refNumber": "REF-174",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000174"
+  },
+  {
+   "id": "744000000000175",
+   "uuid": "uuid-175",
+   "name": "Platform Engineer Intern 75",
+   "refNumber": "REF-175",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000175"
+  },
+  {
+   "id": "744000000000176",
+   "uuid": "uuid-176",
+   "name": "Platform Engineer Intern 76",
+   "refNumber": "REF-176",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000176"
+  },
+  {
+   "id": "744000000000177",
+   "uuid": "uuid-177",
+   "name": "Platform Engineer Intern 77",
+   "refNumber": "REF-177",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000177"
+  },
+  {
+   "id": "744000000000178",
+   "uuid": "uuid-178",
+   "name": "Platform Engineer Intern 78",
+   "refNumber": "REF-178",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000178"
+  },
+  {
+   "id": "744000000000179",
+   "uuid": "uuid-179",
+   "name": "Platform Engineer Intern 79",
+   "refNumber": "REF-179",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000179"
+  },
+  {
+   "id": "744000000000180",
+   "uuid": "uuid-180",
+   "name": "Platform Engineer Intern 80",
+   "refNumber": "REF-180",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000180"
+  },
+  {
+   "id": "744000000000181",
+   "uuid": "uuid-181",
+   "name": "Platform Engineer Intern 81",
+   "refNumber": "REF-181",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000181"
+  },
+  {
+   "id": "744000000000182",
+   "uuid": "uuid-182",
+   "name": "Platform Engineer Intern 82",
+   "refNumber": "REF-182",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000182"
+  },
+  {
+   "id": "744000000000183",
+   "uuid": "uuid-183",
+   "name": "Platform Engineer Intern 83",
+   "refNumber": "REF-183",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000183"
+  },
+  {
+   "id": "744000000000184",
+   "uuid": "uuid-184",
+   "name": "Platform Engineer Intern 84",
+   "refNumber": "REF-184",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000184"
+  },
+  {
+   "id": "744000000000185",
+   "uuid": "uuid-185",
+   "name": "Platform Engineer Intern 85",
+   "refNumber": "REF-185",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000185"
+  },
+  {
+   "id": "744000000000186",
+   "uuid": "uuid-186",
+   "name": "Platform Engineer Intern 86",
+   "refNumber": "REF-186",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000186"
+  },
+  {
+   "id": "744000000000187",
+   "uuid": "uuid-187",
+   "name": "Platform Engineer Intern 87",
+   "refNumber": "REF-187",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000187"
+  },
+  {
+   "id": "744000000000188",
+   "uuid": "uuid-188",
+   "name": "Platform Engineer Intern 88",
+   "refNumber": "REF-188",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000188"
+  },
+  {
+   "id": "744000000000189",
+   "uuid": "uuid-189",
+   "name": "Platform Engineer Intern 89",
+   "refNumber": "REF-189",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000189"
+  },
+  {
+   "id": "744000000000190",
+   "uuid": "uuid-190",
+   "name": "Platform Engineer Intern 90",
+   "refNumber": "REF-190",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000190"
+  },
+  {
+   "id": "744000000000191",
+   "uuid": "uuid-191",
+   "name": "Platform Engineer Intern 91",
+   "refNumber": "REF-191",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000191"
+  },
+  {
+   "id": "744000000000192",
+   "uuid": "uuid-192",
+   "name": "Platform Engineer Intern 92",
+   "refNumber": "REF-192",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000192"
+  },
+  {
+   "id": "744000000000193",
+   "uuid": "uuid-193",
+   "name": "Platform Engineer Intern 93",
+   "refNumber": "REF-193",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000193"
+  },
+  {
+   "id": "744000000000194",
+   "uuid": "uuid-194",
+   "name": "Platform Engineer Intern 94",
+   "refNumber": "REF-194",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000194"
+  },
+  {
+   "id": "744000000000195",
+   "uuid": "uuid-195",
+   "name": "Platform Engineer Intern 95",
+   "refNumber": "REF-195",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000195"
+  },
+  {
+   "id": "744000000000196",
+   "uuid": "uuid-196",
+   "name": "Platform Engineer Intern 96",
+   "refNumber": "REF-196",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000196"
+  },
+  {
+   "id": "744000000000197",
+   "uuid": "uuid-197",
+   "name": "Platform Engineer Intern 97",
+   "refNumber": "REF-197",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000197"
+  },
+  {
+   "id": "744000000000198",
+   "uuid": "uuid-198",
+   "name": "Platform Engineer Intern 98",
+   "refNumber": "REF-198",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000198"
+  },
+  {
+   "id": "744000000000199",
+   "uuid": "uuid-199",
+   "name": "Platform Engineer Intern 99",
+   "refNumber": "REF-199",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000199"
+  }
+ ]
+}

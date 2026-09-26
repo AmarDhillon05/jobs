@@ -1,0 +1,98 @@
+[
+ {
+  "source": "Simplify",
+  "category": "Software",
+  "company_name": "Stripe",
+  "id": "d35d37b7-6897-4216-86a9-4d8c63b480a4",
+  "title": "Software Engineer Intern",
+  "active": true,
+  "is_visible": true,
+  "terms": [
+   "Summer 2027"
+  ],
+  "date_updated": 1769728646,
+  "date_posted": 1769728646,
+  "url": "https://stripe.com/jobs/listing/software-engineer-intern/1234?utm_source=Simplify",
+  "locations": [
+   "San Francisco",
+   "NYC"
+  ],
+  "company_url": "https://simplify.jobs/c/Stripe",
+  "sponsorship": "Other",
+  "degrees": [
+   "Bachelor's"
+  ]
+ },
+ {
+  "source": "Simplify",
+  "category": "AI/ML",
+  "company_name": "Stripe, Inc.",
+  "id": "e46e48c8-7908-5327-97ba-5e9d74c591b5",
+  "title": "Machine Learning Engineer Intern",
+  "active": true,
+  "is_visible": true,
+  "terms": [
+   "Summer 2027"
+  ],
+  "date_posted": 1769642246,
+  "url": "https://stripe.com/jobs/listing/ml-intern/1235",
+  "locations": [
+   "Seattle"
+  ]
+ },
+ {
+  "source": "Simplify",
+  "category": "Software",
+  "company_name": "Stripe",
+  "id": "f57f59d9-8a19-6438-a8cb-6f0e85d6a2c6",
+  "title": "Closed Intern Role",
+  "active": false,
+  "is_visible": true,
+  "date_posted": 1760000000,
+  "url": "https://stripe.com/jobs/listing/closed/1236",
+  "locations": [
+   "Remote"
+  ]
+ },
+ {
+  "source": "Simplify",
+  "category": "Software",
+  "company_name": "Stripe",
+  "id": "g68g60e0-9b20-7549-b9dc-701f96e7b3d7",
+  "title": "Hidden Intern Role",
+  "active": true,
+  "is_visible": false,
+  "date_posted": 1760000000,
+  "url": "https://stripe.com/jobs/listing/hidden/1237",
+  "locations": [
+   "Remote"
+  ]
+ },
+ {
+  "source": "Simplify",
+  "category": "Software",
+  "company_name": "Stripe",
+  "id": "h79h71f1-ac31-865a-caed-812fa7f8c4e8",
+  "title": "Broken Intern Role",
+  "active": true,
+  "is_visible": true,
+  "date_posted": 1760000000,
+  "locations": [
+   "Remote"
+  ]
+ },
+ {
+  "source": "Simplify",
+  "category": "Software",
+  "company_name": "SomeOtherCompany",
+  "id": "i80i82g2-bd42-976b-dbfe-923fb809d5f9",
+  "title": "Software Engineer Intern",
+  "active": true,
+  "is_visible": true,
+  "date_posted": 1769728646,
+  "url": "https://other.example.com/jobs/1",
+  "locations": [
+   "Austin"
+  ]
+ }
+]

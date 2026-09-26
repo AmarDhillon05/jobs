@@ -797,14 +797,6 @@
       ]
     },
     {
-      "company": "Draper",
-      "industry": "Applied Research",
-      "priority": "medium",
-      "aliases": [
-        "Draper Laboratory"
-      ]
-    },
-    {
       "company": "AeroVironment",
       "industry": "Defense / UAS",
       "priority": "medium"
@@ -836,100 +828,199 @@
       "company": "Stripe",
       "industry": "Payments",
       "priority": "high",
-      "provider": "custom",
+      "provider": "simplify_fallback",
       "careers_url": "https://stripe.com/jobs",
-      "support_status": "research-needed",
-      "notes": "company-owned careers site; no public JSON feed discovered"
+      "support_status": "partial",
+      "notes": "company-owned careers site; no public JSON feed discovered; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+      "provider_config": {
+        "company_names": [
+          "Stripe"
+        ]
+      },
+      "source_discovered_from": [
+        "simplify",
+        "curated"
+      ]
     },
     {
       "company": "Databricks",
       "industry": "Data / AI Platform",
       "priority": "high",
-      "provider": "custom",
+      "provider": "simplify_fallback",
       "careers_url": "https://www.databricks.com/company/careers",
-      "support_status": "research-needed",
-      "notes": "only embed-style Greenhouse URLs observed; board token not recoverable"
+      "support_status": "partial",
+      "notes": "only embed-style Greenhouse URLs observed; board token not recoverable; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+      "provider_config": {
+        "company_names": [
+          "Databricks"
+        ]
+      },
+      "source_discovered_from": [
+        "simplify",
+        "curated"
+      ]
     },
     {
       "company": "Coinbase",
       "industry": "Crypto Exchange",
       "priority": "high",
-      "provider": "custom",
+      "provider": "simplify_fallback",
       "careers_url": "https://www.coinbase.com/careers",
-      "support_status": "research-needed",
-      "notes": "only embed-style Greenhouse URLs observed; board token not recoverable"
+      "support_status": "partial",
+      "notes": "only embed-style Greenhouse URLs observed; board token not recoverable; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+      "provider_config": {
+        "company_names": [
+          "Coinbase"
+        ]
+      },
+      "source_discovered_from": [
+        "simplify",
+        "curated"
+      ]
     },
     {
       "company": "Waymo",
       "industry": "Autonomous Vehicles",
       "priority": "high",
-      "provider": "custom",
+      "provider": "simplify_fallback",
       "careers_url": "https://careers.withwaymo.com",
-      "support_status": "research-needed",
-      "notes": "company-owned careers site"
+      "support_status": "partial",
+      "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+      "provider_config": {
+        "company_names": [
+          "Waymo"
+        ]
+      },
+      "source_discovered_from": [
+        "simplify",
+        "curated"
+      ]
     },
     {
       "company": "Citadel",
       "industry": "Hedge Fund",
       "priority": "high",
-      "provider": "custom",
+      "provider": "simplify_fallback",
       "careers_url": "https://www.citadel.com/careers/open-opportunities/",
-      "support_status": "research-needed",
-      "notes": "company-owned careers site"
+      "support_status": "partial",
+      "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+      "provider_config": {
+        "company_names": [
+          "Citadel"
+        ]
+      },
+      "source_discovered_from": [
+        "simplify",
+        "curated"
+      ]
     },
     {
       "company": "Citadel Securities",
       "industry": "Market Making",
       "priority": "high",
-      "provider": "custom",
+      "provider": "simplify_fallback",
       "careers_url": "https://www.citadelsecurities.com/careers/open-opportunities/",
-      "support_status": "research-needed",
-      "notes": "company-owned careers site"
+      "support_status": "partial",
+      "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+      "provider_config": {
+        "company_names": [
+          "Citadel Securities"
+        ]
+      },
+      "source_discovered_from": [
+        "simplify",
+        "curated"
+      ]
     },
     {
       "company": "Hudson River Trading",
       "industry": "Quantitative Trading",
       "priority": "high",
-      "provider": "custom",
+      "provider": "simplify_fallback",
       "careers_url": "https://www.hudsonrivertrading.com/careers/",
-      "support_status": "research-needed",
-      "notes": "company-owned careers site"
+      "support_status": "partial",
+      "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+      "provider_config": {
+        "company_names": [
+          "Hudson River Trading"
+        ]
+      },
+      "source_discovered_from": [
+        "simplify",
+        "curated"
+      ]
     },
     {
       "company": "Two Sigma",
       "industry": "Quantitative Trading",
       "priority": "high",
-      "provider": "custom",
+      "provider": "simplify_fallback",
       "careers_url": "https://careers.twosigma.com",
-      "support_status": "research-needed",
-      "notes": "Avature tenant; no stable public feed"
+      "support_status": "partial",
+      "notes": "Avature tenant; no stable public feed; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+      "provider_config": {
+        "company_names": [
+          "Two Sigma"
+        ]
+      },
+      "source_discovered_from": [
+        "simplify",
+        "curated"
+      ]
     },
     {
       "company": "DE Shaw",
       "industry": "Quantitative Trading",
       "priority": "high",
-      "provider": "custom",
+      "provider": "simplify_fallback",
       "careers_url": "https://www.deshaw.com/careers",
-      "support_status": "research-needed",
-      "notes": "company-owned careers site"
+      "support_status": "partial",
+      "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+      "provider_config": {
+        "company_names": [
+          "DE Shaw"
+        ]
+      },
+      "source_discovered_from": [
+        "simplify",
+        "curated"
+      ]
     },
     {
       "company": "Datadog",
       "industry": "Observability",
       "priority": "high",
-      "provider": "custom",
+      "provider": "simplify_fallback",
       "careers_url": "https://careers.datadoghq.com",
-      "support_status": "research-needed",
-      "notes": "company-owned careers site"
+      "support_status": "partial",
+      "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+      "provider_config": {
+        "company_names": [
+          "Datadog"
+        ]
+      },
+      "source_discovered_from": [
+        "simplify",
+        "curated"
+      ]
     },
     {
       "company": "Apple",
       "industry": "Consumer Technology",
       "priority": "high",
-      "provider": "custom",
+      "provider": "simplify_fallback",
       "careers_url": "https://jobs.apple.com/en-us/search",
-      "support_status": "research-needed",
-      "notes": "company-owned careers site with bot protection"
+      "support_status": "partial",
+      "notes": "company-owned careers site with bot protection; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+      "provider_config": {
+        "company_names": [
+          "Apple"
+        ]
+      },
+      "source_discovered_from": [
+        "simplify",
+        "curated"
+      ]
     }
   ]
 }

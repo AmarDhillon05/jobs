@@ -1,0 +1,49 @@
+{
+  "name": "TestCo",
+  "description": "We build things.",
+  "jobs": [
+    {
+      "title": "Software Engineer Intern",
+      "shortcode": "ABC123DEF4",
+      "code": "ENG-101",
+      "employment_type": "Intern",
+      "telecommuting": false,
+      "department": "Engineering",
+      "url": "https://apply.workable.com/testco/j/ABC123DEF4/",
+      "application_url": "https://apply.workable.com/testco/j/ABC123DEF4/apply/",
+      "published_on": "2026-09-18",
+      "created_at": "2026-09-17",
+      "country": "United States",
+      "country_code": "US",
+      "state": "Texas",
+      "city": "Austin",
+      "description": "<p>Write services.</p>",
+      "requirements": "<ul><li>Python</li></ul>",
+      "benefits": ""
+    },
+    {
+      "title": "Embedded Software Intern",
+      "shortcode": "XYZ987WVU6",
+      "employment_type": "Intern",
+      "telecommuting": true,
+      "department": "Hardware",
+      "published_on": "2026-09-16",
+      "created_at": "2026-09-16",
+      "country": "United States",
+      "city": "Boulder",
+      "state": "Colorado",
+      "description": "<p>Firmware for sensors.</p>"
+    },
+    {
+      "title": "Office Manager",
+      "shortcode": "OFF111AAA1",
+      "employment_type": "Full-time",
+      "url": "https://apply.workable.com/testco/j/OFF111AAA1/",
+      "published_on": "2026-09-01",
+      "country": "United States",
+      "city": "Austin",
+      "description": "<p>Run the office.</p>"
+    },
+    { "title": "No Shortcode And No Url", "employment_type": "Intern" }
+  ]
+}

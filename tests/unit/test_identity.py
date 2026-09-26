@@ -190,7 +190,6 @@ class TestContentHash:
             ("location", "Austin, TX"),
             ("description", "Different work"),
             ("employment_type", "Part-time"),
-            ("date_posted", "2026-01-01"),
             ("url", "https://job-boards.greenhouse.io/testco/jobs/2"),
         ],
     )
@@ -201,6 +200,12 @@ class TestContentHash:
         a = make_job()
         b = make_job(url="https://job-boards.greenhouse.io/testco/jobs/1?utm_source=x")
         assert content_hash(a) == content_hash(b)
+
+    def test_posting_date_is_not_part_of_the_content_hash(self) -> None:
+        """Workday reports "Posted 5 Days Ago", so the absolute date we derive
+        from it moves daily even when nothing changed. Including it would mark
+        every Workday job as updated on every poll."""
+        assert content_hash(make_job()) == content_hash(make_job(date_posted="2026-01-01"))
 
     def test_external_id_is_not_part_of_the_content_hash(self) -> None:
         # external_id is identity, not content: gaining one must not look like an edit.

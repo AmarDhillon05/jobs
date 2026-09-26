@@ -1,0 +1,95 @@
+{
+  "jobs": [
+    {
+      "id": 4020160008,
+      "internal_job_id": 4001234,
+      "title": "Software Engineer Intern, Summer 2027",
+      "updated_at": "2026-09-20T11:04:21-04:00",
+      "first_published": "2026-09-18T09:00:00-04:00",
+      "requisition_id": "R-4021",
+      "absolute_url": "https://job-boards.greenhouse.io/testco/jobs/4020160008",
+      "location": { "name": "San Francisco, CA" },
+      "offices": [{ "id": 1, "name": "San Francisco" }],
+      "departments": [{ "id": 10, "name": "Engineering" }],
+      "metadata": [
+        { "id": 1, "name": "Employment Type", "value": "Intern", "value_type": "single_select" },
+        { "id": 2, "name": "Visa Sponsorship", "value": "No", "value_type": "single_select" }
+      ],
+      "content": "&lt;p&gt;Join our &lt;strong&gt;infrastructure&lt;/strong&gt; team.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Python&lt;/li&gt;&lt;li&gt;Rust&lt;/li&gt;&lt;/ul&gt;"
+    },
+    {
+      "id": 4020160009,
+      "internal_job_id": 4001235,
+      "title": "Machine Learning Engineer Intern",
+      "updated_at": "2026-09-19T08:00:00-04:00",
+      "first_published": "2026-09-19T08:00:00-04:00",
+      "requisition_id": "R-4022",
+      "absolute_url": "https://job-boards.greenhouse.io/testco/jobs/4020160009?utm_source=Simplify&gh_src=abc",
+      "location": { "name": "New York, NY" },
+      "offices": [{ "id": 2, "name": "New York" }, { "id": 3, "name": "Remote" }],
+      "departments": [{ "id": 11, "name": "Research" }],
+      "metadata": [],
+      "content": "&lt;p&gt;Train models.&lt;/p&gt;"
+    },
+    {
+      "id": 4020160010,
+      "title": "Senior Staff Software Engineer",
+      "updated_at": "2026-09-01T08:00:00-04:00",
+      "first_published": "2026-08-01T08:00:00-04:00",
+      "absolute_url": "https://job-boards.greenhouse.io/testco/jobs/4020160010",
+      "location": { "name": "Seattle, WA" },
+      "offices": [],
+      "departments": [{ "id": 10, "name": "Engineering" }],
+      "metadata": [],
+      "content": "&lt;p&gt;Full-time senior role, not an internship.&lt;/p&gt;"
+    },
+    {
+      "id": 4020160011,
+      "title": "Marketing Intern",
+      "updated_at": "2026-09-15T08:00:00-04:00",
+      "first_published": "2026-09-15T08:00:00-04:00",
+      "absolute_url": "https://job-boards.greenhouse.io/testco/jobs/4020160011",
+      "location": { "name": "Remote" },
+      "offices": [],
+      "departments": [{ "id": 20, "name": "Marketing" }],
+      "metadata": [],
+      "content": "&lt;p&gt;Own campaign reporting.&lt;/p&gt;"
+    },
+    {
+      "id": 4020160008,
+      "internal_job_id": 4001234,
+      "title": "Software Engineer Intern, Summer 2027",
+      "updated_at": "2026-09-20T11:04:21-04:00",
+      "first_published": "2026-09-18T09:00:00-04:00",
+      "requisition_id": "R-4021",
+      "absolute_url": "https://job-boards.greenhouse.io/testco/jobs/4020160008?utm_campaign=dup",
+      "location": { "name": "San Francisco, CA" },
+      "offices": [],
+      "departments": [],
+      "metadata": [],
+      "content": "&lt;p&gt;Duplicate of the first posting, as boards genuinely emit.&lt;/p&gt;"
+    },
+    {
+      "id": 4020160012,
+      "title": "Broken Posting With No URL",
+      "updated_at": "2026-09-20T11:04:21-04:00",
+      "location": { "name": "Austin, TX" },
+      "offices": [],
+      "departments": [],
+      "metadata": [],
+      "content": "&lt;p&gt;absolute_url is missing entirely.&lt;/p&gt;"
+    },
+    {
+      "id": 4020160013,
+      "title": "",
+      "absolute_url": "https://job-boards.greenhouse.io/testco/jobs/4020160013",
+      "location": { "name": "Austin, TX" },
+      "offices": [],
+      "departments": [],
+      "metadata": [],
+      "content": "&lt;p&gt;Empty title.&lt;/p&gt;"
+    },
+    "this-record-is-a-bare-string-not-an-object"
+  ],
+  "meta": { "total": 8 }
+}

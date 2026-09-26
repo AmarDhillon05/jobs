@@ -1,0 +1,185 @@
+{
+ "total": 45,
+ "jobPostings": [
+  {
+   "title": "Software Engineering Intern",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern_JR10000",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted Today",
+   "bulletFields": [
+    "JR10000"
+   ]
+  },
+  {
+   "title": "Firmware Engineering Intern",
+   "externalPath": "/job/Santa-Clara/Firmware-Engineering-Intern_JR10001",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted Yesterday",
+   "bulletFields": [
+    "JR10001"
+   ]
+  },
+  {
+   "title": "Systems Engineering Intern",
+   "externalPath": "/job/Santa-Clara/Systems-Engineering-Intern_JR10002",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 30+ Days Ago",
+   "bulletFields": [
+    "JR10002"
+   ]
+  },
+  {
+   "title": "Posting With No External Path",
+   "locationsText": "Austin, TX",
+   "postedOn": "Posted 2 Days Ago",
+   "bulletFields": [
+    "JR99999"
+   ]
+  },
+  {
+   "title": "Intern Without Requisition Id",
+   "externalPath": "/job/Santa-Clara/Intern-Without-Requisition-Id_JR10004",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "Santa Clara"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 5",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-5_JR10005",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10005"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 6",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-6_JR10006",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10006"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 7",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-7_JR10007",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10007"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 8",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-8_JR10008",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10008"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 9",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-9_JR10009",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10009"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 10",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-10_JR10010",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10010"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 11",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-11_JR10011",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10011"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 12",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-12_JR10012",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10012"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 13",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-13_JR10013",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10013"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 14",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-14_JR10014",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10014"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 15",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-15_JR10015",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10015"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 16",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-16_JR10016",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10016"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 17",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-17_JR10017",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10017"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 18",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-18_JR10018",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10018"
+   ]
+  },
+  {
+   "title": "Software Engineering Intern 19",
+   "externalPath": "/job/Santa-Clara/Software-Engineering-Intern-19_JR10019",
+   "locationsText": "Santa Clara, CA",
+   "postedOn": "Posted 5 Days Ago",
+   "bulletFields": [
+    "JR10019"
+   ]
+  }
+ ],
+ "userAuthenticated": false
+}

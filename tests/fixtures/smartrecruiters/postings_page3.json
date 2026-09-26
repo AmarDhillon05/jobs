@@ -1,0 +1,1407 @@
+{
+ "offset": 200,
+ "limit": 100,
+ "totalFound": 250,
+ "content": [
+  {
+   "id": "744000000000200",
+   "uuid": "uuid-200",
+   "name": "Cloud Engineer Intern 0",
+   "refNumber": "REF-200",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000200"
+  },
+  {
+   "id": "744000000000201",
+   "uuid": "uuid-201",
+   "name": "Cloud Engineer Intern 1",
+   "refNumber": "REF-201",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000201"
+  },
+  {
+   "id": "744000000000202",
+   "uuid": "uuid-202",
+   "name": "Cloud Engineer Intern 2",
+   "refNumber": "REF-202",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000202"
+  },
+  {
+   "id": "744000000000203",
+   "uuid": "uuid-203",
+   "name": "Cloud Engineer Intern 3",
+   "refNumber": "REF-203",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000203"
+  },
+  {
+   "id": "744000000000204",
+   "uuid": "uuid-204",
+   "name": "Cloud Engineer Intern 4",
+   "refNumber": "REF-204",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000204"
+  },
+  {
+   "id": "744000000000205",
+   "uuid": "uuid-205",
+   "name": "Cloud Engineer Intern 5",
+   "refNumber": "REF-205",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000205"
+  },
+  {
+   "id": "744000000000206",
+   "uuid": "uuid-206",
+   "name": "Cloud Engineer Intern 6",
+   "refNumber": "REF-206",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000206"
+  },
+  {
+   "id": "744000000000207",
+   "uuid": "uuid-207",
+   "name": "Cloud Engineer Intern 7",
+   "refNumber": "REF-207",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000207"
+  },
+  {
+   "id": "744000000000208",
+   "uuid": "uuid-208",
+   "name": "Cloud Engineer Intern 8",
+   "refNumber": "REF-208",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000208"
+  },
+  {
+   "id": "744000000000209",
+   "uuid": "uuid-209",
+   "name": "Cloud Engineer Intern 9",
+   "refNumber": "REF-209",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000209"
+  },
+  {
+   "id": "744000000000210",
+   "uuid": "uuid-210",
+   "name": "Cloud Engineer Intern 10",
+   "refNumber": "REF-210",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000210"
+  },
+  {
+   "id": "744000000000211",
+   "uuid": "uuid-211",
+   "name": "Cloud Engineer Intern 11",
+   "refNumber": "REF-211",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000211"
+  },
+  {
+   "id": "744000000000212",
+   "uuid": "uuid-212",
+   "name": "Cloud Engineer Intern 12",
+   "refNumber": "REF-212",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000212"
+  },
+  {
+   "id": "744000000000213",
+   "uuid": "uuid-213",
+   "name": "Cloud Engineer Intern 13",
+   "refNumber": "REF-213",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000213"
+  },
+  {
+   "id": "744000000000214",
+   "uuid": "uuid-214",
+   "name": "Cloud Engineer Intern 14",
+   "refNumber": "REF-214",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000214"
+  },
+  {
+   "id": "744000000000215",
+   "uuid": "uuid-215",
+   "name": "Cloud Engineer Intern 15",
+   "refNumber": "REF-215",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000215"
+  },
+  {
+   "id": "744000000000216",
+   "uuid": "uuid-216",
+   "name": "Cloud Engineer Intern 16",
+   "refNumber": "REF-216",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000216"
+  },
+  {
+   "id": "744000000000217",
+   "uuid": "uuid-217",
+   "name": "Cloud Engineer Intern 17",
+   "refNumber": "REF-217",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000217"
+  },
+  {
+   "id": "744000000000218",
+   "uuid": "uuid-218",
+   "name": "Cloud Engineer Intern 18",
+   "refNumber": "REF-218",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000218"
+  },
+  {
+   "id": "744000000000219",
+   "uuid": "uuid-219",
+   "name": "Cloud Engineer Intern 19",
+   "refNumber": "REF-219",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000219"
+  },
+  {
+   "id": "744000000000220",
+   "uuid": "uuid-220",
+   "name": "Cloud Engineer Intern 20",
+   "refNumber": "REF-220",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000220"
+  },
+  {
+   "id": "744000000000221",
+   "uuid": "uuid-221",
+   "name": "Cloud Engineer Intern 21",
+   "refNumber": "REF-221",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000221"
+  },
+  {
+   "id": "744000000000222",
+   "uuid": "uuid-222",
+   "name": "Cloud Engineer Intern 22",
+   "refNumber": "REF-222",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000222"
+  },
+  {
+   "id": "744000000000223",
+   "uuid": "uuid-223",
+   "name": "Cloud Engineer Intern 23",
+   "refNumber": "REF-223",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000223"
+  },
+  {
+   "id": "744000000000224",
+   "uuid": "uuid-224",
+   "name": "Cloud Engineer Intern 24",
+   "refNumber": "REF-224",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000224"
+  },
+  {
+   "id": "744000000000225",
+   "uuid": "uuid-225",
+   "name": "Cloud Engineer Intern 25",
+   "refNumber": "REF-225",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000225"
+  },
+  {
+   "id": "744000000000226",
+   "uuid": "uuid-226",
+   "name": "Cloud Engineer Intern 26",
+   "refNumber": "REF-226",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000226"
+  },
+  {
+   "id": "744000000000227",
+   "uuid": "uuid-227",
+   "name": "Cloud Engineer Intern 27",
+   "refNumber": "REF-227",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000227"
+  },
+  {
+   "id": "744000000000228",
+   "uuid": "uuid-228",
+   "name": "Cloud Engineer Intern 28",
+   "refNumber": "REF-228",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000228"
+  },
+  {
+   "id": "744000000000229",
+   "uuid": "uuid-229",
+   "name": "Cloud Engineer Intern 29",
+   "refNumber": "REF-229",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000229"
+  },
+  {
+   "id": "744000000000230",
+   "uuid": "uuid-230",
+   "name": "Cloud Engineer Intern 30",
+   "refNumber": "REF-230",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000230"
+  },
+  {
+   "id": "744000000000231",
+   "uuid": "uuid-231",
+   "name": "Cloud Engineer Intern 31",
+   "refNumber": "REF-231",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000231"
+  },
+  {
+   "id": "744000000000232",
+   "uuid": "uuid-232",
+   "name": "Cloud Engineer Intern 32",
+   "refNumber": "REF-232",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000232"
+  },
+  {
+   "id": "744000000000233",
+   "uuid": "uuid-233",
+   "name": "Cloud Engineer Intern 33",
+   "refNumber": "REF-233",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000233"
+  },
+  {
+   "id": "744000000000234",
+   "uuid": "uuid-234",
+   "name": "Cloud Engineer Intern 34",
+   "refNumber": "REF-234",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000234"
+  },
+  {
+   "id": "744000000000235",
+   "uuid": "uuid-235",
+   "name": "Cloud Engineer Intern 35",
+   "refNumber": "REF-235",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000235"
+  },
+  {
+   "id": "744000000000236",
+   "uuid": "uuid-236",
+   "name": "Cloud Engineer Intern 36",
+   "refNumber": "REF-236",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000236"
+  },
+  {
+   "id": "744000000000237",
+   "uuid": "uuid-237",
+   "name": "Cloud Engineer Intern 37",
+   "refNumber": "REF-237",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000237"
+  },
+  {
+   "id": "744000000000238",
+   "uuid": "uuid-238",
+   "name": "Cloud Engineer Intern 38",
+   "refNumber": "REF-238",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000238"
+  },
+  {
+   "id": "744000000000239",
+   "uuid": "uuid-239",
+   "name": "Cloud Engineer Intern 39",
+   "refNumber": "REF-239",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000239"
+  },
+  {
+   "id": "744000000000240",
+   "uuid": "uuid-240",
+   "name": "Cloud Engineer Intern 40",
+   "refNumber": "REF-240",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000240"
+  },
+  {
+   "id": "744000000000241",
+   "uuid": "uuid-241",
+   "name": "Cloud Engineer Intern 41",
+   "refNumber": "REF-241",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000241"
+  },
+  {
+   "id": "744000000000242",
+   "uuid": "uuid-242",
+   "name": "Cloud Engineer Intern 42",
+   "refNumber": "REF-242",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000242"
+  },
+  {
+   "id": "744000000000243",
+   "uuid": "uuid-243",
+   "name": "Cloud Engineer Intern 43",
+   "refNumber": "REF-243",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000243"
+  },
+  {
+   "id": "744000000000244",
+   "uuid": "uuid-244",
+   "name": "Cloud Engineer Intern 44",
+   "refNumber": "REF-244",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000244"
+  },
+  {
+   "id": "744000000000245",
+   "uuid": "uuid-245",
+   "name": "Cloud Engineer Intern 45",
+   "refNumber": "REF-245",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000245"
+  },
+  {
+   "id": "744000000000246",
+   "uuid": "uuid-246",
+   "name": "Cloud Engineer Intern 46",
+   "refNumber": "REF-246",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000246"
+  },
+  {
+   "id": "744000000000247",
+   "uuid": "uuid-247",
+   "name": "Cloud Engineer Intern 47",
+   "refNumber": "REF-247",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000247"
+  },
+  {
+   "id": "744000000000248",
+   "uuid": "uuid-248",
+   "name": "Cloud Engineer Intern 48",
+   "refNumber": "REF-248",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000248"
+  },
+  {
+   "id": "744000000000249",
+   "uuid": "uuid-249",
+   "name": "Cloud Engineer Intern 49",
+   "refNumber": "REF-249",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Remote",
+    "region": "NSW",
+    "country": "au",
+    "remote": true
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000249"
+  }
+ ]
+}

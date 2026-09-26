@@ -1,0 +1,51 @@
+[
+  {
+    "id": "0f1e2d3c-4b5a-6978-8796-a5b4c3d2e1f0",
+    "text": "Software Engineer Intern (Summer 2027)",
+    "hostedUrl": "https://jobs.lever.co/testco/0f1e2d3c-4b5a-6978-8796-a5b4c3d2e1f0",
+    "applyUrl": "https://jobs.lever.co/testco/0f1e2d3c-4b5a-6978-8796-a5b4c3d2e1f0/apply",
+    "categories": {
+      "commitment": "Intern",
+      "department": "Engineering",
+      "location": "San Francisco",
+      "allLocations": ["San Francisco", "New York"],
+      "team": "Platform"
+    },
+    "workplaceType": "hybrid",
+    "createdAt": 1769728646000,
+    "descriptionPlain": "Work on the platform team.",
+    "description": "<div><p>Work on the platform team.</p></div>",
+    "lists": [
+      { "text": "Requirements", "content": "<ul><li>Go</li><li>Kubernetes</li></ul>" },
+      { "text": "Nice to have", "content": "<ul><li>Terraform</li></ul>" }
+    ]
+  },
+  {
+    "id": "11112222-3333-4444-5555-666677778888",
+    "text": "Site Reliability Engineer Intern",
+    "hostedUrl": "https://jobs.lever.co/testco/11112222-3333-4444-5555-666677778888",
+    "categories": { "commitment": "Intern", "department": "Infrastructure", "location": "Remote" },
+    "workplaceType": "remote",
+    "createdAt": 1769642246000,
+    "descriptionPlain": "Keep it running.",
+    "lists": []
+  },
+  {
+    "id": "99990000-1111-2222-3333-444455556666",
+    "text": "Director of Sales",
+    "hostedUrl": "https://jobs.lever.co/testco/99990000-1111-2222-3333-444455556666",
+    "categories": { "commitment": "Full-time", "department": "Sales", "location": "Chicago" },
+    "createdAt": 1767050246000,
+    "descriptionPlain": "Lead the sales org.",
+    "lists": []
+  },
+  {
+    "id": "aaaa0000-1111-2222-3333-444455556666",
+    "text": "Posting With No Hosted Url",
+    "categories": { "commitment": "Intern", "location": "Austin" },
+    "createdAt": 1769642246000,
+    "lists": []
+  },
+  { "id": "bbbb0000-1111-2222-3333-444455556666" },
+  null
+]

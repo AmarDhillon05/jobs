@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>TestCo - Open Roles</title>
+
+    <!-- An unrelated structured-data block: must be ignored, not fatal. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "TestCo",
+        "url": "https://careers.testco.example.com"
+      }
+    </script>
+
+    <!-- A malformed block (trailing comma): must be skipped, not fatal. -->
+    <script type="application/ld+json">
+      { "@type": "JobPosting", "title": "Broken JSON Intern", }
+    </script>
+
+    <!-- Not ld+json: must not be parsed at all. -->
+    <script type="text/javascript">
+      window.__DATA__ = { "@type": "JobPosting", "title": "Not Structured Data" };
+    </script>
+  </head>
+  <body>
+    <h1>Open Roles</h1>
+
+    <!-- A @graph wrapper, as many CMS plugins emit. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          { "@type": "BreadcrumbList", "itemListElement": [] },
+          {
+            "@type": "JobPosting",
+            "title": "Software Engineer Intern",
+            "datePosted": "2026-09-18",
+            "validThrough": "2027-03-01",
+            "identifier": { "@type": "PropertyValue", "name": "TestCo", "value": "REQ-9001" },
+            "hiringOrganization": { "@type": "Organization", "name": "TestCo" },
+            "jobLocation": {
+              "@type": "Place",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Austin",
+                "addressRegion": "TX",
+                "addressCountry": "US"
+              }
+            },
+            "employmentType": ["INTERN", "FULL_TIME"],
+            "url": "/careers/software-engineer-intern-9001",
+            "description": "<p>Build <b>backend</b> services.</p>"
+          }
+        ]
+      }
+    </script>
+
+    <!-- A top-level array containing several postings. -->
+    <script type="application/ld+json">
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "JobPosting",
+          "title": "Robotics Software Intern",
+          "datePosted": "2026-09-17",
+          "identifier": "REQ-9002",
+          "jobLocation": [
+            {
+              "@type": "Place",
+              "address": { "@type": "PostalAddress", "addressLocality": "Boulder", "addressRegion": "CO" }
+            },
+            {
+              "@type": "Place",
+              "address": { "@type": "PostalAddress", "addressLocality": "Remote" }
+            }
+          ],
+          "jobLocationType": "TELECOMMUTE",
+          "employmentType": "INTERN",
+          "url": "https://careers.testco.example.com/careers/robotics-software-intern-9002",
+          "description": "Controls and perception."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "JobPosting",
+          "title": "Director of Communications",
+          "datePosted": "2026-08-01",
+          "identifier": "REQ-9003",
+          "jobLocation": {
+            "@type": "Place",
+            "address": { "@type": "PostalAddress", "addressLocality": "New York", "addressRegion": "NY" }
+          },
+          "employmentType": "FULL_TIME",
+          "url": "/careers/director-of-communications-9003",
+          "description": "Own external comms."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "JobPosting",
+          "title": "Posting With No Url",
+          "datePosted": "2026-09-10",
+          "identifier": "REQ-9004",
+          "employmentType": "INTERN",
+          "description": "Cannot be applied to."
+        }
+      ]
+    </script>
+  </body>
+</html>

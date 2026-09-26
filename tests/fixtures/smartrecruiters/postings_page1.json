@@ -1,0 +1,2785 @@
+{
+ "offset": 0,
+ "limit": 100,
+ "totalFound": 250,
+ "content": [
+  {
+   "id": "744000000000000",
+   "uuid": "uuid-0",
+   "name": "Software Engineer Intern",
+   "refNumber": "REF-0",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000000"
+  },
+  {
+   "id": "744000000000001",
+   "uuid": "uuid-1",
+   "name": "Data Engineer Intern",
+   "refNumber": "REF-1",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000001"
+  },
+  {
+   "id": "744000000000002",
+   "uuid": "uuid-2",
+   "name": "Security Engineer Intern",
+   "refNumber": "REF-2",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000002"
+  },
+  {
+   "name": "Posting With No Id",
+   "location": {
+    "city": "Austin"
+   }
+  },
+  {
+   "id": "744000000000000",
+   "uuid": "uuid-0",
+   "name": "Software Engineer Intern",
+   "refNumber": "REF-0",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000000"
+  },
+  {
+   "id": "744000000000005",
+   "uuid": "uuid-5",
+   "name": "Engineer Intern 5",
+   "refNumber": "REF-5",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000005"
+  },
+  {
+   "id": "744000000000006",
+   "uuid": "uuid-6",
+   "name": "Engineer Intern 6",
+   "refNumber": "REF-6",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000006"
+  },
+  {
+   "id": "744000000000007",
+   "uuid": "uuid-7",
+   "name": "Engineer Intern 7",
+   "refNumber": "REF-7",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000007"
+  },
+  {
+   "id": "744000000000008",
+   "uuid": "uuid-8",
+   "name": "Engineer Intern 8",
+   "refNumber": "REF-8",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000008"
+  },
+  {
+   "id": "744000000000009",
+   "uuid": "uuid-9",
+   "name": "Engineer Intern 9",
+   "refNumber": "REF-9",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000009"
+  },
+  {
+   "id": "744000000000010",
+   "uuid": "uuid-10",
+   "name": "Engineer Intern 10",
+   "refNumber": "REF-10",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000010"
+  },
+  {
+   "id": "744000000000011",
+   "uuid": "uuid-11",
+   "name": "Engineer Intern 11",
+   "refNumber": "REF-11",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000011"
+  },
+  {
+   "id": "744000000000012",
+   "uuid": "uuid-12",
+   "name": "Engineer Intern 12",
+   "refNumber": "REF-12",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000012"
+  },
+  {
+   "id": "744000000000013",
+   "uuid": "uuid-13",
+   "name": "Engineer Intern 13",
+   "refNumber": "REF-13",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000013"
+  },
+  {
+   "id": "744000000000014",
+   "uuid": "uuid-14",
+   "name": "Engineer Intern 14",
+   "refNumber": "REF-14",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000014"
+  },
+  {
+   "id": "744000000000015",
+   "uuid": "uuid-15",
+   "name": "Engineer Intern 15",
+   "refNumber": "REF-15",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000015"
+  },
+  {
+   "id": "744000000000016",
+   "uuid": "uuid-16",
+   "name": "Engineer Intern 16",
+   "refNumber": "REF-16",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000016"
+  },
+  {
+   "id": "744000000000017",
+   "uuid": "uuid-17",
+   "name": "Engineer Intern 17",
+   "refNumber": "REF-17",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000017"
+  },
+  {
+   "id": "744000000000018",
+   "uuid": "uuid-18",
+   "name": "Engineer Intern 18",
+   "refNumber": "REF-18",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000018"
+  },
+  {
+   "id": "744000000000019",
+   "uuid": "uuid-19",
+   "name": "Engineer Intern 19",
+   "refNumber": "REF-19",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000019"
+  },
+  {
+   "id": "744000000000020",
+   "uuid": "uuid-20",
+   "name": "Engineer Intern 20",
+   "refNumber": "REF-20",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000020"
+  },
+  {
+   "id": "744000000000021",
+   "uuid": "uuid-21",
+   "name": "Engineer Intern 21",
+   "refNumber": "REF-21",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000021"
+  },
+  {
+   "id": "744000000000022",
+   "uuid": "uuid-22",
+   "name": "Engineer Intern 22",
+   "refNumber": "REF-22",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000022"
+  },
+  {
+   "id": "744000000000023",
+   "uuid": "uuid-23",
+   "name": "Engineer Intern 23",
+   "refNumber": "REF-23",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000023"
+  },
+  {
+   "id": "744000000000024",
+   "uuid": "uuid-24",
+   "name": "Engineer Intern 24",
+   "refNumber": "REF-24",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000024"
+  },
+  {
+   "id": "744000000000025",
+   "uuid": "uuid-25",
+   "name": "Engineer Intern 25",
+   "refNumber": "REF-25",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000025"
+  },
+  {
+   "id": "744000000000026",
+   "uuid": "uuid-26",
+   "name": "Engineer Intern 26",
+   "refNumber": "REF-26",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000026"
+  },
+  {
+   "id": "744000000000027",
+   "uuid": "uuid-27",
+   "name": "Engineer Intern 27",
+   "refNumber": "REF-27",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000027"
+  },
+  {
+   "id": "744000000000028",
+   "uuid": "uuid-28",
+   "name": "Engineer Intern 28",
+   "refNumber": "REF-28",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000028"
+  },
+  {
+   "id": "744000000000029",
+   "uuid": "uuid-29",
+   "name": "Engineer Intern 29",
+   "refNumber": "REF-29",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000029"
+  },
+  {
+   "id": "744000000000030",
+   "uuid": "uuid-30",
+   "name": "Engineer Intern 30",
+   "refNumber": "REF-30",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000030"
+  },
+  {
+   "id": "744000000000031",
+   "uuid": "uuid-31",
+   "name": "Engineer Intern 31",
+   "refNumber": "REF-31",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000031"
+  },
+  {
+   "id": "744000000000032",
+   "uuid": "uuid-32",
+   "name": "Engineer Intern 32",
+   "refNumber": "REF-32",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000032"
+  },
+  {
+   "id": "744000000000033",
+   "uuid": "uuid-33",
+   "name": "Engineer Intern 33",
+   "refNumber": "REF-33",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000033"
+  },
+  {
+   "id": "744000000000034",
+   "uuid": "uuid-34",
+   "name": "Engineer Intern 34",
+   "refNumber": "REF-34",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000034"
+  },
+  {
+   "id": "744000000000035",
+   "uuid": "uuid-35",
+   "name": "Engineer Intern 35",
+   "refNumber": "REF-35",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000035"
+  },
+  {
+   "id": "744000000000036",
+   "uuid": "uuid-36",
+   "name": "Engineer Intern 36",
+   "refNumber": "REF-36",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000036"
+  },
+  {
+   "id": "744000000000037",
+   "uuid": "uuid-37",
+   "name": "Engineer Intern 37",
+   "refNumber": "REF-37",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000037"
+  },
+  {
+   "id": "744000000000038",
+   "uuid": "uuid-38",
+   "name": "Engineer Intern 38",
+   "refNumber": "REF-38",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000038"
+  },
+  {
+   "id": "744000000000039",
+   "uuid": "uuid-39",
+   "name": "Engineer Intern 39",
+   "refNumber": "REF-39",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000039"
+  },
+  {
+   "id": "744000000000040",
+   "uuid": "uuid-40",
+   "name": "Engineer Intern 40",
+   "refNumber": "REF-40",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000040"
+  },
+  {
+   "id": "744000000000041",
+   "uuid": "uuid-41",
+   "name": "Engineer Intern 41",
+   "refNumber": "REF-41",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000041"
+  },
+  {
+   "id": "744000000000042",
+   "uuid": "uuid-42",
+   "name": "Engineer Intern 42",
+   "refNumber": "REF-42",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000042"
+  },
+  {
+   "id": "744000000000043",
+   "uuid": "uuid-43",
+   "name": "Engineer Intern 43",
+   "refNumber": "REF-43",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000043"
+  },
+  {
+   "id": "744000000000044",
+   "uuid": "uuid-44",
+   "name": "Engineer Intern 44",
+   "refNumber": "REF-44",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000044"
+  },
+  {
+   "id": "744000000000045",
+   "uuid": "uuid-45",
+   "name": "Engineer Intern 45",
+   "refNumber": "REF-45",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000045"
+  },
+  {
+   "id": "744000000000046",
+   "uuid": "uuid-46",
+   "name": "Engineer Intern 46",
+   "refNumber": "REF-46",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000046"
+  },
+  {
+   "id": "744000000000047",
+   "uuid": "uuid-47",
+   "name": "Engineer Intern 47",
+   "refNumber": "REF-47",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000047"
+  },
+  {
+   "id": "744000000000048",
+   "uuid": "uuid-48",
+   "name": "Engineer Intern 48",
+   "refNumber": "REF-48",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000048"
+  },
+  {
+   "id": "744000000000049",
+   "uuid": "uuid-49",
+   "name": "Engineer Intern 49",
+   "refNumber": "REF-49",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000049"
+  },
+  {
+   "id": "744000000000050",
+   "uuid": "uuid-50",
+   "name": "Engineer Intern 50",
+   "refNumber": "REF-50",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000050"
+  },
+  {
+   "id": "744000000000051",
+   "uuid": "uuid-51",
+   "name": "Engineer Intern 51",
+   "refNumber": "REF-51",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000051"
+  },
+  {
+   "id": "744000000000052",
+   "uuid": "uuid-52",
+   "name": "Engineer Intern 52",
+   "refNumber": "REF-52",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000052"
+  },
+  {
+   "id": "744000000000053",
+   "uuid": "uuid-53",
+   "name": "Engineer Intern 53",
+   "refNumber": "REF-53",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000053"
+  },
+  {
+   "id": "744000000000054",
+   "uuid": "uuid-54",
+   "name": "Engineer Intern 54",
+   "refNumber": "REF-54",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000054"
+  },
+  {
+   "id": "744000000000055",
+   "uuid": "uuid-55",
+   "name": "Engineer Intern 55",
+   "refNumber": "REF-55",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000055"
+  },
+  {
+   "id": "744000000000056",
+   "uuid": "uuid-56",
+   "name": "Engineer Intern 56",
+   "refNumber": "REF-56",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000056"
+  },
+  {
+   "id": "744000000000057",
+   "uuid": "uuid-57",
+   "name": "Engineer Intern 57",
+   "refNumber": "REF-57",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000057"
+  },
+  {
+   "id": "744000000000058",
+   "uuid": "uuid-58",
+   "name": "Engineer Intern 58",
+   "refNumber": "REF-58",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000058"
+  },
+  {
+   "id": "744000000000059",
+   "uuid": "uuid-59",
+   "name": "Engineer Intern 59",
+   "refNumber": "REF-59",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000059"
+  },
+  {
+   "id": "744000000000060",
+   "uuid": "uuid-60",
+   "name": "Engineer Intern 60",
+   "refNumber": "REF-60",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000060"
+  },
+  {
+   "id": "744000000000061",
+   "uuid": "uuid-61",
+   "name": "Engineer Intern 61",
+   "refNumber": "REF-61",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000061"
+  },
+  {
+   "id": "744000000000062",
+   "uuid": "uuid-62",
+   "name": "Engineer Intern 62",
+   "refNumber": "REF-62",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000062"
+  },
+  {
+   "id": "744000000000063",
+   "uuid": "uuid-63",
+   "name": "Engineer Intern 63",
+   "refNumber": "REF-63",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000063"
+  },
+  {
+   "id": "744000000000064",
+   "uuid": "uuid-64",
+   "name": "Engineer Intern 64",
+   "refNumber": "REF-64",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000064"
+  },
+  {
+   "id": "744000000000065",
+   "uuid": "uuid-65",
+   "name": "Engineer Intern 65",
+   "refNumber": "REF-65",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000065"
+  },
+  {
+   "id": "744000000000066",
+   "uuid": "uuid-66",
+   "name": "Engineer Intern 66",
+   "refNumber": "REF-66",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000066"
+  },
+  {
+   "id": "744000000000067",
+   "uuid": "uuid-67",
+   "name": "Engineer Intern 67",
+   "refNumber": "REF-67",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000067"
+  },
+  {
+   "id": "744000000000068",
+   "uuid": "uuid-68",
+   "name": "Engineer Intern 68",
+   "refNumber": "REF-68",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000068"
+  },
+  {
+   "id": "744000000000069",
+   "uuid": "uuid-69",
+   "name": "Engineer Intern 69",
+   "refNumber": "REF-69",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000069"
+  },
+  {
+   "id": "744000000000070",
+   "uuid": "uuid-70",
+   "name": "Engineer Intern 70",
+   "refNumber": "REF-70",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000070"
+  },
+  {
+   "id": "744000000000071",
+   "uuid": "uuid-71",
+   "name": "Engineer Intern 71",
+   "refNumber": "REF-71",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000071"
+  },
+  {
+   "id": "744000000000072",
+   "uuid": "uuid-72",
+   "name": "Engineer Intern 72",
+   "refNumber": "REF-72",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000072"
+  },
+  {
+   "id": "744000000000073",
+   "uuid": "uuid-73",
+   "name": "Engineer Intern 73",
+   "refNumber": "REF-73",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000073"
+  },
+  {
+   "id": "744000000000074",
+   "uuid": "uuid-74",
+   "name": "Engineer Intern 74",
+   "refNumber": "REF-74",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000074"
+  },
+  {
+   "id": "744000000000075",
+   "uuid": "uuid-75",
+   "name": "Engineer Intern 75",
+   "refNumber": "REF-75",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000075"
+  },
+  {
+   "id": "744000000000076",
+   "uuid": "uuid-76",
+   "name": "Engineer Intern 76",
+   "refNumber": "REF-76",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000076"
+  },
+  {
+   "id": "744000000000077",
+   "uuid": "uuid-77",
+   "name": "Engineer Intern 77",
+   "refNumber": "REF-77",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000077"
+  },
+  {
+   "id": "744000000000078",
+   "uuid": "uuid-78",
+   "name": "Engineer Intern 78",
+   "refNumber": "REF-78",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000078"
+  },
+  {
+   "id": "744000000000079",
+   "uuid": "uuid-79",
+   "name": "Engineer Intern 79",
+   "refNumber": "REF-79",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000079"
+  },
+  {
+   "id": "744000000000080",
+   "uuid": "uuid-80",
+   "name": "Engineer Intern 80",
+   "refNumber": "REF-80",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000080"
+  },
+  {
+   "id": "744000000000081",
+   "uuid": "uuid-81",
+   "name": "Engineer Intern 81",
+   "refNumber": "REF-81",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000081"
+  },
+  {
+   "id": "744000000000082",
+   "uuid": "uuid-82",
+   "name": "Engineer Intern 82",
+   "refNumber": "REF-82",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000082"
+  },
+  {
+   "id": "744000000000083",
+   "uuid": "uuid-83",
+   "name": "Engineer Intern 83",
+   "refNumber": "REF-83",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000083"
+  },
+  {
+   "id": "744000000000084",
+   "uuid": "uuid-84",
+   "name": "Engineer Intern 84",
+   "refNumber": "REF-84",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000084"
+  },
+  {
+   "id": "744000000000085",
+   "uuid": "uuid-85",
+   "name": "Engineer Intern 85",
+   "refNumber": "REF-85",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000085"
+  },
+  {
+   "id": "744000000000086",
+   "uuid": "uuid-86",
+   "name": "Engineer Intern 86",
+   "refNumber": "REF-86",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000086"
+  },
+  {
+   "id": "744000000000087",
+   "uuid": "uuid-87",
+   "name": "Engineer Intern 87",
+   "refNumber": "REF-87",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000087"
+  },
+  {
+   "id": "744000000000088",
+   "uuid": "uuid-88",
+   "name": "Engineer Intern 88",
+   "refNumber": "REF-88",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000088"
+  },
+  {
+   "id": "744000000000089",
+   "uuid": "uuid-89",
+   "name": "Engineer Intern 89",
+   "refNumber": "REF-89",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000089"
+  },
+  {
+   "id": "744000000000090",
+   "uuid": "uuid-90",
+   "name": "Engineer Intern 90",
+   "refNumber": "REF-90",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000090"
+  },
+  {
+   "id": "744000000000091",
+   "uuid": "uuid-91",
+   "name": "Engineer Intern 91",
+   "refNumber": "REF-91",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000091"
+  },
+  {
+   "id": "744000000000092",
+   "uuid": "uuid-92",
+   "name": "Engineer Intern 92",
+   "refNumber": "REF-92",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000092"
+  },
+  {
+   "id": "744000000000093",
+   "uuid": "uuid-93",
+   "name": "Engineer Intern 93",
+   "refNumber": "REF-93",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000093"
+  },
+  {
+   "id": "744000000000094",
+   "uuid": "uuid-94",
+   "name": "Engineer Intern 94",
+   "refNumber": "REF-94",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000094"
+  },
+  {
+   "id": "744000000000095",
+   "uuid": "uuid-95",
+   "name": "Engineer Intern 95",
+   "refNumber": "REF-95",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000095"
+  },
+  {
+   "id": "744000000000096",
+   "uuid": "uuid-96",
+   "name": "Engineer Intern 96",
+   "refNumber": "REF-96",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000096"
+  },
+  {
+   "id": "744000000000097",
+   "uuid": "uuid-97",
+   "name": "Engineer Intern 97",
+   "refNumber": "REF-97",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000097"
+  },
+  {
+   "id": "744000000000098",
+   "uuid": "uuid-98",
+   "name": "Engineer Intern 98",
+   "refNumber": "REF-98",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000098"
+  },
+  {
+   "id": "744000000000099",
+   "uuid": "uuid-99",
+   "name": "Engineer Intern 99",
+   "refNumber": "REF-99",
+   "company": {
+    "identifier": "TestCo",
+    "name": "TestCo"
+   },
+   "releasedDate": "2026-09-18T00:00:00.000Z",
+   "location": {
+    "city": "Sydney",
+    "region": "NSW",
+    "country": "au",
+    "remote": false
+   },
+   "typeOfEmployment": {
+    "label": "Intern"
+   },
+   "department": {
+    "label": "Engineering"
+   },
+   "experienceLevel": {
+    "id": "student_intern",
+    "label": "Internship"
+   },
+   "ref": "https://api.smartrecruiters.com/v1/companies/TestCo/postings/744000000000099"
+  }
+ ]
+}

@@ -190,6 +190,10 @@ clean: ## Remove caches and build output
 companies: ## Rebuild companies.json from the seed repositories
 	$(PY) $(REPO_ROOT)/scripts/build_company_registry.py
 
+.PHONY: validate-companies
+validate-companies: ## Probe every company's LIVE source and update companies.json
+	$(PY) $(REPO_ROOT)/scripts/validate_companies.py --write --json $(REPORT_DIR)/validation.json
+
 .PHONY: coverage-report
 coverage-report: ## Regenerate COMPANY_COVERAGE.md from companies.json
 	$(PY) $(REPO_ROOT)/scripts/company_coverage.py --write

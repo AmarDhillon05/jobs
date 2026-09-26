@@ -1,0 +1,169 @@
+"""Level 2 - every company in companies.json, against its own adapter.
+
+This file is the automated evidence behind the word "supported" in
+``companies.json`` (PRD §32: *"Do not claim a company is supported unless its
+configured source passes the appropriate scraper test."*).
+
+For **each of the 150 registry entries** it proves:
+
+1. the adapter can be constructed from that company's ``provider_config`` -
+   i.e. no missing or blank required key;
+2. the request the adapter would issue is a well-formed absolute HTTPS URL
+   against that provider's real API host;
+3. replaying that provider's saved fixture through *this company's* adapter
+   yields valid jobs attributed to this company.
+
+What it does **not** prove is that the slug is still live - the sandbox's egress
+policy blocks every ATS host (BLOCKERS.md BLK-001). ``make validate-companies``
+closes that last gap outside the sandbox. The precise definition of "supported"
+is recorded in COMPANY_COVERAGE.md.
+"""
+
+from __future__ import annotations
+
+import copy
+from urllib.parse import urlsplit
+
+import pytest
+from tests.scrapers.conftest import CASES_BY_PROVIDER, build_client
+from tests.support.http import FakeTransport, ScriptedResponse, load_fixture
+
+from jobmonitor.models.company import Company, SupportStatus, load_default_registry
+from jobmonitor.scrapers import build_source
+from jobmonitor.scrapers.base import JobSource
+
+pytestmark = pytest.mark.scrapers
+
+REGISTRY = load_default_registry()
+POLLABLE = REGISTRY.pollable()
+
+#: The API host each provider's requests must be aimed at.
+EXPECTED_HOSTS = {
+    "greenhouse": "boards-api.greenhouse.io",
+    "lever": "api.lever.co",
+    "ashby": "api.ashbyhq.com",
+    "smartrecruiters": "api.smartrecruiters.com",
+    "workable": "apply.workable.com",
+    "rippling": "api.rippling.com",
+    "simplify_fallback": "raw.githubusercontent.com",
+}
+
+
+def request_url(source: JobSource) -> str:
+    """The URL this adapter would fetch first, without fetching it."""
+    for attribute in ("jobs_url", "feed_url", "page_url"):
+        value = getattr(source, attribute, None)
+        if callable(value):
+            value = value(0)
+        if isinstance(value, str):
+            return value
+    raise AssertionError(f"{type(source).__name__} exposes no request URL to inspect")
+
+
+def ids(companies: tuple[Company, ...]) -> list[str]:
+    return [company.company for company in companies]
+
+
+def fallback_transport_for(company: Company) -> FakeTransport:
+    """The Simplify fixture, re-attributed to ``company``'s configured names.
+
+    The fallback adapter selects rows by employer name, so replaying the shared
+    feed against a company that is not in it would prove nothing. Re-attributing
+    the rows keeps the payload *shape* real while making the filter meaningful.
+    """
+    names = [str(name) for name in company.provider_config.get("company_names", [])]
+    assert names, company.company
+    rows = copy.deepcopy(load_fixture("simplify", "listings.json"))
+    for index, row in enumerate(rows):
+        if isinstance(row, dict) and row.get("company_name") not in (None, "SomeOtherCompany"):
+            row["company_name"] = names[index % len(names)]
+    return FakeTransport([ScriptedResponse.json(rows)])
+
+
+@pytest.mark.parametrize("company", POLLABLE, ids=ids(POLLABLE))
+class TestEveryPollableCompany:
+    def test_adapter_constructs_from_its_registry_config(self, company: Company) -> None:
+        source = build_source(company)
+        assert source.provider == company.provider
+
+    def test_request_url_is_absolute_https_against_the_expected_api_host(
+        self, company: Company
+    ) -> None:
+        url = request_url(build_source(company))
+        parts = urlsplit(url)
+        assert parts.scheme == "https", url
+        assert parts.netloc, url
+        assert " " not in url, url
+        expected = EXPECTED_HOSTS.get(company.provider)
+        if expected:
+            assert parts.netloc == expected, url
+        else:
+            # Workday and json_ld are per-tenant/per-site hosts.
+            assert "." in parts.netloc, url
+
+    def test_request_url_embeds_this_company_s_own_configuration(self, company: Company) -> None:
+        """Guards against a copy-paste that points two companies at one board."""
+        url = request_url(build_source(company))
+        if company.provider == "simplify_fallback":
+            pytest.skip("the fallback feed URL is shared by design; filtering is by name")
+        identifying = [
+            str(value)
+            for key, value in company.provider_config.items()
+            if key not in {"host", "tenant", "locale", "search_text", "base_url"}
+        ]
+        assert identifying, company.company
+        assert any(value in url for value in identifying), f"{company.company}: {url}"
+
+    def test_replaying_the_provider_fixture_produces_jobs_for_this_company(
+        self, company: Company
+    ) -> None:
+        case = CASES_BY_PROVIDER[company.provider]
+        if company.provider == "simplify_fallback":
+            # The shared feed is filtered *by employer name*, so this company's
+            # rows have to exist in it for the replay to mean anything.
+            transport = fallback_transport_for(company)
+        else:
+            transport = case.transport()
+        source = build_source(company, build_client(transport))
+        jobs = source.fetch_jobs()
+        assert jobs, company.company
+        assert all(job.company == company.company for job in jobs)
+        assert all(job.source == company.provider for job in jobs)
+        assert all(job.title and job.url for job in jobs)
+
+    def test_careers_url_is_a_usable_absolute_link(self, company: Company) -> None:
+        parts = urlsplit(company.careers_url)
+        assert parts.scheme in {"http", "https"}, company.careers_url
+        assert "." in parts.netloc, company.careers_url
+
+
+class TestRegistryWideInvariants:
+    def test_every_pollable_provider_has_a_fixture_backed_test_case(self) -> None:
+        missing = {c.provider for c in POLLABLE} - set(CASES_BY_PROVIDER)
+        assert not missing, f"providers without a fixture case: {sorted(missing)}"
+
+    def test_supported_entries_use_the_company_s_own_ats_not_the_fallback_feed(self) -> None:
+        for company in REGISTRY.with_status(SupportStatus.SUPPORTED):
+            assert company.provider != "simplify_fallback", (
+                f"{company.company} is marked supported but reads a community feed; "
+                "that is `partial` by definition"
+            )
+
+    def test_partial_entries_explain_why_they_are_only_partial(self) -> None:
+        partial = REGISTRY.with_status(SupportStatus.PARTIAL)
+        assert partial, "expected the fallback-fed companies to be marked partial"
+        for company in partial:
+            assert "fallback" in company.notes.casefold(), company.company
+
+    def test_fallback_feed_is_a_small_minority_of_the_registry(self) -> None:
+        # PRD §4.3: the seed repos are a guide, not the live detection mechanism.
+        fallback = len(REGISTRY.by_provider("simplify_fallback"))
+        assert fallback / len(POLLABLE) < 0.15, f"{fallback}/{len(POLLABLE)} on the fallback feed"
+
+    def test_no_two_companies_share_a_fallback_feed_company_name(self) -> None:
+        claimed: dict[str, str] = {}
+        for company in REGISTRY.by_provider("simplify_fallback"):
+            for name in company.provider_config.get("company_names", []):
+                key = str(name).casefold()
+                assert key not in claimed, f"{company.company} and {claimed[key]} both claim {name}"
+                claimed[key] = company.company

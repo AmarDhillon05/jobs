@@ -1,0 +1,30 @@
+[
+  {
+    "uuid": "3fd9615a-d0c7-458c-a0fc-5d9d7f0ce77c",
+    "name": "Frontend Software Engineer Intern",
+    "url": "https://ats.rippling.com/testco/jobs/3fd9615a-d0c7-458c-a0fc-5d9d7f0ce77c",
+    "workLocation": { "label": "San Francisco, CA", "city": "San Francisco", "state": "CA", "country": "US" },
+    "employmentType": "INTERN",
+    "department": { "label": "Engineering" },
+    "isRemote": false,
+    "createdAt": "2026-09-18T00:00:00Z",
+    "descriptionPlain": "Build the web client."
+  },
+  {
+    "uuid": "4ae0726b-e1d8-469d-b10d-6e0e800df88d",
+    "name": "Backend Engineer Intern",
+    "workLocation": { "city": "New York", "state": "NY", "country": "US" },
+    "employmentType": { "label": "Intern" },
+    "isRemote": true,
+    "createdAt": "2026-09-17T00:00:00Z"
+  },
+  {
+    "uuid": "5bf1837c-f2e9-47ae-c21e-7f1f911e099e",
+    "name": "Enterprise Account Executive",
+    "url": "https://ats.rippling.com/testco/jobs/5bf1837c-f2e9-47ae-c21e-7f1f911e099e",
+    "workLocation": { "label": "Austin, TX" },
+    "employmentType": "FULL_TIME",
+    "createdAt": "2026-08-01T00:00:00Z"
+  },
+  { "name": "No Identifier And No Url" }
+]

@@ -1,0 +1,66 @@
+{
+  "apiVersion": "1",
+  "jobs": [
+    {
+      "id": "1ba0a1ef-0e29-4c1a-9f4f-7c2b1d0e5a6b",
+      "title": "Software Engineer Intern",
+      "location": "San Francisco",
+      "secondaryLocations": [{ "location": "New York" }, { "location": "Remote - US" }],
+      "department": "Engineering",
+      "team": "Core Product",
+      "employmentType": "Intern",
+      "isListed": true,
+      "publishedAt": "2026-09-18T00:00:00.000Z",
+      "updatedAt": "2026-09-20T00:00:00.000Z",
+      "jobUrl": "https://jobs.ashbyhq.com/testco/1ba0a1ef-0e29-4c1a-9f4f-7c2b1d0e5a6b",
+      "applyUrl": "https://jobs.ashbyhq.com/testco/1ba0a1ef-0e29-4c1a-9f4f-7c2b1d0e5a6b/application",
+      "descriptionHtml": "<p>Build product surfaces.</p>",
+      "descriptionPlain": "Build product surfaces.",
+      "address": {
+        "postalAddress": {
+          "addressLocality": "San Francisco",
+          "addressRegion": "CA",
+          "addressCountry": "USA"
+        }
+      }
+    },
+    {
+      "id": "2cb1b2f0-1f3a-5d2b-af50-8d3c2e1f6b7c",
+      "title": "AI Engineer Intern",
+      "location": "New York",
+      "secondaryLocations": [],
+      "department": "Research",
+      "employmentType": "Intern",
+      "isListed": true,
+      "publishedAt": 1769728646000,
+      "jobUrl": "https://jobs.ashbyhq.com/testco/2cb1b2f0-1f3a-5d2b-af50-8d3c2e1f6b7c",
+      "descriptionPlain": "Applied research on agents."
+    },
+    {
+      "id": "3dc2c301-2049-6e3c-b061-9e4d3f207c8d",
+      "title": "Unlisted Draft Intern Role",
+      "location": "Austin",
+      "isListed": false,
+      "employmentType": "Intern",
+      "jobUrl": "https://jobs.ashbyhq.com/testco/3dc2c301-2049-6e3c-b061-9e4d3f207c8d",
+      "descriptionPlain": "Should never be notified about."
+    },
+    {
+      "id": "4ed3d412-3150-7f4d-c172-af5e4031 8d9e",
+      "title": "Posting With A Broken Url",
+      "location": "Austin",
+      "isListed": true,
+      "jobUrl": "not-a-url",
+      "descriptionPlain": "Unusable link."
+    },
+    {
+      "id": "5fe4e523-4261-805e-d283-b06f51429eaf",
+      "title": "Head of People",
+      "location": "Remote",
+      "isListed": true,
+      "employmentType": "FullTime",
+      "jobUrl": "https://jobs.ashbyhq.com/testco/5fe4e523-4261-805e-d283-b06f51429eaf",
+      "descriptionPlain": "Own HR."
+    }
+  ]
+}

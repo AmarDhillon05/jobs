@@ -187,14 +187,22 @@ def job_id(job: Job) -> str:
 
 
 def content_hash(job: Job) -> str:
-    """Hash of the user-visible content, used to detect *updated* postings."""
+    """Hash of the user-visible content, used to detect *updated* postings.
+
+    ``date_posted`` is deliberately **excluded**. PRD §9 already notes that
+    careers sites give unreliable posting timestamps, and some are worse than
+    unreliable: Workday reports relative text ("Posted 5 Days Ago"), so the
+    absolute date we derive from it moves every single day even when the posting
+    has not changed at all. Including it would mark every Workday job as
+    "updated" on every poll. ``first_seen``/``last_seen`` carry the timing
+    information that actually matters.
+    """
     return _digest(
         (
             job.title.casefold(),
             (job.location or "").casefold(),
             canonical_url(job.url),
             (job.employment_type or "").casefold(),
-            job.date_posted.isoformat() if job.date_posted else "",
             (job.description or "").casefold(),
         )
     )
