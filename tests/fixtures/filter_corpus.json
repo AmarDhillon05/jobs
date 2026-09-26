@@ -1,0 +1,1015 @@
+{
+ "_comment": [
+  "200 real internship titles sampled (seed=42) from the 10,852 distinct titles in",
+  "the two mandated seed repositories, with the verdict the shipped filter gives",
+  "each one. Committed as a REGRESSION CORPUS: tests/unit/test_filter_corpus.py",
+  "replays it, so any change to the scoring model that moves a real-world title",
+  "across the keep/notify boundary shows up as a diff to review rather than as a",
+  "silent behaviour change. Regenerate with scripts/build_filter_corpus.py.",
+  "The verdicts were reviewed by hand; see TESTING.md."
+ ],
+ "sample_seed": 42,
+ "distinct_titles_available": 10852,
+ "cases": [
+  {
+   "title": "Trading Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Commercialization Product Support Co-op",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "AI Residency Program",
+   "score": 0,
+   "verdict": "drop"
+  },
+  {
+   "title": "Graduate Student Associate - Robotics",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Firmware Engineer Intern",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Engineering Associate - Systems Analysis - Mainframe",
+   "score": 8,
+   "verdict": "drop"
+  },
+  {
+   "title": "Data Analyst Intern \u2013 Co-op/Internship - Business Banking Summer 2026 - 4 Months",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Cloud Software Intern - GeForce NOW",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Engineer Intern - AI Platform",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Business Intelligence and Infrastructure Analyst Intern",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Spde Financial and Data Analyst Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "PhD Scientist Intern - US",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "AI/ML ASIC Design and Implementation Automation Intern - Summer 2027",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "AI and Data Solutions Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Campus Undergraduate Intern - Software Engineer - Technology",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Energy Engineering Intern - Software Engineer Diagnostics - Energy Engineering",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Enterprise Platforms Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Robotics Engineering Intern - Systems & Applications",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Student Researcher - Speech Foundation Model",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "AI Software Developer Intern/Co-op",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Software Engineer Intern - Simulation Evaluation ML Model",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "EMC Engineer Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Vehicle Intent and Prediction Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Engineer Intern - AI Enablement",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "PhD Research Intern - Circuits",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Engine Systems Verification Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Product Manager Intern - Livetv",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Solar Hardware Engineer Intern - Solar Hardware Engineer - Energy Engineering",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "HW Design Verification Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "AI & Automation Engineer Co-op",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Data Science / Analytics Intern - Technology Solutions",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "PhD Summer Intern - Beauty Care",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Intern \u2013 Firmware & Product Testing AI/Machine Learning",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "HR Intern \u2013 Data Analytics Focus",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Data Management & Reporting Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Embedded Software Engineering Intern",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Intern \u2013 Application Security",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Cloud QA Engineer and Performance Intern - CRD",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Camera Engineer Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Manufacturing Technician Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Certification Projects Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Lab Digital Assistant",
+   "score": 0,
+   "verdict": "drop"
+  },
+  {
+   "title": "Intern \u2013 SLS Support",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Student Worker Program - Physical Prototypes Engineer",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Generative AI Implementation Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Algorithm Developer-Bachelor's",
+   "score": 8,
+   "verdict": "drop"
+  },
+  {
+   "title": "QNX Application Engineering Student",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Development Intern - Route Optimization",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Cost and Data Analyst Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Manufacturing & Quality Analyst Intern - Stage 2027",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Baseball Analytics Apprentice - Baseball Research & Development",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Engineer Intern - Dynamo",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "IT Developer Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Technology Developer Intern - Technology",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Systems Engineering Co-op - Software",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Level Up Ventures Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Engineering Intern - Applied AI",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Digital Ship Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Associate Software Engineer Intern",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Analog and Mixed Signal Engineer Intern/Co-op",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Year in Industry Intern - Rail Condition Monitoring Systems",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Engineering Intern - Software Development",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Hyperautomation Engineer Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Bioinformatics Co-Op: Computation Biology & Data Science",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Enterprise Risk Management Risk Data Aggregation Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Clock Design & Architecture Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Manufacturing Test Engineering Intern - Cdh",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "HR People Analytics Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Product Portfolio Student - 4 months - Summer 2026",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Test Lab Engineer Co-op",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "MFE Associate - Global Markets",
+   "score": 0,
+   "verdict": "drop"
+  },
+  {
+   "title": "Data Science Intern - Data Science",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Machine Learning Engineer Intern - Master of Science/Doctor of Philosophy",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Junior ETF Product Management Analyst Intern - Investment 20/20 Programme",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Electronic Materials and Devices Engineer Intern - Electronic Materials and Devices",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Geospatial Data Validation Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "User Experience Engineer Intern - PhD - Summer 2027",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Automated Driving Machine Learning Intern",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Summer Intern - Multiple Teams",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Test Engineer Intern - Intelligent Sensor Group - Test Engineering",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Data Scientist and Machine Learning Engineer Intern",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Software Development Engineer Intern - San Jose - CA",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Firmware Engineer Co-op",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Data Science Intern - Influencer Marketing AI Application",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Quantitative Analysis - Off Cycle Placement",
+   "score": 0,
+   "verdict": "drop"
+  },
+  {
+   "title": "Manufacturing Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Global Risk Analytics Intern - Grm - 4 Months",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Trading Standards Apprentice",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Engineer Intern - ML Platform",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Energy and Climate Modeling Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Intern Data Science Software Engineer",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Applications Engineer Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Engineering Leadership Program Engineer - Computer Science/Software",
+   "score": 8,
+   "verdict": "drop"
+  },
+  {
+   "title": "AI/ML Engineer",
+   "score": 15,
+   "verdict": "drop"
+  },
+  {
+   "title": "Intern - IT MFG Architecture",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Nooks Internship",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Global Capital Markets Intern - Sales & Trading",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Assistant Co-op Student - Product Development",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Electrosynthesis Co-op",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Engineer Intern, AI Infrastructure / Training / Inference",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Intern - Fullstack Developer",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Embedded Quality & Fielded Systems Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Wealth Management Data Analyst",
+   "score": 8,
+   "verdict": "drop"
+  },
+  {
+   "title": "Research on Generative and Protective AI for Content Creation Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Monitoring & Utilization Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "UI Engineer Co-op",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Python Developer Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Data Analytics Developer Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Generative AI Researcher Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Data Analyst Intern \u2013 Path to Full-Time",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Fixed Income Co-op",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Engineer Intern - Site Controller Software Engineer - Energy Engineering",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Software Engineer 1",
+   "score": 15,
+   "verdict": "drop"
+  },
+  {
+   "title": "Game Developer Intern - Voldex Games",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Enhancements and Automation Intern - Software Development and DevOps",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Positioning Services Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Engineering Internship \u2013 AI/Agentic Systems",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Network Engineer Co-op",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Lidar Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Energy Supply Renewable Intern - MN",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Data Analyst Intern - Power - Emerging Talent",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "SSG Design Engineering Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Research Scientist Intern - AI Infrastructure",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "CFO IT Digital Marketing Intern - IT - Digital Marketing",
+   "score": 21,
+   "verdict": "drop"
+  },
+  {
+   "title": "Analyst Co-op Student - Product Information Management",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Commercial Banking Professionals \u2013 AI Residency - Part-time - Frontier AI Research",
+   "score": 0,
+   "verdict": "drop"
+  },
+  {
+   "title": "Data Engineering Intern/Co-op",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Technology Apprentice - Tech Delivery",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Data Science Analyst",
+   "score": 8,
+   "verdict": "drop"
+  },
+  {
+   "title": "PhD Software Engineer Intern - Data Storage",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Student 2 - Software Engineering",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Artificial Intelligence Engineer Intern - Artificial Intelligence",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Martech Software Engineer",
+   "score": 15,
+   "verdict": "drop"
+  },
+  {
+   "title": "Marketing & Media Process Intern",
+   "score": 13,
+   "verdict": "drop"
+  },
+  {
+   "title": "Student - Product Engineering",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Quantitative Researcher Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Developer Intern - Java",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Front-End AI Marketing Co-op",
+   "score": 41,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Engineer Intern - Fall 2026",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "AI Automation Engineer Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Computer Engineer Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Development Student - January 2027",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Geospatial Analysis Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Transformation Engineer Intern - Accelerate",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Intern \u2013 Field Service",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Commodities Trading Analyst Internship",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "IT Document Automation Developer Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Procurement Intern",
+   "score": 13,
+   "verdict": "drop"
+  },
+  {
+   "title": "Data Quality Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Product Research Specialist",
+   "score": 0,
+   "verdict": "drop"
+  },
+  {
+   "title": "2026 Summer Intern - Regev Lab - Feedback Driven AI Systems",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Gas Turbine Products Engineering Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Retail Development Program - Software Engineering - Front-End",
+   "score": 15,
+   "verdict": "drop"
+  },
+  {
+   "title": "Degree Apprenticeship - Engineering - Nottingham Office",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Rotational Technology Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Co-op \u2013 Engineering",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Technical Operations Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Incubation Developer Student Intern",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Trading Analytics Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Summer Intern - Group Benefits Product Management",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "EML Product Management Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Machine Learning Research Engineer Co-op",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Data Science Fellow",
+   "score": 8,
+   "verdict": "drop"
+  },
+  {
+   "title": "Software Engineer 1 Co-op - Flowplatform Team",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Software Developer Intern - Summer Games",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "2026 Graph Machine Learning Intern - PhD",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Student Hourly Assistant - Data Analysis - Credit Center",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Intern Data Programme",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Research Intern - AI Incubation",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "AI Integration Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Communications & AI Intern - AI Developer",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Localization Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Integration and Test Engineering Intern - Test Engineering Support",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Fall 2026: Product Development Co-op - Shark Beauty - July to December",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Applied Data Analytics Bachelor's Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Field Service Engineer Apprentice",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Engineer Intern, Ads Interface",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Banking Analytics Student - 4 months",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Business Intelligence Consulting Associate - Fall 2026",
+   "score": 0,
+   "verdict": "drop"
+  },
+  {
+   "title": "Research Assistant - Student Wage",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Associate Software Developer-3 Intern",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Software Development Bachelor's Intern",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Credit Risk Data Analyst",
+   "score": 8,
+   "verdict": "drop"
+  },
+  {
+   "title": "Customer Quality Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Work Management Capabilities & Platforms Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "R&D Testing Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Engineer Intern - Core Engineering",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Data Science Intern - Tiktok Shop-Supply Chain & Logistics",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Generative AI Software Engineer",
+   "score": 15,
+   "verdict": "drop"
+  },
+  {
+   "title": "Software Developer Intern - BS",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Summer 2026 \u2013 AI Engineer Intern",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Photonic Integrated Circuit Design Intern",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Embedded Developer Intern - Multiple Teams",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "Software Engineer 1 Co-op - Anvi",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Earth Scientist",
+   "score": 0,
+   "verdict": "drop"
+  },
+  {
+   "title": "Intern - College of Engineering - Electrical and Computer Engineering",
+   "score": 53,
+   "verdict": "keep"
+  },
+  {
+   "title": "National Security Solutions \u2013 Software Engineering Intern - Nss",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Machine Learning Operations Intern",
+   "score": 73,
+   "verdict": "notify"
+  },
+  {
+   "title": "Product Development Intern - Product Development - Consumer Services",
+   "score": 45,
+   "verdict": "keep"
+  },
+  {
+   "title": "Service Program & Project Management Intern",
+   "score": 45,
+   "verdict": "keep"
+  }
+ ]
+}
