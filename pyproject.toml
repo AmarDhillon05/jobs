@@ -71,6 +71,10 @@ ignore = [
 # The en/em dashes in the alias-splitting regex are intentional: real company
 # names in the seed data use them.
 "src/jobmonitor/discovery.py" = ["RUF001"]
+# Unicode dashes / no-break spaces are the *subject* of these modules' regexes
+# and test cases, not typos.
+"src/jobmonitor/identity.py" = ["RUF001"]
+"tests/unit/test_job_model.py" = ["E501", "RUF001"]
 
 [tool.mypy]
 python_version = "3.11"
