@@ -62,6 +62,20 @@ class Company:
     last_validated: str | None = None
 
     def __post_init__(self) -> None:
+        # Coerce the string enums so direct construction with plain strings
+        # (tests, ad-hoc scripts, JSON round-trips) behaves like from_dict.
+        if not isinstance(self.priority, Priority):
+            try:
+                object.__setattr__(self, "priority", Priority(str(self.priority)))
+            except ValueError as exc:
+                raise RegistryError(f"{self.company}: unknown priority {self.priority!r}") from exc
+        if not isinstance(self.support_status, SupportStatus):
+            try:
+                object.__setattr__(self, "support_status", SupportStatus(str(self.support_status)))
+            except ValueError as exc:
+                raise RegistryError(
+                    f"{self.company}: unknown support_status {self.support_status!r}"
+                ) from exc
         if not self.company.strip():
             raise RegistryError("company name must not be empty")
         if not self.provider.strip():
