@@ -21,7 +21,7 @@ Run everything with `make verify`. Run the fast part with `make test`.
 | 6 | Backend pipeline: the ten required cases, handlers, queue semantics, API | `tests/integration/` | ~150 | `make test-integration` |
 | 7 | The architecture on emulated AWS | `tests/aws_local/` | ~30 | `make e2e-aws` |
 | D | Infrastructure: synth, template assertions, cfn-lint | `infrastructure/tests/` | 49 | `make infra-validate` |
-| 8 | Acceptance scenarios end to end | `tests/e2e/` | — | `make e2e` |
+| 8 | The eight PRD §30 acceptance scenarios, end to end | `tests/e2e/` | 40 | `make e2e-local` |
 
 Markers: `unit`, `scrapers`, `integration`, `aws_local`, `e2e`, `infra`, `live`.
 `make test` excludes `aws_local` and `live`, so the default run needs no Docker and
