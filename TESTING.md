@@ -11,15 +11,15 @@ Run everything with `make verify`. Run the fast part with `make test`.
 
 | Level | What | Where | Count | Command |
 | --- | --- | --- | --- | --- |
-| 1 | Pure units: normalization, filtering, identity, canonical URLs, scoring, retry/backoff maths, config | `tests/unit/` | ~470 | `make test-unit` |
-| 2 | Providers: parsing, required fields, pagination, malformed records, retries, rate limits, per-company configs | `tests/scrapers/` | ~1,130 | `make test-scrapers` |
-| 3 | Persistence: insert, reinsert, `first_seen` stability, `last_seen`, notification state, idempotency | `tests/integration/` | ~100 | `make test-integration` |
-| 4 | Notifications: payloads, formatters, deep links, failed delivery, duplicate suppression, the Expo push transport | `tests/integration/` | ~90 | `make test-integration` |
+| 1 | Pure units: normalization, filtering, identity, canonical URLs, scoring, retry/backoff maths, config | `tests/unit/` | 354 | `make test-unit` |
+| 2 | Providers: parsing, required fields, pagination, malformed records, retries, rate limits, per-company configs | `tests/scrapers/` | 1,170 | `make test-scrapers` |
+| 3 | Persistence: insert, reinsert, `first_seen` stability, `last_seen`, notification state, idempotency | `tests/integration/` | 324 total | `make test-integration` |
+| 4 | Notifications: payloads, formatters, deep links, failed delivery, duplicate suppression, the Expo push transport | `tests/integration/` | (same 324) | `make test-integration` |
 | 5a | Expo app: render, data loading, empty/error states, detail, apply action, push registration, tap routing | `mobile/src/__tests__/` | 122 | `make test-mobile` |
 | 5b | Web client: the same list, in jsdom | `web/src/__tests__/` | 77 | `make test-web` |
 | 5c | Web client in a real browser | `web/e2e/` | 11 | `make test-app-e2e` |
-| 6 | Backend pipeline: the ten required cases, handlers, queue semantics, API | `tests/integration/` | ~150 | `make test-integration` |
-| 7 | The architecture on emulated AWS | `tests/aws_local/` | ~30 | `make e2e-aws` |
+| 6 | Backend pipeline: the ten required cases, handlers, queue semantics, API, CLI | `tests/integration/` | (same 324) | `make test-integration` |
+| 7 | The architecture on emulated AWS | `tests/aws_local/` | 23 | `make e2e-aws` |
 | D | Infrastructure: synth, template assertions, cfn-lint | `infrastructure/tests/` | 49 | `make infra-validate` |
 | 8 | The eight PRD §30 acceptance scenarios, end to end | `tests/e2e/` | 40 | `make e2e-local` |
 

@@ -189,12 +189,11 @@ def stages() -> list[Stage]:
         Stage(
             "infra-lint",
             "Gate D - cfn-lint",
-            [str(REPO_ROOT / ".venv" / "bin" / "cfn-lint")]
-            + [
-                str(p)
-                for p in sorted((REPO_ROOT / "infrastructure" / "cdk.out").glob("*.template.json"))
-            ]
-            or [str(REPO_ROOT / ".venv" / "bin" / "cfn-lint"), "--version"],
+            # Deliberately the make target rather than an expanded file list: the
+            # templates do not exist until `infra-synth` has run, and globbing them
+            # while *building* the stage list meant that on a genuinely clean tree
+            # cfn-lint was handed no files and silently linted stdin instead.
+            ["make", "infra-lint"],
             gate="D",
             after=("infra-synth",),
         ),

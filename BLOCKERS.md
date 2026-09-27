@@ -14,6 +14,13 @@ Severity: `critical` (blocks a hard completion gate) · `major` · `minor`
 | --- | --- | --- | --- |
 | [BLK-001](#blk-001---outbound-egress-policy-blocks-all-third-party-careersats-hosts) | Live scraper validation | major | accepted-limitation |
 | [BLK-002](#blk-002---provider-fixtures-could-not-be-captured-from-live-responses) | Provider fixtures | major | accepted-limitation |
+| [BLK-003](#blk-003---localstack-could-not-pull-a-lambda-runtime-image) | LocalStack Lambda | critical | resolved |
+| [BLK-004](#blk-004---api-gateway-v2-http-api-is-a-localstack-pro-feature) | LocalStack API Gateway | major | resolved |
+| [BLK-005](#blk-005---eventbridge-scheduler-emulation-is-unreliable-in-localstack-community) | LocalStack EventBridge | major | accepted-limitation |
+| [BLK-006](#blk-006---dlq-redrive-could-not-be-observed-within-a-test-timeout) | Level 7 DLQ test | major | resolved |
+| [BLK-007](#blk-007---purge_queue-is-rate-limited-which-made-a-level-7-test-flake) | Level 7 isolation | minor | resolved |
+| [BLK-008](#blk-008---push-delivery-to-a-physical-handset-cannot-be-verified-here) | Push delivery | major | accepted-limitation |
+| [BLK-009](#blk-009---docker-compose-cannot-interpolate-a-default-containing-braces) | docker-compose | minor | resolved |
 
 ---
 
@@ -133,3 +140,180 @@ Severity: `critical` (blocks a hard completion gate) · `major` · `minor`
 - **Status:** accepted-limitation
 
 ---
+
+## BLK-003 - LocalStack could not pull a Lambda runtime image
+
+- **Timestamp / stage:** 2026-09-26, Phase K (local AWS integration)
+- **Requirement affected:** PRD §13.3, §14 Level 7, Gate E - the architecture must
+  actually run on emulated AWS
+- **Component:** `docker-compose.yml`, LocalStack Lambda provider
+- **Observed failure:** every `Invoke` returned a runtime error; LocalStack's logs
+  showed it could not pull `public.ecr.aws/lambda/python:3.11` - the same egress
+  policy as BLK-001 denies `public.ecr.aws`. With no runtime image, no Lambda can
+  execute, so Gate E was unreachable.
+- **Expected behaviour:** LocalStack pulls the runtime image once and executes each
+  handler in a container.
+- **Attempts made (three materially different, per §18.1):**
+  1. Pre-pull the image directly with `docker pull` - 403, same policy.
+  2. Switch LocalStack's Lambda executor to `local` (in-process) - unsupported in
+     the installed version, and it would have stopped exercising real container
+     invocation, which is the point of the level.
+  3. Remap the runtime image to a Docker Hub equivalent via
+     `LAMBDA_RUNTIME_IMAGE_MAPPING` - `docker.io` *is* reachable, so
+     `mlupin/docker-lambda:python3.11` pulls and runs.
+- **Evidence / logs:** 23/23 Level-7 tests now pass against real Lambda
+  invocations, including cold starts, event-source triggers and DLQ redrive.
+- **Resolution:** the mapping lives in `docker-compose.yml` with a comment naming
+  the reason, and is overridable by environment variable for anyone whose network
+  allows the AWS image.
+- **Severity:** critical (blocked Gate E)
+- **Status:** resolved
+
+---
+
+## BLK-004 - API Gateway v2 (HTTP API) is a LocalStack Pro feature
+
+- **Timestamp / stage:** 2026-09-26, Phase K
+- **Requirement affected:** PRD §13.3 ("if a particular LocalStack service requires
+  a paid feature ... document the limitation and emulate that boundary with the
+  closest reliable alternative"), §24 (the API the client reads)
+- **Component:** `scripts/local_provision.py`
+- **Observed failure:** `apigatewayv2 create_api` is rejected by LocalStack
+  community; the deployed stack uses an HTTP API because it is ~70% cheaper.
+- **What was done:** local provisioning creates a **REST (v1)** API in front of the
+  *same* API Lambda, with the same routes. The Level-7 suite then reads the feed
+  over real HTTP through real API Gateway emulation.
+- **What that leaves unproven:** the v2 payload-format-2.0 event shape. That is
+  covered separately by unit tests over the adapter
+  (`tests/integration/test_api.py`), which assert the v2 envelope directly, and by
+  the CDK template assertions that pin the HTTP API's routes and integration.
+- **Severity:** major (a real emulation gap, named rather than hidden)
+- **Status:** resolved - documented in `ARCHITECTURE.md` §9 and `TESTING.md`
+
+---
+
+## BLK-005 - EventBridge scheduler emulation is unreliable in LocalStack community
+
+- **Timestamp / stage:** 2026-09-26, Phase K
+- **Requirement affected:** PRD §14 Level 7 ("scheduled event -> coordinator -> ...")
+- **Component:** LocalStack EventBridge / Scheduler
+- **Observed failure:** a rule with a 10-minute schedule expression is accepted but
+  does not reliably fire the target in LocalStack community; a test that waits for
+  it either waits ten minutes or flakes.
+- **What was done:** exactly the procedure PRD §18.4 prescribes for this case. The
+  EventBridge rule **stays** in the CDK stack and `infrastructure/tests` asserts its
+  schedule expression, its target, its input payload and its invoke permission;
+  `scripts/local_poll.py` then delivers the **identical payload** to the
+  coordinator. Everything downstream - queue, event sources, workers, storage,
+  topic, notifier, API - is genuinely exercised.
+- **Why this is not critical:** the simulated boundary is one API call wide, and the
+  thing it stands in for (a cron firing) is the part of AWS least likely to be
+  wrong. It is recorded as the project's *only* simulated boundary.
+- **Severity:** major
+- **Status:** accepted-limitation - documented in `ARCHITECTURE.md` §9 and
+  `TESTING.md` ("the one simulated boundary")
+
+---
+
+## BLK-006 - DLQ redrive could not be observed within a test timeout
+
+- **Timestamp / stage:** 2026-09-26, Phase K
+- **Requirement affected:** PRD §30 Scenario 7, §16 (dead-letter path)
+- **Component:** `tests/aws_local/test_architecture.py`
+- **Observed failure:** two DLQ tests timed out. The deployed queue uses a 240s
+  visibility timeout with `maxReceiveCount: 3`, so a poison message needs ~12
+  minutes to reach the DLQ - far longer than any reasonable test wait.
+- **Attempts made:**
+  1. Raise the test's wait - would have made the suite unusable.
+  2. Assert only the redrive *policy* rather than the redrive - would have proven
+     configuration, not behaviour, which §35 explicitly rejects.
+  3. Provision the local queue with shortened timings (worker 55s, visibility 60s)
+     while the CDK stack keeps the production values, and merge the two tests into
+     one so the wait is paid once.
+- **Evidence / logs:** the message is now observed arriving on the DLQ; the test
+  passes in ~3 minutes as part of a 226s suite.
+- **Resolution:** local-only timings, with a comment naming the production values
+  and the CDK assertions that pin them.
+- **Severity:** major (blocked observed evidence for a Gate F sub-case)
+- **Status:** resolved
+
+---
+
+## BLK-007 - `purge_queue` is rate limited, which made a Level 7 test flake
+
+- **Timestamp / stage:** 2026-09-26, Phase K
+- **Requirement affected:** PRD §35 (no silently skipped or flaky evidence)
+- **Component:** `tests/aws_local/conftest.py`
+- **Observed failure:** the health-view test intermittently failed. Test isolation
+  used `purge_queue`, which SQS permits only once per 60 seconds per queue; the
+  second call in a run is a no-op, so a poison message left by the DLQ test was
+  still being redelivered and starved the queue.
+- **Resolution:** isolation now drains with a receive+delete loop, before *and*
+  after each test, which has no rate limit and no ordering assumption.
+- **Severity:** minor (a test-harness fault, not a system fault)
+- **Status:** resolved
+
+---
+
+## BLK-008 - Push delivery to a physical handset cannot be verified here
+
+- **Timestamp / stage:** 2026-09-27, Phase I (client)
+- **Requirement affected:** PRD §22 (mobile push), §14 Level 5, §30 Scenario 8
+- **Component:** `mobile/`, `ExpoPushTransport`
+- **Observed limitation:** this environment has no iOS or Android simulator, and a
+  simulator could not mint a push token even if it did - Expo needs a real device
+  with a push certificate. No automated test here can prove that APNs or FCM wakes
+  a handset.
+- **What *is* proven, and how:**
+  - the permission flow, token registration, listener wiring, tap routing and
+    cold-start replay, against mocked native modules (122 tests in `mobile/`);
+  - the exact request the backend sends to `exp.host` - token list, the `data` map
+    carrying the deep link, `priority`, and the Android `channelId` that must match
+    the one the app creates - plus every ticket status Expo can return, against a
+    scripted transport (40 tests);
+  - the same deep-link and notification-routing behaviour in a **real browser**,
+    via the `web/` client's Playwright suite, which is why that client was kept;
+  - that the payload names a job the API can actually serve, in Level 8.
+- **Next actions (for the user):** `mobile/README.md` step 4-6. `python -m
+  jobmonitor.cli push-test` sends one real alert and prints the deep link it
+  carries, so a failed tap can be diagnosed without guessing.
+- **Why this is not critical:** PRD §14 Level 4 states plainly that "real
+  email/push delivery does not need to occur during automated local testing". The
+  gap is recorded as *not tested* in `TESTING.md` rather than counted as a pass.
+- **Severity:** major (the one user-visible behaviour with no local proof)
+- **Status:** accepted-limitation
+
+---
+
+## BLK-009 - docker-compose cannot interpolate a default containing braces
+
+- **Timestamp / stage:** 2026-09-26, Phase K
+- **Component:** `docker-compose.yml`
+- **Observed failure:** `docker compose` refused the file with a parse error. The
+  BLK-003 fix needs the value
+  `LAMBDA_RUNTIME_IMAGE_MAPPING={"python3.11": "..."}`, and written as
+  `${VAR:-{"python3.11": "..."}}` Compose's interpolator mis-parses the braces
+  inside the default.
+- **Resolution:** the mapping is a quoted literal, and the override is documented
+  as an environment variable set outside the file.
+- **Severity:** minor
+- **Status:** resolved
+
+---
+
+## Blocker sweep - 2026-09-27
+
+Per PRD §18.5, every unresolved blocker was revisited before final verification.
+
+- **BLK-001** re-probed: `boards-api.greenhouse.io`, `api.lever.co` and
+  `api.ashbyhq.com` all still fail at CONNECT, and the proxy status endpoint still
+  reports `connect_rejected` policy denials. Unchanged; the egress policy is
+  outside this repository. Remains `accepted-limitation`, blocks no gate (PRD §31,
+  §14 Level 7).
+- **BLK-002** unchanged, being a consequence of BLK-001. `make validate-companies`
+  is the user's one-command path to closing both.
+- **BLK-005** re-examined rather than re-attempted: the mitigation is the exact
+  procedure PRD §18.4 prescribes for it, so there is nothing to retry.
+- **BLK-008** is new in this phase and inherent to the environment, not a bug to
+  fix. Recorded with the precise boundary between what is proven and what is not.
+- **Critical blockers open: 0.**
