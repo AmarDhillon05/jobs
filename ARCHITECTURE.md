@@ -179,20 +179,49 @@ Three different questions, deliberately three different functions:
 
 ## 4. Scraping
 
-Seven reusable ATS adapters cover 139 of 150 companies. **No company has bespoke
-code** — adding one is a `companies.json` entry.
+Sixteen adapters cover 183 polled companies. Eleven are reusable ATS adapters;
+five serve one very large employer each, whose own site is the only first-party
+source. Adding a company to an existing adapter is a registry entry, not code.
 
 | Provider | Companies | Shape |
 | --- | --- | --- |
-| `greenhouse` | 58 | `GET` board API, whole board in one response |
-| `workday` | 44 | `POST` CXS, paginated, server-capped at 20/page |
-| `ashby` | 24 | `GET` posting API |
-| `lever` | 13 | `GET` postings array |
+| `greenhouse` | 68 | `GET` board API, whole board in one response |
+| `workday` | 44 | `POST` CXS, paginated, 20/page, hard limit of 2,000 results |
+| `ashby` | 25 | `GET` posting API |
+| `lever` | 13 | `GET` postings array; US or **EU** instance (`region`) |
+| `eightfold` | 5 | `GET` search (PCSX, or the older v2 API), 10/page — Microsoft, Qualcomm, Morgan Stanley, Millennium, Netflix |
 | `smartrecruiters` | 5 | `GET`, paginated offset/limit against `totalFound` |
+| `oracle_hcm` | 4 | `GET` Fusion HCM REST, 200/page — JPMorgan Chase, Oracle, Uber, Dell |
+| `jibe` | 2 | `GET` iCIMS Jibe `/api/jobs`, 10/page — AMD, Susquehanna |
+| `talentbrew` | 1 | `GET` Radancy search XHR returning an HTML fragment — Arm |
 | `rippling` | 1 | `GET` board array |
+| `amazon` | 1 | `GET` amazon.jobs `search.json`, 100/page |
+| `google` | 1 | `GET` results page; job data embedded in the HTML |
+| `goldman` | 1 | `POST` GraphQL (schema open to introspection), campus section read whole |
+| `ibm` | 1 | `POST` Elasticsearch-style search API |
+| `atlassian` | 1 | `GET` listings array |
 | `workable` | 0 (ready) | `GET` account widget |
 | `json_ld` | 0 (ready) | schema.org `JobPosting` in server-rendered HTML |
-| `simplify_fallback` | 5 | community feed, **secondary only** |
+| `simplify_fallback` | 10 | community feed, **secondary only** |
+
+**Searching adapters.** Greenhouse, Lever and Ashby hand over a whole board and
+the relevance filter decides. Eightfold, Oracle, Jibe, TalentBrew, Amazon, Google,
+IBM and (per tenant) Workday are too large for that and must *search*, and a search
+only finds what its keyword names. One keyword measurably misses roles: Goldman
+titles internships "Summer Analyst" (a search for "intern" finds 1 of 282 campus
+roles), and Morgan Stanley's "intern" and "summer analyst" results are largely
+disjoint. So these adapters run several terms (`scrapers/_search.py`) and the base
+class merges the overlap. If the *first* term fails, the company fails, which is
+how a dead or blocking site shows up; if a *later* one fails, the results already
+found are kept and the scraper reports `DEGRADED`, naming the term.
+
+**How the new sources were configured.** The first 150 companies' configs came from
+application URLs in the seed repositories (below). The 35 added later, and the
+companies that had moved platform, were configured from each company's own
+careers page, by finding which ATS it links to, then verifying that ATS's live API,
+checking that the board belongs to that company by where its apply URLs point,
+and checking that job links resolve. A slug that answers is not proof: boards
+named `linkedin` exist on both Greenhouse and Lever, and neither is LinkedIn's.
 
 **Where the configs came from.** Both mandated seed repositories publish a
 structured `listings.json` behind their README tables. 17,607 listings collapse to
@@ -217,7 +246,7 @@ real failure, neither disguised as a bad guess.
 
 **The HTTP transport is injected.** That single decision is why a `500, 500, 200`
 sequence and a `429 + Retry-After` are ordinary unit tests: no network, no mocking
-library, no real sleeping, and the same assertions run for all nine adapters.
+library, no real sleeping, and the same assertions run for every adapter.
 
 ## 5. Filtering
 

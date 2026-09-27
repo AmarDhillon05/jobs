@@ -153,6 +153,9 @@ than decorative.
    Influencer Marketing AI" was dropped. Same real-data run.
 5. **`student` was missing entirely**, dropping "Software Development Student".
    Same run.
+6. **The Playwright route stub swallowed the app's own navigation.** A `**/jobs/*`
+   glob matched the document request for `/jobs/<id>`, serving JSON instead of the
+   HTML app — breaking precisely the deep-link case the spec exists to test.
 7. **Every Workday board was silently cut off at 40 postings.** Workday reports the
    real total on the first page only and `"total": 0` on every later page; the
    adapter overwrote the total, so `seen >= total` held after page two. NVIDIA
@@ -161,9 +164,21 @@ than decorative.
    every page, so no fixture test could see it. Fixing it recovered ~9,900
    postings across the 44 Workday companies. The regression test replays the
    real behaviour and was checked to fail on the old code (40 instead of 57).
-6. **The Playwright route stub swallowed the app's own navigation.** A `**/jobs/*`
-   glob matched the document request for `/jobs/<id>`, serving JSON instead of the
-   HTML app — breaking precisely the deep-link case the spec exists to test.
+8. **Two discovery bugs sent real companies to dead endpoints.** Lever boards on
+   `jobs.eu.lever.co` lost their region (Cirrus Logic, Quantinuum → US API → 404),
+   and Workday tenant ids were taken from the hyphenated subdomain (`osv-cci`
+   instead of `osv_cci` → 422 on every request). Found live; both now resolve
+   correctly from the seed URLs, and are pinned by tests.
+9. **One search keyword silently missed bank internships.** Goldman titles them
+   "Summer Analyst": searching "intern" finds 1 of 282 campus roles. Morgan
+   Stanley's "intern" and "summer analyst" results are largely disjoint. The
+   searching adapters now run several terms and merge the results; a later term
+   failing keeps what the earlier ones found (it had discarded all 98 of
+   Microsoft's postings once).
+10. **Live validation would have unmonitored healthy companies.** A 429 mapped to
+    `research-needed`; Microsoft's rate limit would have removed it from polling.
+    And writing the generated `companies.json` in place broke `make verify`.
+    See BLOCKERS.md BLK-012.
 
 ## Running things
 

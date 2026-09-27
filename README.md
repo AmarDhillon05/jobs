@@ -1,6 +1,6 @@
 # Internship Job Monitor
 
-Watches ~150 high-value companies for newly posted software-engineering and
+Watches 183 high-value companies for newly posted software-engineering and
 adjacent technical internships and alerts you within roughly one polling interval
 (default: **10 minutes**), by email and by push notification to your phone.
 
@@ -64,7 +64,7 @@ python -m jobmonitor.cli health                   # the scraper health view
 python -m jobmonitor.cli coverage                 # registry coverage summary
 ```
 
-`poll` with no `--company` polls all 150. With `EMAIL_TRANSPORT=console` and
+`poll` with no `--company` polls all 183. With `EMAIL_TRANSPORT=console` and
 `PUSH_TRANSPORT=console` you see exactly what would have been delivered.
 
 ### The whole architecture, on emulated AWS
@@ -139,27 +139,40 @@ what is emulated.
    apply URL: `boards.greenhouse.io/<token>`, `jobs.lever.co/<site>`,
    `jobs.ashbyhq.com/<name>`, `<tenant>.wd*.myworkdayjobs.com`,
    `careers.smartrecruiters.com/<id>`.
-2. Add an entry to `companies.json`:
+2. Add an entry to `data/company_universe.json` under `monitored`, then run
+   `make companies`. (`companies.json` is *generated* from it - edit that file by
+   hand and `make verify` fails its up-to-date check.) If the company already
+   appears in the seed repositories, name, industry and priority are enough: the
+   build recovers its board from the application URLs people filed. Otherwise pin
+   the source, and cite your evidence in `notes`:
 
    ```json
    {
      "company": "Example",
-     "careers_url": "https://example.com/careers",
      "industry": "Developer Infrastructure",
      "priority": "high",
      "provider": "greenhouse",
      "provider_config": { "board_token": "example" },
-     "source_discovered_from": ["manual"],
-     "support_status": "supported"
+     "careers_url": "https://example.com/careers",
+     "support_status": "supported",
+     "source_discovered_from": ["curated", "live"],
+     "notes": "careers page links to Greenhouse board 'example'; 40 postings, apply URLs on example.com"
    }
    ```
 
-3. `make test-scrapers`. A per-company test is generated automatically: it builds
+   Check the board is really theirs before adding it: a slug that answers is not
+   proof. The Greenhouse and Lever boards named `linkedin` both answer, and belong
+   to someone else (one has a job titled `123123`). Look at where the apply URLs
+   point.
+3. `make validate-companies` probes the new entry live and records the verdict in
+   `data/validation.json`; transient failures (429, 5xx) are reported but never
+   recorded as a verdict.
+4. `make test-scrapers`. A per-company test is generated automatically: it builds
    the adapter from your config, checks the request is an absolute HTTPS URL
    against the right API host and embeds your identifiers, and replays the provider
    fixture through it. A copy-pasted slug fails here rather than silently
    monitoring somebody else's board.
-4. `make coverage-report` to regenerate `COMPANY_COVERAGE.md`.
+5. `make coverage-report` to regenerate `COMPANY_COVERAGE.md`.
 
 `companies.json` was built from the two seed repositories the PRD mandates, via
 `scripts/build_company_registry.py`. `make companies` regenerates it; `make
@@ -176,12 +189,18 @@ validate-companies` probes every configured source live and rewrites each
 3. Add the provider to the parametrized list in
    `tests/scrapers/test_provider_contract.py`.
 
+If the site is too large to fetch whole and must be *searched*, read its terms
+with `configured_queries(self.config)` and run them through `self.search_all(...)`.
+One keyword is not enough: Goldman titles internships "Summer Analyst", and a
+search for "intern" finds 1 of its 282 campus roles. `search_all` also keeps what
+earlier terms found if a later one fails.
+
 That last step is the point: the contract suite then asserts the whole PRD §7 list
 against your adapter — required fields, valid absolute URLs, stable ids,
 pagination with nothing skipped, malformed records contained, source duplicates
 collapsed, empty results not a failure, `500,500,200` recovery, `429` backoff, and
 `401/403` as blocked-and-never-retried. A tenth adapter cannot ship with weaker
-guarantees than the other nine.
+guarantees than the others.
 
 ## Debugging
 
@@ -222,7 +241,7 @@ cdk bootstrap
 cdk deploy JobMonitorStack
 ```
 
-Estimated cost at 144 polls/day over 150 companies, one user: **≈ $4.70/month**,
+Estimated cost at 144 polls/day over the original 150 companies, one user: **≈ $4.70/month**,
 itemised in `ARCHITECTURE.md` §10.
 
 ### Remaining manual configuration
@@ -256,7 +275,7 @@ every job look new again.
 ```text
 src/jobmonitor/
   models/        Job, JobRecord, Company, ScraperHealth, DeviceRegistration
-  scrapers/      base + 7 ATS adapters + custom/ (json_ld, simplify_fallback, fixture)
+  scrapers/      base + 11 ATS adapters + 5 company adapters + custom/ (json_ld, fallback, fixture)
   filtering/     relevance scoring, permissive by design
   storage/       JobRepository: in-memory and DynamoDB, one contract
   notifications/ events, formatters, 5 push + 3 email transports
