@@ -43,3 +43,5 @@ volume/
 # Scratch / reports
 .verify/
 *.log
+mobile/test-results/
+mobile/playwright-report/

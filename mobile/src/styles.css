@@ -1,0 +1,100 @@
+:root {
+  --bg: #0b1020;
+  --surface: #151b30;
+  --surface-hover: #1c2440;
+  --border: #27304d;
+  --text: #eef1f8;
+  --muted: #9aa4c0;
+  --accent: #5b8cff;
+  --accent-text: #ffffff;
+  --danger: #ff7a7a;
+  --ok: #58d6a0;
+  --radius: 12px;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app { max-width: 720px; margin: 0 auto; padding: 16px 16px 64px; }
+
+.masthead { display: flex; align-items: baseline; gap: 12px; margin: 8px 0 20px; }
+.masthead h1 { font-size: 20px; margin: 0; letter-spacing: -0.01em; }
+.masthead .count { color: var(--muted); font-size: 13px; }
+
+.toolbar { display: flex; gap: 8px; align-items: center; margin-bottom: 16px; }
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 8px 14px;
+}
+button:hover { background: var(--surface-hover); }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+button:disabled { opacity: 0.55; cursor: default; }
+
+.job-list { display: flex; flex-direction: column; gap: 10px; list-style: none; margin: 0; padding: 0; }
+
+.job-card {
+  width: 100%;
+  text-align: left;
+  display: block;
+  padding: 14px;
+  border-radius: var(--radius);
+}
+.job-card .company { font-weight: 650; }
+.job-card .title { margin-top: 2px; }
+.job-card .meta { color: var(--muted); font-size: 13px; margin-top: 6px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+.score { color: var(--ok); font-variant-numeric: tabular-nums; }
+
+.state {
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 32px 20px;
+  text-align: center;
+  color: var(--muted);
+}
+.state h2 { color: var(--text); font-size: 16px; margin: 0 0 6px; }
+.state.error { border-color: var(--danger); }
+.state.error h2 { color: var(--danger); }
+
+.detail h2 { font-size: 19px; margin: 4px 0 2px; }
+.detail .company { color: var(--muted); }
+.detail dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 18px 0; }
+.detail dt { color: var(--muted); }
+.detail dd { margin: 0; }
+.detail .description { white-space: pre-wrap; color: #cfd6ea; }
+
+.apply {
+  display: inline-block;
+  margin: 18px 0 8px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--accent-text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.banner {
+  border: 1px solid var(--accent);
+  background: rgba(91, 140, 255, 0.12);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+a { color: var(--accent); }
