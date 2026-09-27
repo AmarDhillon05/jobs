@@ -52,11 +52,18 @@ NOTIFICATION_DLQ = "jobmonitor-notify-dlq"
 NOTIFICATION_TOPIC = "jobmonitor-new-jobs"
 LAMBDA_ROLE_NAME = "jobmonitor-lambda-role"
 API_NAME = "jobmonitor-api"
+API_STAGE = "local"
+API_STAGE = "local"
 
 MAX_RECEIVE_COUNT = 3
-WORKER_TIMEOUT = 120
-#: LocalStack's Lambda runs the handler in a container; give it room to cold start.
-VISIBILITY_TIMEOUT = WORKER_TIMEOUT * 2
+#: Shorter than the deployed stack's 5 minutes. Local shards use deterministic
+#: fixtures and finish in seconds, and the deployed value would make a poison
+#: message take 3 x 240s = 12 minutes to reach the DLQ, which is dead time in
+#: every test run. Still comfortably longer than any local invocation.
+WORKER_TIMEOUT = 55
+#: Must exceed the function timeout or SQS redelivers a shard that is still
+#: running - the one invariant that must hold locally as well as deployed.
+VISIBILITY_TIMEOUT = 60
 
 FUNCTIONS: tuple[tuple[str, str], ...] = (
     ("jobmonitor-coordinator", "jobmonitor.orchestration.handlers.coordinator_handler"),
@@ -373,28 +380,65 @@ def provision_event_sources(resources: Resources) -> None:
 
 
 def provision_api(resources: Resources) -> None:
-    """An HTTP API in front of the API Lambda. Best effort - see the note below."""
+    """A REST API with a Lambda proxy integration in front of the API Lambda.
+
+    Deliberately API Gateway **v1** (REST), not v2 (HTTP API): v2 is a LocalStack
+    Pro feature, while v1 is in the community edition. The deployed stack uses an
+    HTTP API because it is cheaper and simpler, so this is one of the documented
+    local/real differences - but both invoke the same handler with the same proxy
+    event shape, and `to_request` reads v1 and v2 events alike. Recorded in
+    ARCHITECTURE.md -> "Local emulation gaps".
+    """
     try:
-        apigw = client("apigatewayv2", resources.endpoint_url, resources.region)
-        existing = [api for api in apigw.get_apis().get("Items", []) if api.get("Name") == API_NAME]
-        if existing:
-            resources.api_id = str(existing[0]["ApiId"])
-        else:
-            created = apigw.create_api(
-                Name=API_NAME,
-                ProtocolType="HTTP",
-                Target=resources.functions["jobmonitor-api"],
+        apigw = client("apigateway", resources.endpoint_url, resources.region)
+        existing = [
+            api for api in apigw.get_rest_apis().get("items", []) if api.get("name") == API_NAME
+        ]
+        api_id = (
+            str(existing[0]["id"]) if existing else str(apigw.create_rest_api(name=API_NAME)["id"])
+        )
+
+        resource_ids = {
+            item.get("path"): item["id"] for item in apigw.get_resources(restApiId=api_id)["items"]
+        }
+        root = resource_ids["/"]
+        proxy = (
+            resource_ids.get("/{proxy+}")
+            or apigw.create_resource(restApiId=api_id, parentId=root, pathPart="{proxy+}")["id"]
+        )
+
+        function_arn = resources.functions["jobmonitor-api"]
+        uri = (
+            f"arn:aws:apigateway:{resources.region}:lambda:path/2015-03-31"
+            f"/functions/{function_arn}/invocations"
+        )
+        # ANY on both the root and the greedy proxy, so "/" and "/jobs/x" route.
+        for resource_id in (root, proxy):
+            with contextlib.suppress(Exception):
+                apigw.put_method(
+                    restApiId=api_id,
+                    resourceId=resource_id,
+                    httpMethod="ANY",
+                    authorizationType="NONE",
+                )
+            apigw.put_integration(
+                restApiId=api_id,
+                resourceId=resource_id,
+                httpMethod="ANY",
+                type="AWS_PROXY",
+                integrationHttpMethod="POST",
+                uri=uri,
             )
-            resources.api_id = str(created["ApiId"])
+        apigw.create_deployment(restApiId=api_id, stageName=API_STAGE)
+
+        resources.api_id = api_id
         host = resources.endpoint_url.split("://", 1)[-1]
-        resources.api_url = f"http://{resources.api_id}.execute-api.{host}"
-        print(f"  http api: {resources.api_id}")
+        resources.api_url = f"http://{host}/restapis/{api_id}/{API_STAGE}/_user_request_"
+        print(f"  rest api: {api_id} -> {resources.api_url}")
     except Exception as exc:
-        # API Gateway v2 emulation is the least reliable piece of the community
-        # edition. The Level-7 test therefore invokes the API Lambda directly with
-        # a real API Gateway v2 event as well, so the feed path is proven either
-        # way. Recorded in ARCHITECTURE.md -> "Local emulation gaps".
-        print(f"  http api: SKIPPED ({type(exc).__name__}: {exc})")
+        # The Level-7 test also invokes the API Lambda directly with a real proxy
+        # event, so the feed path is proven even when the gateway is unavailable.
+        print(f"  rest api: SKIPPED ({type(exc).__name__}: {exc})")
         resources.api_id = ""
         resources.api_url = ""
 

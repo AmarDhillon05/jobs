@@ -27,7 +27,11 @@ services:
       # runtime is remapped to an equivalent community image from there. Override
       # with LAMBDA_PYTHON_IMAGE to use the AWS image where ECR is reachable.
       # See BLOCKERS.md BLK-003.
-      - LAMBDA_RUNTIME_IMAGE_MAPPING=${LAMBDA_RUNTIME_IMAGE_MAPPING-{"python3.11": "mlupin/docker-lambda:python3.11"\}}
+      # Docker Compose cannot interpolate a ${VAR:-default} whose default
+      # contains braces, so this is a quoted literal. To use the official AWS
+      # runtime image instead (needs public.ecr.aws reachable), delete this line
+      # or shadow it in a docker-compose.override.yml.
+      - 'LAMBDA_RUNTIME_IMAGE_MAPPING={"python3.11": "mlupin/docker-lambda:python3.11"}'
     volumes:
       - "./.localstack:/var/lib/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"

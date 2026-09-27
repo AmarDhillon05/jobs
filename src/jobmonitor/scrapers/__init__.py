@@ -39,6 +39,7 @@ from jobmonitor.scrapers.base import (
     safe_fetch,
     source_class_for,
 )
+from jobmonitor.scrapers.custom.fixture import FixtureSource
 from jobmonitor.scrapers.custom.json_ld import JsonLdSource
 from jobmonitor.scrapers.custom.simplify_fallback import SimplifyFallbackSource
 from jobmonitor.scrapers.greenhouse import GreenhouseSource
@@ -60,12 +61,17 @@ ATS_PROVIDERS: tuple[str, ...] = (
 )
 #: Company/site-specific adapters.
 CUSTOM_PROVIDERS: tuple[str, ...] = ("json_ld", "simplify_fallback")
+#: Not a real source: a deterministic stand-in used only by the local
+#: architecture test. No companies.json entry uses it (enforced by a test).
+TEST_PROVIDERS: tuple[str, ...] = ("fixture",)
 
 __all__ = [
     "ATS_PROVIDERS",
     "CUSTOM_PROVIDERS",
+    "TEST_PROVIDERS",
     "AshbySource",
     "FetchResult",
+    "FixtureSource",
     "GreenhouseSource",
     "JobSource",
     "JsonLdSource",

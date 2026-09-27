@@ -183,6 +183,13 @@ class TestRegistryWideInvariants:
         fallback = len(REGISTRY.by_provider("simplify_fallback"))
         assert fallback / len(POLLABLE) < 0.15, f"{fallback}/{len(POLLABLE)} on the fallback feed"
 
+    def test_no_real_company_uses_the_test_only_fixture_provider(self) -> None:
+        """`fixture` is a deterministic stand-in for the architecture test only."""
+        from jobmonitor.scrapers import TEST_PROVIDERS
+
+        offenders = [c.company for c in REGISTRY if c.provider in TEST_PROVIDERS]
+        assert not offenders, f"registry entries using a test provider: {offenders}"
+
     def test_no_two_companies_share_a_fallback_feed_company_name(self) -> None:
         claimed: dict[str, str] = {}
         for company in REGISTRY.by_provider("simplify_fallback"):

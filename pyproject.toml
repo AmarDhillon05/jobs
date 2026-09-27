@@ -75,6 +75,8 @@ ignore = [
 # and test cases, not typos.
 "src/jobmonitor/identity.py" = ["RUF001"]
 "tests/unit/test_job_model.py" = ["E501", "RUF001"]
+# A table of shell commands and aligned status output; wrapping hurts both.
+"scripts/verify.py" = ["E501"]
 
 [tool.mypy]
 python_version = "3.11"
