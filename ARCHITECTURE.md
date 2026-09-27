@@ -410,6 +410,30 @@ size (fewer, longer invocations amortise cold starts) or drop the poll interval 
 15 minutes, which would roughly halve it. Free-tier coverage on a new account
 would make the first year closer to **$1–2/month**.
 
+### Update - measured, after growing to 183 companies
+
+The table above was estimated for 150 companies, each fetched with one request.
+Growing the registry to 183 and adding searching adapters changed the workload,
+so it was **measured**: a sequential live run over every company on 2026-09-27
+took **619 s of fetching per poll** (median company 0.4 s; the slowest are
+Applied Materials 53 s, JPMorgan 51 s, NVIDIA 44 s, Oracle 40 s). The worst shard
+of 8 takes 94 s, against a 300 s worker limit.
+
+Lambda bills wall time, so worker cost at 144 polls a day is now:
+
+| Configuration | GB-s / month | Cost after the 400k free GB-s |
+| --- | --- | --- |
+| Today: 512 MB, a shard's companies fetched one after another | 1.34 M | **~$12.50** |
+| 256 MB (one-line infrastructure change) | 0.67 M | ~$3.60 |
+| Fetch a shard's 8 companies concurrently, 512 MB | 0.82 M | ~$5.60 |
+| Both | 0.41 M | **~$0.10** |
+
+That takes the whole deployment over the PRD's $0-10 target until one of those
+changes is made. Both are assumptions to verify on real Lambda: its network timing
+differs from this environment's, and 256 MB means proportionally less CPU for
+parsing the largest pages. Recorded rather than silently fixed, because the
+polling design is being reworked (hourly digest, per-job instant alerts).
+
 ## 11. Deviations from the PRD's suggestions
 
 | PRD suggested | Built | Why |

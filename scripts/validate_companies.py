@@ -121,6 +121,16 @@ def probe(company: Company, client: HttpClient) -> Outcome:
     resolved = STATUS_MAP.get(health.status, SupportStatus.RESEARCH_NEEDED)
     inconclusive = (
         health.status is ScraperStatus.FAILED and (health.error_type or "") in TRANSIENT_ERRORS
+    ) or (
+        # Degraded *only* because a later search term failed transiently (Microsoft's
+        # "summer analyst" term hit a rate limit): that says nothing about the config.
+        health.status is ScraperStatus.DEGRADED
+        and bool(result.partial_failures)
+        and not result.truncated
+        and not result.malformed
+        and all(
+            any(kind in failure for kind in TRANSIENT_ERRORS) for failure in result.partial_failures
+        )
     )
     if inconclusive:
         resolved = company.support_status

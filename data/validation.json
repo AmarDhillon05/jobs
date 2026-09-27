@@ -1,0 +1,1101 @@
+{
+  "_comment": [
+    "Observed, not editorial: the last conclusive live verdict per company,",
+    "written by scripts/validate_companies.py --write and merged into",
+    "companies.json by scripts/build_company_registry.py."
+  ],
+  "companies": {
+    "1Password": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 64,
+      "error": null
+    },
+    "AMD": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 125,
+      "error": null
+    },
+    "AQR Capital Management": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 51,
+      "error": null
+    },
+    "Abridge": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 47,
+      "error": null
+    },
+    "Adobe": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 207,
+      "error": null
+    },
+    "AeroVironment": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 363,
+      "error": null
+    },
+    "Affirm": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 179,
+      "error": null
+    },
+    "Airbnb": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 159,
+      "error": null
+    },
+    "Akuna Capital": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 42,
+      "error": null
+    },
+    "Altera Corporation": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 84,
+      "error": null
+    },
+    "Amazon": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 2805,
+      "error": null
+    },
+    "Ambarella": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 17,
+      "error": null
+    },
+    "Analog Devices": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 490,
+      "error": null
+    },
+    "Anduril": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 2371,
+      "error": null
+    },
+    "Anthropic": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 619,
+      "error": null
+    },
+    "Apple": {
+      "status": "partial",
+      "validated_on": "2026-09-27",
+      "jobs": 18,
+      "error": null
+    },
+    "Applied Intuition": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 306,
+      "error": null
+    },
+    "Applied Materials": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 1462,
+      "error": null
+    },
+    "Apptronik": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 78,
+      "error": null
+    },
+    "Arm": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 122,
+      "error": null
+    },
+    "Astera Labs": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 5,
+      "error": null
+    },
+    "Astranis": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 165,
+      "error": null
+    },
+    "Atlassian": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 273,
+      "error": null
+    },
+    "Atomic Semi": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 61,
+      "error": null
+    },
+    "Autodesk": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 27,
+      "error": null
+    },
+    "Bedrock Robotics": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 41,
+      "error": null
+    },
+    "Belvedere Trading": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 21,
+      "error": null
+    },
+    "Benchling": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 56,
+      "error": null
+    },
+    "BlackRock": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 179,
+      "error": null
+    },
+    "Block": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 214,
+      "error": null
+    },
+    "Blue Origin": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 516,
+      "error": null
+    },
+    "Boston Dynamics": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 76,
+      "error": null
+    },
+    "Brex": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 259,
+      "error": null
+    },
+    "Bright Machines": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 16,
+      "error": null
+    },
+    "Broadcom": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 100,
+      "error": null
+    },
+    "ByteDance / TikTok": {
+      "status": "partial",
+      "validated_on": "2026-09-27",
+      "jobs": 299,
+      "error": null
+    },
+    "CME Group": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 41,
+      "error": null
+    },
+    "Cadence": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 175,
+      "error": null
+    },
+    "Canva": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 192,
+      "error": null
+    },
+    "Capital One": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 1109,
+      "error": null
+    },
+    "Castleton Commodities International": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 9,
+      "error": null
+    },
+    "CesiumAstro": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 309,
+      "error": null
+    },
+    "Chicago Trading Company": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 6,
+      "error": null
+    },
+    "Cirrus Logic": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 120,
+      "error": null
+    },
+    "Cisco": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 555,
+      "error": null
+    },
+    "Citadel": {
+      "status": "partial",
+      "validated_on": "2026-09-27",
+      "jobs": 3,
+      "error": null
+    },
+    "Citadel Securities": {
+      "status": "partial",
+      "validated_on": "2026-09-27",
+      "jobs": 12,
+      "error": null
+    },
+    "Cloudflare": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 394,
+      "error": null
+    },
+    "Cohere": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 147,
+      "error": null
+    },
+    "Coinbase": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 210,
+      "error": null
+    },
+    "Confluent": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 20,
+      "error": null
+    },
+    "CrowdStrike": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 207,
+      "error": null
+    },
+    "DE Shaw": {
+      "status": "partial",
+      "validated_on": "2026-09-27",
+      "jobs": 0,
+      "error": null
+    },
+    "DRW": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 165,
+      "error": null
+    },
+    "DV Trading": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 72,
+      "error": null
+    },
+    "Databricks": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 888,
+      "error": null
+    },
+    "Datadog": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 449,
+      "error": null
+    },
+    "Dell Technologies": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 179,
+      "error": null
+    },
+    "DoorDash": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 459,
+      "error": null
+    },
+    "Dropbox": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 44,
+      "error": null
+    },
+    "Etched": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 109,
+      "error": null
+    },
+    "F5": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 115,
+      "error": null
+    },
+    "Figma": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 163,
+      "error": null
+    },
+    "Figure": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 97,
+      "error": null
+    },
+    "Five Rings": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 16,
+      "error": null
+    },
+    "G-Research": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 20,
+      "error": null
+    },
+    "GlobalFoundries": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 336,
+      "error": null
+    },
+    "Goldman Sachs": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 282,
+      "error": null
+    },
+    "Google": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 84,
+      "error": null
+    },
+    "Harvey": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 304,
+      "error": null
+    },
+    "Hermeus": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 85,
+      "error": null
+    },
+    "Hudson River Trading": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 87,
+      "error": null
+    },
+    "IBM": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 328,
+      "error": null
+    },
+    "IMC Trading": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 175,
+      "error": null
+    },
+    "Integra FEC": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 8,
+      "error": null
+    },
+    "Intel": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 382,
+      "error": null
+    },
+    "Intuitive Surgical": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 742,
+      "error": null
+    },
+    "IonQ": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 114,
+      "error": null
+    },
+    "JPMorgan Chase": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 3894,
+      "error": null
+    },
+    "Jain Global": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 19,
+      "error": null
+    },
+    "Jane Street": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 228,
+      "error": null
+    },
+    "Jump Trading": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 113,
+      "error": null
+    },
+    "KLA": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 59,
+      "error": null
+    },
+    "Klaviyo": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 17,
+      "error": null
+    },
+    "Kodiak Robotics": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 68,
+      "error": null
+    },
+    "Lightmatter": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 66,
+      "error": null
+    },
+    "Lucid Motors": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 433,
+      "error": null
+    },
+    "Man Group": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 59,
+      "error": null
+    },
+    "Marqeta": {
+      "status": "partial",
+      "validated_on": "2026-09-27",
+      "jobs": 0,
+      "error": null
+    },
+    "Marvell": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 200,
+      "error": null
+    },
+    "Mastercard": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 49,
+      "error": null
+    },
+    "Mercury": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 62,
+      "error": null
+    },
+    "Meta": {
+      "status": "partial",
+      "validated_on": "2026-09-27",
+      "jobs": 1,
+      "error": null
+    },
+    "Micron": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 329,
+      "error": null
+    },
+    "Millennium": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 5,
+      "error": null
+    },
+    "Mistral AI": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 207,
+      "error": null
+    },
+    "MongoDB": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 396,
+      "error": null
+    },
+    "Morgan Stanley": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 320,
+      "error": null
+    },
+    "NVIDIA": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 1010,
+      "error": null
+    },
+    "NXP Semiconductors": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 401,
+      "error": null
+    },
+    "Nasdaq": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 81,
+      "error": null
+    },
+    "Netflix": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 8,
+      "error": null
+    },
+    "Northrop Grumman": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 1619,
+      "error": null
+    },
+    "Notion": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 128,
+      "error": null
+    },
+    "OpenAI": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 829,
+      "error": null
+    },
+    "Optiver": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 10,
+      "error": null
+    },
+    "Oracle": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 2062,
+      "error": null
+    },
+    "PEAK6": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 2,
+      "error": null
+    },
+    "Palantir": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 321,
+      "error": null
+    },
+    "Palo Alto Networks": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 792,
+      "error": null
+    },
+    "Perplexity AI": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 123,
+      "error": null
+    },
+    "Persona": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 16,
+      "error": null
+    },
+    "Physical Intelligence": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 35,
+      "error": null
+    },
+    "Pinterest": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 152,
+      "error": null
+    },
+    "Plaid": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 121,
+      "error": null
+    },
+    "Planet": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 120,
+      "error": null
+    },
+    "PlanetScale": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 11,
+      "error": null
+    },
+    "PlusAI": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 41,
+      "error": null
+    },
+    "Point72": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 220,
+      "error": null
+    },
+    "Postman": {
+      "status": "partial",
+      "validated_on": "2026-09-27",
+      "jobs": 0,
+      "error": null
+    },
+    "Proofpoint": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 59,
+      "error": null
+    },
+    "Qualcomm": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 107,
+      "error": null
+    },
+    "Quantinuum": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 122,
+      "error": null
+    },
+    "RTX": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 464,
+      "error": null
+    },
+    "Radix Trading": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 8,
+      "error": null
+    },
+    "Ramp": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 158,
+      "error": null
+    },
+    "Red Hat": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 102,
+      "error": null
+    },
+    "Reddit": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 150,
+      "error": null
+    },
+    "Replit": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 75,
+      "error": null
+    },
+    "Rigetti": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 13,
+      "error": null
+    },
+    "Rippling": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 331,
+      "error": null
+    },
+    "Robinhood": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 159,
+      "error": null
+    },
+    "Roblox": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 257,
+      "error": null
+    },
+    "Rocket Lab": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 525,
+      "error": null
+    },
+    "Salesforce": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 754,
+      "error": null
+    },
+    "Samsara": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 249,
+      "error": null
+    },
+    "Samsung Research America": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 4,
+      "error": null
+    },
+    "Sandisk": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 0,
+      "error": null
+    },
+    "Saronic": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 206,
+      "error": null
+    },
+    "Scale AI": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 203,
+      "error": null
+    },
+    "Schonfeld": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 80,
+      "error": null
+    },
+    "Semgrep": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 11,
+      "error": null
+    },
+    "Sentry": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 41,
+      "error": null
+    },
+    "ServiceNow": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 706,
+      "error": null
+    },
+    "Shield AI": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 586,
+      "error": null
+    },
+    "Sierra": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 207,
+      "error": null
+    },
+    "Sigma Computing": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 66,
+      "error": null
+    },
+    "SingleStore": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 42,
+      "error": null
+    },
+    "Skydio": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 136,
+      "error": null
+    },
+    "Snap": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 83,
+      "error": null
+    },
+    "Snowflake": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 349,
+      "error": null
+    },
+    "Snyk": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 16,
+      "error": null
+    },
+    "SpaceX": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 2595,
+      "error": null
+    },
+    "Spotify": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 80,
+      "error": null
+    },
+    "Stripe": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 701,
+      "error": null
+    },
+    "Susquehanna International Group": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 100,
+      "error": null
+    },
+    "Symbotic": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 65,
+      "error": null
+    },
+    "Tenstorrent": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 6,
+      "error": null
+    },
+    "Tesla": {
+      "status": "partial",
+      "validated_on": "2026-09-27",
+      "jobs": 93,
+      "error": null
+    },
+    "The Boeing Company": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 457,
+      "error": null
+    },
+    "Together AI": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 78,
+      "error": null
+    },
+    "Toyota Research Institute": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 13,
+      "error": null
+    },
+    "Twilio": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 138,
+      "error": null
+    },
+    "Two Sigma": {
+      "status": "partial",
+      "validated_on": "2026-09-27",
+      "jobs": 4,
+      "error": null
+    },
+    "Uber": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 249,
+      "error": null
+    },
+    "Varda Space Industries": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 88,
+      "error": null
+    },
+    "Veeam Software": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 246,
+      "error": null
+    },
+    "Vercel": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 88,
+      "error": null
+    },
+    "Verkada": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 304,
+      "error": null
+    },
+    "Virtu": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 49,
+      "error": null
+    },
+    "Visa": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 480,
+      "error": null
+    },
+    "Voyager Technologies": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 180,
+      "error": null
+    },
+    "Walleye Capital": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 5,
+      "error": null
+    },
+    "Waymo": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 358,
+      "error": null
+    },
+    "Wellington Management": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 92,
+      "error": null
+    },
+    "Western Digital": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 335,
+      "error": null
+    },
+    "XTX Markets": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 9,
+      "error": null
+    },
+    "Zendesk": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 69,
+      "error": null
+    },
+    "Zocdoc": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 58,
+      "error": null
+    },
+    "Zoom": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 46,
+      "error": null
+    },
+    "Zoox": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 241,
+      "error": null
+    },
+    "Zscaler": {
+      "status": "supported",
+      "validated_on": "2026-09-27",
+      "jobs": 380,
+      "error": null
+    }
+  }
+}

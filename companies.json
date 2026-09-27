@@ -15,7 +15,8 @@
     "notes": "config recovered from 18 observed posting URL(s); seed name(s): 1Password",
     "aliases": [
       "AgileBits"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Abridge",
@@ -30,7 +31,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Abridge"
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Abridge",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Adobe",
@@ -47,7 +49,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 12 observed posting URL(s); seed name(s): Adobe"
+    "notes": "config recovered from 12 observed posting URL(s); seed name(s): Adobe",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "AeroVironment",
@@ -64,7 +67,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 23 observed posting URL(s); seed name(s): AeroVironment"
+    "notes": "config recovered from 23 observed posting URL(s); seed name(s): AeroVironment",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Affirm",
@@ -79,7 +83,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Affirm"
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Affirm",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Airbnb",
@@ -95,7 +100,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "Greenhouse board 'airbnb': 159 postings, every apply URL on careers.airbnb.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+    "notes": "Greenhouse board 'airbnb': 159 postings, every apply URL on careers.airbnb.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Akuna Capital",
@@ -114,7 +120,8 @@
     "notes": "Greenhouse board 'akunacapital': 42 postings, every apply URL on akunacapital.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
     "aliases": [
       "Akuna"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Altera Corporation",
@@ -134,7 +141,8 @@
     "notes": "config recovered from 24 observed posting URL(s); seed name(s): Altera, Altera Corporation",
     "aliases": [
       "Altera"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Amazon",
@@ -152,7 +160,8 @@
     "aliases": [
       "Amazon Web Services",
       "AWS"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Ambarella",
@@ -169,7 +178,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 18 observed posting URL(s); seed name(s): Ambarella"
+    "notes": "config recovered from 18 observed posting URL(s); seed name(s): Ambarella",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "AMD",
@@ -189,7 +199,8 @@
     "notes": "careers.amd.com is an iCIMS Jibe site; /api/jobs answers and job pages resolve (verified live 2026-09-27).",
     "aliases": [
       "Advanced Micro Devices"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Analog Devices",
@@ -206,7 +217,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 24 observed posting URL(s); seed name(s): Analog Devices"
+    "notes": "config recovered from 24 observed posting URL(s); seed name(s): Analog Devices",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Anduril",
@@ -225,7 +237,8 @@
     "notes": "config recovered from 13 observed posting URL(s); seed name(s): Anduril",
     "aliases": [
       "Anduril Industries"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Anthropic",
@@ -240,7 +253,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Anthropic"
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Anthropic",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Apple",
@@ -258,7 +272,8 @@
       "curated"
     ],
     "support_status": "partial",
-    "notes": "company-owned careers site with bot protection; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "company-owned careers site with bot protection; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Applied Intuition",
@@ -273,7 +288,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 8 observed posting URL(s); seed name(s): Applied Intuition"
+    "notes": "config recovered from 8 observed posting URL(s); seed name(s): Applied Intuition",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Applied Materials",
@@ -290,7 +306,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 67 observed posting URL(s); seed name(s): Applied Materials"
+    "notes": "config recovered from 67 observed posting URL(s); seed name(s): Applied Materials",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Apptronik",
@@ -306,7 +323,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Apptronik"
+    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Apptronik",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "AQR Capital Management",
@@ -325,7 +343,8 @@
     "notes": "Greenhouse board 'aqr': 51 postings, every apply URL on careers.aqr.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
     "aliases": [
       "AQR"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Arm",
@@ -345,7 +364,8 @@
     "aliases": [
       "Arm Holdings",
       "ARM"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Astera Labs",
@@ -361,7 +381,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Astera, Astera Labs"
+    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Astera, Astera Labs",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Astranis",
@@ -377,7 +398,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 43 observed posting URL(s); seed name(s): Astranis"
+    "notes": "config recovered from 43 observed posting URL(s); seed name(s): Astranis",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Atlassian",
@@ -391,7 +413,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "atlassian.com careers listings endpoint answers (verified live 2026-09-27). Only updated dates exposed."
+    "notes": "atlassian.com careers listings endpoint answers (verified live 2026-09-27). Only updated dates exposed.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Atomic Semi",
@@ -410,7 +433,8 @@
     "notes": "rebranded: atomicsemi.com/careers redirects to fab2.com/careers, which links Ashby board 'fab2' (61 postings); the old 'atomicsemi' board is gone (verified live 2026-09-27).",
     "aliases": [
       "Fab2"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Autodesk",
@@ -427,7 +451,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 51 observed posting URL(s); seed name(s): Autodesk"
+    "notes": "config recovered from 51 observed posting URL(s); seed name(s): Autodesk",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Bedrock Robotics",
@@ -442,7 +467,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 10 observed posting URL(s); seed name(s): Bedrock Robotics"
+    "notes": "config recovered from 10 observed posting URL(s); seed name(s): Bedrock Robotics",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Belvedere Trading",
@@ -458,7 +484,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Belvedere Trading"
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Belvedere Trading",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Benchling",
@@ -473,7 +500,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Benchling"
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Benchling",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "BlackRock",
@@ -490,7 +518,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 14 observed posting URL(s); seed name(s): BlackRock"
+    "notes": "config recovered from 14 observed posting URL(s); seed name(s): BlackRock",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Block",
@@ -510,7 +539,8 @@
     "aliases": [
       "Square",
       "Cash App"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Bloomberg",
@@ -541,7 +571,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Blue Origin"
+    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Blue Origin",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Boston Dynamics",
@@ -558,7 +589,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 7 observed posting URL(s); seed name(s): Boston Dynamics"
+    "notes": "config recovered from 7 observed posting URL(s); seed name(s): Boston Dynamics",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Brex",
@@ -574,7 +606,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "Greenhouse board 'brex': 259 postings, every apply URL on brex.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+    "notes": "Greenhouse board 'brex': 259 postings, every apply URL on brex.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Bright Machines",
@@ -589,7 +622,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Bright Machines"
+    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Bright Machines",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Broadcom",
@@ -607,7 +641,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "Workday CXS API answers (verified live 2026-09-27)."
+    "notes": "Workday CXS API answers (verified live 2026-09-27).",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "ByteDance / TikTok",
@@ -626,7 +661,8 @@
       "curated"
     ],
     "support_status": "partial",
-    "notes": "lifeattiktok.com's API needs signed requests (not something to work around); monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "lifeattiktok.com's API needs signed requests (not something to work around); monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Cadence",
@@ -646,7 +682,8 @@
     "notes": "config recovered from 2 observed posting URL(s); seed name(s): Cadence",
     "aliases": [
       "Cadence Design Systems"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Canva",
@@ -662,7 +699,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 6 observed posting URL(s); seed name(s): Canva"
+    "notes": "config recovered from 6 observed posting URL(s); seed name(s): Canva",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Capital One",
@@ -680,7 +718,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 36 observed posting URL(s); seed name(s): Capital One"
+    "notes": "config recovered from 36 observed posting URL(s); seed name(s): Capital One",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Castleton Commodities International",
@@ -701,7 +740,8 @@
     "notes": "config recovered from 11 observed posting URL(s); seed name(s): Castleton Commodities International",
     "aliases": [
       "Castleton Commodities"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "CesiumAstro",
@@ -716,7 +756,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 14 observed posting URL(s); seed name(s): CesiumAstro"
+    "notes": "config recovered from 14 observed posting URL(s); seed name(s): CesiumAstro",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Chicago Trading Company",
@@ -735,7 +776,8 @@
     "notes": "config recovered from 9 observed posting URL(s); seed name(s): Chicago Trading Company",
     "aliases": [
       "CTC"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Cirrus Logic",
@@ -752,7 +794,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 15 observed posting URL(s); seed name(s): Cirrus Logic"
+    "notes": "config recovered from 15 observed posting URL(s); seed name(s): Cirrus Logic",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Cisco",
@@ -772,7 +815,8 @@
     "notes": "config recovered from 26 observed posting URL(s); seed name(s): Cisco",
     "aliases": [
       "Cisco Systems"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Citadel",
@@ -790,7 +834,8 @@
       "curated"
     ],
     "support_status": "partial",
-    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Citadel Securities",
@@ -808,7 +853,8 @@
       "curated"
     ],
     "support_status": "partial",
-    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Cloudflare",
@@ -824,7 +870,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 23 observed posting URL(s); seed name(s): Cloudflare"
+    "notes": "config recovered from 23 observed posting URL(s); seed name(s): Cloudflare",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "CME Group",
@@ -844,7 +891,8 @@
     "notes": "config recovered from 11 observed posting URL(s); seed name(s): CME Group",
     "aliases": [
       "CME"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Cohere",
@@ -859,7 +907,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Cohere"
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Cohere",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Coinbase",
@@ -878,8 +927,9 @@
       "ouckah",
       "curated"
     ],
-    "support_status": "partial",
-    "notes": "Greenhouse board on a company-owned domain. Evidence: 8 observed postings are boards.greenhouse.io embed job_app URLs, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (coinbase, coinbase1); run `make validate-companies` to pin the winner and promote to supported."
+    "support_status": "supported",
+    "notes": "Greenhouse board on a company-owned domain. Evidence: 8 observed postings are boards.greenhouse.io embed job_app URLs, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (coinbase, coinbase1); run `make validate-companies` to pin the winner and promote to supported.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Confluent",
@@ -894,7 +944,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Confluent"
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Confluent",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "CrowdStrike",
@@ -914,7 +965,8 @@
     "notes": "config recovered from 6 observed posting URL(s); seed name(s): Crowdstrike",
     "aliases": [
       "Crowdstrike"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Databricks",
@@ -933,8 +985,9 @@
       "ouckah",
       "curated"
     ],
-    "support_status": "partial",
-    "notes": "Greenhouse board on a company-owned domain. Evidence: 3 observed postings are boards.greenhouse.io embed job_app URLs, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (databricks, databricks1); run `make validate-companies` to pin the winner and promote to supported."
+    "support_status": "supported",
+    "notes": "Greenhouse board on a company-owned domain. Evidence: 3 observed postings are boards.greenhouse.io embed job_app URLs, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (databricks, databricks1); run `make validate-companies` to pin the winner and promote to supported.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Datadog",
@@ -953,8 +1006,9 @@
       "ouckah",
       "curated"
     ],
-    "support_status": "partial",
-    "notes": "Greenhouse board on a company-owned domain. Evidence: 6 observed postings on careers.datadoghq.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (datadog, datadoghq); run `make validate-companies` to pin the winner and promote to supported."
+    "support_status": "supported",
+    "notes": "Greenhouse board on a company-owned domain. Evidence: 6 observed postings on careers.datadoghq.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (datadog, datadoghq); run `make validate-companies` to pin the winner and promote to supported.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "DE Shaw",
@@ -972,7 +1026,8 @@
       "curated"
     ],
     "support_status": "partial",
-    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Dell Technologies",
@@ -992,7 +1047,8 @@
     "notes": "moved off Workday (answers 422): jobs.dell.com now redirects to Oracle Fusion. Single-site tenant - the site number is ignored, so the site code 'careers' is used, which also makes job links resolve (verified live 2026-09-27).",
     "aliases": [
       "Dell"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "DoorDash",
@@ -1007,7 +1063,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 5 observed posting URL(s); seed name(s): DoorDash"
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): DoorDash",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Dropbox",
@@ -1023,7 +1080,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "Greenhouse board 'dropbox': 44 postings, every apply URL on jobs.dropbox.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+    "notes": "Greenhouse board 'dropbox': 44 postings, every apply URL on jobs.dropbox.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "DRW",
@@ -1039,7 +1097,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 20 observed posting URL(s); seed name(s): DRW"
+    "notes": "config recovered from 20 observed posting URL(s); seed name(s): DRW",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "DV Trading",
@@ -1054,7 +1113,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 11 observed posting URL(s); seed name(s): DV Trading"
+    "notes": "config recovered from 11 observed posting URL(s); seed name(s): DV Trading",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Etched",
@@ -1070,7 +1130,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 38 observed posting URL(s); seed name(s): Etched"
+    "notes": "config recovered from 38 observed posting URL(s); seed name(s): Etched",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "F5",
@@ -1090,7 +1151,8 @@
     "notes": "config recovered from 13 observed posting URL(s); seed name(s): F5",
     "aliases": [
       "F5 Networks"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Figma",
@@ -1106,7 +1168,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 8 observed posting URL(s); seed name(s): Figma"
+    "notes": "config recovered from 8 observed posting URL(s); seed name(s): Figma",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Figure",
@@ -1125,7 +1188,8 @@
     "notes": "config recovered from 12 observed posting URL(s); seed name(s): Figure",
     "aliases": [
       "Figure AI"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Five Rings",
@@ -1140,7 +1204,8 @@
       "ouckah"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Five Rings"
+    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Five Rings",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "G-Research",
@@ -1161,7 +1226,8 @@
     "aliases": [
       "G Research",
       "Gresearch"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "GlobalFoundries",
@@ -1178,7 +1244,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 12 observed posting URL(s); seed name(s): GlobalFoundries"
+    "notes": "config recovered from 12 observed posting URL(s); seed name(s): GlobalFoundries",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Goldman Sachs",
@@ -1192,7 +1259,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "higher.gs.com GraphQL API answers; campus roles read whole (titled 'Summer Analyst') (verified live 2026-09-27)."
+    "notes": "higher.gs.com GraphQL API answers; campus roles read whole (titled 'Summer Analyst') (verified live 2026-09-27).",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Google",
@@ -1206,7 +1274,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "results page embeds its job data (AF_initDataCallback ds:1); parsed from a plain GET (verified live 2026-09-27)."
+    "notes": "results page embeds its job data (AF_initDataCallback ds:1); parsed from a plain GET (verified live 2026-09-27).",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Harvey",
@@ -1221,7 +1290,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Harvey"
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Harvey",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Hermeus",
@@ -1237,7 +1307,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 10 observed posting URL(s); seed name(s): Hermeus"
+    "notes": "config recovered from 10 observed posting URL(s); seed name(s): Hermeus",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Hudson River Trading",
@@ -1256,8 +1327,9 @@
       "ouckah",
       "curated"
     ],
-    "support_status": "partial",
-    "notes": "Greenhouse board on a company-owned domain. Evidence: 11 observed postings on hudsonrivertrading.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (wehrtyou, hudsonrivertrading); run `make validate-companies` to pin the winner and promote to supported."
+    "support_status": "supported",
+    "notes": "Greenhouse board on a company-owned domain. Evidence: 11 observed postings on hudsonrivertrading.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (wehrtyou, hudsonrivertrading); run `make validate-companies` to pin the winner and promote to supported.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "IBM",
@@ -1271,7 +1343,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "IBM careers search API answers (verified live 2026-09-27). No posting dates exposed."
+    "notes": "IBM careers search API answers (verified live 2026-09-27). No posting dates exposed.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "IMC Trading",
@@ -1289,7 +1362,8 @@
     "notes": "config recovered from 12 observed posting URL(s); seed name(s): IMC Trading",
     "aliases": [
       "IMC"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Integra FEC",
@@ -1304,7 +1378,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Integra FEC"
+    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Integra FEC",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Intel",
@@ -1322,7 +1397,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 95 observed posting URL(s); seed name(s): Intel, Intel Corporation"
+    "notes": "config recovered from 95 observed posting URL(s); seed name(s): Intel, Intel Corporation",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Intuitive Surgical",
@@ -1340,7 +1416,8 @@
     "notes": "config recovered from 16 observed posting URL(s); seed name(s): Intuitive Surgical",
     "aliases": [
       "Intuitive"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "IonQ",
@@ -1355,7 +1432,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 1 observed posting URL(s); seed name(s): IonQ"
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): IonQ",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Jain Global",
@@ -1372,7 +1450,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Jain Global"
+    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Jain Global",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Jane Street",
@@ -1388,7 +1467,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 37 observed posting URL(s); seed name(s): Jane Street"
+    "notes": "config recovered from 37 observed posting URL(s); seed name(s): Jane Street",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "JPMorgan Chase",
@@ -1410,7 +1490,8 @@
       "JPMorgan",
       "J.P. Morgan",
       "JP Morgan"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Jump Trading",
@@ -1426,7 +1507,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "Greenhouse board 'jumptrading': 113 postings, every apply URL on jumptrading.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+    "notes": "Greenhouse board 'jumptrading': 113 postings, every apply URL on jumptrading.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "KLA",
@@ -1446,7 +1528,8 @@
     "notes": "config recovered from 55 observed posting URL(s); seed name(s): KLA, KLA Corporation",
     "aliases": [
       "KLA-Tencor"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Klaviyo",
@@ -1461,7 +1544,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Klaviyo"
+    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Klaviyo",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Kodiak Robotics",
@@ -1479,7 +1563,8 @@
     "notes": "config recovered from 10 observed posting URL(s); seed name(s): Kodiak Robotics",
     "aliases": [
       "Kodiak"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Lightmatter",
@@ -1494,7 +1579,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Lightmatter"
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Lightmatter",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "LinkedIn",
@@ -1523,7 +1609,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Lucid Motors"
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Lucid Motors",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Man Group",
@@ -1538,7 +1625,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Man Group"
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Man Group",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Marqeta",
@@ -1556,7 +1644,8 @@
       "curated"
     ],
     "support_status": "partial",
-    "notes": "the only observed board ('mqreferrals') is an internal referral board and now 404s; the careers page loads jobs client-side with no discoverable public endpoint; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "the only observed board ('mqreferrals') is an internal referral board and now 404s; the careers page loads jobs client-side with no discoverable public endpoint; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Marvell",
@@ -1576,7 +1665,8 @@
     "notes": "config recovered from 91 observed posting URL(s); seed name(s): Marvell",
     "aliases": [
       "Marvell Technology"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Mastercard",
@@ -1593,7 +1683,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 16 observed posting URL(s); seed name(s): Mastercard"
+    "notes": "config recovered from 16 observed posting URL(s); seed name(s): Mastercard",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Mercury",
@@ -1608,7 +1699,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 6 observed posting URL(s); seed name(s): Mercury"
+    "notes": "config recovered from 6 observed posting URL(s); seed name(s): Mercury",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Meta",
@@ -1627,7 +1719,8 @@
       "curated"
     ],
     "support_status": "partial",
-    "notes": "metacareers.com's GraphQL needs page-issued tokens (not something to work around); monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "metacareers.com's GraphQL needs page-issued tokens (not something to work around); monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Micron",
@@ -1650,7 +1743,8 @@
     "notes": "config recovered from 85 observed posting URL(s); seed name(s): Micron Technology. Workday search for 'intern' matches most of the board (RTX 2,350 / Micron 3,056 postings), past Workday's 2,000-result limit, and so does 'co-op'; 'internship' returns 465 / 329 and its results already include co-op roles (measured live 2026-09-27).",
     "aliases": [
       "Micron Technology"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Microsoft",
@@ -1660,14 +1754,19 @@
     "provider": "eightfold",
     "provider_config": {
       "host": "apply.careers.microsoft.com",
-      "domain": "microsoft.com"
+      "domain": "microsoft.com",
+      "queries": [
+        "intern",
+        "internship",
+        "co-op"
+      ]
     },
     "source_discovered_from": [
       "curated",
       "live"
     ],
     "support_status": "supported",
-    "notes": "careers page runs on Eightfold; PCSX search API answers, 98 intern postings (verified live 2026-09-27)."
+    "notes": "careers page runs on Eightfold; PCSX search API answers, 98 intern postings (verified live 2026-09-27). Eightfold rate-limits this tenant after ~20-30 requests (429s observed twice); the bank-title terms ('summer analyst', 'summer associate') are dropped - Microsoft does not use them, and they returned 73 fuzzy matches - bringing a poll to ~22 requests."
   },
   {
     "company": "Millennium",
@@ -1688,7 +1787,8 @@
     "notes": "careers page links to mlp.eightfold.ai; this tenant is still on the v2 API (PCSX answers 403) (verified live 2026-09-27).",
     "aliases": [
       "Millennium Management"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Mistral AI",
@@ -1706,7 +1806,8 @@
     "notes": "config recovered from 4 observed posting URL(s); seed name(s): Mistral AI",
     "aliases": [
       "Mistral"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "MongoDB",
@@ -1722,7 +1823,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "Greenhouse board 'mongodb': 396 postings, every apply URL on mongodb.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+    "notes": "Greenhouse board 'mongodb': 396 postings, every apply URL on mongodb.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Morgan Stanley",
@@ -1739,7 +1841,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "careers page links to morganstanley.eightfold.ai; PCSX search API answers (verified live 2026-09-27)."
+    "notes": "careers page links to morganstanley.eightfold.ai; PCSX search API answers (verified live 2026-09-27).",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Nasdaq",
@@ -1756,7 +1859,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Nasdaq"
+    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Nasdaq",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Netflix",
@@ -1774,7 +1878,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "moved off Workday (the old tenant answers 422) to Eightfold at explore.jobs.netflix.net; v2 API answers (verified live 2026-09-27)."
+    "notes": "moved off Workday (the old tenant answers 422) to Eightfold at explore.jobs.netflix.net; v2 API answers (verified live 2026-09-27).",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Northrop Grumman",
@@ -1792,7 +1897,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 51 observed posting URL(s); seed name(s): Northrop Grumman"
+    "notes": "config recovered from 51 observed posting URL(s); seed name(s): Northrop Grumman",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Notion",
@@ -1808,7 +1914,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 10 observed posting URL(s); seed name(s): Notion"
+    "notes": "config recovered from 10 observed posting URL(s); seed name(s): Notion",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "NVIDIA",
@@ -1826,7 +1933,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 83 observed posting URL(s); seed name(s): NVIDIA"
+    "notes": "config recovered from 83 observed posting URL(s); seed name(s): NVIDIA",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "NXP Semiconductors",
@@ -1846,7 +1954,8 @@
     "notes": "config recovered from 35 observed posting URL(s); seed name(s): NXP Semiconductors",
     "aliases": [
       "NXP"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "OpenAI",
@@ -1861,7 +1970,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 1 observed posting URL(s); seed name(s): OpenAI"
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): OpenAI",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Optiver",
@@ -1877,7 +1987,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 16 observed posting URL(s); seed name(s): Optiver"
+    "notes": "config recovered from 16 observed posting URL(s); seed name(s): Optiver",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Oracle",
@@ -1894,7 +2005,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "careers.oracle.com runs on Oracle Fusion (eeho.fa.us2.oraclecloud.com); REST API answers (verified live 2026-09-27)."
+    "notes": "careers.oracle.com runs on Oracle Fusion (eeho.fa.us2.oraclecloud.com); REST API answers (verified live 2026-09-27).",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Palantir",
@@ -1913,7 +2025,8 @@
     "notes": "config recovered from 51 observed posting URL(s); seed name(s): Palantir, Palantir Technologies",
     "aliases": [
       "Palantir Technologies"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Palo Alto Networks",
@@ -1930,7 +2043,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Palo Alto Networks"
+    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Palo Alto Networks",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "PEAK6",
@@ -1950,7 +2064,8 @@
     "notes": "config recovered from 3 observed posting URL(s); seed name(s): PEAK6",
     "aliases": [
       "Peak6"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Perplexity AI",
@@ -1968,7 +2083,8 @@
     "notes": "config recovered from 2 observed posting URL(s); seed name(s): Perplexity AI",
     "aliases": [
       "Perplexity"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Persona",
@@ -1983,7 +2099,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Persona"
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Persona",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Physical Intelligence",
@@ -1998,7 +2115,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Physical Intelligence"
+    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Physical Intelligence",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Pinterest",
@@ -2014,7 +2132,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "Greenhouse board 'pinterest': 152 postings, every apply URL on pinterestcareers.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+    "notes": "Greenhouse board 'pinterest': 152 postings, every apply URL on pinterestcareers.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Plaid",
@@ -2030,7 +2149,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "Ashby board 'plaid': 121 postings (verified live 2026-09-27)."
+    "notes": "Ashby board 'plaid': 121 postings (verified live 2026-09-27).",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Planet",
@@ -2048,7 +2168,8 @@
     "notes": "config recovered from 12 observed posting URL(s); seed name(s): Planet",
     "aliases": [
       "Planet Labs"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "PlanetScale",
@@ -2063,7 +2184,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 1 observed posting URL(s); seed name(s): PlanetScale"
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): PlanetScale",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "PlusAI",
@@ -2082,7 +2204,8 @@
     "aliases": [
       "Plus AI",
       "Plus"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Point72",
@@ -2098,7 +2221,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 15 observed posting URL(s); seed name(s): Point72"
+    "notes": "config recovered from 15 observed posting URL(s); seed name(s): Point72",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Postman",
@@ -2116,7 +2240,8 @@
       "curated"
     ],
     "support_status": "partial",
-    "notes": "left Greenhouse (board 404s, API and page); open-positions loads client-side with no discoverable public endpoint after three approaches; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "left Greenhouse (board 404s, API and page); open-positions loads client-side with no discoverable public endpoint after three approaches; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Proofpoint",
@@ -2133,7 +2258,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 18 observed posting URL(s); seed name(s): Proofpoint"
+    "notes": "config recovered from 18 observed posting URL(s); seed name(s): Proofpoint",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Qualcomm",
@@ -2150,7 +2276,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "careers page links to qualcomm.eightfold.ai; PCSX search API answers (verified live 2026-09-27)."
+    "notes": "careers page links to qualcomm.eightfold.ai; PCSX search API answers (verified live 2026-09-27).",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Quantinuum",
@@ -2166,7 +2293,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 7 observed posting URL(s); seed name(s): Quantinuum"
+    "notes": "config recovered from 7 observed posting URL(s); seed name(s): Quantinuum",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Radix Trading",
@@ -2182,7 +2310,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Radix Trading"
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Radix Trading",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Ramp",
@@ -2197,7 +2326,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Ramp"
+    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Ramp",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Red Hat",
@@ -2214,7 +2344,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 6 observed posting URL(s); seed name(s): Red Hat"
+    "notes": "config recovered from 6 observed posting URL(s); seed name(s): Red Hat",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Reddit",
@@ -2230,7 +2361,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "Greenhouse board 'reddit': 150 postings, every apply URL on job-boards.greenhouse.io/reddit (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+    "notes": "Greenhouse board 'reddit': 150 postings, every apply URL on job-boards.greenhouse.io/reddit (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Replit",
@@ -2246,7 +2378,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Replit"
+    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Replit",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Rigetti",
@@ -2264,7 +2397,8 @@
     "notes": "config recovered from 4 observed posting URL(s); seed name(s): Rigetti",
     "aliases": [
       "Rigetti Computing"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Rippling",
@@ -2280,7 +2414,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 10 observed posting URL(s); seed name(s): Rippling"
+    "notes": "config recovered from 10 observed posting URL(s); seed name(s): Rippling",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Robinhood",
@@ -2295,7 +2430,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Robinhood"
+    "notes": "config recovered from 9 observed posting URL(s); seed name(s): Robinhood",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Roblox",
@@ -2311,7 +2447,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "Greenhouse board 'roblox': 257 postings, every apply URL on careers.roblox.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+    "notes": "Greenhouse board 'roblox': 257 postings, every apply URL on careers.roblox.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Rocket Lab",
@@ -2326,7 +2463,8 @@
       "ouckah"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Rocket Lab"
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Rocket Lab",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "RTX",
@@ -2350,7 +2488,8 @@
     "notes": "config recovered from 344 observed posting URL(s); seed name(s): RTX. Workday search for 'intern' matches most of the board (RTX 2,350 / Micron 3,056 postings), past Workday's 2,000-result limit, and so does 'co-op'; 'internship' returns 465 / 329 and its results already include co-op roles (measured live 2026-09-27).",
     "aliases": [
       "Raytheon Technologies"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Salesforce",
@@ -2368,7 +2507,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 28 observed posting URL(s); seed name(s): Salesforce"
+    "notes": "config recovered from 28 observed posting URL(s); seed name(s): Salesforce",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Samsara",
@@ -2384,7 +2524,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "Greenhouse board 'samsara': 249 postings, every apply URL on samsara.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+    "notes": "Greenhouse board 'samsara': 249 postings, every apply URL on samsara.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Samsung Research America",
@@ -2402,7 +2543,8 @@
     "notes": "config recovered from 16 observed posting URL(s); seed name(s): Samsung Research America",
     "aliases": [
       "SRA"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Sandisk",
@@ -2420,7 +2562,8 @@
     "notes": "config recovered from 15 observed posting URL(s); seed name(s): Sandisk",
     "aliases": [
       "SanDisk"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Saronic",
@@ -2435,7 +2578,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 6 observed posting URL(s); seed name(s): Saronic"
+    "notes": "config recovered from 6 observed posting URL(s); seed name(s): Saronic",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Scale AI",
@@ -2451,7 +2595,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Scale AI"
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Scale AI",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Schonfeld",
@@ -2469,7 +2614,8 @@
     "notes": "config recovered from 13 observed posting URL(s); seed name(s): Schonfeld",
     "aliases": [
       "Schonfeld Strategic Advisors"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Semgrep",
@@ -2484,7 +2630,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Semgrep"
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Semgrep",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Sentry",
@@ -2502,7 +2649,8 @@
     "notes": "config recovered from 3 observed posting URL(s); seed name(s): Sentry",
     "aliases": [
       "Functional Software"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "ServiceNow",
@@ -2517,7 +2665,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 2 observed posting URL(s); seed name(s): ServiceNow"
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): ServiceNow",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Shield AI",
@@ -2532,7 +2681,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Shield AI"
+    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Shield AI",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Sierra",
@@ -2547,7 +2697,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Sierra"
+    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Sierra",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Sigma Computing",
@@ -2562,7 +2713,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 20 observed posting URL(s); seed name(s): Sigma Computing"
+    "notes": "config recovered from 20 observed posting URL(s); seed name(s): Sigma Computing",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "SingleStore",
@@ -2577,7 +2729,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 5 observed posting URL(s); seed name(s): SingleStore"
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): SingleStore",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Skydio",
@@ -2593,7 +2746,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Skydio"
+    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Skydio",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Snap",
@@ -2615,7 +2769,8 @@
     "aliases": [
       "Snap Inc",
       "Snapchat"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Snowflake",
@@ -2631,7 +2786,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Snowflake"
+    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Snowflake",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Snyk",
@@ -2648,7 +2804,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Snyk"
+    "notes": "config recovered from 5 observed posting URL(s); seed name(s): Snyk",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "SpaceX",
@@ -2664,7 +2821,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 9 observed posting URL(s); seed name(s): SpaceX"
+    "notes": "config recovered from 9 observed posting URL(s); seed name(s): SpaceX",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Spotify",
@@ -2679,7 +2837,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Spotify"
+    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Spotify",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Stripe",
@@ -2698,8 +2857,9 @@
       "ouckah",
       "curated"
     ],
-    "support_status": "partial",
-    "notes": "Greenhouse board on a company-owned domain. Evidence: 5 observed postings on stripe.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (stripe, stripejobs); run `make validate-companies` to pin the winner and promote to supported."
+    "support_status": "supported",
+    "notes": "Greenhouse board on a company-owned domain. Evidence: 5 observed postings on stripe.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (stripe, stripejobs); run `make validate-companies` to pin the winner and promote to supported.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Susquehanna International Group",
@@ -2720,7 +2880,8 @@
     "aliases": [
       "SIG",
       "Susquehanna"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Symbotic",
@@ -2737,7 +2898,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 12 observed posting URL(s); seed name(s): Symbotic"
+    "notes": "config recovered from 12 observed posting URL(s); seed name(s): Symbotic",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Tenstorrent",
@@ -2753,7 +2915,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Tenstorrent"
+    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Tenstorrent",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Tesla",
@@ -2771,7 +2934,8 @@
       "curated"
     ],
     "support_status": "partial",
-    "notes": "tesla.com answers a plain request with 403 (bot protection); monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "tesla.com answers a plain request with 403 (bot protection); monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "The Boeing Company",
@@ -2792,7 +2956,8 @@
     "notes": "config recovered from 38 observed posting URL(s); seed name(s): Boeing, The Boeing Company",
     "aliases": [
       "Boeing"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Together AI",
@@ -2807,7 +2972,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 16 observed posting URL(s); seed name(s): Together AI"
+    "notes": "config recovered from 16 observed posting URL(s); seed name(s): Together AI",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Toyota Research Institute",
@@ -2825,7 +2991,8 @@
     "notes": "config recovered from 11 observed posting URL(s); seed name(s): Toyota Research Institute",
     "aliases": [
       "TRI"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Twilio",
@@ -2841,7 +3008,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Twilio"
+    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Twilio",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Two Sigma",
@@ -2859,7 +3027,8 @@
       "curated"
     ],
     "support_status": "partial",
-    "notes": "Avature tenant; no stable public feed; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "Avature tenant; no stable public feed; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Uber",
@@ -2876,7 +3045,8 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "jobs.uber.com links to Oracle Fusion site UberCareers; REST API answers (verified live 2026-09-27)."
+    "notes": "jobs.uber.com links to Oracle Fusion site UberCareers; REST API answers (verified live 2026-09-27).",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Varda Space Industries",
@@ -2894,7 +3064,8 @@
     "notes": "config recovered from 1 observed posting URL(s); seed name(s): Varda Space Industries",
     "aliases": [
       "Varda"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Veeam Software",
@@ -2913,7 +3084,8 @@
     "notes": "config recovered from 14 observed posting URL(s); seed name(s): Veeam Software",
     "aliases": [
       "Veeam"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Vercel",
@@ -2928,7 +3100,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Vercel"
+    "notes": "config recovered from 3 observed posting URL(s); seed name(s): Vercel",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Verkada",
@@ -2944,7 +3117,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Verkada"
+    "notes": "config recovered from 19 observed posting URL(s); seed name(s): Verkada",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Virtu",
@@ -2962,7 +3136,8 @@
     "notes": "config recovered from 1 observed posting URL(s); seed name(s): Virtu",
     "aliases": [
       "Virtu Financial"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Visa",
@@ -2979,7 +3154,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 31 observed posting URL(s); seed name(s): Visa"
+    "notes": "config recovered from 31 observed posting URL(s); seed name(s): Visa",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Voyager Technologies",
@@ -2997,7 +3173,8 @@
     "notes": "config recovered from 9 observed posting URL(s); seed name(s): Voyager Technologies",
     "aliases": [
       "Voyager Space"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Walleye Capital",
@@ -3016,7 +3193,8 @@
     "notes": "config recovered from 13 observed posting URL(s); seed name(s): Walleye Capital",
     "aliases": [
       "Walleye"
-    ]
+    ],
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Waymo",
@@ -3035,8 +3213,9 @@
       "ouckah",
       "curated"
     ],
-    "support_status": "partial",
-    "notes": "Greenhouse board on a company-owned domain. Evidence: 39 observed postings on careers.withwaymo.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (waymo, waymollc); run `make validate-companies` to pin the winner and promote to supported."
+    "support_status": "supported",
+    "notes": "Greenhouse board on a company-owned domain. Evidence: 39 observed postings on careers.withwaymo.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (waymo, waymollc); run `make validate-companies` to pin the winner and promote to supported.",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Wellington Management",
@@ -3053,7 +3232,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 17 observed posting URL(s); seed name(s): Wellington Management"
+    "notes": "config recovered from 17 observed posting URL(s); seed name(s): Wellington Management",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Western Digital",
@@ -3068,7 +3248,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 59 observed posting URL(s); seed name(s): Western Digital"
+    "notes": "config recovered from 59 observed posting URL(s); seed name(s): Western Digital",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "XTX Markets",
@@ -3083,7 +3264,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 1 observed posting URL(s); seed name(s): XTX Markets"
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): XTX Markets",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Zendesk",
@@ -3100,7 +3282,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Zendesk"
+    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Zendesk",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Zocdoc",
@@ -3115,7 +3298,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Zocdoc"
+    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Zocdoc",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Zoom",
@@ -3132,7 +3316,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 13 observed posting URL(s); seed name(s): Zoom"
+    "notes": "config recovered from 13 observed posting URL(s); seed name(s): Zoom",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Zoox",
@@ -3148,7 +3333,8 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 31 observed posting URL(s); seed name(s): Zoox"
+    "notes": "config recovered from 31 observed posting URL(s); seed name(s): Zoox",
+    "last_validated": "2026-09-27"
   },
   {
     "company": "Zscaler",
@@ -3163,6 +3349,7 @@
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Zscaler"
+    "notes": "config recovered from 4 observed posting URL(s); seed name(s): Zscaler",
+    "last_validated": "2026-09-27"
   }
 ]

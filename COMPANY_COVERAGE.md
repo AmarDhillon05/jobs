@@ -8,64 +8,80 @@ _Generated 2026-09-27 from `companies.json`._
 ```text
 Employers discovered from the seed repositories : 3177
   ...of which expose a configured ATS endpoint  : 2382
-Companies curated into the registry             : 150
-Companies monitored every poll (pollable)       : 150
+Companies curated into the registry             : 185
+Companies monitored every poll (pollable)       : 183
 ```
 
 | Status | Companies |
 | --- | --- |
-| `supported` | 139 |
-| `partial` | 11 |
+| `supported` | 173 |
+| `partial` | 10 |
+| `blocked` | 2 |
 
-Last live validation: **never run in this environment** - see `BLOCKERS.md` BLK-001.
+Last live validation: **2026-09-27** (`make validate-companies`)
 
 ## What the statuses mean
 
 This project refuses to call a company "supported" on the strength of a slug that
 looked plausible. Each status is a specific, checkable claim.
 
-**`supported`** - all four of these hold:
+**`supported`** - all of these hold:
 
-1. The company's `provider_config` was extracted from **real observed application
-   URLs** for that company in the seed repositories, never hand-guessed.
+1. The company's `provider_config` came from **real evidence, never a guess**:
+   either application URLs observed for that company in the seed repositories,
+   or (for companies added later) the ATS its own careers page links to, with the
+   board's ownership checked by where its apply URLs point. Each entry's notes
+   say which.
 2. Its provider adapter passes the shared Level-2 contract suite
-   (`tests/scrapers/test_provider_contract.py`) against a saved fixture of that
-   provider's response shape.
+   (`tests/scrapers/test_provider_contract.py`) against a fixture captured from
+   that provider's real responses.
 3. A **per-company** test (`tests/scrapers/test_registry_configs.py`) builds the
-   adapter from this company's own config, checks the request it would issue is an
-   absolute HTTPS URL against that provider's real API host and embeds this
-   company's own identifiers, and replays the provider fixture through it to
-   confirm valid jobs come out attributed to this company.
+   adapter from this company's own config, checks the request it would issue goes
+   to the right host and identifies this company, and replays the provider
+   fixture through it to confirm valid jobs come out attributed to this company.
 4. Nothing else in the registry shares its provider configuration.
+5. The **live** source answered the last validation run with a conclusive result
+   (`make validate-companies`, recorded in `data/validation.json`).
 
-**`partial`** - pollable, but with a named caveat. Two kinds:
+**`partial`** - pollable, but with a named caveat:
 
-* *Runtime-resolved board token.* The company runs a Greenhouse board behind its
-  own domain. Its postings carry Greenhouse's `gh_jid`, which proves the provider
-  but never the board token, so candidates are resolved against the live API on
-  first fetch instead of being guessed here.
 * *Second-hand source.* Read through the Simplify community feed because the
-  employer exposes no discoverable public endpoint. This lags the employer's own
-  board and only sees roles a contributor filed, so it can never be `supported`.
+  employer exposes no first-party source a plain, unauthenticated request can
+  read (token walls, bot protection, or no discoverable endpoint). This lags the
+  employer's own board and only sees roles a contributor filed, so it can never
+  be `supported`.
+* *Degraded source.* The last live run could read the board, but not all of it
+  (a page cap, or records that would not parse).
 
-**What no status asserts:** that the endpoint answered today. Live validation
-could not run in the build environment - its egress policy refuses every ATS host
-(see `BLOCKERS.md` BLK-001). `make validate-companies` performs exactly that probe
-through the same adapters and rewrites `support_status` and `last_validated` from
-real responses.
+**`blocked`** - recorded but not polled: no first-party source is reachable
+without getting past a login or a bot wall, and no secondary source exists.
+
+**What a transient failure means:** nothing. A 429 or 5xx during validation is
+*inconclusive*: the company keeps its status and no verdict is written, because
+a rate limit says nothing about whether the configuration is right.
 
 
 ## Provider breakdown
 
 | Provider | Companies | Endpoint |
 | --- | --- | --- |
-| `greenhouse` | 58 | `GET boards-api.greenhouse.io/v1/boards/{token}/jobs` |
+| `greenhouse` | 68 | `GET boards-api.greenhouse.io/v1/boards/{token}/jobs` |
 | `workday` | 44 | `POST {tenant}.wdN.myworkdayjobs.com/wday/cxs/.../jobs` |
-| `ashby` | 24 | `GET api.ashbyhq.com/posting-api/job-board/{board}` |
+| `ashby` | 25 | `GET api.ashbyhq.com/posting-api/job-board/{board}` |
 | `lever` | 13 | `GET api.lever.co/v0/postings/{site}` |
-| `simplify_fallback` | 5 | the Simplify community feed (secondary fallback only) |
+| `simplify_fallback` | 10 | the Simplify community feed (secondary fallback only) |
+| `eightfold` | 5 | n/a |
 | `smartrecruiters` | 5 | `GET api.smartrecruiters.com/v1/companies/{id}/postings` |
+| `oracle_hcm` | 4 | n/a |
+| `custom` | 2 | n/a |
+| `jibe` | 2 | n/a |
+| `amazon` | 1 | n/a |
+| `atlassian` | 1 | n/a |
+| `goldman` | 1 | n/a |
+| `google` | 1 | n/a |
+| `ibm` | 1 | n/a |
 | `rippling` | 1 | `GET api.rippling.com/platform/api/ats/v1/board/{slug}/jobs` |
+| `talentbrew` | 1 | n/a |
 
 Adapters implemented and tested but not yet used by any company, so adding one of those employers is a registry entry rather than code: `workable`.
 
@@ -73,11 +89,11 @@ Adapters implemented and tested but not yet used by any company, so adding one o
 
 | Priority | Companies |
 | --- | --- |
-| `high` | 60 |
-| `medium` | 81 |
+| `high` | 89 |
+| `medium` | 87 |
 | `experimental` | 9 |
 
-Spanning **94 industries** - the registry deliberately reaches well beyond Big Tech (PRD §3): AI labs, quantitative trading, developer tools, databases, security, fintech, autonomy, aerospace, robotics and semiconductors.
+Spanning **101 industries** - the registry deliberately reaches well beyond Big Tech (PRD §3): AI labs, quantitative trading, developer tools, databases, security, fintech, autonomy, aerospace, robotics and semiconductors.
 
 ## Unsupported providers, and why
 
@@ -97,54 +113,64 @@ Recognised during discovery but deliberately not adapted. Naming the reason is t
 
 ## Every monitored company
 
-### `greenhouse` - 58
+### `greenhouse` - 68
 
 | Company | Industry | Priority | Status |
 | --- | --- | --- | --- |
 | Affirm | Consumer Lending | `medium` | `supported` |
+| Airbnb | Consumer Marketplace | `high` | `supported` |
+| Akuna Capital | Market Making | `high` | `supported` |
 | Anduril | Defense Technology | `high` | `supported` |
 | Anthropic | AI Labs | `high` | `supported` |
 | Apptronik | Humanoid Robotics | `medium` | `supported` |
+| AQR Capital Management | Quantitative Research | `high` | `supported` |
 | Astera Labs | Semiconductors | `medium` | `supported` |
 | Astranis | Satellites | `medium` | `supported` |
+| Block | Payments | `high` | `supported` |
+| Brex | Fintech | `high` | `supported` |
 | Chicago Trading Company | Market Making | `high` | `supported` |
 | Cloudflare | Edge / Network Infrastructure | `high` | `supported` |
-| Coinbase | Crypto Exchange | `high` | `partial` |
-| Databricks | Data / AI Platform | `high` | `partial` |
-| Datadog | Observability | `high` | `partial` |
+| Coinbase | Crypto Exchange | `high` | `supported` |
+| Databricks | Data / AI Platform | `high` | `supported` |
+| Datadog | Observability | `high` | `supported` |
 | DoorDash | Consumer Marketplace | `high` | `supported` |
+| Dropbox | Productivity Software | `high` | `supported` |
 | DRW | Quantitative Trading | `high` | `supported` |
 | DV Trading | Proprietary Trading | `medium` | `supported` |
 | Figma | Design Tools | `high` | `supported` |
 | Figure | Humanoid Robotics | `high` | `supported` |
 | Five Rings | Quantitative Trading | `high` | `supported` |
-| Hudson River Trading | Quantitative Trading | `high` | `partial` |
+| Hudson River Trading | Quantitative Trading | `high` | `supported` |
 | IMC Trading | Market Making | `high` | `supported` |
 | Integra FEC | Quantitative Trading | `experimental` | `supported` |
 | IonQ | Quantum Computing | `experimental` | `supported` |
 | Jane Street | Quantitative Trading | `high` | `supported` |
+| Jump Trading | Quantitative Trading | `high` | `supported` |
 | Klaviyo | Marketing Infrastructure | `medium` | `supported` |
 | Kodiak Robotics | Autonomous Trucking | `medium` | `supported` |
 | Lightmatter | Photonic Computing | `experimental` | `supported` |
 | Lucid Motors | Electric Vehicles | `medium` | `supported` |
 | Man Group | Asset Management | `medium` | `supported` |
-| Marqeta | Card Issuing | `medium` | `supported` |
 | Mercury | Fintech | `high` | `supported` |
+| MongoDB | Databases | `high` | `supported` |
 | Optiver | Market Making | `high` | `supported` |
+| Pinterest | Consumer Technology | `high` | `supported` |
 | Planet | Earth Observation | `medium` | `supported` |
 | PlanetScale | Databases | `medium` | `supported` |
 | Point72 | Hedge Fund | `high` | `supported` |
-| Postman | API Tooling | `medium` | `supported` |
 | Radix Trading | Quantitative Trading | `medium` | `supported` |
+| Reddit | Consumer Technology | `high` | `supported` |
 | Robinhood | Brokerage | `high` | `supported` |
+| Roblox | Consumer Technology | `high` | `supported` |
 | Rocket Lab | Aerospace | `medium` | `supported` |
+| Samsara | Cloud Infrastructure | `high` | `supported` |
 | Samsung Research America | Applied Research | `medium` | `supported` |
 | Scale AI | AI Data Infrastructure | `high` | `supported` |
 | Schonfeld | Hedge Fund | `high` | `supported` |
 | Sigma Computing | Analytics | `medium` | `supported` |
 | SingleStore | Databases | `medium` | `supported` |
 | SpaceX | Aerospace | `high` | `supported` |
-| Stripe | Payments | `high` | `partial` |
+| Stripe | Payments | `high` | `supported` |
 | Tenstorrent | AI Accelerators | `medium` | `supported` |
 | Together AI | AI Infrastructure | `high` | `supported` |
 | Twilio | Communications APIs | `medium` | `supported` |
@@ -155,7 +181,7 @@ Recognised during discovery but deliberately not adapted. Naming the reason is t
 | Virtu | Market Making | `medium` | `supported` |
 | Voyager Technologies | Aerospace | `medium` | `supported` |
 | Walleye Capital | Hedge Fund | `medium` | `supported` |
-| Waymo | Autonomous Vehicles | `high` | `partial` |
+| Waymo | Autonomous Vehicles | `high` | `supported` |
 | XTX Markets | Market Making | `high` | `supported` |
 | Zocdoc | Health Marketplace | `medium` | `supported` |
 | Zscaler | Cloud Security | `medium` | `supported` |
@@ -174,13 +200,13 @@ Recognised during discovery but deliberately not adapted. Naming the reason is t
 | BlackRock | Asset Management | `medium` | `supported` |
 | Blue Origin | Aerospace | `high` | `supported` |
 | Boston Dynamics | Robotics | `high` | `supported` |
+| Broadcom | Semiconductors | `medium` | `supported` |
 | Cadence | EDA | `medium` | `supported` |
 | Capital One | Banking / Technology | `medium` | `supported` |
 | Castleton Commodities International | Commodities Trading | `medium` | `supported` |
 | Cisco | Networking | `medium` | `supported` |
 | CME Group | Exchanges | `medium` | `supported` |
 | CrowdStrike | Endpoint Security | `high` | `supported` |
-| Dell Technologies | Enterprise Hardware | `medium` | `supported` |
 | F5 | Application Networking | `medium` | `supported` |
 | G-Research | Quantitative Research | `high` | `supported` |
 | GlobalFoundries | Semiconductor Manufacturing | `medium` | `supported` |
@@ -191,7 +217,6 @@ Recognised during discovery but deliberately not adapted. Naming the reason is t
 | Mastercard | Payment Networks | `medium` | `supported` |
 | Micron | Semiconductors | `medium` | `supported` |
 | Nasdaq | Exchanges | `medium` | `supported` |
-| Netflix | Consumer Streaming | `high` | `supported` |
 | Northrop Grumman | Aerospace & Defense | `medium` | `supported` |
 | NVIDIA | Semiconductors / AI | `high` | `supported` |
 | NXP Semiconductors | Semiconductors | `medium` | `supported` |
@@ -201,6 +226,7 @@ Recognised during discovery but deliberately not adapted. Naming the reason is t
 | Red Hat | Open Source Infrastructure | `medium` | `supported` |
 | RTX | Aerospace & Defense | `medium` | `supported` |
 | Salesforce | Enterprise SaaS | `medium` | `supported` |
+| Snap | Consumer Technology | `high` | `supported` |
 | Snyk | Developer Security | `medium` | `supported` |
 | Symbotic | Warehouse Robotics | `medium` | `supported` |
 | The Boeing Company | Aerospace | `medium` | `supported` |
@@ -209,7 +235,7 @@ Recognised during discovery but deliberately not adapted. Naming the reason is t
 | Zendesk | Customer Software | `medium` | `supported` |
 | Zoom | Communications | `medium` | `supported` |
 
-### `ashby` - 24
+### `ashby` - 25
 
 | Company | Industry | Priority | Status |
 | --- | --- | --- | --- |
@@ -229,6 +255,7 @@ Recognised during discovery but deliberately not adapted. Naming the reason is t
 | Perplexity AI | AI Search | `high` | `supported` |
 | Persona | Identity Verification | `medium` | `supported` |
 | Physical Intelligence | Robotics Foundation Models | `high` | `supported` |
+| Plaid | Fintech | `high` | `supported` |
 | Ramp | Fintech | `high` | `supported` |
 | Replit | Developer Platform | `high` | `supported` |
 | Saronic | Defense Autonomy | `medium` | `supported` |
@@ -256,15 +283,30 @@ Recognised during discovery but deliberately not adapted. Naming the reason is t
 | Toyota Research Institute | Applied Research | `high` | `supported` |
 | Zoox | Autonomous Vehicles | `high` | `supported` |
 
-### `simplify_fallback` - 5
+### `simplify_fallback` - 10
 
 | Company | Industry | Priority | Status |
 | --- | --- | --- | --- |
 | Apple | Consumer Technology | `high` | `partial` |
+| ByteDance / TikTok | Consumer Technology | `high` | `partial` |
 | Citadel | Hedge Fund | `high` | `partial` |
 | Citadel Securities | Market Making | `high` | `partial` |
 | DE Shaw | Quantitative Trading | `high` | `partial` |
+| Marqeta | Card Issuing | `medium` | `partial` |
+| Meta | Big Tech | `high` | `partial` |
+| Postman | API Tooling | `medium` | `partial` |
+| Tesla | Electric Vehicles | `high` | `partial` |
 | Two Sigma | Quantitative Trading | `high` | `partial` |
+
+### `eightfold` - 5
+
+| Company | Industry | Priority | Status |
+| --- | --- | --- | --- |
+| Microsoft | Big Tech | `high` | `supported` |
+| Millennium | Hedge Fund | `high` | `supported` |
+| Morgan Stanley | Investment Banking | `high` | `supported` |
+| Netflix | Consumer Streaming | `high` | `supported` |
+| Qualcomm | Semiconductors | `medium` | `supported` |
 
 ### `smartrecruiters` - 5
 
@@ -276,24 +318,84 @@ Recognised during discovery but deliberately not adapted. Naming the reason is t
 | ServiceNow | Enterprise SaaS | `medium` | `supported` |
 | Western Digital | Storage | `medium` | `supported` |
 
+### `oracle_hcm` - 4
+
+| Company | Industry | Priority | Status |
+| --- | --- | --- | --- |
+| Dell Technologies | Enterprise Hardware | `medium` | `supported` |
+| JPMorgan Chase | Investment Banking | `high` | `supported` |
+| Oracle | Enterprise Software | `medium` | `supported` |
+| Uber | Consumer Technology | `high` | `supported` |
+
+### `custom` - 2
+
+| Company | Industry | Priority | Status |
+| --- | --- | --- | --- |
+| Bloomberg | Financial Technology | `high` | `blocked` |
+| LinkedIn | Big Tech | `high` | `blocked` |
+
+### `jibe` - 2
+
+| Company | Industry | Priority | Status |
+| --- | --- | --- | --- |
+| AMD | Semiconductors | `medium` | `supported` |
+| Susquehanna International Group | Quantitative Trading | `high` | `supported` |
+
+### `amazon` - 1
+
+| Company | Industry | Priority | Status |
+| --- | --- | --- | --- |
+| Amazon | Big Tech | `high` | `supported` |
+
+### `atlassian` - 1
+
+| Company | Industry | Priority | Status |
+| --- | --- | --- | --- |
+| Atlassian | Developer Tools | `high` | `supported` |
+
+### `goldman` - 1
+
+| Company | Industry | Priority | Status |
+| --- | --- | --- | --- |
+| Goldman Sachs | Investment Banking | `high` | `supported` |
+
+### `google` - 1
+
+| Company | Industry | Priority | Status |
+| --- | --- | --- | --- |
+| Google | Big Tech | `high` | `supported` |
+
+### `ibm` - 1
+
+| Company | Industry | Priority | Status |
+| --- | --- | --- | --- |
+| IBM | Enterprise Technology | `medium` | `supported` |
+
 ### `rippling` - 1
 
 | Company | Industry | Priority | Status |
 | --- | --- | --- | --- |
 | Rippling | HR / Fintech Platform | `high` | `supported` |
 
+### `talentbrew` - 1
+
+| Company | Industry | Priority | Status |
+| --- | --- | --- | --- |
+| Arm | Semiconductors | `medium` | `supported` |
+
 ## Caveated entries in detail
 
 | Company | Provider | Status | Why |
 | --- | --- | --- | --- |
 | Apple | `simplify_fallback` | `partial` | company-owned careers site with bot protection; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles |
+| Bloomberg | `custom` | `blocked` | bloomberg.com answers a plain request with 403 (bot protection), and Bloomberg is absent from both seed feeds, so no secondary source exists either. Not polled. |
+| ByteDance / TikTok | `simplify_fallback` | `partial` | lifeattiktok.com's API needs signed requests (not something to work around); monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles |
 | Citadel | `simplify_fallback` | `partial` | company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles |
 | Citadel Securities | `simplify_fallback` | `partial` | company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles |
-| Coinbase | `greenhouse` | `partial` | Greenhouse board on a company-owned domain. Evidence: 8 observed postings are boards.greenhouse.io embed job_app URLs, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (coinbase, coinbase1); run `make validate-companies` to pin the winner and promote to supported. |
-| Databricks | `greenhouse` | `partial` | Greenhouse board on a company-owned domain. Evidence: 3 observed postings are boards.greenhouse.io embed job_app URLs, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (databricks, databricks1); run `make validate-companies` to pin the winner and promote to supported. |
-| Datadog | `greenhouse` | `partial` | Greenhouse board on a company-owned domain. Evidence: 6 observed postings on careers.datadoghq.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (datadog, datadoghq); run `make validate-companies` to pin the winner and promote to supported. |
 | DE Shaw | `simplify_fallback` | `partial` | company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles |
-| Hudson River Trading | `greenhouse` | `partial` | Greenhouse board on a company-owned domain. Evidence: 11 observed postings on hudsonrivertrading.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (wehrtyou, hudsonrivertrading); run `make validate-companies` to pin the winner and promote to supported. |
-| Stripe | `greenhouse` | `partial` | Greenhouse board on a company-owned domain. Evidence: 5 observed postings on stripe.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (stripe, stripejobs); run `make validate-companies` to pin the winner and promote to supported. |
+| LinkedIn | `custom` | `blocked` | roles are listed on linkedin.com behind sign-in. The Greenhouse/Lever boards named 'linkedin' are NOT LinkedIn's (test boards: a job titled '123123'). Absent from both seed feeds. Not polled. |
+| Marqeta | `simplify_fallback` | `partial` | the only observed board ('mqreferrals') is an internal referral board and now 404s; the careers page loads jobs client-side with no discoverable public endpoint; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles |
+| Meta | `simplify_fallback` | `partial` | metacareers.com's GraphQL needs page-issued tokens (not something to work around); monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles |
+| Postman | `simplify_fallback` | `partial` | left Greenhouse (board 404s, API and page); open-positions loads client-side with no discoverable public endpoint after three approaches; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles |
+| Tesla | `simplify_fallback` | `partial` | tesla.com answers a plain request with 403 (bot protection); monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles |
 | Two Sigma | `simplify_fallback` | `partial` | Avature tenant; no stable public feed; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles |
-| Waymo | `greenhouse` | `partial` | Greenhouse board on a company-owned domain. Evidence: 39 observed postings on careers.withwaymo.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (waymo, waymollc); run `make validate-companies` to pin the winner and promote to supported. |

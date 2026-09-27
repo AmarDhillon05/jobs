@@ -149,3 +149,23 @@ class TestRecording:
     def test_no_validation_file_leaves_the_registry_alone(self, validation_file: Path) -> None:
         company = make_company()
         assert build_company_registry.apply_validation([company]) == [company]
+
+
+class TestPartialSearchFailures:
+    def test_a_rate_limited_later_search_is_inconclusive(self) -> None:
+        """Observed live: Microsoft's 'summer analyst' term hit a rate limit."""
+        board = {
+            "hits": 1,
+            "jobs": [{"id_icims": "1", "title": "SWE Intern", "job_path": "/en/jobs/1"}],
+        }
+        responses = [ScriptedResponse.json(board)] + [ScriptedResponse.error(429)] * 2
+        company = make_company(provider="amazon", config={"queries": ["intern", "summer analyst"]})
+        outcome = validate_companies.probe(company, client(*responses))
+        assert outcome.inconclusive
+        assert outcome.resolved is company.support_status
+
+    def test_a_malformed_board_is_still_a_real_verdict(self) -> None:
+        board = {"jobs": [GREENHOUSE_BOARD["jobs"][0], {"id": 2, "title": "no url"}]}
+        outcome = validate_companies.probe(make_company(), client(ScriptedResponse.json(board)))
+        assert not outcome.inconclusive
+        assert outcome.resolved is SupportStatus.PARTIAL

@@ -69,10 +69,10 @@ credentials.
 
 | Requirement | Status | Evidence |
 | --- | --- | --- |
-| ~100-150 companies monitored | passed | 150 in `companies.json`, all pollable; `test_company_model.py::test_monitors_between_100_and_150_companies` asserts the band |
+| ~100-150 companies monitored | passed | 183 polled (35 added at the user's request) + 2 recorded as blocked; `test_company_model.py::test_monitors_a_broad_but_bounded_set_of_companies` asserts 100-200 |
 | 10-minute polling interval | implemented, tested | `poll_interval_minutes=10`; the EventBridge rule's `rate(10 minutes)` is asserted in `infrastructure/tests/test_stack.py` |
 | Detect within one interval | implemented, tested | `first_seen` set on first sighting; §30 Scenario 1 in `tests/e2e` and `tests/aws_local` |
-| Prefer official company / ATS endpoints | passed | 145/150 use an ATS or company-owned endpoint; 5 use the community feed, each named in `COMPANY_COVERAGE.md` |
+| Prefer official company / ATS endpoints | passed | 173/183 read a first-party source; 10 use the community feed, each with its reason in `COMPANY_COVERAGE.md` and BLK-011 |
 | Normalize into one schema | tested | `Job` / `JobRecord`; `test_job_model.py`, and the contract suite asserts required fields per provider |
 | Filter for relevant technical internships | tested | `tests/unit/test_filtering.py` + a 200-title real-world corpus |
 | Persist discovered jobs | tested | `test_repository_contract.py`, run against in-memory *and* DynamoDB under Moto |
@@ -95,7 +95,7 @@ credentials.
 
 | Requirement | Status | Evidence |
 | --- | --- | --- |
-| Emphasis beyond Big Tech | passed | 94 distinct industry labels across the 150; AI labs, quant/market-making, robotics, aerospace, semiconductors, devtools, databases, security and fintech all represented. Breakdown in `COMPANY_COVERAGE.md` |
+| Emphasis beyond Big Tech | passed | distinct industry labels across the registry; AI labs, quant/market-making, robotics, aerospace, semiconductors, devtools, databases, security and fintech all represented. Breakdown in `COMPANY_COVERAGE.md` |
 | Priority tiers `high`/`medium`/`experimental` | implemented, tested | `Priority` enum; drives immediate-vs-grouped alerts, asserted in `test_notifications.py` |
 | Start from SimplifyJobs/Summer2027-Internships | passed | `scripts/build_company_registry.py`; 3,177 employers extracted |
 | Start from vanshb03/Summer2027-Internships | passed | same script; both feeds, including closed listings |
@@ -103,8 +103,8 @@ credentials.
 | Extract unique names, de-duplicate aliases | tested | `tests/unit/test_discovery.py` — exact-normalized matching plus an explicit alias table |
 | Identify official careers pages | passed | every registry entry has `careers_url` |
 | Identify the ATS/provider | passed | provider detected from observed apply URLs; `test_discovery.py` |
-| Prefer official endpoints over the feeds | passed | 5/150 (3.3%) read the community feed; 6 were migrated off it onto their own boards |
-| Reach 100-150 worthwhile companies | passed | 150 |
+| Prefer official endpoints over the feeds | passed | 10/183 (5.5%) read the community feed, 8 of them because their own sites need tokens, block plain requests, or expose nothing (BLK-011) |
+| Reach 100-150 worthwhile companies | passed | 183 polled |
 | `companies.json` with the documented schema | passed | `Company.from_item` round-trips every field; `make verify` regenerates the file identically |
 | Support statuses | passed | `supported` 139, `partial` 11 — each a checkable claim, defined in `COMPANY_COVERAGE.md` |
 
@@ -114,11 +114,11 @@ credentials.
 | --- | --- | --- |
 | Canonical source per company | passed | `provider` + `provider_config` per entry, with a per-company test |
 | Preference order honoured | passed | structured JSON APIs first; HTML/JSON-LD only where no API exists; no browser automation was needed |
-| Never bypass auth / CAPTCHA / anti-bot / rate limits | passed | 401/403 → `AccessBlocked`, never retried, marked `blocked`: `test_provider_contract.py` asserts it for all nine adapters |
+| Never bypass auth / CAPTCHA / anti-bot / rate limits | passed | 401/403 → `AccessBlocked`, never retried, marked `blocked`: `test_provider_contract.py` asserts it for every adapter |
 | No unauthorized cloud accounts | passed | none created |
 | Standard provider abstraction | tested | `JobSource` with `fetch_jobs` / `normalize` / `healthcheck` |
 | Normalized `Job` model as specified | tested | `test_job_model.py` |
-| Reusable adapters, not 150 scrapers | passed | 7 ATS adapters + 2 custom cover all 150 companies |
+| Reusable adapters, not 183 scrapers | passed | 11 ATS adapters + 5 single-employer adapters + the fallback cover all 183 |
 | Required fields validated | tested | contract suite, per provider: company, title, URL, stable id, location, date, description, source |
 | URLs syntactically valid | tested | contract suite asserts absolute `https://` |
 | Stable provider ids | tested | contract suite: identical fetches produce identical ids and hashes |
@@ -126,8 +126,8 @@ credentials.
 | Malformed records do not crash a source | tested | contract suite + §30 in `tests/e2e` |
 | Source duplicates collapsed | tested | contract suite |
 | Empty results ≠ failure | tested | contract suite; `ScraperStatus.EMPTY` is `ok` |
-| Fixture-based tests per provider | tested | `tests/fixtures/` — **hand-authored from documented shapes**, not captured live: BLK-002 |
-| Links resolve to real pages | blocked | egress policy refuses every ATS host: BLK-001. `make validate-companies` performs exactly this check. PRD §31 excludes it from the gates |
+| Fixture-based tests per provider | tested | `tests/fixtures/` — the 9 newer providers' fixtures are **trimmed real captures**; the original 7 were authored from documented shapes (BLK-002), and live runs have since checked every one of those adapters against its real API |
+| Links resolve to real pages | passed | live run 2026-09-27: a sample job link from every polled company fetched; all resolve (HTTP 200/202), except Citadel, Citadel Securities and Tesla, whose own sites answer a plain request with 403 while serving browsers normally |
 
 ## §8-9 Filtering and new-job detection
 
@@ -173,13 +173,13 @@ credentials.
 | 6 — backend integration, all ten cases | passed | `test_pipeline.py`, `test_handlers.py`, and §30 Scenarios 4-7 |
 | 7 — local AWS architecture | passed | 23, on emulated AWS |
 | 8 — final acceptance/regression | passed | `make verify`, 20/20 |
-| At least one architecture test runs a live public scraper | blocked | `test_deployed_worker_reaches_the_network` exists and proves the deployed worker makes real outbound calls; the *public ATS* half is refused by the egress policy (BLK-001). PRD §14 L7: "completion must not depend on an external site remaining online" |
+| At least one architecture test runs a live public scraper | passed (live runs) | `test_deployed_worker_reaches_the_network` exists and proves the deployed worker makes real outbound calls; the *public ATS* half was refused by the egress policy until it was opened (BLK-001, resolved); every provider has since been run live. PRD §14 L7: "completion must not depend on an external site remaining online" |
 
 ## §15 Hard completion gates
 
 | Gate | Result | Evidence |
 | --- | --- | --- |
-| **A** — scraper correctness | PASS | 1,128 scraper tests run; one contract battery over all nine adapters; a per-company config test for each of the 150; failure isolation proven in §30 Scenario 4 |
+| **A** — scraper correctness | PASS | one contract battery over every adapter; a per-company config test for each of the 183; all 183 validated live; failure isolation proven in §30 Scenario 4 |
 | **B** — core business logic | PASS | filtering, normalization, fingerprints, persistence, `first_seen`/`last_seen`, dedup, notification suppression — all tested, dedup and suppression twice over |
 | **C** — app/client | PASS | both clients build and run; component, data-loading, notification and deep-link tests pass; the Expo bundle is produced by Metro + Hermes |
 | **D** — infrastructure | PASS | synth, 49 assertions, cfn-lint; IAM least-privilege asserted per function; no unresolved references |
@@ -265,8 +265,8 @@ can be are *also* run on emulated AWS through real Lambdas and real queues.
 
 | Requirement | Status | Evidence |
 | --- | --- | --- |
-| Validate selected real public endpoints | blocked | BLK-001. `scripts/validate_companies.py` is written, runnable, and is the user's one-command path |
-| Record the date of live validation | passed as far as possible | `COMPANY_COVERAGE.md` states plainly: "never run in this environment" |
+| Validate selected real public endpoints | passed | **every** polled company, 2026-09-27: 183/183 answered; verdicts in `data/validation.json` - 173 supported, 10 partial (the fallback feed), 0 failing |
+| Record the date of live validation | passed | per company in `data/validation.json` and `companies.json` (`last_validated`); summarised in `COMPANY_COVERAGE.md` |
 | Do not make the suite depend on external sites | passed | `-m live` is opt-in and gates nothing |
 | Coverage report with provider breakdown | passed | `COMPANY_COVERAGE.md`, generated from `companies.json` |
 | Do not claim `supported` without a passing test | passed | `supported` is defined as four automated checks; `test_registry_configs.py` generates one test per company |
@@ -284,7 +284,7 @@ can be are *also* run on emulated AWS through real Lambdas and real queues.
 | Declaring done because files exist | Yes — `make verify` is the gate, and it reports PARTIAL if a stage is skipped |
 | Unit tests alone | No — levels 1-8 all run |
 | Mocks alone | No — Moto *and* LocalStack *and* real containers *and* a real browser |
-| One scraper working | No — all nine share one contract battery, and each of the 150 configs has its own test |
+| One scraper working | No — every adapter shares one contract battery, each of the 183 configs has its own test, and all were run live |
 | IaC that merely exists | No — synth, 49 assertions, cfn-lint, and the same table schemas provisioned locally |
 | LocalStack starting but the architecture not exercised | No — 23 tests drive the full path, including DLQ redrive |
 | App rendering without notification tests | No — tap routing, cold-start replay and duplicate suppression are all tested |
@@ -301,14 +301,18 @@ Stated plainly, because the rest of this document is a list of things that are.
 1. **A push actually arriving on a handset.** No simulator here, and a simulator
    cannot mint a push token. Everything up to the request to `exp.host` is tested.
    BLK-008; steps for the user in `mobile/README.md`.
-2. **That any ATS endpoint answers today.** The egress policy refuses all of them.
-   BLK-001; `make validate-companies` closes it in one command.
-3. **Fixtures as byte-exact live captures.** They encode documented shapes.
-   BLK-002; highest residual risk is Rippling, 1 company.
-4. **The EventBridge rule firing.** One API call wide, simulated per PRD §18.4.
+2. **That every endpoint answers *tomorrow*.** All 183 answered on 2026-09-27;
+   sites move (8 had, BLK-010). `make validate-companies` re-checks in one command.
+3. **Undated sources.** IBM, Arm (TalentBrew), Rippling and two Workday tenants
+   expose no posting date, so the one-day window cannot judge their age; they are
+   kept and the seen-before check stops repeat alerts.
+4. **Rate limits under production polling.** Microsoft's Eightfold tenant answered
+   429 after ~20-30 requests; its search terms were trimmed to ~22 requests a poll,
+   but whether that clears its limit every 10 minutes is only provable by running.
+5. **The EventBridge rule firing.** One API call wide, simulated per PRD §18.4.
    BLK-005.
-5. **API Gateway v2's runtime event shape.** v2 is LocalStack Pro; REST v1 is used
+6. **API Gateway v2's runtime event shape.** v2 is LocalStack Pro; REST v1 is used
    locally, and the v2 envelope is asserted in unit tests instead. BLK-004.
-6. **DynamoDB TTL expiry.** Configured and asserted in the template; real expiry
+7. **DynamoDB TTL expiry.** Configured and asserted in the template; real expiry
    takes up to 48 h and is not emulated. Affects health-record cleanup only.
-7. **Anything at all on real AWS.** Intentionally prohibited (PRD §12).
+8. **Anything at all on real AWS.** Intentionally prohibited (PRD §12).

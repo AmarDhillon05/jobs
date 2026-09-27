@@ -49,35 +49,40 @@ DEFINITION = """\
 This project refuses to call a company "supported" on the strength of a slug that
 looked plausible. Each status is a specific, checkable claim.
 
-**`supported`** - all four of these hold:
+**`supported`** - all of these hold:
 
-1. The company's `provider_config` was extracted from **real observed application
-   URLs** for that company in the seed repositories, never hand-guessed.
+1. The company's `provider_config` came from **real evidence, never a guess**:
+   either application URLs observed for that company in the seed repositories,
+   or (for companies added later) the ATS its own careers page links to, with the
+   board's ownership checked by where its apply URLs point. Each entry's notes
+   say which.
 2. Its provider adapter passes the shared Level-2 contract suite
-   (`tests/scrapers/test_provider_contract.py`) against a saved fixture of that
-   provider's response shape.
+   (`tests/scrapers/test_provider_contract.py`) against a fixture captured from
+   that provider's real responses.
 3. A **per-company** test (`tests/scrapers/test_registry_configs.py`) builds the
-   adapter from this company's own config, checks the request it would issue is an
-   absolute HTTPS URL against that provider's real API host and embeds this
-   company's own identifiers, and replays the provider fixture through it to
-   confirm valid jobs come out attributed to this company.
+   adapter from this company's own config, checks the request it would issue goes
+   to the right host and identifies this company, and replays the provider
+   fixture through it to confirm valid jobs come out attributed to this company.
 4. Nothing else in the registry shares its provider configuration.
+5. The **live** source answered the last validation run with a conclusive result
+   (`make validate-companies`, recorded in `data/validation.json`).
 
-**`partial`** - pollable, but with a named caveat. Two kinds:
+**`partial`** - pollable, but with a named caveat:
 
-* *Runtime-resolved board token.* The company runs a Greenhouse board behind its
-  own domain. Its postings carry Greenhouse's `gh_jid`, which proves the provider
-  but never the board token, so candidates are resolved against the live API on
-  first fetch instead of being guessed here.
 * *Second-hand source.* Read through the Simplify community feed because the
-  employer exposes no discoverable public endpoint. This lags the employer's own
-  board and only sees roles a contributor filed, so it can never be `supported`.
+  employer exposes no first-party source a plain, unauthenticated request can
+  read (token walls, bot protection, or no discoverable endpoint). This lags the
+  employer's own board and only sees roles a contributor filed, so it can never
+  be `supported`.
+* *Degraded source.* The last live run could read the board, but not all of it
+  (a page cap, or records that would not parse).
 
-**What no status asserts:** that the endpoint answered today. Live validation
-could not run in the build environment - its egress policy refuses every ATS host
-(see `BLOCKERS.md` BLK-001). `make validate-companies` performs exactly that probe
-through the same adapters and rewrites `support_status` and `last_validated` from
-real responses.
+**`blocked`** - recorded but not polled: no first-party source is reachable
+without getting past a login or a bot wall, and no secondary source exists.
+
+**What a transient failure means:** nothing. A 429 or 5xx during validation is
+*inconclusive*: the company keeps its status and no verdict is written, because
+a rate limit says nothing about whether the configuration is right.
 """
 
 

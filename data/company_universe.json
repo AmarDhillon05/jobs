@@ -1172,10 +1172,15 @@
       "provider": "eightfold",
       "careers_url": "https://careers.microsoft.com/",
       "support_status": "supported",
-      "notes": "careers page runs on Eightfold; PCSX search API answers, 98 intern postings (verified live 2026-09-27).",
+      "notes": "careers page runs on Eightfold; PCSX search API answers, 98 intern postings (verified live 2026-09-27). Eightfold rate-limits this tenant after ~20-30 requests (429s observed twice); the bank-title terms ('summer analyst', 'summer associate') are dropped - Microsoft does not use them, and they returned 73 fuzzy matches - bringing a poll to ~22 requests.",
       "provider_config": {
         "host": "apply.careers.microsoft.com",
-        "domain": "microsoft.com"
+        "domain": "microsoft.com",
+        "queries": [
+          "intern",
+          "internship",
+          "co-op"
+        ]
       },
       "source_discovered_from": [
         "curated",
