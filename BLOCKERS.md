@@ -12,7 +12,7 @@ Severity: `critical` (blocks a hard completion gate) · `major` · `minor`
 
 | ID | Component | Severity | Status |
 | --- | --- | --- | --- |
-| [BLK-001](#blk-001---outbound-egress-policy-blocks-all-third-party-careersats-hosts) | Live scraper validation | major | accepted-limitation |
+| [BLK-001](#blk-001---outbound-egress-policy-blocks-all-third-party-careersats-hosts) | Live scraper validation | major | resolved |
 | [BLK-002](#blk-002---provider-fixtures-could-not-be-captured-from-live-responses) | Provider fixtures | major | accepted-limitation |
 | [BLK-003](#blk-003---localstack-could-not-pull-a-lambda-runtime-image) | LocalStack Lambda | critical | resolved |
 | [BLK-004](#blk-004---api-gateway-v2-http-api-is-a-localstack-pro-feature) | LocalStack API Gateway | major | resolved |
@@ -317,3 +317,21 @@ Per PRD §18.5, every unresolved blocker was revisited before final verification
 - **BLK-008** is new in this phase and inherent to the environment, not a bug to
   fix. Recorded with the precise boundary between what is proven and what is not.
 - **Critical blockers open: 0.**
+
+## Update - 2026-09-27: egress opened
+
+- **BLK-001 resolved.** The user changed the environment's network policy. Greenhouse,
+  Lever, Ashby, SmartRecruiters, Workday and Rippling hosts all answer; a live run
+  over all 150 companies reached 142.
+- **BLK-002 partly realized, as predicted.** The first live run found two real
+  mismatches between the hand-authored fixtures and the live APIs:
+  1. *Workday pagination* - the live API sends `"total": 0` after page one, which
+     silently truncated every Workday board at 40 postings. Fixed, with a
+     regression test that replays the real behaviour (`TESTING.md` bug 7).
+  2. *Rippling* has no posting date in its job list at all, and two Workday
+     tenants (Zoom, Boston Dynamics) hide `postedOn`. Handled by the one-day
+     window's undated rule rather than by guessing a date.
+- **Eight companies fail live** (Atomic Semi, Cirrus Logic, Quantinuum, Marqeta,
+  Postman on ATS slugs; Castleton, Dell, Netflix on Workday). These are slug or
+  site-name errors of exactly the kind `make validate-companies` exists to find,
+  and are the next piece of work.

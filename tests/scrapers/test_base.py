@@ -119,6 +119,23 @@ class TestPagination:
         result = source.fetch()
         assert result.pages == MAX_PAGES
         assert len(result.jobs) == MAX_PAGES
+        assert result.truncated is True
+
+    def test_hitting_the_cap_is_reported_not_silent(self) -> None:
+        pages = [[good(str(i))] for i in range(MAX_PAGES + 5)]
+        result = safe_fetch(ListSource(make_company(provider="test-list"), pages))
+        assert result.health is not None
+        assert result.health.status is ScraperStatus.DEGRADED
+        assert "page cap" in (result.health.error or "")
+        # Degraded, not failed: the postings it did read are still used.
+        assert result.ok and len(result.jobs) == MAX_PAGES
+
+    def test_a_board_inside_the_cap_is_not_marked_truncated(self) -> None:
+        pages = [[good(str(i))] for i in range(MAX_PAGES - 1)]
+        result = safe_fetch(ListSource(make_company(provider="test-list"), pages))
+        assert result.truncated is False
+        assert result.health is not None
+        assert result.health.status is ScraperStatus.SUCCESS
 
 
 class TestConfigValidation:

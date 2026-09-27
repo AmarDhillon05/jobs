@@ -147,8 +147,13 @@ class WorkdaySource(JobSource):
                     f"{self.describe()}: 'jobPostings' was {type(postings).__name__}, expected list"
                 )
 
+            # Workday reports the real total on the FIRST page only; every later
+            # page says `"total": 0`. Overwriting with that 0 made `seen >= total`
+            # true after page two, silently truncating every tenant to 40 postings
+            # (observed live: NVIDIA declares 1,010 and returned 40). So the first
+            # positive total is kept and later values are ignored.
             declared = payload.get("total")
-            if isinstance(declared, int):
+            if total is None and isinstance(declared, int) and declared > 0:
                 total = declared
 
             if not postings:

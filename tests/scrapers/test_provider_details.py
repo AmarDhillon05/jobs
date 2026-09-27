@@ -412,6 +412,74 @@ class TestWorkday:
         }
         assert [body["offset"] for body in bodies] == [0, 20, 40]
 
+    def test_later_pages_reporting_total_zero_do_not_stop_pagination(self) -> None:
+        """Regression, found live: Workday sends the real total on page one only.
+
+        Every later page says ``"total": 0``. The adapter used to overwrite the total
+        with that 0, so ``seen >= total`` held after page two and every Workday
+        tenant was silently cut off at 40 postings - NVIDIA declared 1,010.
+        """
+        import json
+
+        from tests.scrapers.conftest import build_client
+
+        from jobmonitor.http import HttpRequest
+        from jobmonitor.scrapers import build_source
+
+        declared = 57  # three full pages and a short one
+
+        def posting(index: int) -> dict[str, object]:
+            return {
+                "title": f"Software Engineer Intern {index}",
+                "externalPath": f"/job/Santa-Clara-CA/Software-Engineer-Intern_JR{index:05d}",
+                "locationsText": "Santa Clara, CA",
+                "postedOn": "Posted Today",
+                "bulletFields": [f"JR{index:05d}"],
+            }
+
+        def router(request: HttpRequest) -> ScriptedResponse:
+            offset = json.loads(request.body or b"{}")["offset"]
+            batch = [posting(i) for i in range(offset, min(offset + WD_PAGE_SIZE, declared))]
+            # Exactly what the live API does: the real total only on the first page.
+            return ScriptedResponse.json(
+                {"total": declared if offset == 0 else 0, "jobPostings": batch}
+            )
+
+        transport = FakeTransport(router=router)
+        result = build_source(case_for("workday").company(), build_client(transport)).fetch()
+
+        assert len(result.jobs) == declared
+        assert [json.loads(r.body or b"{}")["offset"] for r in transport.requests] == [
+            0,
+            20,
+            40,
+        ]
+
+    def test_a_first_page_without_a_total_still_pages_to_the_end(self) -> None:
+        import json
+
+        from tests.scrapers.conftest import build_client
+
+        from jobmonitor.http import HttpRequest
+        from jobmonitor.scrapers import build_source
+
+        def router(request: HttpRequest) -> ScriptedResponse:
+            offset = json.loads(request.body or b"{}")["offset"]
+            size = WD_PAGE_SIZE if offset < 40 else 7
+            batch = [
+                {
+                    "title": f"Intern {offset + i}",
+                    "externalPath": f"/job/X/Intern_JR{offset + i:05d}",
+                    "postedOn": "Posted Today",
+                }
+                for i in range(size)
+            ]
+            return ScriptedResponse.json({"total": 0, "jobPostings": batch})
+
+        transport = FakeTransport(router=router)
+        result = build_source(case_for("workday").company(), build_client(transport)).fetch()
+        assert len(result.jobs) == 47  # stopped by the short page, not by total=0
+
     def test_search_text_is_configurable(self) -> None:
         from tests.scrapers.conftest import build_client
 

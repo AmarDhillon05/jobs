@@ -34,9 +34,11 @@ from jobmonitor.models.company import Company
 from jobmonitor.models.health import ScraperHealth, ScraperStatus
 from jobmonitor.models.job import Job
 
-MAX_PAGES = 50
-"""Hard stop on pagination. A provider that keeps handing us "next page" forever
-is a bug or a redirect loop, not 50 pages of internships."""
+MAX_PAGES = 100
+"""Hard stop on pagination, against a provider that hands out "next page" forever.
+
+Sized from live data: NVIDIA's Workday board needs 51 pages of 20. Hitting the cap
+is never silent - the fetch is marked truncated and the health record DEGRADED."""
 
 
 @dataclass(slots=True)
@@ -47,6 +49,8 @@ class FetchResult:
     health: ScraperHealth | None = None
     malformed: int = 0
     pages: int = 0
+    #: True when the page cap stopped the fetch before the source ran out.
+    truncated: bool = False
 
     @property
     def ok(self) -> bool:
@@ -127,6 +131,9 @@ class JobSource(ABC):
                     # as an explicitly invalid one: skip it, keep the rest.
                     result.malformed += 1
             if page_number >= MAX_PAGES:
+                # Recorded, never silent: the health record turns DEGRADED and says
+                # why, so a board that outgrew the cap shows up in the health view.
+                result.truncated = True
                 break
 
         result.jobs = deduplicate(collected)
@@ -195,7 +202,11 @@ def safe_fetch(source: JobSource, *, clock: Any = time.perf_counter) -> FetchRes
             )
         )
 
-    if result.malformed and result.jobs:
+    error: str | None = None
+    if result.truncated:
+        status = ScraperStatus.DEGRADED
+        error = f"stopped at the {MAX_PAGES}-page cap; later postings were not read"
+    elif result.malformed and result.jobs:
         status = ScraperStatus.DEGRADED
     elif result.jobs:
         status = ScraperStatus.SUCCESS
@@ -213,6 +224,7 @@ def safe_fetch(source: JobSource, *, clock: Any = time.perf_counter) -> FetchRes
         duration_ms=elapsed_ms(),
         jobs_found=len(result.jobs),
         jobs_malformed=result.malformed,
+        error=error,
     )
     return result
 

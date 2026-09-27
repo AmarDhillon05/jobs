@@ -153,6 +153,14 @@ than decorative.
    Influencer Marketing AI" was dropped. Same real-data run.
 5. **`student` was missing entirely**, dropping "Software Development Student".
    Same run.
+7. **Every Workday board was silently cut off at 40 postings.** Workday reports the
+   real total on the first page only and `"total": 0` on every later page; the
+   adapter overwrote the total, so `seen >= total` held after page two. NVIDIA
+   declares 1,010 matches and we read 40. Found by the first **live** run once
+   egress opened - the hand-authored fixture (BLK-002) had the same `total` on
+   every page, so no fixture test could see it. Fixing it recovered ~9,900
+   postings across the 44 Workday companies. The regression test replays the
+   real behaviour and was checked to fail on the old code (40 instead of 57).
 6. **The Playwright route stub swallowed the app's own navigation.** A `**/jobs/*`
    glob matched the document request for `/jobs/<id>`, serving JSON instead of the
    HTML app — breaking precisely the deep-link case the spec exists to test.
