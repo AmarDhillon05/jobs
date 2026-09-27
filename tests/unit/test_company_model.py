@@ -179,19 +179,28 @@ class TestShippedRegistry:
     def test_registry_file_exists_at_repo_root(self) -> None:
         assert default_registry_path().is_file()
 
-    def test_monitors_between_100_and_150_companies(self, registry: CompanyRegistry) -> None:
-        # PRD §1: "approximately 100-150 high-value companies".
-        assert 100 <= len(registry.pollable()) <= 150
+    def test_monitors_a_broad_but_bounded_set_of_companies(self, registry: CompanyRegistry) -> None:
+        # PRD §1 asks for "approximately 100-150 high-value companies". The user then
+        # asked for 35 more by name (Google, Meta, Jane Street's peers, the banks...),
+        # which took the registry to 183. The floor still guards against a build
+        # that silently loses companies; the ceiling against one that balloons.
+        assert 100 <= len(registry.pollable()) <= 200
 
     def test_every_entry_records_where_it_was_discovered(self, registry: CompanyRegistry) -> None:
         for company in registry:
             assert company.source_discovered_from, company.company
 
-    def test_pollable_companies_have_a_non_empty_provider_config(
+    def test_pollable_companies_carry_every_config_key_their_adapter_requires(
         self, registry: CompanyRegistry
     ) -> None:
+        # An adapter serving exactly one company (Amazon, Google, Goldman, IBM,
+        # Atlassian) requires no keys, so an empty config is correct for it.
+        from jobmonitor.scrapers import source_class_for
+
         for company in registry.pollable():
-            assert company.provider_config, company.company
+            required = source_class_for(company.provider).required_config
+            missing = [key for key in required if not company.provider_config.get(key)]
+            assert not missing, f"{company.company}: missing {missing}"
 
     def test_no_duplicate_provider_configs(self, registry: CompanyRegistry) -> None:
         """Two companies pointing at one board would double-report the same jobs."""

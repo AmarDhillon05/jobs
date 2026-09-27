@@ -16,15 +16,26 @@ maps the outcome to a support status:
 
     jobs parsed                 -> supported
     fetched, zero postings      -> supported   (an empty board is normal, PRD §7)
-    some records unparseable    -> partial
+    degraded (records missing)  -> partial
     401/403/bot wall            -> blocked
     404 / unparseable payload   -> research-needed
+    429 / 5xx / timeout         -> INCONCLUSIVE: status unchanged, not recorded
     community-feed fallback     -> partial     (never promoted above partial)
 
-With ``--write`` it records ``last_validated`` so the coverage report can state
-the date the claim was last checked, and prints a diff of every status change.
-It is deliberately gentle: sequential by default, with a pause between requests,
-and it never retries a 403.
+Why transient failures are inconclusive: a rate limit says nothing about whether
+the configuration is right. Mapping it to research-needed would stop the company
+being polled at all - during the first live run Microsoft answered 429 after a
+burst of development traffic, and would have been dropped.
+
+With ``--write`` the verdicts go to ``data/validation.json`` (observed facts),
+never into ``companies.json`` directly: the registry is *generated* from the
+editorial universe plus those observations by ``build_company_registry.py``, which
+this script then re-runs. Writing the registry in place would make the build's
+``--check`` - and so ``make verify`` - fail the moment validation ran.
+
+Companies whose provider has no adapter (recorded as ``blocked``, e.g. Bloomberg)
+are listed and skipped. The probe is deliberately gentle: sequential, with a pause
+between companies, and it never retries a 403.
 """
 
 from __future__ import annotations
@@ -49,7 +60,14 @@ from jobmonitor.models.company import (  # noqa: E402
     default_registry_path,
 )
 from jobmonitor.models.health import ScraperStatus  # noqa: E402
-from jobmonitor.scrapers import build_source, safe_fetch  # noqa: E402
+from jobmonitor.scrapers import build_source, registered_providers, safe_fetch  # noqa: E402
+
+VALIDATION_PATH = REPO_ROOT / "data" / "validation.json"
+
+#: error_type values that say "try again later", not "this configuration is wrong".
+TRANSIENT_ERRORS = frozenset(
+    {"RetryBudgetExhausted", "RateLimited", "ServerError", "NetworkError", "TimeoutError"}
+)
 
 #: Health status -> registry support status.
 STATUS_MAP = {
@@ -75,10 +93,12 @@ class Outcome:
     malformed: int
     duration_ms: int
     error: str | None
+    #: True when the failure was transient: the verdict is withheld.
+    inconclusive: bool = False
 
     @property
     def changed(self) -> bool:
-        return self.previous is not self.resolved
+        return not self.inconclusive and self.previous is not self.resolved
 
     def to_dict(self) -> dict[str, object]:
         return {
@@ -90,6 +110,7 @@ class Outcome:
             "malformed": self.malformed,
             "duration_ms": self.duration_ms,
             "error": self.error,
+            "inconclusive": self.inconclusive,
         }
 
 
@@ -98,6 +119,11 @@ def probe(company: Company, client: HttpClient) -> Outcome:
     health = result.health
     assert health is not None
     resolved = STATUS_MAP.get(health.status, SupportStatus.RESEARCH_NEEDED)
+    inconclusive = (
+        health.status is ScraperStatus.FAILED and (health.error_type or "") in TRANSIENT_ERRORS
+    )
+    if inconclusive:
+        resolved = company.support_status
     if company.provider in SECOND_HAND_PROVIDERS and resolved is SupportStatus.SUPPORTED:
         resolved = SupportStatus.PARTIAL
     return Outcome(
@@ -109,6 +135,7 @@ def probe(company: Company, client: HttpClient) -> Outcome:
         malformed=result.malformed,
         duration_ms=health.duration_ms,
         error=health.error,
+        inconclusive=inconclusive,
     )
 
 
@@ -124,12 +151,20 @@ def main(argv: list[str] | None = None) -> int:
         default=1.0,
         help="seconds to pause between companies (default 1.0; be a good citizen)",
     )
-    parser.add_argument("--write", action="store_true", help="update companies.json in place")
+    parser.add_argument(
+        "--write",
+        action="store_true",
+        help="record verdicts in data/validation.json and regenerate companies.json",
+    )
     parser.add_argument("--json", type=Path, help="write a machine-readable report here")
     args = parser.parse_args(argv)
 
     registry = CompanyRegistry.load(args.registry)
-    targets = list(registry)
+    adapters = set(registered_providers())
+    skipped = [c for c in registry if c.provider not in adapters]
+    targets = [c for c in registry if c.provider in adapters]
+    for company in skipped:
+        print(f"  skipped {company.company:<32} no adapter ({company.support_status.value})")
     if args.provider:
         targets = [c for c in targets if c.provider == args.provider]
     if args.company:
@@ -147,30 +182,26 @@ def main(argv: list[str] | None = None) -> int:
     today = datetime.now(UTC).date().isoformat()
 
     outcomes: list[Outcome] = []
-    updated: dict[str, Company] = {}
 
     print(f"probing {len(targets)} companies (delay {args.delay}s)\n")
     for index, company in enumerate(targets, start=1):
         outcome = probe(company, client)
         outcomes.append(outcome)
-        marker = "!" if outcome.changed else " "
+        marker = "?" if outcome.inconclusive else ("!" if outcome.changed else " ")
         print(
             f"{marker} [{index:>3}/{len(targets)}] {company.company:<32} "
             f"{company.provider:<18} {outcome.resolved.value:<16} "
             f"jobs={outcome.jobs:<4} {outcome.error or ''}"[:160]
-        )
-        from dataclasses import replace
-
-        updated[company.company] = replace(
-            company, support_status=outcome.resolved, last_validated=today
         )
         if args.delay and index < len(targets):
             time.sleep(args.delay)
 
     by_status: dict[str, int] = {}
     for outcome in outcomes:
-        by_status[outcome.resolved.value] = by_status.get(outcome.resolved.value, 0) + 1
+        key = "inconclusive" if outcome.inconclusive else outcome.resolved.value
+        by_status[key] = by_status.get(key, 0) + 1
     changed = [o for o in outcomes if o.changed]
+    inconclusive = [o for o in outcomes if o.inconclusive]
 
     print(f"\nresults: {by_status}")
     print(f"validated on: {today}")
@@ -183,6 +214,10 @@ def main(argv: list[str] | None = None) -> int:
             )
     else:
         print("\nno status changes")
+    if inconclusive:
+        print(f"\n{len(inconclusive)} inconclusive (transient failure; status left as it was):")
+        for outcome in inconclusive:
+            print(f"  {outcome.company:<32} {outcome.error or ''}"[:160])
 
     if args.json:
         args.json.write_text(
@@ -200,11 +235,13 @@ def main(argv: list[str] | None = None) -> int:
         print(f"\nreport written to {args.json}")
 
     if args.write:
-        merged = CompanyRegistry(
-            tuple(updated.get(company.company, company) for company in registry)
+        record_verdicts(outcomes, today)
+        import subprocess
+
+        subprocess.run(
+            [sys.executable, str(REPO_ROOT / "scripts" / "build_company_registry.py")], check=True
         )
-        merged.dump(args.registry)
-        print(f"\n{args.registry} updated")
+        print(f"\n{VALIDATION_PATH.relative_to(REPO_ROOT)} and companies.json updated")
         print("Remember to regenerate the coverage report: make coverage-report")
 
     # Non-zero when anything is now unsupported, so CI can notice a dead slug.
@@ -212,6 +249,43 @@ def main(argv: list[str] | None = None) -> int:
         1 for o in outcomes if o.resolved in {SupportStatus.BLOCKED, SupportStatus.RESEARCH_NEEDED}
     )
     return 1 if broken else 0
+
+
+def record_verdicts(outcomes: list[Outcome], today: str) -> None:
+    """Merge conclusive verdicts into data/validation.json.
+
+    Merged, not replaced, so validating one provider does not erase the others;
+    inconclusive outcomes are not written, so a rate limit never overwrites the
+    last real verdict.
+    """
+    existing: dict[str, dict[str, object]] = {}
+    if VALIDATION_PATH.exists():
+        existing = json.loads(VALIDATION_PATH.read_text(encoding="utf-8")).get("companies", {})
+    for outcome in outcomes:
+        if outcome.inconclusive:
+            continue
+        existing[outcome.company] = {
+            "status": outcome.resolved.value,
+            "validated_on": today,
+            "jobs": outcome.jobs,
+            "error": outcome.error,
+        }
+    VALIDATION_PATH.write_text(
+        json.dumps(
+            {
+                "_comment": [
+                    "Observed, not editorial: the last conclusive live verdict per company,",
+                    "written by scripts/validate_companies.py --write and merged into",
+                    "companies.json by scripts/build_company_registry.py.",
+                ],
+                "companies": dict(sorted(existing.items())),
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
 
 
 if __name__ == "__main__":

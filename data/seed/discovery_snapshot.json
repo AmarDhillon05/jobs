@@ -3010,7 +3010,8 @@
    ],
    "provider": "lever",
    "provider_config": {
-    "site": "cirrus"
+    "site": "cirrus",
+    "region": "eu"
    },
    "supported": true,
    "reason": ""
@@ -4335,7 +4336,7 @@
    ],
    "provider": "workday",
    "provider_config": {
-    "tenant": "osv-cci",
+    "tenant": "osv_cci",
     "host": "osv-cci.wd1.myworkdayjobs.com",
     "site": "CCICareers"
    },
@@ -4438,7 +4439,7 @@
    ],
    "provider": "workday",
    "provider_config": {
-    "tenant": "vhr-epri",
+    "tenant": "vhr_epri",
     "host": "vhr-epri.wd1.myworkdayjobs.com",
     "site": "epricareers"
    },
@@ -5546,7 +5547,7 @@
    ],
    "provider": "workday",
    "provider_config": {
-    "tenant": "osv-edf",
+    "tenant": "osv_edf",
     "host": "osv-edf.wd5.myworkdayjobs.com",
     "site": "Confidential"
    },
@@ -7595,7 +7596,8 @@
    ],
    "provider": "lever",
    "provider_config": {
-    "site": "quantinuum"
+    "site": "quantinuum",
+    "region": "eu"
    },
    "supported": true,
    "reason": ""
@@ -10403,7 +10405,7 @@
    ],
    "provider": "workday",
    "provider_config": {
-    "tenant": "vhr-genband",
+    "tenant": "vhr_genband",
     "host": "vhr-genband.wd1.myworkdayjobs.com",
     "site": "ribboncareers"
    },
@@ -12540,7 +12542,7 @@
    ],
    "provider": "workday",
    "provider_config": {
-    "tenant": "osv-rubicon",
+    "tenant": "osv_rubicon",
     "host": "osv-rubicon.wd5.myworkdayjobs.com",
     "site": "MagniteCareers"
    },
@@ -16900,7 +16902,7 @@
    ],
    "provider": "workday",
    "provider_config": {
-    "tenant": "sallie-mae",
+    "tenant": "sallie_mae",
     "host": "sallie-mae.wd5.myworkdayjobs.com",
     "site": "Careers"
    },
@@ -22764,7 +22766,7 @@
    ],
    "provider": "workday",
    "provider_config": {
-    "tenant": "vhr-otsuka",
+    "tenant": "vhr_otsuka",
     "host": "vhr-otsuka.wd1.myworkdayjobs.com",
     "site": "External"
    },
@@ -24760,7 +24762,7 @@
    ],
    "provider": "workday",
    "provider_config": {
-    "tenant": "vhr-unither",
+    "tenant": "vhr_unither",
     "host": "vhr-unither.wd5.myworkdayjobs.com",
     "site": "External"
    },
@@ -28390,7 +28392,7 @@
    ],
    "provider": "workday",
    "provider_config": {
-    "tenant": "osv-chegg",
+    "tenant": "osv_chegg",
     "host": "osv-chegg.wd5.myworkdayjobs.com",
     "site": "Chegg"
    },
@@ -31038,7 +31040,7 @@
    ],
    "provider": "workday",
    "provider_config": {
-    "tenant": "osv-tifec",
+    "tenant": "osv_tifec",
     "host": "osv-tifec.wd5.myworkdayjobs.com",
     "site": "fanthreesixty"
    },
@@ -37014,7 +37016,7 @@
    ],
    "provider": "workday",
    "provider_config": {
-    "tenant": "vhr-pbs",
+    "tenant": "vhr_pbs",
     "host": "vhr-pbs.wd5.myworkdayjobs.com",
     "site": "PBSCareers"
    },
@@ -38091,7 +38093,7 @@
    ],
    "provider": "workday",
    "provider_config": {
-    "tenant": "vhr-otsuka",
+    "tenant": "vhr_otsuka",
     "host": "vhr-otsuka.wd1.myworkdayjobs.com",
     "site": "RecorExternal"
    },

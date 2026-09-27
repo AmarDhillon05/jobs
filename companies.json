@@ -82,6 +82,41 @@
     "notes": "config recovered from 1 observed posting URL(s); seed name(s): Affirm"
   },
   {
+    "company": "Airbnb",
+    "careers_url": "https://careers.airbnb.com/",
+    "industry": "Consumer Marketplace",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "airbnb"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "Greenhouse board 'airbnb': 159 postings, every apply URL on careers.airbnb.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+  },
+  {
+    "company": "Akuna Capital",
+    "careers_url": "https://akunacapital.com/careers",
+    "industry": "Market Making",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "akunacapital"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "Greenhouse board 'akunacapital': 42 postings, every apply URL on akunacapital.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
+    "aliases": [
+      "Akuna"
+    ]
+  },
+  {
     "company": "Altera Corporation",
     "careers_url": "https://altera.wd1.myworkdayjobs.com/en-US/altera",
     "industry": "Programmable Logic",
@@ -102,6 +137,24 @@
     ]
   },
   {
+    "company": "Amazon",
+    "careers_url": "https://www.amazon.jobs/",
+    "industry": "Big Tech",
+    "priority": "high",
+    "provider": "amazon",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "amazon.jobs search.json answers (verified live 2026-09-27).",
+    "aliases": [
+      "Amazon Web Services",
+      "AWS"
+    ]
+  },
+  {
     "company": "Ambarella",
     "careers_url": "https://ambarella.wd108.myworkdayjobs.com/en-US/ambarella",
     "industry": "Semiconductors",
@@ -117,6 +170,26 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 18 observed posting URL(s); seed name(s): Ambarella"
+  },
+  {
+    "company": "AMD",
+    "careers_url": "https://careers.amd.com/careers-home/jobs",
+    "industry": "Semiconductors",
+    "priority": "medium",
+    "provider": "jibe",
+    "provider_config": {
+      "host": "careers.amd.com",
+      "job_path": "/careers-home/jobs"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "careers.amd.com is an iCIMS Jibe site; /api/jobs answers and job pages resolve (verified live 2026-09-27).",
+    "aliases": [
+      "Advanced Micro Devices"
+    ]
   },
   {
     "company": "Analog Devices",
@@ -236,6 +309,45 @@
     "notes": "config recovered from 9 observed posting URL(s); seed name(s): Apptronik"
   },
   {
+    "company": "AQR Capital Management",
+    "careers_url": "https://careers.aqr.com/",
+    "industry": "Quantitative Research",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "aqr"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "Greenhouse board 'aqr': 51 postings, every apply URL on careers.aqr.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
+    "aliases": [
+      "AQR"
+    ]
+  },
+  {
+    "company": "Arm",
+    "careers_url": "https://careers.arm.com/",
+    "industry": "Semiconductors",
+    "priority": "medium",
+    "provider": "talentbrew",
+    "provider_config": {
+      "host": "careers.arm.com"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "careers.arm.com is a Radancy TalentBrew site; its search XHR answers (verified live 2026-09-27). No posting dates exposed.",
+    "aliases": [
+      "Arm Holdings",
+      "ARM"
+    ]
+  },
+  {
     "company": "Astera Labs",
     "careers_url": "https://job-boards.greenhouse.io/asteraearlycareer2026",
     "industry": "Semiconductors",
@@ -268,20 +380,37 @@
     "notes": "config recovered from 43 observed posting URL(s); seed name(s): Astranis"
   },
   {
+    "company": "Atlassian",
+    "careers_url": "https://www.atlassian.com/company/careers",
+    "industry": "Developer Tools",
+    "priority": "high",
+    "provider": "atlassian",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "atlassian.com careers listings endpoint answers (verified live 2026-09-27). Only updated dates exposed."
+  },
+  {
     "company": "Atomic Semi",
-    "careers_url": "https://jobs.ashbyhq.com/atomicsemi",
+    "careers_url": "https://fab2.com/careers/",
     "industry": "Semiconductors",
     "priority": "experimental",
     "provider": "ashby",
     "provider_config": {
-      "job_board_name": "atomicsemi"
+      "job_board_name": "fab2"
     },
     "source_discovered_from": [
-      "ouckah",
-      "simplify"
+      "curated",
+      "live"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Atomic Semi"
+    "notes": "rebranded: atomicsemi.com/careers redirects to fab2.com/careers, which links Ashby board 'fab2' (61 postings); the old 'atomicsemi' board is gone (verified live 2026-09-27).",
+    "aliases": [
+      "Fab2"
+    ]
   },
   {
     "company": "Autodesk",
@@ -364,6 +493,40 @@
     "notes": "config recovered from 14 observed posting URL(s); seed name(s): BlackRock"
   },
   {
+    "company": "Block",
+    "careers_url": "https://block.xyz/careers",
+    "industry": "Payments",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "block"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "Greenhouse board 'block': 214 postings, every apply URL on block.xyz (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
+    "aliases": [
+      "Square",
+      "Cash App"
+    ]
+  },
+  {
+    "company": "Bloomberg",
+    "careers_url": "https://www.bloomberg.com/company/careers/",
+    "industry": "Financial Technology",
+    "priority": "high",
+    "provider": "custom",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "blocked",
+    "notes": "bloomberg.com answers a plain request with 403 (bot protection), and Bloomberg is absent from both seed feeds, so no secondary source exists either. Not polled."
+  },
+  {
     "company": "Blue Origin",
     "careers_url": "https://blueorigin.wd5.myworkdayjobs.com/en-US/blueorigin",
     "industry": "Aerospace",
@@ -398,6 +561,22 @@
     "notes": "config recovered from 7 observed posting URL(s); seed name(s): Boston Dynamics"
   },
   {
+    "company": "Brex",
+    "careers_url": "https://www.brex.com/careers",
+    "industry": "Fintech",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "brex"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "Greenhouse board 'brex': 259 postings, every apply URL on brex.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+  },
+  {
     "company": "Bright Machines",
     "careers_url": "https://jobs.lever.co/brightmachines",
     "industry": "Industrial Robotics",
@@ -411,6 +590,43 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 3 observed posting URL(s); seed name(s): Bright Machines"
+  },
+  {
+    "company": "Broadcom",
+    "careers_url": "https://www.broadcom.com/company/careers",
+    "industry": "Semiconductors",
+    "priority": "medium",
+    "provider": "workday",
+    "provider_config": {
+      "host": "broadcom.wd1.myworkdayjobs.com",
+      "tenant": "broadcom",
+      "site": "External_Career"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "Workday CXS API answers (verified live 2026-09-27)."
+  },
+  {
+    "company": "ByteDance / TikTok",
+    "careers_url": "https://lifeattiktok.com/",
+    "industry": "Consumer Technology",
+    "priority": "high",
+    "provider": "simplify_fallback",
+    "provider_config": {
+      "company_names": [
+        "TikTok",
+        "ByteDance"
+      ]
+    },
+    "source_discovered_from": [
+      "simplify",
+      "curated"
+    ],
+    "support_status": "partial",
+    "notes": "lifeattiktok.com's API needs signed requests (not something to work around); monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "Cadence",
@@ -473,7 +689,7 @@
     "priority": "medium",
     "provider": "workday",
     "provider_config": {
-      "tenant": "osv-cci",
+      "tenant": "osv_cci",
       "host": "osv-cci.wd1.myworkdayjobs.com",
       "site": "CCICareers"
     },
@@ -523,12 +739,13 @@
   },
   {
     "company": "Cirrus Logic",
-    "careers_url": "https://jobs.lever.co/cirrus",
+    "careers_url": "https://jobs.eu.lever.co/cirrus",
     "industry": "Semiconductors",
     "priority": "medium",
     "provider": "lever",
     "provider_config": {
-      "site": "cirrus"
+      "site": "cirrus",
+      "region": "eu"
     },
     "source_discovered_from": [
       "ouckah",
@@ -759,20 +976,20 @@
   },
   {
     "company": "Dell Technologies",
-    "careers_url": "https://dell.wd1.myworkdayjobs.com/en-US/External",
+    "careers_url": "https://jobs.dell.com/",
     "industry": "Enterprise Hardware",
     "priority": "medium",
-    "provider": "workday",
+    "provider": "oracle_hcm",
     "provider_config": {
-      "tenant": "dell",
-      "host": "dell.wd1.myworkdayjobs.com",
-      "site": "External"
+      "host": "enterpriseplatform.dell.com",
+      "site": "careers"
     },
     "source_discovered_from": [
-      "simplify"
+      "curated",
+      "live"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 11 observed posting URL(s); seed name(s): Dell Technologies",
+    "notes": "moved off Workday (answers 422): jobs.dell.com now redirects to Oracle Fusion. Single-site tenant - the site number is ignored, so the site code 'careers' is used, which also makes job links resolve (verified live 2026-09-27).",
     "aliases": [
       "Dell"
     ]
@@ -791,6 +1008,22 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 5 observed posting URL(s); seed name(s): DoorDash"
+  },
+  {
+    "company": "Dropbox",
+    "careers_url": "https://jobs.dropbox.com/",
+    "industry": "Productivity Software",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "dropbox"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "Greenhouse board 'dropbox': 44 postings, every apply URL on jobs.dropbox.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
   },
   {
     "company": "DRW",
@@ -948,6 +1181,34 @@
     "notes": "config recovered from 12 observed posting URL(s); seed name(s): GlobalFoundries"
   },
   {
+    "company": "Goldman Sachs",
+    "careers_url": "https://higher.gs.com/",
+    "industry": "Investment Banking",
+    "priority": "high",
+    "provider": "goldman",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "higher.gs.com GraphQL API answers; campus roles read whole (titled 'Summer Analyst') (verified live 2026-09-27)."
+  },
+  {
+    "company": "Google",
+    "careers_url": "https://www.google.com/about/careers/applications/",
+    "industry": "Big Tech",
+    "priority": "high",
+    "provider": "google",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "results page embeds its job data (AF_initDataCallback ds:1); parsed from a plain GET (verified live 2026-09-27)."
+  },
+  {
     "company": "Harvey",
     "careers_url": "https://jobs.ashbyhq.com/harvey",
     "industry": "Applied AI (Legal)",
@@ -997,6 +1258,20 @@
     ],
     "support_status": "partial",
     "notes": "Greenhouse board on a company-owned domain. Evidence: 11 observed postings on hudsonrivertrading.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (wehrtyou, hudsonrivertrading); run `make validate-companies` to pin the winner and promote to supported."
+  },
+  {
+    "company": "IBM",
+    "careers_url": "https://www.ibm.com/careers",
+    "industry": "Enterprise Technology",
+    "priority": "medium",
+    "provider": "ibm",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "IBM careers search API answers (verified live 2026-09-27). No posting dates exposed."
   },
   {
     "company": "IMC Trading",
@@ -1116,6 +1391,44 @@
     "notes": "config recovered from 37 observed posting URL(s); seed name(s): Jane Street"
   },
   {
+    "company": "JPMorgan Chase",
+    "careers_url": "https://careers.jpmorgan.com/",
+    "industry": "Investment Banking",
+    "priority": "high",
+    "provider": "oracle_hcm",
+    "provider_config": {
+      "host": "jpmc.fa.oraclecloud.com",
+      "site": "CX_1001"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "careers page links to jpmc.fa.oraclecloud.com Candidate Experience site CX_1001; REST API answers (verified live 2026-09-27).",
+    "aliases": [
+      "JPMorgan",
+      "J.P. Morgan",
+      "JP Morgan"
+    ]
+  },
+  {
+    "company": "Jump Trading",
+    "careers_url": "https://www.jumptrading.com/careers/",
+    "industry": "Quantitative Trading",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "jumptrading"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "Greenhouse board 'jumptrading': 113 postings, every apply URL on jumptrading.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+  },
+  {
     "company": "KLA",
     "careers_url": "https://kla.wd1.myworkdayjobs.com/en-US/UR",
     "industry": "Semiconductor Equipment",
@@ -1184,6 +1497,20 @@
     "notes": "config recovered from 5 observed posting URL(s); seed name(s): Lightmatter"
   },
   {
+    "company": "LinkedIn",
+    "careers_url": "https://careers.linkedin.com/",
+    "industry": "Big Tech",
+    "priority": "high",
+    "provider": "custom",
+    "provider_config": {},
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "blocked",
+    "notes": "roles are listed on linkedin.com behind sign-in. The Greenhouse/Lever boards named 'linkedin' are NOT LinkedIn's (test boards: a job titled '123123'). Absent from both seed feeds. Not polled."
+  },
+  {
     "company": "Lucid Motors",
     "careers_url": "https://job-boards.greenhouse.io/lucidmotors",
     "industry": "Electric Vehicles",
@@ -1215,18 +1542,21 @@
   },
   {
     "company": "Marqeta",
-    "careers_url": "https://job-boards.greenhouse.io/mqreferrals",
+    "careers_url": "https://www.marqeta.com/company/careers",
     "industry": "Card Issuing",
     "priority": "medium",
-    "provider": "greenhouse",
+    "provider": "simplify_fallback",
     "provider_config": {
-      "board_token": "mqreferrals"
+      "company_names": [
+        "Marqeta"
+      ]
     },
     "source_discovered_from": [
-      "simplify"
+      "simplify",
+      "curated"
     ],
-    "support_status": "supported",
-    "notes": "config recovered from 1 observed posting URL(s); seed name(s): Marqeta"
+    "support_status": "partial",
+    "notes": "the only observed board ('mqreferrals') is an internal referral board and now 404s; the careers page loads jobs client-side with no discoverable public endpoint; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "Marvell",
@@ -1281,6 +1611,25 @@
     "notes": "config recovered from 6 observed posting URL(s); seed name(s): Mercury"
   },
   {
+    "company": "Meta",
+    "careers_url": "https://www.metacareers.com/jobs",
+    "industry": "Big Tech",
+    "priority": "high",
+    "provider": "simplify_fallback",
+    "provider_config": {
+      "company_names": [
+        "Meta",
+        "Facebook"
+      ]
+    },
+    "source_discovered_from": [
+      "simplify",
+      "curated"
+    ],
+    "support_status": "partial",
+    "notes": "metacareers.com's GraphQL needs page-issued tokens (not something to work around); monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+  },
+  {
     "company": "Micron",
     "careers_url": "https://micron.wd1.myworkdayjobs.com/en-US/External",
     "industry": "Semiconductors",
@@ -1289,15 +1638,56 @@
     "provider_config": {
       "tenant": "micron",
       "host": "micron.wd1.myworkdayjobs.com",
-      "site": "External"
+      "site": "External",
+      "queries": [
+        "internship"
+      ]
     },
     "source_discovered_from": [
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 85 observed posting URL(s); seed name(s): Micron Technology",
+    "notes": "config recovered from 85 observed posting URL(s); seed name(s): Micron Technology. Workday search for 'intern' matches most of the board (RTX 2,350 / Micron 3,056 postings), past Workday's 2,000-result limit, and so does 'co-op'; 'internship' returns 465 / 329 and its results already include co-op roles (measured live 2026-09-27).",
     "aliases": [
       "Micron Technology"
+    ]
+  },
+  {
+    "company": "Microsoft",
+    "careers_url": "https://careers.microsoft.com/",
+    "industry": "Big Tech",
+    "priority": "high",
+    "provider": "eightfold",
+    "provider_config": {
+      "host": "apply.careers.microsoft.com",
+      "domain": "microsoft.com"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "careers page runs on Eightfold; PCSX search API answers, 98 intern postings (verified live 2026-09-27)."
+  },
+  {
+    "company": "Millennium",
+    "careers_url": "https://www.mlp.com/careers/",
+    "industry": "Hedge Fund",
+    "priority": "high",
+    "provider": "eightfold",
+    "provider_config": {
+      "host": "mlp.eightfold.ai",
+      "domain": "mlp.com",
+      "api": "v2"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "careers page links to mlp.eightfold.ai; this tenant is still on the v2 API (PCSX answers 403) (verified live 2026-09-27).",
+    "aliases": [
+      "Millennium Management"
     ]
   },
   {
@@ -1319,6 +1709,39 @@
     ]
   },
   {
+    "company": "MongoDB",
+    "careers_url": "https://www.mongodb.com/company/careers",
+    "industry": "Databases",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "mongodb"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "Greenhouse board 'mongodb': 396 postings, every apply URL on mongodb.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+  },
+  {
+    "company": "Morgan Stanley",
+    "careers_url": "https://www.morganstanley.com/careers",
+    "industry": "Investment Banking",
+    "priority": "high",
+    "provider": "eightfold",
+    "provider_config": {
+      "host": "morganstanley.eightfold.ai",
+      "domain": "morganstanley.com"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "careers page links to morganstanley.eightfold.ai; PCSX search API answers (verified live 2026-09-27)."
+  },
+  {
     "company": "Nasdaq",
     "careers_url": "https://nasdaq.wd1.myworkdayjobs.com/en-US/Global_External_Site",
     "industry": "Exchanges",
@@ -1337,20 +1760,21 @@
   },
   {
     "company": "Netflix",
-    "careers_url": "https://netflix.wd1.myworkdayjobs.com/en-US/Netflix",
+    "careers_url": "https://jobs.netflix.com/",
     "industry": "Consumer Streaming",
     "priority": "high",
-    "provider": "workday",
+    "provider": "eightfold",
     "provider_config": {
-      "tenant": "netflix",
-      "host": "netflix.wd1.myworkdayjobs.com",
-      "site": "Netflix"
+      "host": "explore.jobs.netflix.net",
+      "domain": "netflix.com",
+      "api": "v2"
     },
     "source_discovered_from": [
-      "simplify"
+      "curated",
+      "live"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 14 observed posting URL(s); seed name(s): Netflix"
+    "notes": "moved off Workday (the old tenant answers 422) to Eightfold at explore.jobs.netflix.net; v2 API answers (verified live 2026-09-27)."
   },
   {
     "company": "Northrop Grumman",
@@ -1454,6 +1878,23 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 16 observed posting URL(s); seed name(s): Optiver"
+  },
+  {
+    "company": "Oracle",
+    "careers_url": "https://careers.oracle.com/",
+    "industry": "Enterprise Software",
+    "priority": "medium",
+    "provider": "oracle_hcm",
+    "provider_config": {
+      "host": "eeho.fa.us2.oraclecloud.com",
+      "site": "CX_45001"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "careers.oracle.com runs on Oracle Fusion (eeho.fa.us2.oraclecloud.com); REST API answers (verified live 2026-09-27)."
   },
   {
     "company": "Palantir",
@@ -1560,6 +2001,38 @@
     "notes": "config recovered from 3 observed posting URL(s); seed name(s): Physical Intelligence"
   },
   {
+    "company": "Pinterest",
+    "careers_url": "https://www.pinterestcareers.com/",
+    "industry": "Consumer Technology",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "pinterest"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "Greenhouse board 'pinterest': 152 postings, every apply URL on pinterestcareers.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+  },
+  {
+    "company": "Plaid",
+    "careers_url": "https://plaid.com/careers/",
+    "industry": "Fintech",
+    "priority": "high",
+    "provider": "ashby",
+    "provider_config": {
+      "job_board_name": "plaid"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "Ashby board 'plaid': 121 postings (verified live 2026-09-27)."
+  },
+  {
     "company": "Planet",
     "careers_url": "https://job-boards.greenhouse.io/planetlabs",
     "industry": "Earth Observation",
@@ -1629,19 +2102,21 @@
   },
   {
     "company": "Postman",
-    "careers_url": "https://job-boards.greenhouse.io/postman",
+    "careers_url": "https://www.postman.com/company/careers/",
     "industry": "API Tooling",
     "priority": "medium",
-    "provider": "greenhouse",
+    "provider": "simplify_fallback",
     "provider_config": {
-      "board_token": "postman"
+      "company_names": [
+        "Postman"
+      ]
     },
     "source_discovered_from": [
-      "ouckah",
-      "simplify"
+      "simplify",
+      "curated"
     ],
-    "support_status": "supported",
-    "notes": "config recovered from 2 observed posting URL(s); seed name(s): Postman"
+    "support_status": "partial",
+    "notes": "left Greenhouse (board 404s, API and page); open-positions loads client-side with no discoverable public endpoint after three approaches; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "Proofpoint",
@@ -1661,13 +2136,31 @@
     "notes": "config recovered from 18 observed posting URL(s); seed name(s): Proofpoint"
   },
   {
+    "company": "Qualcomm",
+    "careers_url": "https://careers.qualcomm.com/careers",
+    "industry": "Semiconductors",
+    "priority": "medium",
+    "provider": "eightfold",
+    "provider_config": {
+      "host": "qualcomm.eightfold.ai",
+      "domain": "qualcomm.com"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "careers page links to qualcomm.eightfold.ai; PCSX search API answers (verified live 2026-09-27)."
+  },
+  {
     "company": "Quantinuum",
-    "careers_url": "https://jobs.lever.co/quantinuum",
+    "careers_url": "https://jobs.eu.lever.co/quantinuum",
     "industry": "Quantum Computing",
     "priority": "experimental",
     "provider": "lever",
     "provider_config": {
-      "site": "quantinuum"
+      "site": "quantinuum",
+      "region": "eu"
     },
     "source_discovered_from": [
       "simplify"
@@ -1722,6 +2215,22 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 6 observed posting URL(s); seed name(s): Red Hat"
+  },
+  {
+    "company": "Reddit",
+    "careers_url": "https://www.redditinc.com/careers",
+    "industry": "Consumer Technology",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "reddit"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "Greenhouse board 'reddit': 150 postings, every apply URL on job-boards.greenhouse.io/reddit (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
   },
   {
     "company": "Replit",
@@ -1789,6 +2298,22 @@
     "notes": "config recovered from 9 observed posting URL(s); seed name(s): Robinhood"
   },
   {
+    "company": "Roblox",
+    "careers_url": "https://careers.roblox.com/",
+    "industry": "Consumer Technology",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "roblox"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "Greenhouse board 'roblox': 257 postings, every apply URL on careers.roblox.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
+  },
+  {
     "company": "Rocket Lab",
     "careers_url": "https://job-boards.greenhouse.io/rocketlab",
     "industry": "Aerospace",
@@ -1812,14 +2337,17 @@
     "provider_config": {
       "tenant": "globalhr",
       "host": "globalhr.wd5.myworkdayjobs.com",
-      "site": "rec_rtx_ext_gateway"
+      "site": "rec_rtx_ext_gateway",
+      "queries": [
+        "internship"
+      ]
     },
     "source_discovered_from": [
       "ouckah",
       "simplify"
     ],
     "support_status": "supported",
-    "notes": "config recovered from 344 observed posting URL(s); seed name(s): RTX",
+    "notes": "config recovered from 344 observed posting URL(s); seed name(s): RTX. Workday search for 'intern' matches most of the board (RTX 2,350 / Micron 3,056 postings), past Workday's 2,000-result limit, and so does 'co-op'; 'internship' returns 465 / 329 and its results already include co-op roles (measured live 2026-09-27).",
     "aliases": [
       "Raytheon Technologies"
     ]
@@ -1841,6 +2369,22 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 28 observed posting URL(s); seed name(s): Salesforce"
+  },
+  {
+    "company": "Samsara",
+    "careers_url": "https://www.samsara.com/company/careers",
+    "industry": "Cloud Infrastructure",
+    "priority": "high",
+    "provider": "greenhouse",
+    "provider_config": {
+      "board_token": "samsara"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "Greenhouse board 'samsara': 249 postings, every apply URL on samsara.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering."
   },
   {
     "company": "Samsung Research America",
@@ -2052,6 +2596,28 @@
     "notes": "config recovered from 19 observed posting URL(s); seed name(s): Skydio"
   },
   {
+    "company": "Snap",
+    "careers_url": "https://careers.snap.com/",
+    "industry": "Consumer Technology",
+    "priority": "high",
+    "provider": "workday",
+    "provider_config": {
+      "host": "wd1.myworkdaysite.com",
+      "tenant": "snapchat",
+      "site": "snap"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "careers.snap.com links to Workday's myworkdaysite variant (/recruiting/snapchat/snap); CXS API answers (verified live 2026-09-27).",
+    "aliases": [
+      "Snap Inc",
+      "Snapchat"
+    ]
+  },
+  {
     "company": "Snowflake",
     "careers_url": "https://jobs.ashbyhq.com/snowflake",
     "industry": "Data Warehouse",
@@ -2136,6 +2702,27 @@
     "notes": "Greenhouse board on a company-owned domain. Evidence: 5 observed postings on stripe.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (stripe, stripejobs); run `make validate-companies` to pin the winner and promote to supported."
   },
   {
+    "company": "Susquehanna International Group",
+    "careers_url": "https://careers.sig.com/",
+    "industry": "Quantitative Trading",
+    "priority": "high",
+    "provider": "jibe",
+    "provider_config": {
+      "host": "careers.sig.com",
+      "job_path": "/jobs"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "careers.sig.com is an iCIMS Jibe site; /api/jobs answers and job pages resolve (verified live 2026-09-27).",
+    "aliases": [
+      "SIG",
+      "Susquehanna"
+    ]
+  },
+  {
     "company": "Symbotic",
     "careers_url": "https://symbotic.wd504.myworkdayjobs.com/en-US/Symbotic",
     "industry": "Warehouse Robotics",
@@ -2167,6 +2754,24 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 11 observed posting URL(s); seed name(s): Tenstorrent"
+  },
+  {
+    "company": "Tesla",
+    "careers_url": "https://www.tesla.com/careers",
+    "industry": "Electric Vehicles",
+    "priority": "high",
+    "provider": "simplify_fallback",
+    "provider_config": {
+      "company_names": [
+        "Tesla"
+      ]
+    },
+    "source_discovered_from": [
+      "simplify",
+      "curated"
+    ],
+    "support_status": "partial",
+    "notes": "tesla.com answers a plain request with 403 (bot protection); monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
   },
   {
     "company": "The Boeing Company",
@@ -2255,6 +2860,23 @@
     ],
     "support_status": "partial",
     "notes": "Avature tenant; no stable public feed; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+  },
+  {
+    "company": "Uber",
+    "careers_url": "https://www.uber.com/careers/",
+    "industry": "Consumer Technology",
+    "priority": "high",
+    "provider": "oracle_hcm",
+    "provider_config": {
+      "host": "iaziqy.fa.ocs.oraclecloud.com",
+      "site": "UberCareers"
+    },
+    "source_discovered_from": [
+      "curated",
+      "live"
+    ],
+    "support_status": "supported",
+    "notes": "jobs.uber.com links to Oracle Fusion site UberCareers; REST API answers (verified live 2026-09-27)."
   },
   {
     "company": "Varda Space Industries",

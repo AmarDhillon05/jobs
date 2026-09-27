@@ -298,7 +298,7 @@ class TestHealthAndMeta:
         status, body = get(api, "/meta")
         assert status == 200
         assert body["jobs_stored"] == 6
-        assert 100 <= body["companies"]["pollable"] <= 150
+        assert 100 <= body["companies"]["pollable"] <= 200
         assert body["companies"]["by_provider"]["greenhouse"] > 0
 
 

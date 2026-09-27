@@ -48,6 +48,9 @@ sys.path.insert(0, str(REPO_ROOT / "scripts"))
 from fetch_seed_listings import SEED_SOURCES, load_cached  # noqa: E402
 
 UNIVERSE_PATH = REPO_ROOT / "data" / "company_universe.json"
+VALIDATION_PATH = REPO_ROOT / "data" / "validation.json"
+#: Second-hand sources are never promoted past `partial`, whatever a probe says.
+SECOND_HAND_PROVIDERS = frozenset({"simplify_fallback"})
 SNAPSHOT_PATH = REPO_ROOT / "data" / "seed" / "discovery_snapshot.json"
 REGISTRY_PATH = REPO_ROOT / "companies.json"
 
@@ -147,7 +150,9 @@ def resolve(
             industry=entry["industry"],
             priority=Priority(entry["priority"]),
             provider=guess.provider,
-            provider_config=dict(guess.config),
+            # The seed URLs decide *where* a company posts; an editorial override
+            # may only tune *how* it is read (e.g. RTX's search terms).
+            provider_config={**guess.config, **(entry.get("provider_config_overrides") or {})},
             source_discovered_from=tuple(match.sources),
             # Promoted to `supported` only by tests/scrapers/test_registry_configs.py,
             # which checks every entry against its adapter. See COMPANY_COVERAGE.md.
@@ -155,6 +160,7 @@ def resolve(
             notes=(
                 f"config recovered from {match.listing_count} observed posting URL(s); "
                 f"seed name(s): {', '.join(match.observed_names)}"
+                + (f". {entry['notes']}" if entry.get("notes") else "")
             ),
             aliases=aliases,
         ),
@@ -180,8 +186,31 @@ def build() -> tuple[CompanyRegistry, list[str]]:
         else:
             companies.append(company)
 
+    companies = apply_validation(companies)
     companies.sort(key=lambda c: c.company.casefold())
     return CompanyRegistry(tuple(companies)), problems
+
+
+def apply_validation(companies: list[Company]) -> list[Company]:
+    """Overlay the last conclusive live verdict (data/validation.json), if any."""
+    if not VALIDATION_PATH.exists():
+        return companies
+    from dataclasses import replace
+
+    verdicts = json.loads(VALIDATION_PATH.read_text(encoding="utf-8")).get("companies", {})
+    applied: list[Company] = []
+    for company in companies:
+        verdict = verdicts.get(company.company)
+        if not verdict:
+            applied.append(company)
+            continue
+        status = SupportStatus(verdict["status"])
+        if company.provider in SECOND_HAND_PROVIDERS and status is SupportStatus.SUPPORTED:
+            status = SupportStatus.PARTIAL
+        applied.append(
+            replace(company, support_status=status, last_validated=verdict["validated_on"])
+        )
+    return applied
 
 
 def main(argv: list[str] | None = None) -> int:
