@@ -1,0 +1,43 @@
+{
+ "items": [
+  {
+   "TotalJobsCount": 8,
+   "requisitionList": [
+    {
+     "Id": "210794816",
+     "Title": "Asset Management - Client Account Management Analyst",
+     "PostedDate": "2026-09-26",
+     "PrimaryLocation": "Metro Manila, National Capital Region, Philippines",
+     "PrimaryLocationCountry": "PH",
+     "secondaryLocations": [],
+     "ShortDescriptionStr": "Deliver seamless client account servicing and reporting through strong coordination and attention to detail.",
+     "JobFamily": "Client Service"
+    },
+    {
+     "Id": "210785335",
+     "Title": "India Direct Custody Operations - Associate",
+     "PostedDate": "2026-09-26",
+     "PrimaryLocation": "Mumbai, Maharashtra, India",
+     "PrimaryLocationCountry": "IN",
+     "secondaryLocations": [],
+     "ShortDescriptionStr": "An Associate leading efforts in Designated Depository Participant team, elevating client experience while ensuring strict compliance",
+     "JobFamily": "Client Data"
+    },
+    {
+     "Id": "210778204",
+     "Title": "Credit Risk Management Governance Lead",
+     "PostedDate": "2026-09-27",
+     "PrimaryLocation": "Mumbai, Maharashtra, India",
+     "PrimaryLocationCountry": "IN",
+     "secondaryLocations": [],
+     "ShortDescriptionStr": "As Credit Risk Management Governance Lead - Vice President for Wealth Management, you will  strengthen the Private Bank credit risk governance framework, coordi...",
+     "JobFamily": "Credit Risk"
+    }
+   ]
+  }
+ ],
+ "count": 1,
+ "hasMore": false,
+ "limit": 25,
+ "offset": 0
+}

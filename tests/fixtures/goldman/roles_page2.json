@@ -1,0 +1,62 @@
+{
+ "data": {
+  "roleSearch": {
+   "totalCount": 8,
+   "page": {
+    "pageNumber": 1,
+    "pageSize": 100,
+    "hasNext": false
+   },
+   "items": [
+    {
+     "roleId": "170620_GS_CAMPUS",
+     "jobTitle": "2027 | APEJ | Taipei | Operations | New Analyst",
+     "corporateTitle": "Analyst",
+     "division": "Operations Division",
+     "lastPostedDate": "2026-09-25T05:23:46.727Z",
+     "shortDescription": " ",
+     "locations": [
+      {
+       "city": "Taipei",
+       "state": "Taipei City",
+       "country": "Taiwan",
+       "primary": true
+      }
+     ]
+    },
+    {
+     "roleId": "170621_GS_CAMPUS",
+     "jobTitle": "2027 | APEJ | Seoul | Operations | New Analyst",
+     "corporateTitle": "Analyst",
+     "division": "Operations Division",
+     "lastPostedDate": "2026-09-25T05:23:14.800Z",
+     "shortDescription": " ",
+     "locations": [
+      {
+       "city": "Seoul",
+       "state": "Seoul",
+       "country": "Korea, Republic of",
+       "primary": true
+      }
+     ]
+    },
+    {
+     "roleId": "170863_GS_CAMPUS",
+     "jobTitle": "2027 | EMEA | London | Global Investment Research, Equity Research | Summer Analyst",
+     "corporateTitle": "Summer Analyst",
+     "division": "Global Investment Research Division",
+     "lastPostedDate": "2026-09-25T11:57:00.243Z",
+     "shortDescription": " ",
+     "locations": [
+      {
+       "city": "London",
+       "state": "Greater London, England",
+       "country": "United Kingdom",
+       "primary": true
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

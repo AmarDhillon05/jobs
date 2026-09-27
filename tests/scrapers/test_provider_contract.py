@@ -1,6 +1,6 @@
 """Level 2 - the contract every provider adapter must satisfy.
 
-One battery, parametrized across all nine adapters, covering exactly the list in
+One battery, parametrized across every adapter, covering exactly the list in
 PRD §7 and §14 Level 2: required fields present, URLs valid, IDs stable,
 pagination handled with nothing silently skipped, malformed records contained,
 source duplicates collapsed, empty results not a failure, and the transient /
@@ -74,6 +74,8 @@ class TestRequiredFields:
         assert any(job.location for job in jobs)
 
     def test_at_least_one_job_carries_a_posting_date(self, provider_case: ProviderCase) -> None:
+        if not provider_case.dated:
+            pytest.skip(f"{provider_case.provider} exposes no posting date; treated as undated")
         jobs = provider_case.source().fetch().jobs
         assert any(job.date_posted is not None for job in jobs)
 

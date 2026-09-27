@@ -1,0 +1,83 @@
+{
+ "data": {
+  "roleSearch": {
+   "totalCount": 8,
+   "page": {
+    "pageNumber": 0,
+    "pageSize": 100,
+    "hasNext": true
+   },
+   "items": [
+    {
+     "roleId": "170863_GS_CAMPUS",
+     "jobTitle": "2027 | EMEA | London | Global Investment Research, Equity Research | Summer Analyst",
+     "corporateTitle": "Summer Analyst",
+     "division": "Global Investment Research Division",
+     "lastPostedDate": "2026-09-25T11:57:00.243Z",
+     "shortDescription": " ",
+     "locations": [
+      {
+       "city": "London",
+       "state": "Greater London, England",
+       "country": "United Kingdom",
+       "primary": true
+      }
+     ]
+    },
+    {
+     "roleId": "184392_GS_CAMPUS",
+     "jobTitle": "2027 | EMEA | Doha | Operations | Seasonal/Off Cycle Internship",
+     "corporateTitle": "Seasonal",
+     "division": "Operations Division",
+     "lastPostedDate": "2026-09-25T11:03:00.714Z",
+     "shortDescription": " ",
+     "locations": [
+      {
+       "city": null,
+       "state": null,
+       "country": "Qatar",
+       "primary": true
+      }
+     ]
+    },
+    {
+     "roleId": "168264_GS_CAMPUS",
+     "jobTitle": "2027 | APEJ | Singapore | Operations | Summer Analyst",
+     "corporateTitle": "Summer Analyst",
+     "division": "Operations Division",
+     "lastPostedDate": "2026-09-25T05:24:58.934Z",
+     "shortDescription": " ",
+     "locations": [
+      {
+       "city": null,
+       "state": null,
+       "country": "Singapore",
+       "primary": true
+      }
+     ]
+    },
+    {
+     "roleId": "170603_GS_CAMPUS",
+     "jobTitle": "2027 | APEJ | Seoul | Operations | Summer Analyst",
+     "corporateTitle": "Summer Analyst",
+     "division": "Operations Division",
+     "lastPostedDate": "2026-09-25T05:24:23.169Z",
+     "shortDescription": " ",
+     "locations": [
+      {
+       "city": "Seoul",
+       "state": "Seoul",
+       "country": "Korea, Republic of",
+       "primary": true
+      }
+     ]
+    },
+    {
+     "jobTitle": "Broken role - no roleId",
+     "lastPostedDate": "2026-09-25T11:57:00.243Z",
+     "locations": []
+    }
+   ]
+  }
+ }
+}

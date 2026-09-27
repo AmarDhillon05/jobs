@@ -24,6 +24,9 @@ Notes:
 * The description is split across ``description`` plus a ``lists`` array; the
   adapter stitches them back together so an email preview is useful.
 * Lever returns the whole board in one array, so ``fetch_pages`` yields once.
+* Lever runs a separate **EU instance**: boards at ``jobs.eu.lever.co`` are served
+  by ``api.eu.lever.co``, and the US API answers 404 for them. ``region: "eu"``
+  in the config selects it (Cirrus Logic, Quantinuum).
 """
 
 from __future__ import annotations
@@ -37,6 +40,7 @@ from jobmonitor.scrapers._parse import as_mapping, as_sequence, first_of, join_l
 from jobmonitor.scrapers.base import JobSource, register
 
 API_ROOT = "https://api.lever.co/v0/postings"
+API_ROOTS = {"us": API_ROOT, "eu": "https://api.eu.lever.co/v0/postings"}
 
 
 @register
@@ -49,8 +53,15 @@ class LeverSource(JobSource):
         return self.config_str("site")
 
     @property
+    def region(self) -> str:
+        return str(self.config.get("region", "us")).lower()
+
+    @property
     def jobs_url(self) -> str:
-        return f"{API_ROOT}/{self.site}?mode=json"
+        root = API_ROOTS.get(self.region)
+        if root is None:
+            raise ParseError(f"{self.describe()}: unknown Lever region {self.region!r}")
+        return f"{root}/{self.site}?mode=json"
 
     def fetch_pages(self) -> Iterator[Sequence[Any]]:
         payload = self.client.get_json(self.jobs_url)

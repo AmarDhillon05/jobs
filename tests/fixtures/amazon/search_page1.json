@@ -1,0 +1,71 @@
+{
+ "error": null,
+ "hits": 9,
+ "jobs": [
+  {
+   "id_icims": "10560398",
+   "title": "Retail Vendor Manager Intern GBR",
+   "job_path": "/en/jobs/10560398/retail-vendor-manager-intern-gbr",
+   "posted_date": "September 25, 2026",
+   "normalized_location": "London, England, GBR",
+   "location": "GB, London",
+   "city": "London",
+   "country_code": "GBR",
+   "description_short": "There’s a universe of opportunity at Amazon.  At Amazon, your career doesn’t follow a straight line. It accelerates, twists, and challenges you in ways you neve...",
+   "job_schedule_type": "full-time"
+  },
+  {
+   "id_icims": "10560310",
+   "title": "Program Manager Intern ESP 2027 - BCN3",
+   "job_path": "/en/jobs/10560310/program-manager-intern-esp-2027-bcn3",
+   "posted_date": "September 25, 2026",
+   "normalized_location": "Castellbisbal, Catalonia, ESP",
+   "location": "ES, B, Castellbisbal",
+   "city": "Castellbisbal",
+   "country_code": "ESP",
+   "description_short": "There’s a universe of opportunity at Amazon.  At Amazon, your career doesn’t follow a straight line. It accelerates, twists, and challenges you in ways you neve...",
+   "job_schedule_type": "full-time"
+  },
+  {
+   "id_icims": "10560298",
+   "title": "Operations Human Resources Partner Intern (6 Months) - 2027",
+   "job_path": "/en/jobs/10560298/operations-human-resources-partner-intern-6-months-2027",
+   "posted_date": "September 25, 2026",
+   "normalized_location": "Torrazza Piemonte, Piedmont, ITA",
+   "location": "IT, TP, Torrazza",
+   "city": "Torrazza",
+   "country_code": "ITA",
+   "description_short": "Power that runs the world | Discover careers in Operations Operations roles at Amazon put you at the center of how things move from a click to a doorstep. You’l...",
+   "job_schedule_type": "full-time"
+  },
+  {
+   "id_icims": "10560202",
+   "title": "Program Manager Intern ESP 2027",
+   "job_path": "/en/jobs/10560202/program-manager-intern-esp-2027",
+   "posted_date": "September 25, 2026",
+   "normalized_location": "Barcelona, Catalonia, ESP",
+   "location": "ES, B, Barcelona",
+   "city": "Barcelona",
+   "country_code": "ESP",
+   "description_short": "There’s a universe of opportunity at Amazon.  At Amazon, your career doesn’t follow a straight line. It accelerates, twists, and challenges you in ways you neve...",
+   "job_schedule_type": "full-time"
+  },
+  {
+   "id_icims": "10559746",
+   "title": "Software Development Engineer Intern - Summer 2027 (USA) , Amazon Dedicated Cloud (ADC)",
+   "job_path": "/en/jobs/10559746/software-development-engineer-intern-summer-2027-usa-amazon-dedicated-cloud-adc",
+   "posted_date": "September 24, 2026",
+   "normalized_location": "Seattle, Washington, USA",
+   "location": "US, WA, Seattle",
+   "city": "Seattle",
+   "country_code": "USA",
+   "description_short": "Shape what comes next | Discover careers in TechAt Amazon, our tech isn't just a tool, it's your playground. Our engineers work on scalable systems, cloud servi...",
+   "job_schedule_type": "full-time"
+  },
+  {
+   "id_icims": "0000000",
+   "title": "Broken posting - no job_path",
+   "posted_date": "September 25, 2026"
+  }
+ ]
+}

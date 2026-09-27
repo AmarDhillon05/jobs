@@ -1,0 +1,42 @@
+{
+ "error": null,
+ "hits": 9,
+ "jobs": [
+  {
+   "id_icims": "10559132",
+   "title": "Program Manager Intern ITA 2027 - MXP3 site ",
+   "job_path": "/en/jobs/10559132/program-manager-intern-ita-2027-mxp3-site",
+   "posted_date": "September 24, 2026",
+   "normalized_location": "Vercelli, Piedmont, ITA",
+   "location": "IT, Vercelli",
+   "city": "Vercelli",
+   "country_code": "ITA",
+   "description_short": "There’s a universe of opportunity at Amazon.  At Amazon, your career doesn’t follow a straight line. It accelerates, twists, and challenges you in ways you neve...",
+   "job_schedule_type": "full-time"
+  },
+  {
+   "id_icims": "10559115",
+   "title": "Program Manager Intern ITA 2027",
+   "job_path": "/en/jobs/10559115/program-manager-intern-ita-2027",
+   "posted_date": "September 24, 2026",
+   "normalized_location": "Milan, Lombardy, ITA",
+   "location": "IT, Milan",
+   "city": "Milan",
+   "country_code": "ITA",
+   "description_short": "There’s a universe of opportunity at Amazon.  At Amazon, your career doesn’t follow a straight line. It accelerates, twists, and challenges you in ways you neve...",
+   "job_schedule_type": "full-time"
+  },
+  {
+   "id_icims": "10560398",
+   "title": "Retail Vendor Manager Intern GBR",
+   "job_path": "/en/jobs/10560398/retail-vendor-manager-intern-gbr",
+   "posted_date": "September 25, 2026",
+   "normalized_location": "London, England, GBR",
+   "location": "GB, London",
+   "city": "London",
+   "country_code": "GBR",
+   "description_short": "There’s a universe of opportunity at Amazon.  At Amazon, your career doesn’t follow a straight line. It accelerates, twists, and challenges you in ways you neve...",
+   "job_schedule_type": "full-time"
+  }
+ ]
+}

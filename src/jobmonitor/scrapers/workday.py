@@ -40,6 +40,7 @@ from typing import Any, ClassVar
 from jobmonitor.errors import InvalidJobError, ParseError
 from jobmonitor.models.job import Job
 from jobmonitor.scrapers._parse import as_mapping, as_sequence, first_of, text, text_of
+from jobmonitor.scrapers._search import configured_queries
 from jobmonitor.scrapers.base import JobSource, register
 
 #: Workday caps this server-side; asking for more is silently ignored.
@@ -106,7 +107,24 @@ class WorkdaySource(JobSource):
 
     @property
     def search_text(self) -> str:
-        return str(self.config.get("search_text", DEFAULT_SEARCH_TEXT))
+        return self.queries[0]
+
+    @property
+    def queries(self) -> tuple[str, ...]:
+        """Search terms. One ("intern") by default, unlike the other searching
+        adapters: 44 tenants share this adapter and most title internships
+        plainly. A tenant whose search is too loose overrides it - RTX and Micron
+        match 2,350 and 3,056 postings for "intern", past Workday's hard 2,000
+        result limit, but 465 and 329 for "internship"."""
+        return configured_queries(self.config, "search_text", default=(DEFAULT_SEARCH_TEXT,))
+
+    def job_page(self, path: str) -> str:
+        # myworkdaysite.com (Snap) serves job pages under /recruiting/{tenant}/{site};
+        # myworkdayjobs.com under /{locale}/{site}. The first form 500s on the
+        # second kind of host and vice versa - verified live.
+        if self.host.endswith("myworkdaysite.com"):
+            return f"https://{self.host}/recruiting/{self.tenant}/{self.site}{path}"
+        return f"https://{self.host}/{self.locale}/{self.site}{path}"
 
     @property
     def jobs_url(self) -> str:
@@ -117,6 +135,9 @@ class WorkdaySource(JobSource):
         return str(self.config.get("locale", "en-US"))
 
     def fetch_pages(self) -> Iterator[Sequence[Any]]:
+        yield from self.search_all(self.queries, self._search)
+
+    def _search(self, query: str) -> Iterator[Sequence[Any]]:
         offset = 0
         seen = 0
         total: int | None = None
@@ -128,7 +149,7 @@ class WorkdaySource(JobSource):
                     "appliedFacets": {},
                     "limit": PAGE_SIZE,
                     "offset": offset,
-                    "searchText": self.search_text,
+                    "searchText": query,
                 },
             )
             if not isinstance(payload, dict):
@@ -179,7 +200,7 @@ class WorkdaySource(JobSource):
             )
         if not path.startswith("/"):
             path = f"/{path}"
-        url = f"https://{self.host}/{self.locale}/{self.site}{path}"
+        url = self.job_page(path)
 
         return Job(
             company=self.company.company,

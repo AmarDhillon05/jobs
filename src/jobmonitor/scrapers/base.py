@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import time
 from abc import ABC, abstractmethod
-from collections.abc import Iterable, Iterator, Mapping, Sequence
+from collections.abc import Callable, Iterable, Iterator, Mapping, Sequence
 from dataclasses import dataclass, field
 from typing import Any, ClassVar
 
@@ -51,6 +51,8 @@ class FetchResult:
     pages: int = 0
     #: True when the page cap stopped the fetch before the source ran out.
     truncated: bool = False
+    #: Searches after the first that failed; their results are missing.
+    partial_failures: list[str] = field(default_factory=list)
 
     @property
     def ok(self) -> bool:
@@ -68,6 +70,8 @@ class JobSource(ABC):
     def __init__(self, company: Company, client: HttpClient | None = None) -> None:
         self.company = company
         self.client = client or HttpClient()
+        #: Filled by :meth:`search_all` when a later search term fails.
+        self.partial_failures: list[str] = []
         self._validate_config()
 
     # ------------------------------------------------------------------- config
@@ -109,6 +113,28 @@ class JobSource(ABC):
         """Human-readable source identity, used in logs and health records."""
         return f"{self.company.company}/{self.provider}"
 
+    def search_all(
+        self,
+        queries: Sequence[str],
+        search: Callable[[str], Iterator[Sequence[Any]]],
+    ) -> Iterator[Sequence[Any]]:
+        """Run several searches as one fetch, for adapters that must search.
+
+        The **first** search failing fails the fetch, exactly as a single-request
+        adapter would - that is how a site that is down or refusing us shows up.
+        A **later** search failing keeps everything gathered so far and records
+        the term, so the health record turns DEGRADED instead of one flaky extra
+        term discarding every result (observed live: one of Microsoft's five
+        searches failed transiently and took all 98 postings with it).
+        """
+        for index, query in enumerate(queries):
+            try:
+                yield from search(query)
+            except JobMonitorError as exc:
+                if index == 0:
+                    raise
+                self.partial_failures.append(f"{query!r}: {type(exc).__name__}: {exc}")
+
     # --------------------------------------------------------------- public API
     def fetch_jobs(self) -> list[Job]:
         """All currently-listed postings for this company, normalized."""
@@ -137,6 +163,7 @@ class JobSource(ABC):
                 break
 
         result.jobs = deduplicate(collected)
+        result.partial_failures = list(self.partial_failures)
         return result
 
     def healthcheck(self) -> ScraperHealth:
@@ -206,6 +233,12 @@ def safe_fetch(source: JobSource, *, clock: Any = time.perf_counter) -> FetchRes
     if result.truncated:
         status = ScraperStatus.DEGRADED
         error = f"stopped at the {MAX_PAGES}-page cap; later postings were not read"
+    elif result.partial_failures:
+        status = ScraperStatus.DEGRADED
+        error = (
+            "some searches failed, their results are missing: "
+            + "; ".join(result.partial_failures)[:400]
+        )
     elif result.malformed and result.jobs:
         status = ScraperStatus.DEGRADED
     elif result.jobs:

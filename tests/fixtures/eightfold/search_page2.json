@@ -1,0 +1,71 @@
+{
+ "status": 200,
+ "data": {
+  "count": 12,
+  "positions": [
+   {
+    "id": 1970393556983223,
+    "displayJobId": "200052634",
+    "name": "Software Engineering Intern - CTJ - TS",
+    "locations": [
+     "United States, Virginia, Reston"
+    ],
+    "standardizedLocations": [
+     "Reston, VA, US"
+    ],
+    "postedTs": 1789151972,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Software Engineering",
+    "creationTs": 1787943004,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200052634",
+    "positionUrl": "/careers/job/1970393556983223"
+   },
+   {
+    "id": 1970393556983226,
+    "displayJobId": "200052636",
+    "name": "Product Management Intern - CTJ - TS",
+    "locations": [
+     "United States, Washington, Redmond"
+    ],
+    "standardizedLocations": [
+     "Redmond, WA, US"
+    ],
+    "postedTs": 1789152002,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Product Management",
+    "creationTs": 1787943399,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200052636",
+    "positionUrl": "/careers/job/1970393556983226"
+   },
+   {
+    "id": 1970393556992502,
+    "displayJobId": "200054934",
+    "name": "Product Design INTERN",
+    "locations": [
+     "India, Multiple Locations, Multiple Locations"
+    ],
+    "standardizedLocations": [
+     "IN"
+    ],
+    "postedTs": 1789031303,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Product Design",
+    "creationTs": 1789030240,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200054934",
+    "positionUrl": "/careers/job/1970393556992502"
+   }
+  ]
+ }
+}

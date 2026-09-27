@@ -1,0 +1,116 @@
+{
+ "totalCount": 12,
+ "count": 12,
+ "jobs": [
+  {
+   "data": {
+    "slug": "90429",
+    "req_id": "90429",
+    "title": "Summer 2027 Long Term Software Test Engineering Intern/Co-Op",
+    "posted_date": "2026-09-01T07:12:00+0000",
+    "create_date": "2026-09-01T07:12:01+0000",
+    "full_location": "MARKHAM, Canada",
+    "short_location": "MARKHAM, Canada",
+    "apply_url": "https://campuscanada-amd.icims.com/jobs/90429/login",
+    "description": "ADVANCE YOUR CAREER. ADVANCE THE WORLD. At AMD, we believe technology can change lives for the better. It can heal us, entertain us, and make us more connected,..."
+   }
+  },
+  {
+   "data": {
+    "slug": "92526",
+    "req_id": "92526",
+    "title": "2027 PhD AI Model Optimization & Software Engineer Intern/Co-op",
+    "posted_date": "2026-09-16T15:40:00+0000",
+    "create_date": "2026-09-16T15:41:56+0000",
+    "full_location": "Austin, Texas",
+    "short_location": "Austin, Texas",
+    "apply_url": "https://campus-amd.icims.com/jobs/92526/login",
+    "description": "ADVANCE YOUR CAREER. ADVANCE THE WORLD. At AMD, we believe technology has the power to solve the world’s most important challenges. From advancing healthcare an..."
+   }
+  },
+  {
+   "data": {
+    "slug": "92244",
+    "req_id": "92244",
+    "title": "2027 Undergrad Supply Chain Co-Op/Intern",
+    "posted_date": "2026-09-10T00:39:00+0000",
+    "create_date": "2026-09-10T00:40:09+0000",
+    "full_location": "Austin, Texas",
+    "short_location": "Austin, Texas",
+    "apply_url": "https://campus-amd.icims.com/jobs/92244/login",
+    "description": "ADVANCE YOUR CAREER. ADVANCE THE WORLD. At AMD, we believe technology has the power to solve the world’s most important challenges. From advancing healthcare an..."
+   }
+  },
+  {
+   "data": {
+    "slug": "91234",
+    "req_id": "91234",
+    "title": "Summer 2027 Undergrad Finance Intern",
+    "posted_date": "2026-08-20T23:28:00+0000",
+    "create_date": "2026-08-20T23:31:12+0000",
+    "full_location": "Austin, Texas",
+    "short_location": "Austin, Texas",
+    "apply_url": "https://campus-amd.icims.com/jobs/91234/login",
+    "description": "ADVANCE YOUR CAREER. ADVANCE THE WORLD. At AMD, we believe technology has the power to solve the world’s most important challenges. From advancing healthcare an..."
+   }
+  },
+  {
+   "data": {
+    "slug": "91232",
+    "req_id": "91232",
+    "title": "Summer 2027 Undergrad Finance Intern",
+    "posted_date": "2026-08-20T23:28:00+0000",
+    "create_date": "2026-08-20T23:31:12+0000",
+    "full_location": "Santa Clara, California; San Jose, California",
+    "short_location": "Santa Clara, California",
+    "apply_url": "https://campus-amd.icims.com/jobs/91232/login",
+    "description": "ADVANCE YOUR CAREER. ADVANCE THE WORLD. At AMD, we believe technology has the power to solve the world’s most important challenges. From advancing healthcare an..."
+   }
+  },
+  {
+   "data": {
+    "slug": "91451",
+    "req_id": "91451",
+    "title": "2027 Undergrad Software Test Engineering Intern/Co-Op",
+    "posted_date": "2026-08-25T06:10:00+0000",
+    "create_date": "2026-08-25T06:11:26+0000",
+    "full_location": "Austin, Texas; Boxborough, Massachusetts; Fishkill, New York; Fort Collins, Colorado; Longmont, Colorado; Secaucus, New Jersey",
+    "short_location": "Austin, Texas",
+    "apply_url": "https://campus-amd.icims.com/jobs/91451/login",
+    "description": "ADVANCE YOUR CAREER. ADVANCE THE WORLD. At AMD, we believe technology has the power to solve the world’s most important challenges. From advancing healthcare an..."
+   }
+  },
+  {
+   "data": {
+    "slug": "91227",
+    "req_id": "91227",
+    "title": "2027 Undergrad Product Development Engineering Intern/Co-op",
+    "posted_date": "2026-08-20T23:28:00+0000",
+    "create_date": "2026-08-20T23:31:10+0000",
+    "full_location": "Santa Clara, California; San Jose, California",
+    "short_location": "Santa Clara, California",
+    "apply_url": "https://campus-amd.icims.com/jobs/91227/login",
+    "description": "ADVANCE YOUR CAREER. ADVANCE THE WORLD. At AMD, we believe technology has the power to solve the world’s most important challenges. From advancing healthcare an..."
+   }
+  },
+  {
+   "data": {
+    "slug": "90801",
+    "req_id": "90801",
+    "title": "2027 Undergrad Firmware Engineering Intern/Co-op",
+    "posted_date": "2026-08-20T23:28:00+0000",
+    "create_date": "2026-08-20T23:31:04+0000",
+    "full_location": "Austin, Texas; Boxborough, Massachusetts; Fort Collins, Colorado; Longmont, Colorado; Rochester, New York; Fishkill, New York; Secaucus, New Jersey",
+    "short_location": "Austin, Texas",
+    "apply_url": "https://campus-amd.icims.com/jobs/90801/login",
+    "description": "ADVANCE YOUR CAREER. ADVANCE THE WORLD. At AMD, we believe technology has the power to solve the world’s most important challenges. From advancing healthcare an..."
+   }
+  },
+  {
+   "data": {
+    "title": "Broken job - no slug, req_id or apply url",
+    "posted_date": "2026-09-01T07:12:00+0000"
+   }
+  }
+ ]
+}

@@ -154,7 +154,10 @@ def _detect_greenhouse(host: str, segments: list[str]) -> ProviderGuess | None:
 def _detect_workday(host: str, segments: list[str]) -> ProviderGuess | None:
     match = _WORKDAY_HOST_RE.match(host)
     if match:
-        tenant = match.group("tenant")
+        # The CXS API wants the tenant *id*, which uses underscores where the
+        # subdomain uses hyphens: osv-cci.wd1.myworkdayjobs.com is tenant
+        # "osv_cci" (observed live - "osv-cci" returns HTTP 422 for every body).
+        tenant = match.group("tenant").replace("-", "_")
         # Path is [<locale>]/<site>/job/... - the site is the first non-locale part.
         site = next((s for s in segments if not _LOCALE_RE.match(s)), None)
         config: dict[str, Any] = {"tenant": tenant, "host": host}
@@ -211,9 +214,14 @@ def detect_provider(url: str) -> ProviderGuess:
         )
 
     if "lever.co" in host:
-        # jobs.lever.co/<site>/<posting-id>
+        # jobs.lever.co/<site>/<posting-id>, or jobs.eu.lever.co/... for Lever's EU
+        # instance - a separate API host, so the region must be kept (dropping it
+        # sent Cirrus Logic and Quantinuum to the US API, which 404s).
         if segments:
-            return ProviderGuess("lever", {"site": segments[0]}, host)
+            config: dict[str, Any] = {"site": segments[0]}
+            if host == "jobs.eu.lever.co" or host.endswith(".eu.lever.co"):
+                config["region"] = "eu"
+            return ProviderGuess("lever", config, host)
         return ProviderGuess("lever", {}, host, reason="no lever site in path")
 
     if "ashbyhq.com" in host:
@@ -261,7 +269,8 @@ def careers_url_for(provider: str, config: Mapping[str, Any]) -> str | None:
     if provider == "greenhouse" and config.get("board_token"):
         return f"https://job-boards.greenhouse.io/{config['board_token']}"
     if provider == "lever" and config.get("site"):
-        return f"https://jobs.lever.co/{config['site']}"
+        eu = ".eu" if config.get("region") == "eu" else ""
+        return f"https://jobs{eu}.lever.co/{config['site']}"
     if provider == "ashby" and config.get("job_board_name"):
         return f"https://jobs.ashbyhq.com/{config['job_board_name']}"
     if provider == "smartrecruiters" and config.get("company_id"):

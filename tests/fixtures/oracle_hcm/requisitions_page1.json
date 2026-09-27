@@ -1,0 +1,57 @@
+{
+ "items": [
+  {
+   "TotalJobsCount": 8,
+   "requisitionList": [
+    {
+     "Id": "210778204",
+     "Title": "Credit Risk Management Governance Lead",
+     "PostedDate": "2026-09-27",
+     "PrimaryLocation": "Mumbai, Maharashtra, India",
+     "PrimaryLocationCountry": "IN",
+     "secondaryLocations": [],
+     "ShortDescriptionStr": "As Credit Risk Management Governance Lead - Vice President for Wealth Management, you will  strengthen the Private Bank credit risk governance framework, coordi...",
+     "JobFamily": "Credit Risk"
+    },
+    {
+     "Id": "210795286",
+     "Title": "Credit Card Fraud Specialist II",
+     "PostedDate": "2026-09-27",
+     "PrimaryLocation": "Columbus, OH, United States",
+     "PrimaryLocationCountry": "US",
+     "secondaryLocations": [],
+     "ShortDescriptionStr": "Join the Call Center team that is assisting customers find solutions in one of the world’s most innovative banks",
+     "JobFamily": "Fraud"
+    },
+    {
+     "Id": "210789226",
+     "Title": "Lead Software Engineer - Java",
+     "PostedDate": "2026-09-27",
+     "PrimaryLocation": "Bengaluru, Karnataka, India",
+     "PrimaryLocationCountry": "IN",
+     "secondaryLocations": [],
+     "ShortDescriptionStr": "Carry out critical tech solutions across multiple technical areas as an integral part of an agile team",
+     "JobFamily": "Software Engineering"
+    },
+    {
+     "Id": "210791689",
+     "Title": "Product Director - Employee Platforms Data Product Management",
+     "PostedDate": "2026-09-27",
+     "PrimaryLocation": "Jersey City, NJ, United States",
+     "PrimaryLocationCountry": "US",
+     "secondaryLocations": [],
+     "ShortDescriptionStr": "Define the product roadmap, inspire a high-performing team, and monitor market trends to shape product innovations.",
+     "JobFamily": "Product Management"
+    },
+    {
+     "Title": "Broken requisition - no Id",
+     "PostedDate": "2026-09-27"
+    }
+   ]
+  }
+ ],
+ "count": 1,
+ "hasMore": false,
+ "limit": 25,
+ "offset": 0
+}

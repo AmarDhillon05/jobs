@@ -46,7 +46,40 @@ EXPECTED_HOSTS = {
     "workable": "apply.workable.com",
     "rippling": "api.rippling.com",
     "simplify_fallback": "raw.githubusercontent.com",
+    "amazon": "www.amazon.jobs",
+    "google": "www.google.com",
+    "goldman": "api-higher.gs.com",
+    "ibm": "www-api.ibm.com",
+    "atlassian": "www.atlassian.com",
 }
+
+#: Providers whose one fixed endpoint serves exactly one company, so there is no
+#: per-company identifier to find in the URL - the host check above is the check.
+SINGLE_COMPANY_PROVIDERS = frozenset({"amazon", "google", "goldman", "ibm", "atlassian"})
+
+#: Providers whose tenant *is* the host (the host comes from the company's own
+#: config), so identity is proven by the request going to that host.
+HOST_IS_IDENTITY_PROVIDERS = frozenset({"eightfold", "oracle_hcm", "jibe", "talentbrew"})
+
+#: Config keys that tune *how* a board is read, never *which* board it is.
+NON_IDENTIFYING_KEYS = frozenset(
+    {
+        "host",
+        "tenant",
+        "locale",
+        "search_text",
+        "base_url",
+        "queries",
+        "query",
+        "keyword",
+        "keywords",
+        "job_path",
+        "api",
+        "region",
+        "experiences",
+        "language",
+    }
+)
 
 
 def request_url(source: JobSource) -> str:
@@ -95,6 +128,8 @@ class TestEveryPollableCompany:
         assert parts.netloc, url
         assert " " not in url, url
         expected = EXPECTED_HOSTS.get(company.provider)
+        if company.provider == "lever" and company.provider_config.get("region") == "eu":
+            expected = "api.eu.lever.co"  # Lever's separate EU instance
         if expected:
             assert parts.netloc == expected, url
         else:
@@ -106,9 +141,21 @@ class TestEveryPollableCompany:
         url = request_url(build_source(company))
         if company.provider == "simplify_fallback":
             pytest.skip("the fallback feed URL is shared by design; filtering is by name")
+        if company.provider in SINGLE_COMPANY_PROVIDERS:
+            pytest.skip(
+                f"{company.provider}'s endpoint serves only this company; host checked above"
+            )
+        if company.provider in HOST_IS_IDENTITY_PROVIDERS:
+            host = str(company.provider_config["host"])
+            assert urlsplit(url).netloc == host, f"{company.company}: {url}"
+            if company.provider == "eightfold":
+                assert f"domain={company.provider_config['domain']}" in url, url
+            if company.provider == "oracle_hcm":
+                assert f"siteNumber={company.provider_config['site']}" in url, url
+            return
         identifying: list[str] = []
         for key, value in company.provider_config.items():
-            if key in {"host", "tenant", "locale", "search_text", "base_url"}:
+            if key in NON_IDENTIFYING_KEYS:
                 continue
             # A candidate list identifies the company through any one of its
             # entries; the adapter builds its first request from the first.

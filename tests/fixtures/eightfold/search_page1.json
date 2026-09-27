@@ -1,0 +1,182 @@
+{
+ "status": 200,
+ "data": {
+  "count": 12,
+  "positions": [
+   {
+    "id": 1970393556992502,
+    "displayJobId": "200054934",
+    "name": "Product Design INTERN",
+    "locations": [
+     "India, Multiple Locations, Multiple Locations"
+    ],
+    "standardizedLocations": [
+     "IN"
+    ],
+    "postedTs": 1789031303,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Product Design",
+    "creationTs": 1789030240,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200054934",
+    "positionUrl": "/careers/job/1970393556992502"
+   },
+   {
+    "id": 1970393556998387,
+    "displayJobId": "200055643",
+    "name": "Cloud Solution Architecture Intern",
+    "locations": [
+     "Belgium, Brussels Region, Brussels"
+    ],
+    "standardizedLocations": [
+     "Brussels, Brussels, BE"
+    ],
+    "postedTs": 1789396779,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Cloud Solution Architecture",
+    "creationTs": 1789391947,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200055643",
+    "positionUrl": "/careers/job/1970393556998387"
+   },
+   {
+    "id": 1970393556998780,
+    "displayJobId": "200055835",
+    "name": "Account Executive Intern",
+    "locations": [
+     "Belgium, Brussels Region, Brussels"
+    ],
+    "standardizedLocations": [
+     "Brussels, Brussels, BE"
+    ],
+    "postedTs": 1789465462,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Account Management",
+    "creationTs": 1789459889,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200055835",
+    "positionUrl": "/careers/job/1970393556998780"
+   },
+   {
+    "id": 1970393556998782,
+    "displayJobId": "200055838",
+    "name": "Copilot & AI Solution Engineer Intern",
+    "locations": [
+     "Belgium, Brussels Region, Brussels"
+    ],
+    "standardizedLocations": [
+     "Brussels, Brussels, BE"
+    ],
+    "postedTs": 1789467756,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Solution Engineering",
+    "creationTs": 1789462701,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200055838",
+    "positionUrl": "/careers/job/1970393556998782"
+   },
+   {
+    "id": 1970393556990763,
+    "displayJobId": "200054127",
+    "name": "Business Program Management Intern - Retail",
+    "locations": [
+     "France, Paris, Paris"
+    ],
+    "standardizedLocations": [
+     "Paris, IDF, FR"
+    ],
+    "postedTs": 1788875846,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Business Program Management",
+    "creationTs": 1788871178,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200054127",
+    "positionUrl": "/careers/job/1970393556990763"
+   },
+   {
+    "id": 1970393556990723,
+    "displayJobId": "200054122",
+    "name": "Legal Counsel Intern",
+    "locations": [
+     "France, Paris, Paris"
+    ],
+    "standardizedLocations": [
+     "Paris, IDF, FR"
+    ],
+    "postedTs": 1788870436,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Legal Counsel",
+    "creationTs": 1788866125,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200054122",
+    "positionUrl": "/careers/job/1970393556990723"
+   },
+   {
+    "id": 1970393556641091,
+    "displayJobId": "200015233",
+    "name": "Research Sciences INTERN",
+    "locations": [
+     "India, Multiple Locations, Multiple Locations"
+    ],
+    "standardizedLocations": [
+     "IN"
+    ],
+    "postedTs": 1772192320,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Research Sciences",
+    "creationTs": 1765367213,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200015233",
+    "positionUrl": "/careers/job/1970393556641091"
+   },
+   {
+    "id": 1970393556983221,
+    "displayJobId": "200052631",
+    "name": "Software Engineering Intern - CTJ - TS",
+    "locations": [
+     "United States, Washington, Redmond"
+    ],
+    "standardizedLocations": [
+     "Redmond, WA, US"
+    ],
+    "postedTs": 1789151907,
+    "solrScore": null,
+    "stars": 0,
+    "department": "Software Engineering",
+    "creationTs": 1787942549,
+    "isHot": 0,
+    "workLocationOption": "onsite",
+    "locationFlexibility": null,
+    "atsJobId": "200052631",
+    "positionUrl": "/careers/job/1970393556983221"
+   },
+   {
+    "name": "Broken position - no id and no url",
+    "locations": [
+     "Nowhere"
+    ]
+   }
+  ]
+ }
+}

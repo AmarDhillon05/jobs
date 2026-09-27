@@ -1,0 +1,66 @@
+{
+ "took": 8,
+ "timed_out": false,
+ "hits": {
+  "total": {
+   "value": 7,
+   "relation": "eq"
+  },
+  "hits": [
+   {
+    "_index": "genesis-prod-1788036777996",
+    "_id": "0638a952d27da44ce0256e1ae214ac29fa3baaa59c53ac895f33ab6ce485b114",
+    "_score": 72.670906,
+    "_source": {
+     "language": "en",
+     "url": "https://careers.ibm.com/careers/JobDetail?jobId=129790",
+     "title": "Procurement Intern: 2027",
+     "description": "We’re looking for a motivated college student to join our team as a Procurement Intern. This is a dynamic, hands-on opportunity to explore the many facets of pr...",
+     "entitled": "",
+     "field_keyword_08": "Enterprise Operations",
+     "field_keyword_17": "Hybrid",
+     "field_keyword_18": "Internship",
+     "field_keyword_19": "RESEARCH TRIANGLE PARK, US"
+    }
+   },
+   {
+    "_index": "genesis-prod-1788036777996",
+    "_id": "4d8e36a90e38707b2dc8bd50aa3f3de24c5d18bb861320ce9f1ea1338bb78337",
+    "_score": 71.826,
+    "_source": {
+     "language": "en",
+     "url": "https://careers.ibm.com/careers/JobDetail?jobId=134058",
+     "title": "Sales Operations Intern 2027",
+     "description": "The IBM Quantum Sales Operations Intern will support the IBM Quantum Sales organization in advancing business opportunities, executing sales processes, analyzin...",
+     "entitled": "",
+     "field_keyword_08": "Project Management",
+     "field_keyword_17": "",
+     "field_keyword_18": "Internship",
+     "field_keyword_19": "Yorktown Heights, US"
+    }
+   },
+   {
+    "_index": "genesis-prod-1788036777996",
+    "_id": "4f690380ad0179cd5d47a68c50fc581b30c092f65ae7afa613b4740768dd0ef5",
+    "_score": 69.60288,
+    "_source": {
+     "language": "en",
+     "url": "https://careers.ibm.com/careers/JobDetail?jobId=128563",
+     "title": "Intern Oracle Cloud - 2027",
+     "description": "Launch Your Career in Cloud Transformation with IBM Are you ready to work on technology that's reshaping how the world's leading organizations operate? Join IBM...",
+     "entitled": "",
+     "field_keyword_08": "Software Engineering",
+     "field_keyword_17": "",
+     "field_keyword_18": "Internship",
+     "field_keyword_19": "Chicago, US"
+    }
+   },
+   {
+    "_id": "broken",
+    "_source": {
+     "title": "Broken hit - no url"
+    }
+   }
+  ]
+ }
+}
