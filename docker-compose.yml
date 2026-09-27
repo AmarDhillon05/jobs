@@ -22,6 +22,12 @@ services:
       # Run Lambdas as sibling containers on the host docker socket.
       - LAMBDA_EXECUTOR=docker
       - DOCKER_HOST=unix:///var/run/docker.sock
+      # LocalStack pulls its Lambda runtime from public.ecr.aws by default. Some
+      # CI networks (including this project's) only allow docker.io, so the
+      # runtime is remapped to an equivalent community image from there. Override
+      # with LAMBDA_PYTHON_IMAGE to use the AWS image where ECR is reachable.
+      # See BLOCKERS.md BLK-003.
+      - LAMBDA_RUNTIME_IMAGE_MAPPING=${LAMBDA_RUNTIME_IMAGE_MAPPING-{"python3.11": "mlupin/docker-lambda:python3.11"\}}
     volumes:
       - "./.localstack:/var/lib/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"

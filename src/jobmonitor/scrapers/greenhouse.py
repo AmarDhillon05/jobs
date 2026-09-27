@@ -39,7 +39,7 @@ import html
 from collections.abc import Iterator, Sequence
 from typing import Any, ClassVar
 
-from jobmonitor.errors import InvalidJobError, ParseError
+from jobmonitor.errors import HttpStatusError, InvalidJobError, ParseError, ProviderConfigError
 from jobmonitor.models.job import Job
 from jobmonitor.scrapers._parse import as_mapping, as_sequence, first_of, join_locations, text_of
 from jobmonitor.scrapers.base import JobSource, register
@@ -50,18 +50,103 @@ API_ROOT = "https://boards-api.greenhouse.io/v1/boards"
 @register
 class GreenhouseSource(JobSource):
     provider: ClassVar[str] = "greenhouse"
-    required_config: ClassVar[tuple[str, ...]] = ("board_token",)
+    #: Either `board_token` (known) or `board_token_candidates` (resolved live).
+    required_config: ClassVar[tuple[str, ...]] = ()
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__(*args, **kwargs)
+        self._resolved_token: str | None = None
+        self._resolved_payload: dict[str, Any] | None = None
+
+    def _validate_config(self) -> None:
+        if not self.config.get("board_token") and not self.config.get("board_token_candidates"):
+            raise ProviderConfigError(
+                f"{self.company.company}: greenhouse adapter requires either "
+                "'board_token' or 'board_token_candidates' in provider_config"
+            )
+
+    @property
+    def board_token_candidates(self) -> tuple[str, ...]:
+        """Board tokens to try, in order.
+
+        Several companies run a Greenhouse board behind their own domain
+        (stripe.com/jobs, careers.datadoghq.com, ...). Their posting URLs carry
+        Greenhouse's `gh_jid` job id, which proves the provider, but never the
+        *board token* - so the token cannot be recovered from observed data the
+        way every other company's config was. Rather than hard-code a guess and
+        call it verified, such a company is configured with candidates and the
+        real token is resolved from the live API on first fetch.
+        """
+        single = self.config.get("board_token")
+        if single:
+            return (str(single),)
+        return tuple(str(c) for c in as_sequence(self.config.get("board_token_candidates")) if c)
+
+    @staticmethod
+    def jobs_url_for(board_token: str) -> str:
+        return f"{API_ROOT}/{board_token}/jobs?content=true"
 
     @property
     def board_token(self) -> str:
-        return self.config_str("board_token")
+        """The resolved token. Triggers resolution if it has not happened yet."""
+        return self._resolved_token or self.board_token_candidates[0]
 
     @property
     def jobs_url(self) -> str:
-        return f"{API_ROOT}/{self.board_token}/jobs?content=true"
+        return self.jobs_url_for(self.board_token)
+
+    def resolve_board_token(self) -> str:
+        """Pick the candidate whose board actually answers.
+
+        A single configured token is trusted and returned without a probe, so the
+        139 companies whose token came from observed URLs keep making exactly one
+        request. Only multi-candidate entries probe, once per instance, and the
+        winning response is reused rather than fetched twice.
+        """
+        if self._resolved_token is not None:
+            return self._resolved_token
+
+        candidates = self.board_token_candidates
+        if not candidates:
+            raise ProviderConfigError(f"{self.describe()}: no board token configured")
+        if len(candidates) == 1:
+            self._resolved_token = candidates[0]
+            return self._resolved_token
+
+        attempts: list[str] = []
+        for candidate in candidates:
+            try:
+                payload = self.client.get_json(self.jobs_url_for(candidate))
+            except HttpStatusError as exc:
+                # 404 means "no such board": try the next candidate. Anything
+                # else (403, 5xx after retries) is a real failure and must not be
+                # disguised as a wrong guess.
+                if exc.status == 404:
+                    attempts.append(f"{candidate}=404")
+                    continue
+                raise
+            except ParseError as exc:
+                attempts.append(f"{candidate}=unparseable ({exc})")
+                continue
+            if isinstance(payload, dict) and isinstance(payload.get("jobs"), list):
+                self._resolved_token = candidate
+                self._resolved_payload = payload
+                return candidate
+            attempts.append(f"{candidate}=no jobs key")
+
+        raise ParseError(
+            f"{self.describe()}: none of the candidate Greenhouse boards responded "
+            f"({', '.join(attempts)}). Re-run `make validate-companies` after "
+            "checking the company's careers page for its real board token."
+        )
 
     def fetch_pages(self) -> Iterator[Sequence[Any]]:
-        payload = self.client.get_json(self.jobs_url)
+        self.resolve_board_token()
+        if self._resolved_payload is not None:
+            payload: Any = self._resolved_payload
+            self._resolved_payload = None
+        else:
+            payload = self.client.get_json(self.jobs_url)
         if not isinstance(payload, dict):
             raise ParseError(
                 f"{self.describe()}: expected a JSON object from {self.jobs_url}, "

@@ -106,11 +106,16 @@ class TestEveryPollableCompany:
         url = request_url(build_source(company))
         if company.provider == "simplify_fallback":
             pytest.skip("the fallback feed URL is shared by design; filtering is by name")
-        identifying = [
-            str(value)
-            for key, value in company.provider_config.items()
-            if key not in {"host", "tenant", "locale", "search_text", "base_url"}
-        ]
+        identifying: list[str] = []
+        for key, value in company.provider_config.items():
+            if key in {"host", "tenant", "locale", "search_text", "base_url"}:
+                continue
+            # A candidate list identifies the company through any one of its
+            # entries; the adapter builds its first request from the first.
+            if isinstance(value, list):
+                identifying.extend(str(item) for item in value)
+            else:
+                identifying.append(str(value))
         assert identifying, company.company
         assert any(value in url for value in identifying), f"{company.company}: {url}"
 
@@ -150,10 +155,28 @@ class TestRegistryWideInvariants:
             )
 
     def test_partial_entries_explain_why_they_are_only_partial(self) -> None:
+        """Two legitimate reasons to be partial, and each must say which."""
         partial = REGISTRY.with_status(SupportStatus.PARTIAL)
-        assert partial, "expected the fallback-fed companies to be marked partial"
+        assert partial
         for company in partial:
-            assert "fallback" in company.notes.casefold(), company.company
+            notes = company.notes.casefold()
+            reason_given = (
+                # (a) read through the community feed rather than the employer;
+                "fallback" in notes
+                # (b) the employer's own board, with the token resolved at runtime.
+                or "candidate" in notes
+            )
+            assert reason_given, f"{company.company}: {company.notes!r}"
+
+    def test_runtime_resolved_entries_carry_their_evidence(self) -> None:
+        """A candidate config must say what proved the provider (PRD §35)."""
+        for company in REGISTRY.with_status(SupportStatus.PARTIAL):
+            if "board_token_candidates" not in company.provider_config:
+                continue
+            notes = company.notes.casefold()
+            assert "evidence" in notes, company.company
+            assert "gh_jid" in notes or "embed" in notes, company.company
+            assert len(company.provider_config["board_token_candidates"]) >= 2, company.company
 
     def test_fallback_feed_is_a_small_minority_of_the_registry(self) -> None:
         # PRD §4.3: the seed repos are a guide, not the live detection mechanism.

@@ -646,21 +646,23 @@
   },
   {
     "company": "Coinbase",
-    "careers_url": "https://www.coinbase.com/careers",
+    "careers_url": "https://www.coinbase.com/careers/positions",
     "industry": "Crypto Exchange",
     "priority": "high",
-    "provider": "simplify_fallback",
+    "provider": "greenhouse",
     "provider_config": {
-      "company_names": [
-        "Coinbase"
+      "board_token_candidates": [
+        "coinbase",
+        "coinbase1"
       ]
     },
     "source_discovered_from": [
       "simplify",
+      "ouckah",
       "curated"
     ],
     "support_status": "partial",
-    "notes": "only embed-style Greenhouse URLs observed; board token not recoverable; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "Greenhouse board on a company-owned domain. Evidence: 8 observed postings are boards.greenhouse.io embed job_app URLs, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (coinbase, coinbase1); run `make validate-companies` to pin the winner and promote to supported."
   },
   {
     "company": "Confluent",
@@ -699,39 +701,43 @@
   },
   {
     "company": "Databricks",
-    "careers_url": "https://www.databricks.com/company/careers",
+    "careers_url": "https://www.databricks.com/company/careers/open-positions",
     "industry": "Data / AI Platform",
     "priority": "high",
-    "provider": "simplify_fallback",
+    "provider": "greenhouse",
     "provider_config": {
-      "company_names": [
-        "Databricks"
+      "board_token_candidates": [
+        "databricks",
+        "databricks1"
       ]
     },
     "source_discovered_from": [
       "simplify",
+      "ouckah",
       "curated"
     ],
     "support_status": "partial",
-    "notes": "only embed-style Greenhouse URLs observed; board token not recoverable; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "Greenhouse board on a company-owned domain. Evidence: 3 observed postings are boards.greenhouse.io embed job_app URLs, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (databricks, databricks1); run `make validate-companies` to pin the winner and promote to supported."
   },
   {
     "company": "Datadog",
     "careers_url": "https://careers.datadoghq.com",
     "industry": "Observability",
     "priority": "high",
-    "provider": "simplify_fallback",
+    "provider": "greenhouse",
     "provider_config": {
-      "company_names": [
-        "Datadog"
+      "board_token_candidates": [
+        "datadog",
+        "datadoghq"
       ]
     },
     "source_discovered_from": [
       "simplify",
+      "ouckah",
       "curated"
     ],
     "support_status": "partial",
-    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "Greenhouse board on a company-owned domain. Evidence: 6 observed postings on careers.datadoghq.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (datadog, datadoghq); run `make validate-companies` to pin the winner and promote to supported."
   },
   {
     "company": "DE Shaw",
@@ -977,18 +983,20 @@
     "careers_url": "https://www.hudsonrivertrading.com/careers/",
     "industry": "Quantitative Trading",
     "priority": "high",
-    "provider": "simplify_fallback",
+    "provider": "greenhouse",
     "provider_config": {
-      "company_names": [
-        "Hudson River Trading"
+      "board_token_candidates": [
+        "wehrtyou",
+        "hudsonrivertrading"
       ]
     },
     "source_discovered_from": [
       "simplify",
+      "ouckah",
       "curated"
     ],
     "support_status": "partial",
-    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "Greenhouse board on a company-owned domain. Evidence: 11 observed postings on hudsonrivertrading.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (wehrtyou, hudsonrivertrading); run `make validate-companies` to pin the winner and promote to supported."
   },
   {
     "company": "IMC Trading",
@@ -2109,21 +2117,23 @@
   },
   {
     "company": "Stripe",
-    "careers_url": "https://stripe.com/jobs",
+    "careers_url": "https://stripe.com/jobs/search",
     "industry": "Payments",
     "priority": "high",
-    "provider": "simplify_fallback",
+    "provider": "greenhouse",
     "provider_config": {
-      "company_names": [
-        "Stripe"
+      "board_token_candidates": [
+        "stripe",
+        "stripejobs"
       ]
     },
     "source_discovered_from": [
       "simplify",
+      "ouckah",
       "curated"
     ],
     "support_status": "partial",
-    "notes": "company-owned careers site; no public JSON feed discovered; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "Greenhouse board on a company-owned domain. Evidence: 5 observed postings on stripe.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (stripe, stripejobs); run `make validate-companies` to pin the winner and promote to supported."
   },
   {
     "company": "Symbotic",
@@ -2388,21 +2398,23 @@
   },
   {
     "company": "Waymo",
-    "careers_url": "https://careers.withwaymo.com",
+    "careers_url": "https://careers.withwaymo.com/jobs",
     "industry": "Autonomous Vehicles",
     "priority": "high",
-    "provider": "simplify_fallback",
+    "provider": "greenhouse",
     "provider_config": {
-      "company_names": [
-        "Waymo"
+      "board_token_candidates": [
+        "waymo",
+        "waymollc"
       ]
     },
     "source_discovered_from": [
       "simplify",
+      "ouckah",
       "curated"
     ],
     "support_status": "partial",
-    "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles"
+    "notes": "Greenhouse board on a company-owned domain. Evidence: 39 observed postings on careers.withwaymo.com carry Greenhouse gh_jid, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (waymo, waymollc); run `make validate-companies` to pin the winner and promote to supported."
   },
   {
     "company": "Wellington Management",

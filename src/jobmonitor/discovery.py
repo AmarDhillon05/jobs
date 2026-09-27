@@ -19,7 +19,7 @@ from collections import Counter
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass
 from typing import Any
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
 # Suffixes and decorations that do not distinguish one employer from another.
 _LEGAL_SUFFIXES: tuple[str, ...] = (
@@ -191,6 +191,24 @@ def detect_provider(url: str) -> ProviderGuess:
         guess = _detect_greenhouse(host, segments)
         if guess:
             return guess
+
+    # A Greenhouse board rendered on the company's own domain. Greenhouse's embed
+    # script appends `gh_jid` (its job id), so the parameter is hard evidence of
+    # the provider even though the *board token* never appears in the URL. Saying
+    # "greenhouse, token unknown" is strictly more useful than "custom": it tells
+    # the coverage report what to configure, and it is how Stripe, Waymo, Datadog
+    # and Hudson River Trading were found.
+    query = parse_qs(parsed.query)
+    if "gh_jid" in query or "gh_src" in query:
+        return ProviderGuess(
+            "greenhouse",
+            {},
+            host,
+            reason=(
+                "greenhouse-backed board on a company-owned domain "
+                "(gh_jid present); board token is not in the URL"
+            ),
+        )
 
     if "lever.co" in host:
         # jobs.lever.co/<site>/<posting-id>

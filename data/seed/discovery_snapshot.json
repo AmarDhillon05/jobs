@@ -889,10 +889,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "boeing": {
    "name": "The Boeing Company",
@@ -950,10 +950,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "apple": {
    "name": "Apple",
@@ -1479,10 +1479,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "loblawcompanies": {
    "name": "Loblaw Companies",
@@ -1735,10 +1735,10 @@
     "ouckah",
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "jumptrading": {
    "name": "Jump Trading",
@@ -1750,7 +1750,7 @@
    "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "board token not present in embed-style URL",
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL",
    "observed_names": [
     "Jump Trading",
     "Jump Trading Group"
@@ -1865,10 +1865,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "onsemi": {
    "name": "onsemi",
@@ -1966,10 +1966,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "spglobal": {
    "name": "S&P Global",
@@ -2598,10 +2598,10 @@
     "ouckah",
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "fab2": {
    "name": "Fab2",
@@ -3656,10 +3656,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "sony": {
    "name": "Sony",
@@ -4087,10 +4087,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "nidec": {
    "name": "Nidec",
@@ -4482,10 +4482,10 @@
     "ouckah",
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "infinitequant": {
    "name": "InfiniteQuant",
@@ -4859,10 +4859,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "assurant": {
    "name": "Assurant",
@@ -4992,10 +4992,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "genuineparts": {
    "name": "Genuine Parts Company",
@@ -5611,10 +5611,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "jainglobal": {
    "name": "Jain Global",
@@ -5736,10 +5736,10 @@
     "ouckah",
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "regalrexnord": {
    "name": "Regal Rexnord",
@@ -5897,10 +5897,10 @@
    "sources": [
     "ouckah"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "akunacapitaluniversity": {
    "name": "Akuna Capital University",
@@ -5908,10 +5908,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "alliedsolutions": {
    "name": "Allied Solutions",
@@ -6555,10 +6555,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "premerabluecross": {
    "name": "Premera Blue Cross",
@@ -6596,10 +6596,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "prolaio": {
    "name": "Prolaio",
@@ -6620,10 +6620,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "sanofi": {
    "name": "Sanofi",
@@ -7012,10 +7012,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "clearesult": {
    "name": "CLEAResult",
@@ -7256,10 +7256,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "godaddy": {
    "name": "GoDaddy",
@@ -7363,10 +7363,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "joneslanglasalle": {
    "name": "Jones Lang LaSalle (JLL)",
@@ -7633,10 +7633,10 @@
     "ouckah",
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "sargentlundy": {
    "name": "Sargent & Lundy",
@@ -7705,10 +7705,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "transcarent": {
    "name": "Transcarent",
@@ -8241,10 +8241,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "datadog": {
    "name": "Datadog",
@@ -8253,10 +8253,10 @@
     "ouckah",
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "dedalus": {
    "name": "Dedalus Labs",
@@ -8742,10 +8742,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "nationwidechildrenshospital": {
    "name": "Nationwide Children's Hospital",
@@ -8822,10 +8822,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "paramountglobal": {
    "name": "Paramount Global",
@@ -8868,10 +8868,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "quadric": {
    "name": "Quadric",
@@ -8962,10 +8962,10 @@
     "ouckah",
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "rockefellercapitalmanagement": {
    "name": "Rockefeller Capital Management",
@@ -9012,10 +9012,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "rydersystem": {
    "name": "Ryder System",
@@ -9309,10 +9309,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "americanfidelity": {
    "name": "American Fidelity",
@@ -9897,10 +9897,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "hpr": {
    "name": "HPR (Hyannis Port Research)",
@@ -10172,10 +10172,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "nissanglobal": {
    "name": "Nissan Global",
@@ -10601,10 +10601,10 @@
     "ouckah",
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "strategiceducation": {
    "name": "Strategic Education",
@@ -10627,10 +10627,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "swift": {
    "name": "Swift",
@@ -10735,10 +10735,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "trueanomaly": {
    "name": "True Anomaly",
@@ -11046,10 +11046,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "3sbusiness": {
    "name": "3S Business Corporation",
@@ -11273,10 +11273,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "assetworks": {
    "name": "AssetWorks",
@@ -11683,10 +11683,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "databricks": {
    "name": "Databricks",
@@ -11698,7 +11698,7 @@
    "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "board token not present in embed-style URL"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "dev": {
    "name": "Dev Technology Group",
@@ -12145,10 +12145,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "hewlettpackardenterprise": {
    "name": "Hewlett Packard Enterprise",
@@ -12891,10 +12891,10 @@
     "ouckah",
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "perpay": {
    "name": "Perpay",
@@ -13772,10 +13772,10 @@
     "ouckah",
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed",
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL",
    "observed_names": [
     "Verition Fund Management",
     "Verition Fund Management LLC"
@@ -14087,10 +14087,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "airbnb": {
    "name": "Airbnb",
@@ -14098,10 +14098,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "akamai": {
    "name": "Akamai Technologies",
@@ -14133,10 +14133,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "alcon": {
    "name": "Alcon",
@@ -14393,10 +14393,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "autostore": {
    "name": "Autostore",
@@ -14680,10 +14680,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "calstart": {
    "name": "CALSTART",
@@ -14719,10 +14719,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "cencora": {
    "name": "Cencora",
@@ -14786,10 +14786,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "chartermanufacturing": {
    "name": "Charter Manufacturing",
@@ -15013,10 +15013,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "creditacceptancecareers": {
    "name": "Credit Acceptance Careers",
@@ -15067,10 +15067,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "cybernetic": {
    "name": "Cybernetic Labs",
@@ -15205,10 +15205,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "doterra": {
    "name": "doTERRA",
@@ -15742,10 +15742,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "heliux": {
    "name": "Heliux",
@@ -16003,10 +16003,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "keenfinity": {
    "name": "Keenfinity",
@@ -16478,10 +16478,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "oldmission": {
    "name": "Old Mission",
@@ -16490,10 +16490,10 @@
     "ouckah",
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "oneok": {
    "name": "ONEOK",
@@ -16818,10 +16818,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "rocketlawyer": {
    "name": "Rocket Lawyer",
@@ -17032,10 +17032,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "sentry": {
    "name": "Sentry",
@@ -17197,10 +17197,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "solarturbines": {
    "name": "Solar Turbines",
@@ -17251,10 +17251,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "southernnewhampshireuniversity": {
    "name": "Southern New Hampshire University",
@@ -17320,10 +17320,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "sprinklr": {
    "name": "Sprinklr",
@@ -17431,10 +17431,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "sunwatercapital": {
    "name": "Sunwater Capital",
@@ -17619,10 +17619,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "trumid": {
    "name": "Trumid",
@@ -17764,10 +17764,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "vercel": {
    "name": "Vercel",
@@ -17887,10 +17887,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "williamsracing": {
    "name": "Williams Racing",
@@ -18548,10 +18548,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "assent": {
    "name": "Assent",
@@ -18658,10 +18658,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "avride": {
    "name": "Avride",
@@ -18682,10 +18682,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "awe": {
    "name": "AWE",
@@ -18944,10 +18944,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "blockhouse": {
    "name": "Blockhouse",
@@ -19241,10 +19241,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "cheiron": {
    "name": "Cheiron",
@@ -19319,10 +19319,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "cliftonlarsonallen": {
    "name": "CliftonLarsonAllen",
@@ -19388,10 +19388,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "cogeco": {
    "name": "Cogeco",
@@ -19586,10 +19586,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "csaainsurance": {
    "name": "CSAA Insurance Group",
@@ -19876,10 +19876,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "doubleverify": {
    "name": "DoubleVerify",
@@ -20093,10 +20093,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "epiq": {
    "name": "Epiq Systems",
@@ -20494,10 +20494,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "flagright": {
    "name": "Flagright",
@@ -21011,10 +21011,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "gumloop": {
    "name": "Gumloop",
@@ -21156,10 +21156,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "hubspot": {
    "name": "HubSpot",
@@ -21167,10 +21167,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "huntingtonbancshares": {
    "name": "Huntington Bancshares",
@@ -21331,10 +21331,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "instituteoffoundationmodels": {
    "name": "Institute of Foundation Models",
@@ -21453,10 +21453,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "ivalua": {
    "name": "Ivalua",
@@ -22007,10 +22007,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "mars": {
    "name": "Mars",
@@ -22269,10 +22269,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "motional": {
    "name": "Motional",
@@ -22280,10 +22280,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "mtbank": {
    "name": "M&T Bank",
@@ -22971,10 +22971,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "penta": {
    "name": "Penta Group",
@@ -23096,10 +23096,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "pivotal": {
    "name": "Pivotal Software",
@@ -23368,10 +23368,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "remarcable": {
    "name": "Remarcable",
@@ -23899,10 +23899,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "skyward": {
    "name": "Skyward",
@@ -24116,10 +24116,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "squarespace": {
    "name": "Squarespace",
@@ -24127,10 +24127,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "ssoe": {
    "name": "SSOE Group",
@@ -24271,10 +24271,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "syneoshealth": {
    "name": "Syneos Health",
@@ -24360,10 +24360,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "tanium": {
    "name": "Tanium",
@@ -24399,10 +24399,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "taylor": {
    "name": "Taylor Corporation",
@@ -24710,10 +24710,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "ulsolutions": {
    "name": "UL Solutions",
@@ -24849,10 +24849,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "urbn": {
    "name": "URBN",
@@ -25311,10 +25311,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "acadiapharmaceuticals": {
    "name": "Acadia Pharmaceuticals",
@@ -25322,10 +25322,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "accellearning": {
    "name": "Accel Learning",
@@ -25417,10 +25417,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "acumatica": {
    "name": "Acumatica",
@@ -25569,10 +25569,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "agwestfarmcredit": {
    "name": "AgWest Farm Credit",
@@ -25729,10 +25729,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "alku": {
    "name": "ALKU",
@@ -26069,10 +26069,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "amynta": {
    "name": "Amynta Group",
@@ -26530,10 +26530,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "arrowinternational": {
    "name": "Arrow International",
@@ -26782,10 +26782,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "austincommunitycollegedistrict": {
    "name": "Austin Community College District",
@@ -26937,10 +26937,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "axs": {
    "name": "AXS",
@@ -27416,10 +27416,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "bjchealthcare": {
    "name": "BJC HealthCare",
@@ -27587,10 +27587,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "blueshieldofcalifornia": {
    "name": "Blue Shield of California",
@@ -27691,10 +27691,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "brandeisuniversity": {
    "name": "Brandeis University",
@@ -27756,10 +27756,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "brg": {
    "name": "BRG",
@@ -27918,10 +27918,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "bti360": {
    "name": "BTI360",
@@ -27970,10 +27970,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "butcherbox": {
    "name": "ButcherBox",
@@ -28269,10 +28269,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "centerforaisafety": {
    "name": "Center for AI Safety",
@@ -28654,10 +28654,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "clera": {
    "name": "Clera",
@@ -28706,10 +28706,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "clipboardhealth": {
    "name": "Clipboard Health",
@@ -29188,10 +29188,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "constantcontact": {
    "name": "Constant Contact",
@@ -29305,10 +29305,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "corewellhealth": {
    "name": "Corewell Health",
@@ -29508,10 +29508,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "crowninnovations": {
    "name": "Crown Innovations",
@@ -30762,10 +30762,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "esvolta": {
    "name": "esVolta",
@@ -30851,10 +30851,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "evolver": {
    "name": "Evolver",
@@ -30986,10 +30986,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "fairlife": {
    "name": "Fairlife",
@@ -31858,10 +31858,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "generationwestvirginia": {
    "name": "Generation West Virginia",
@@ -32027,10 +32027,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "glencore": {
    "name": "Glencore",
@@ -32092,10 +32092,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "goldenpetbrands": {
    "name": "Golden Pet Brands",
@@ -32661,10 +32661,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "herdora": {
    "name": "Herdora",
@@ -32972,10 +32972,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "hyundaiautoeveramerica": {
    "name": "Hyundai AutoEver America",
@@ -33144,10 +33144,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "ijm": {
    "name": "IJM",
@@ -33642,10 +33642,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "ionq": {
    "name": "IonQ",
@@ -33718,10 +33718,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "ivo": {
    "name": "Ivo",
@@ -34019,10 +34019,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "kengarffauto": {
    "name": "Ken Garff Auto Group",
@@ -34086,10 +34086,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "kihomac": {
    "name": "KIHOMAC",
@@ -34309,10 +34309,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "lambweston": {
    "name": "Lamb Weston",
@@ -34720,10 +34720,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "lunon": {
    "name": "Lunon",
@@ -34915,10 +34915,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "markel": {
    "name": "Markel Group, Inc.",
@@ -35288,10 +35288,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "mgic": {
    "name": "MGIC",
@@ -35766,10 +35766,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "nebraskamedicine": {
    "name": "Nebraska Medicine",
@@ -36767,10 +36767,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "osmo": {
    "name": "Osmo",
@@ -37297,10 +37297,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "pipersandler": {
    "name": "Piper Sandler",
@@ -37490,10 +37490,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "ppl": {
    "name": "PPL",
@@ -37564,10 +37564,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "premiummerchantfunding": {
    "name": "Premium Merchant Funding",
@@ -37894,10 +37894,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "qumulo": {
    "name": "Qumulo",
@@ -38245,10 +38245,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "reviserobotics": {
    "name": "Revise Robotics",
@@ -38792,10 +38792,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "secureframe": {
    "name": "Secureframe",
@@ -39202,10 +39202,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "solenis": {
    "name": "Solenis",
@@ -39354,10 +39354,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "springventure": {
    "name": "Spring Venture Group",
@@ -39495,10 +39495,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "stateemployeescreditunion": {
    "name": "State Employees' Credit Union (SECU)",
@@ -40066,10 +40066,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "tenon": {
    "name": "Tenon",
@@ -40233,10 +40233,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "tighebond": {
    "name": "Tighe & Bond",
@@ -40303,10 +40303,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "tokamakenergy": {
    "name": "Tokamak Energy",
@@ -40377,10 +40377,10 @@
    "sources": [
     "ouckah"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "traackr": {
    "name": "Traackr",
@@ -40401,10 +40401,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "trainerize": {
    "name": "Trainerize",
@@ -40561,10 +40561,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "trustage": {
    "name": "TruStage",
@@ -40736,10 +40736,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "uncountable": {
    "name": "Uncountable",
@@ -41221,10 +41221,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "verainstituteofjustice": {
    "name": "Vera Institute of Justice",
@@ -41625,10 +41625,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "wealthcom": {
    "name": "Wealth.com",
@@ -41899,10 +41899,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "winlandfoods": {
    "name": "Winland Foods",
@@ -42247,10 +42247,10 @@
    "sources": [
     "simplify"
    ],
-   "provider": "custom",
+   "provider": "greenhouse",
    "provider_config": {},
    "supported": false,
-   "reason": "Company-owned careers site with no discovered public feed"
+   "reason": "greenhouse-backed board on a company-owned domain (gh_jid present); board token is not in the URL"
   },
   "zone5": {
    "name": "Zone 5 Technologies",

@@ -106,6 +106,118 @@ class TestGreenhouse:
             case.source(FakeTransport([ScriptedResponse.json({"meta": {}})])).fetch_jobs()
 
 
+class TestGreenhouseCandidateResolution:
+    """Companies running a Greenhouse board behind their own domain.
+
+    Their posting URLs carry `gh_jid`, which proves the provider but never the
+    board token, so the token is resolved against the live API instead of being
+    guessed and asserted. These tests pin the resolution rules.
+    """
+
+    def _company(self, *candidates: str):
+        from tests.conftest import make_company
+
+        return make_company(
+            "Stripe", provider="greenhouse", config={"board_token_candidates": list(candidates)}
+        )
+
+    def _source(self, transport, *candidates: str):
+        from tests.scrapers.conftest import build_client
+
+        from jobmonitor.scrapers import build_source
+
+        return build_source(self._company(*candidates), build_client(transport))
+
+    def test_a_single_configured_token_makes_exactly_one_request(self) -> None:
+        """The 139 evidence-derived companies must not pay for this feature."""
+        case = case_for("greenhouse")
+        transport = case.transport()
+        case.source(transport).fetch()
+        assert transport.call_count == 1
+
+    def test_the_first_responding_candidate_wins(self) -> None:
+        board = load_fixture("greenhouse", "board.json")
+
+        def router(request):
+            if "/boards/wrongtoken/" in request.url:
+                return ScriptedResponse.error(404)
+            return ScriptedResponse.json(board)
+
+        transport = FakeTransport(router=router)
+        source = self._source(transport, "wrongtoken", "stripe")
+        jobs = source.fetch_jobs()
+        assert jobs
+        assert source.board_token == "stripe"
+        assert "/boards/stripe/jobs" in transport.urls[-1]
+
+    def test_the_winning_response_is_not_fetched_twice(self) -> None:
+        board = load_fixture("greenhouse", "board.json")
+
+        def router(request):
+            return (
+                ScriptedResponse.error(404)
+                if "/boards/nope/" in request.url
+                else ScriptedResponse.json(board)
+            )
+
+        transport = FakeTransport(router=router)
+        self._source(transport, "nope", "stripe").fetch_jobs()
+        # One probe that 404s, one that succeeds - and the success is reused.
+        assert transport.call_count == 2
+
+    def test_resolution_happens_once_per_instance(self) -> None:
+        board = load_fixture("greenhouse", "board.json")
+        transport = FakeTransport(always=ScriptedResponse.json(board))
+        source = self._source(transport, "stripe", "stripejobs")
+        source.fetch_jobs()
+        source.fetch_jobs()
+        assert transport.call_count == 2  # not 4: the token is remembered
+
+    def test_all_candidates_missing_is_an_actionable_parse_error(self) -> None:
+        transport = FakeTransport(always=ScriptedResponse.error(404))
+        with pytest.raises(ParseError, match="none of the candidate Greenhouse boards"):
+            self._source(transport, "one", "two").fetch_jobs()
+
+    def test_the_error_names_the_candidates_it_tried(self) -> None:
+        transport = FakeTransport(always=ScriptedResponse.error(404))
+        with pytest.raises(ParseError) as excinfo:
+            self._source(transport, "alpha", "beta").fetch_jobs()
+        assert "alpha=404" in str(excinfo.value)
+        assert "beta=404" in str(excinfo.value)
+        assert "validate-companies" in str(excinfo.value)
+
+    def test_a_403_is_not_mistaken_for_a_wrong_candidate(self) -> None:
+        """A board that exists but blocks us is blocked, not misconfigured."""
+        from jobmonitor.errors import AccessBlocked
+
+        transport = FakeTransport(always=ScriptedResponse.error(403))
+        with pytest.raises(AccessBlocked):
+            self._source(transport, "alpha", "beta").fetch_jobs()
+        assert transport.call_count == 1  # stopped at the first, did not keep probing
+
+    def test_a_5xx_is_not_mistaken_for_a_wrong_candidate(self) -> None:
+        from jobmonitor.errors import RetryBudgetExhausted
+
+        transport = FakeTransport(always=ScriptedResponse.error(503))
+        with pytest.raises(RetryBudgetExhausted):
+            self._source(transport, "alpha", "beta").fetch_jobs()
+
+    def test_an_empty_config_is_rejected_at_construction(self) -> None:
+        from tests.conftest import make_company
+
+        from jobmonitor.errors import ProviderConfigError
+        from jobmonitor.scrapers import build_source
+
+        with pytest.raises(ProviderConfigError, match="board_token_candidates"):
+            build_source(make_company(provider="greenhouse", config={}))
+
+    def test_jobs_are_attributed_to_the_company_not_the_board(self) -> None:
+        board = load_fixture("greenhouse", "board.json")
+        transport = FakeTransport(always=ScriptedResponse.json(board))
+        jobs = self._source(transport, "stripe").fetch_jobs()
+        assert all(job.company == "Stripe" for job in jobs)
+
+
 class TestLever:
     def test_requests_the_documented_endpoint(self) -> None:
         case = case_for("lever")
