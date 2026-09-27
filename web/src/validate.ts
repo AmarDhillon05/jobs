@@ -1,11 +1,12 @@
 import type { Job, JobListResponse } from "./types";
 
 /**
- * Coerce whatever the backend sent into a `Job`, or reject it.
+ * Coerce whatever the backend actually sent into a `Job`, or reject it.
  *
- * The client treats the backend as untrusted: PRD §14 Level 5 requires malformed
- * data to fail gracefully, so records are validated individually and bad ones
- * dropped rather than letting one bad row blank the whole feed.
+ * The client must survive a backend that is older, newer, or briefly broken:
+ * PRD §14 Level 5 requires malformed data to fail gracefully. So each record is
+ * validated individually and bad ones are dropped, rather than one bad row
+ * blanking the whole feed.
  */
 export function parseJob(raw: unknown): Job | null {
   if (raw === null || typeof raw !== "object") return null;
@@ -16,15 +17,17 @@ export function parseJob(raw: unknown): Job | null {
   const title = typeof value.title === "string" ? value.title.trim() : "";
   const url = typeof value.url === "string" ? value.url.trim() : "";
 
+  // These four are what every screen needs; without them there is nothing to show.
   if (!jobId || !company || !title) return null;
-  // Only http(s) is ever rendered as a tappable Apply button: a `javascript:` or
-  // custom-scheme URL from a compromised upstream board must not be openable.
+  // Only http(s) links are rendered: a `javascript:` URL from a compromised
+  // upstream board must never become a clickable button.
   if (!/^https?:\/\//i.test(url)) return null;
 
   const str = (key: string): string | null =>
     typeof value[key] === "string" && (value[key] as string).length > 0
       ? (value[key] as string)
       : null;
+
   const score = typeof value.relevance_score === "number" ? value.relevance_score : 0;
 
   return {
@@ -54,6 +57,8 @@ export function parseJobList(raw: unknown): JobListResponse {
   const jobs: Job[] = [];
   for (const entry of rawJobs) {
     const job = parseJob(entry);
+    // De-duplicating here means a repeated push event or a double-appended
+    // response can never show the same job twice (PRD §14 Level 5).
     if (job && !seen.has(job.job_id)) {
       seen.add(job.job_id);
       jobs.push(job);
@@ -66,7 +71,7 @@ export function parseJobList(raw: unknown): JobListResponse {
   };
 }
 
-/** Merge newly arrived jobs into a list without ever duplicating one. */
+/** Merge newly arrived jobs into a list without creating duplicates. */
 export function mergeJobs(existing: Job[], incoming: Job[]): Job[] {
   const byId = new Map(existing.map((job) => [job.job_id, job]));
   for (const job of incoming) byId.set(job.job_id, job);

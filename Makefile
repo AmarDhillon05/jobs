@@ -3,7 +3,7 @@
 #   make setup            install python + node toolchains
 #   make test             levels 1-4 + 6 (no docker, no network)
 #   make test-scrapers    level 2 only
-#   make test-app         level 5 (PWA unit/component tests)
+#   make test-app         level 5 (both clients: Expo app + web feed)
 #   make infra-validate   cdk synth + cdk assertion tests + cfn-lint
 #   make local            boot LocalStack and provision the architecture
 #   make e2e              level 7+8 end-to-end (boots LocalStack itself)
@@ -24,6 +24,7 @@ CFN_LINT    := $(VENV)/bin/cfn-lint
 CDK         := $(REPO_ROOT)/tools/node_modules/.bin/cdk
 CDKLOCAL    := $(REPO_ROOT)/tools/node_modules/.bin/cdklocal
 MOBILE      := $(REPO_ROOT)/mobile
+WEB         := $(REPO_ROOT)/web
 CDK_OUT     := $(REPO_ROOT)/infrastructure/cdk.out
 REPORT_DIR  := $(REPO_ROOT)/.verify
 
@@ -50,9 +51,10 @@ setup-python: ## Create .venv and install python dev dependencies
 	$(PIP) install -q -e '.[dev]'
 
 .PHONY: setup-node
-setup-node: ## Install CDK CLI and the PWA client toolchain
+setup-node: ## Install CDK CLI and both client toolchains
 	cd $(REPO_ROOT)/tools && npm install --no-fund --no-audit
 	cd $(MOBILE) && npm install --no-fund --no-audit
+	cd $(WEB) && npm install --no-fund --no-audit
 
 # ----------------------------------------------------------------- lint ------
 .PHONY: lint
@@ -87,12 +89,19 @@ test-integration: ## Level 3/4/6: persistence, notifications, pipeline (moto)
 	$(PYTEST) $(REPO_ROOT)/tests/integration -q
 
 .PHONY: test-app
-test-app: ## Level 5: PWA component / data-loading / deep-link tests
+test-app: test-mobile test-web ## Level 5: both clients
+
+.PHONY: test-mobile
+test-mobile: ## Level 5a: Expo app (jest-expo + React Native Testing Library)
 	cd $(MOBILE) && npm run test:run
 
+.PHONY: test-web
+test-web: ## Level 5b: web feed (Vitest + Testing Library)
+	cd $(WEB) && npm run test:run
+
 .PHONY: test-app-e2e
-test-app-e2e: ## Level 5 browser E2E (Playwright, uses preinstalled chromium)
-	cd $(MOBILE) && npm run test:e2e
+test-app-e2e: ## Level 5c: web feed in a real browser (Playwright)
+	cd $(WEB) && npm run test:e2e
 
 .PHONY: test-live
 test-live: ## Opt-in live public-endpoint spot checks (never a completion gate)
@@ -156,8 +165,16 @@ serve-api: ## Run the jobs API locally (stdlib http.server, no AWS needed)
 	$(PY) -m jobmonitor.api.local_server
 
 .PHONY: serve-app
-serve-app: ## Run the PWA dev server
-	cd $(MOBILE) && npm run dev
+serve-app: ## Run the web feed's dev server
+	cd $(WEB) && npm run dev
+
+.PHONY: serve-mobile
+serve-mobile: ## Start Expo for the phone app (scan the QR code with Expo Go)
+	cd $(MOBILE) && npm start
+
+.PHONY: mobile-bundle
+mobile-bundle: ## Prove the Expo app bundles (Metro + Hermes, no device needed)
+	cd $(MOBILE) && npx expo export --platform ios --output-dir $(REPO_ROOT)/build/expo
 
 # ------------------------------------------------------------------ e2e ------
 .PHONY: e2e-local

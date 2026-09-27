@@ -1,55 +1,89 @@
-import type { Job } from "../types";
+import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+
 import { formatExact } from "../format";
+import { theme } from "../theme";
+import type { Job } from "../types";
 
 interface JobDetailProps {
   job: Job;
   onBack: () => void;
+  /** Injected in tests; defaults to the OS handler. */
+  openUrl?: (url: string) => Promise<unknown>;
 }
 
-export function JobDetail({ job, onBack }: JobDetailProps) {
+export function JobDetail({ job, onBack, openUrl = Linking.openURL }: JobDetailProps) {
   return (
-    <section className="detail" data-testid="job-detail" data-job-id={job.job_id}>
-      <button onClick={onBack} data-testid="back">
-        ← Recent jobs
-      </button>
-      <h2>{job.title}</h2>
-      <div className="company">{job.company}</div>
+    <ScrollView testID={`job-detail-${job.job_id}`} contentContainerStyle={styles.body}>
+      <Pressable onPress={onBack} testID="back" accessibilityRole="button">
+        <Text style={styles.back}>← Recent jobs</Text>
+      </Pressable>
 
-      <dl>
-        <dt>Location</dt>
-        <dd data-testid="detail-location">{job.location ?? "Not specified"}</dd>
-        <dt>Posted</dt>
-        <dd>{formatExact(job.date_posted)}</dd>
-        <dt>First seen</dt>
-        <dd data-testid="detail-first-seen">{formatExact(job.first_seen)}</dd>
-        <dt>Relevance</dt>
-        <dd>{job.relevance_score}/100</dd>
-        {job.employment_type && (
-          <>
-            <dt>Type</dt>
-            <dd>{job.employment_type}</dd>
-          </>
-        )}
-        <dt>Source</dt>
-        <dd>{job.source}</dd>
-      </dl>
+      <Text style={styles.title}>{job.title}</Text>
+      <Text style={styles.company}>{job.company}</Text>
 
-      {job.description && (
-        <p className="description" data-testid="detail-description">
+      <View style={styles.rows}>
+        <Row label="Location" value={job.location ?? "Not specified"} testID="detail-location" />
+        <Row label="Posted" value={formatExact(job.date_posted)} />
+        <Row label="First seen" value={formatExact(job.first_seen)} testID="detail-first-seen" />
+        <Row label="Relevance" value={`${job.relevance_score}/100`} />
+        {job.employment_type ? <Row label="Type" value={job.employment_type} /> : null}
+        <Row label="Source" value={job.source} />
+      </View>
+
+      {job.description ? (
+        <Text style={styles.description} testID="detail-description">
           {job.description}
-        </p>
-      )}
+        </Text>
+      ) : null}
 
-      {/* rel=noreferrer as well as noopener: the target is a third-party ATS. */}
-      <a
-        className="apply"
-        href={job.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        data-testid="apply-link"
+      <Pressable
+        style={styles.apply}
+        testID="apply-button"
+        accessibilityRole="button"
+        onPress={() => {
+          // Opens the original careers/ATS page in the system browser. Deliberately
+          // not an in-app webview: applications involve credentials, and the user
+          // should see the real address bar.
+          void openUrl(job.url);
+        }}
       >
-        Open Application
-      </a>
-    </section>
+        <Text style={styles.applyText}>Open Application</Text>
+      </Pressable>
+      <Text style={styles.url} testID="apply-url">
+        {job.url}
+      </Text>
+    </ScrollView>
   );
 }
+
+function Row({ label, value, testID }: { label: string; value: string; testID?: string }) {
+  return (
+    <View style={styles.row}>
+      <Text style={styles.rowLabel}>{label}</Text>
+      <Text style={styles.rowValue} testID={testID}>
+        {value}
+      </Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  body: { paddingBottom: 48, gap: 4 },
+  back: { color: theme.accent, marginBottom: 12 },
+  title: { color: theme.text, fontSize: 19, fontWeight: "700" },
+  company: { color: theme.muted, marginBottom: 12 },
+  rows: { gap: 6, marginVertical: 12 },
+  row: { flexDirection: "row", gap: 12 },
+  rowLabel: { color: theme.muted, width: 96 },
+  rowValue: { color: theme.text, flex: 1 },
+  description: { color: "#cfd6ea", lineHeight: 21, marginVertical: 12 },
+  apply: {
+    backgroundColor: theme.accent,
+    borderRadius: 10,
+    paddingVertical: 14,
+    alignItems: "center",
+    marginTop: 12,
+  },
+  applyText: { color: theme.accentText, fontWeight: "700", fontSize: 16 },
+  url: { color: theme.muted, fontSize: 12, marginTop: 8 },
+});

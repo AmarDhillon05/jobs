@@ -26,12 +26,17 @@ cdk.out/
 node_modules/
 tools/node_modules/
 tools/package-lock.json
+# mobile/ is the Expo (React Native) app; web/ is the browser feed.
 mobile/node_modules/
+mobile/.expo/
 mobile/dist/
 mobile/coverage/
-mobile/test-results/
-mobile/playwright-report/
-mobile/.vite/
+web/node_modules/
+web/dist/
+web/coverage/
+web/test-results/
+web/playwright-report/
+web/.vite/
 
 # Local state / secrets
 .env
@@ -43,5 +48,3 @@ volume/
 # Scratch / reports
 .verify/
 *.log
-mobile/test-results/
-mobile/playwright-report/

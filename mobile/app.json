@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Internship Monitor",
+    "slug": "internship-monitor",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "scheme": "internshipmonitor",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#0b1020",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.internshipmonitor"
+    },
+    "android": {
+      "package": "com.example.internshipmonitor",
+      "adaptiveIcon": {
+        "backgroundColor": "#0b1020"
+      },
+      "permissions": [
+        "NOTIFICATIONS"
+      ]
+    },
+    "notification": {
+      "color": "#5b8cff",
+      "androidMode": "collapse",
+      "androidCollapsedTitle": "New internships"
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "color": "#5b8cff",
+          "defaultChannel": "internships"
+        }
+      ]
+    ],
+    "extra": {
+      "apiBaseUrl": "http://localhost:8000",
+      "apiWriteToken": "local-dev-token"
+    }
+  }
+}

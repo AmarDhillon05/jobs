@@ -1,15 +1,21 @@
 /**
- * Level 5 - the client (PRD §14 Level 5, §23).
+ * Level 5 - the Expo client (PRD §14 Level 5, §23).
  *
  * Covers every item the PRD lists: the app boots and renders, recent jobs load,
  * empty and error states render, job detail renders, the application URL action
  * works, a notification payload is accepted, tapping a notification routes to the
- * right job, duplicate events do not create duplicate visible items, and
- * malformed backend data fails gracefully.
+ * right job, duplicate events do not create duplicate visible items, and malformed
+ * backend data fails gracefully.
+ *
+ * `expo-notifications` is mocked (jest.setup.ts) because it wraps native modules
+ * that do not exist in Node. What that means precisely: these tests prove the
+ * app's *handling* - permission flow, token registration, listener wiring, tap
+ * routing, cold-start replay - and not that the OS delivers a push. Delivery needs
+ * a physical device; see mobile/README.md.
  */
-import { act, render, screen, waitFor, within } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { act, render, screen, userEvent, waitFor } from "@testing-library/react-native";
+import * as Notifications from "expo-notifications";
+
 import App from "../App";
 
 const job = (id: string, overrides: Record<string, unknown> = {}) => ({
@@ -19,9 +25,9 @@ const job = (id: string, overrides: Record<string, unknown> = {}) => ({
   url: `https://stripe.com/jobs/${id}`,
   source: "greenhouse",
   location: "San Francisco, CA",
-  date_posted: "2026-09-18T00:00:00Z",
-  first_seen: "2026-09-26T12:00:00Z",
-  last_seen: "2026-09-26T12:00:00Z",
+  date_posted: "2026-09-18T00:00:00+00:00",
+  first_seen: "2026-09-26T12:00:00+00:00",
+  last_seen: "2026-09-26T12:00:00+00:00",
   relevance_score: 73,
   priority: "high",
   industry: "Payments",
@@ -31,359 +37,420 @@ const job = (id: string, overrides: Record<string, unknown> = {}) => ({
   ...overrides,
 });
 
-function jsonResponse(body: unknown, status = 200): Response {
-  return {
-    ok: status >= 200 && status < 300,
-    status,
-    json: async () => body,
-  } as Response;
-}
-
-/** Route stubbed fetches by URL, so list and detail can differ. */
-function stubFetch(routes: {
-  list?: unknown;
+interface StubOptions {
+  list?: unknown[];
   detail?: Record<string, unknown>;
   listStatus?: number;
-  detailStatus?: number;
   reject?: boolean;
-}) {
-  const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+  badJson?: boolean;
+}
+
+function stubFetch(options: StubOptions = {}) {
+  const jobs = options.list ?? [];
+  const fetchMock = jest.fn(async (input: string) => {
+    if (options.reject) throw new TypeError("Network request failed");
     const url = String(input);
-    if (routes.reject) throw new TypeError("Failed to fetch");
+
+    const ok = (body: unknown, status = 200) =>
+      ({
+        ok: status >= 200 && status < 300,
+        status,
+        json: async () => {
+          if (options.badJson) throw new Error("not json");
+          return body;
+        },
+      }) as Response;
+
     if (/\/jobs\/[^?]/.test(url)) {
       const id = decodeURIComponent(url.split("/jobs/")[1] ?? "");
-      const found = routes.detail?.[id];
-      if (routes.detailStatus && routes.detailStatus !== 200) {
-        return jsonResponse({ error: {} }, routes.detailStatus);
-      }
-      if (!found) return jsonResponse({ error: {} }, 404);
-      return jsonResponse({ job: found });
+      const found = options.detail?.[id];
+      return found ? ok({ job: found }) : ok({}, 404);
     }
-    if (routes.listStatus && routes.listStatus !== 200) {
-      return jsonResponse({ error: {} }, routes.listStatus);
-    }
-    return jsonResponse(routes.list ?? { count: 0, limit: 50, jobs: [] });
+    if (options.listStatus && options.listStatus !== 200) return ok({}, options.listStatus);
+    return ok({ count: jobs.length, limit: 50, jobs });
   });
-  vi.stubGlobal("fetch", fetchMock);
+  global.fetch = fetchMock as unknown as typeof fetch;
   return fetchMock;
 }
 
-const navigate = vi.fn();
+/** Push registration is injected so no test depends on the native module. */
+const registerPush = jest.fn(async () => ({ status: "registered" as const, token: "ExponentPushToken[x]" }));
 
 beforeEach(() => {
-  navigate.mockClear();
+  jest.clearAllMocks();
+  registerPush.mockResolvedValue({ status: "registered", token: "ExponentPushToken[x]" });
+  (Notifications.getLastNotificationResponseAsync as jest.Mock).mockResolvedValue(null);
 });
 
-afterEach(() => {
-  vi.unstubAllGlobals();
-  vi.restoreAllMocks();
-});
+/** Capture the listener the app registers, so a tap can be simulated. */
+function tapListener(): (response: unknown) => void {
+  const mock = Notifications.addNotificationResponseReceivedListener as jest.Mock;
+  expect(mock).toHaveBeenCalled();
+  return mock.mock.calls[0][0] as (response: unknown) => void;
+}
+
+function receivedListener(): (notification: unknown) => void {
+  const mock = Notifications.addNotificationReceivedListener as jest.Mock;
+  return mock.mock.calls[0][0] as (notification: unknown) => void;
+}
+
+function pushResponse(data: Record<string, string>) {
+  return { notification: { request: { content: { data } } } };
+}
 
 describe("boot and render", () => {
-  it("renders the shell immediately, before data arrives", () => {
-    stubFetch({ list: { jobs: [] } });
-    render(<App initialPath="/" navigate={navigate} />);
-    expect(screen.getByRole("heading", { name: "Internship Monitor" })).toBeInTheDocument();
-    expect(screen.getByTestId("loading-state")).toBeInTheDocument();
+  it("renders the masthead before any data arrives", () => {
+    stubFetch();
+    render(<App registerPush={registerPush} />);
+    expect(screen.getByText("Internship Monitor")).toBeTruthy();
+    expect(screen.getByTestId("loading-state")).toBeTruthy();
   });
 
-  it("does not crash when rendered with no data at all", () => {
-    stubFetch({ list: undefined });
-    expect(() => render(<App initialPath="/" navigate={navigate} />)).not.toThrow();
+  it("configures foreground notification behaviour on boot", () => {
+    stubFetch();
+    render(<App registerPush={registerPush} />);
+    expect(Notifications.setNotificationHandler).toHaveBeenCalled();
+  });
+
+  it("registers for push notifications on boot", async () => {
+    stubFetch();
+    render(<App registerPush={registerPush} />);
+    await waitFor(() => expect(registerPush).toHaveBeenCalled());
+  });
+
+  it("does not crash when the API returns nothing usable", async () => {
+    stubFetch({ list: [] });
+    render(<App registerPush={registerPush} />);
+    expect(await screen.findByTestId("empty-state")).toBeTruthy();
   });
 });
 
 describe("loading recent jobs", () => {
-  it("shows the jobs returned by the API", async () => {
-    stubFetch({ list: { count: 2, limit: 50, jobs: [job("stripe:1"), job("stripe:2", { title: "ML Intern" })] } });
-    render(<App initialPath="/" navigate={navigate} />);
+  it("lists the jobs the API returns", async () => {
+    stubFetch({ list: [job("stripe:1"), job("stripe:2", { title: "ML Intern" })] });
+    render(<App registerPush={registerPush} />);
 
-    const list = await screen.findByTestId("job-list");
-    const cards = within(list).getAllByTestId("job-card");
-    expect(cards).toHaveLength(2);
-    expect(cards[0]).toHaveTextContent("Stripe");
-    expect(cards[0]).toHaveTextContent("Software Engineer Intern");
-    expect(cards[0]).toHaveTextContent("San Francisco, CA");
+    expect(await screen.findByTestId("job-list")).toBeTruthy();
+    expect(screen.getByTestId("job-card-stripe:1")).toBeTruthy();
+    expect(screen.getByTestId("job-card-stripe:2")).toBeTruthy();
+    expect(screen.getAllByText("Stripe").length).toBeGreaterThan(0);
   });
 
-  it("shows the company, title, location and relevance for each job", async () => {
-    stubFetch({ list: { jobs: [job("stripe:1")] } });
-    render(<App initialPath="/" navigate={navigate} />);
-    const card = await screen.findByTestId("job-card");
-    expect(card).toHaveTextContent("73");
-    expect(within(card).getByLabelText("Relevance 73 of 100")).toBeInTheDocument();
+  it("shows location and relevance for each job", async () => {
+    stubFetch({ list: [job("stripe:1")] });
+    render(<App registerPush={registerPush} />);
+    await screen.findByTestId("job-list");
+    expect(screen.getByText("San Francisco, CA")).toBeTruthy();
+    expect(screen.getByText("73")).toBeTruthy();
   });
 
   it("reports how many jobs are shown", async () => {
-    stubFetch({ list: { jobs: [job("a:1"), job("a:2"), job("a:3")] } });
-    render(<App initialPath="/" navigate={navigate} />);
-    expect(await screen.findByText("3 recent")).toBeInTheDocument();
+    stubFetch({ list: [job("a:1"), job("a:2"), job("a:3")] });
+    render(<App registerPush={registerPush} />);
+    expect(await screen.findByText("3 recent")).toBeTruthy();
   });
 
   it("requests the recent-jobs endpoint", async () => {
-    const fetchMock = stubFetch({ list: { jobs: [] } });
-    render(<App initialPath="/" navigate={navigate} />);
+    const fetchMock = stubFetch({ list: [] });
+    render(<App registerPush={registerPush} />);
     await waitFor(() => expect(fetchMock).toHaveBeenCalled());
     expect(String(fetchMock.mock.calls[0]?.[0])).toContain("/jobs?limit=50");
   });
 });
 
-describe("empty state", () => {
-  it("explains that nothing has been found yet", async () => {
-    stubFetch({ list: { count: 0, limit: 50, jobs: [] } });
-    render(<App initialPath="/" navigate={navigate} />);
+describe("empty and error states", () => {
+  it("explains the empty state", async () => {
+    stubFetch({ list: [] });
+    render(<App registerPush={registerPush} />);
     const empty = await screen.findByTestId("empty-state");
-    expect(empty).toHaveTextContent("No internships yet");
-    expect(empty).toHaveTextContent(/ten minutes/i);
+    expect(empty).toBeTruthy();
+    expect(screen.getByText("No internships yet")).toBeTruthy();
+    expect(screen.getByText(/ten minutes/i)).toBeTruthy();
   });
 
-  it("offers a refresh that re-requests the data", async () => {
-    const fetchMock = stubFetch({ list: { jobs: [] } });
-    render(<App initialPath="/" navigate={navigate} />);
-    await screen.findByTestId("empty-state");
-    await userEvent.click(screen.getByRole("button", { name: "Refresh" }));
-    await waitFor(() => expect(fetchMock.mock.calls.length).toBeGreaterThan(1));
-  });
-});
-
-describe("error state", () => {
   it("renders an alert when the network fails", async () => {
     stubFetch({ reject: true });
-    render(<App initialPath="/" navigate={navigate} />);
-    const error = await screen.findByTestId("error-state");
-    expect(error).toHaveTextContent("Could not load jobs");
-    expect(error).toHaveTextContent(/could not reach/i);
-    expect(screen.getByRole("alert")).toBeInTheDocument();
+    render(<App registerPush={registerPush} />);
+    expect(await screen.findByTestId("error-state")).toBeTruthy();
+    expect(screen.getByText(/could not reach/i)).toBeTruthy();
   });
 
   it("renders an error when the API returns 500", async () => {
     stubFetch({ listStatus: 500 });
-    render(<App initialPath="/" navigate={navigate} />);
-    expect(await screen.findByTestId("error-state")).toHaveTextContent("500");
+    render(<App registerPush={registerPush} />);
+    expect(await screen.findByTestId("error-state")).toBeTruthy();
+    expect(screen.getByText(/500/)).toBeTruthy();
+  });
+
+  it("renders an error when the response is not readable JSON", async () => {
+    stubFetch({ badJson: true });
+    render(<App registerPush={registerPush} />);
+    expect(await screen.findByTestId("error-state")).toBeTruthy();
   });
 
   it("can retry after an error", async () => {
     const fetchMock = stubFetch({ listStatus: 500 });
-    render(<App initialPath="/" navigate={navigate} />);
+    render(<App registerPush={registerPush} />);
     await screen.findByTestId("error-state");
-    await userEvent.click(screen.getByRole("button", { name: "Try again" }));
-    await waitFor(() => expect(fetchMock.mock.calls.length).toBeGreaterThan(1));
+    const before = fetchMock.mock.calls.length;
+    await userEvent.press(screen.getByTestId("error-action"));
+    await waitFor(() => expect(fetchMock.mock.calls.length).toBeGreaterThan(before));
+  });
+
+  it("surfaces a notice when push registration did not succeed", async () => {
+    stubFetch({ list: [] });
+    registerPush.mockResolvedValue({
+      status: "denied",
+      detail: "Notification permission was not granted.",
+    } as never);
+    render(<App registerPush={registerPush} />);
+    expect(await screen.findByTestId("push-notice")).toBeTruthy();
+    expect(screen.getByText(/permission was not granted/i)).toBeTruthy();
   });
 });
 
 describe("malformed backend data", () => {
   it("keeps the usable jobs and drops the broken ones", async () => {
-    stubFetch({
-      list: { jobs: [job("ok:1"), { job_id: "broken" }, { nonsense: true }, null] },
-    });
-    render(<App initialPath="/" navigate={navigate} />);
-    const cards = await screen.findAllByTestId("job-card");
-    expect(cards).toHaveLength(1);
-    expect(cards[0]).toHaveAttribute("data-job-id", "ok:1");
+    stubFetch({ list: [job("ok:1"), { job_id: "broken" }, null, 42] });
+    render(<App registerPush={registerPush} />);
+    await screen.findByTestId("job-list");
+    expect(screen.getByTestId("job-card-ok:1")).toBeTruthy();
+    expect(screen.queryByTestId("job-card-broken")).toBeNull();
+    expect(screen.getByText("1 recent")).toBeTruthy();
+  });
+
+  it("refuses a job whose apply url is not http(s)", async () => {
+    // A javascript: or custom-scheme URL from a compromised upstream board must
+    // never become a tappable button.
+    stubFetch({ list: [job("evil:1", { url: "javascript:alert(1)" })] });
+    render(<App registerPush={registerPush} />);
+    expect(await screen.findByTestId("empty-state")).toBeTruthy();
   });
 
   it("falls back to the empty state when every record is unusable", async () => {
-    stubFetch({ list: { jobs: [{ job_id: "broken" }, "nope", 42] } });
-    render(<App initialPath="/" navigate={navigate} />);
-    expect(await screen.findByTestId("empty-state")).toBeInTheDocument();
-  });
-
-  it("does not render a job whose apply url is not http(s)", async () => {
-    stubFetch({ list: { jobs: [job("evil:1", { url: "javascript:alert(1)" })] } });
-    render(<App initialPath="/" navigate={navigate} />);
-    expect(await screen.findByTestId("empty-state")).toBeInTheDocument();
-  });
-
-  it("survives a response that is not JSON at all", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn(async () => ({
-        ok: true,
-        status: 200,
-        json: async () => {
-          throw new Error("not json");
-        },
-      }) as unknown as Response),
-    );
-    render(<App initialPath="/" navigate={navigate} />);
-    expect(await screen.findByTestId("error-state")).toBeInTheDocument();
+    stubFetch({ list: [{ job_id: "broken" }, "nope", 42] });
+    render(<App registerPush={registerPush} />);
+    expect(await screen.findByTestId("empty-state")).toBeTruthy();
   });
 });
 
 describe("job detail", () => {
   it("opens when a job is tapped", async () => {
-    stubFetch({ list: { jobs: [job("stripe:1")] }, detail: { "stripe:1": job("stripe:1") } });
-    render(<App initialPath="/" navigate={navigate} />);
-    await userEvent.click(await screen.findByTestId("job-card"));
-
-    const detail = await screen.findByTestId("job-detail");
-    expect(detail).toHaveAttribute("data-job-id", "stripe:1");
-    expect(navigate).toHaveBeenCalledWith("/jobs/stripe%3A1");
+    stubFetch({ list: [job("stripe:1")], detail: { "stripe:1": job("stripe:1") } });
+    render(<App registerPush={registerPush} />);
+    await userEvent.press(await screen.findByTestId("job-card-stripe:1"));
+    expect(await screen.findByTestId("job-detail-stripe:1")).toBeTruthy();
   });
 
   it("shows everything the PRD's detail screen requires", async () => {
-    stubFetch({ list: { jobs: [job("stripe:1")] } });
-    render(<App initialPath="/" navigate={navigate} />);
-    await userEvent.click(await screen.findByTestId("job-card"));
+    stubFetch({ list: [job("stripe:1")] });
+    render(<App registerPush={registerPush} />);
+    await userEvent.press(await screen.findByTestId("job-card-stripe:1"));
+    await screen.findByTestId("job-detail-stripe:1");
 
-    const detail = await screen.findByTestId("job-detail");
-    expect(detail).toHaveTextContent("Stripe");
-    expect(detail).toHaveTextContent("Software Engineer Intern");
+    expect(screen.getByText("Software Engineer Intern")).toBeTruthy();
+    expect(screen.getByText("Stripe")).toBeTruthy();
     expect(screen.getByTestId("detail-location")).toHaveTextContent("San Francisco, CA");
-    expect(detail).toHaveTextContent("2026-09-18");
-    expect(screen.getByTestId("detail-first-seen")).toHaveTextContent("2026-09-26");
-    expect(screen.getByTestId("detail-description")).toHaveTextContent("Build payments");
-    expect(detail).toHaveTextContent("73/100");
+    expect(screen.getByTestId("detail-first-seen")).toHaveTextContent(/2026-09-26/);
+    expect(screen.getByTestId("detail-description")).toHaveTextContent(/Build payments/);
+    expect(screen.getByText("73/100")).toBeTruthy();
   });
 
-  it("loads the job by id when deep-linked with no feed loaded", async () => {
-    // The notification path: the app opens straight onto a detail screen.
-    stubFetch({ list: { jobs: [] }, detail: { "stripe:1": job("stripe:1") } });
-    render(<App initialPath="/jobs/stripe%3A1" navigate={navigate} />);
-    expect(await screen.findByTestId("job-detail")).toHaveAttribute("data-job-id", "stripe:1");
+  it("fetches the job by id when deep-linked with no feed loaded", async () => {
+    stubFetch({ list: [], detail: { "stripe:1": job("stripe:1") } });
+    render(<App initialRoute={{ name: "job", jobId: "stripe:1" }} registerPush={registerPush} />);
+    expect(await screen.findByTestId("job-detail-stripe:1")).toBeTruthy();
   });
 
   it("shows an error when the deep-linked job is gone", async () => {
-    stubFetch({ list: { jobs: [] }, detail: {} });
-    render(<App initialPath="/jobs/ghost%3A1" navigate={navigate} />);
-    const error = await screen.findByTestId("error-state");
-    expect(error).toHaveTextContent("no longer available");
+    stubFetch({ list: [], detail: {} });
+    render(<App initialRoute={{ name: "job", jobId: "ghost:1" }} registerPush={registerPush} />);
+    expect(await screen.findByText(/no longer available/i)).toBeTruthy();
   });
 
   it("can go back to the feed", async () => {
-    stubFetch({ list: { jobs: [job("stripe:1")] } });
-    render(<App initialPath="/" navigate={navigate} />);
-    await userEvent.click(await screen.findByTestId("job-card"));
-    await userEvent.click(await screen.findByTestId("back"));
-    expect(await screen.findByTestId("job-list")).toBeInTheDocument();
-    expect(navigate).toHaveBeenLastCalledWith("/");
+    stubFetch({ list: [job("stripe:1")] });
+    render(<App registerPush={registerPush} />);
+    await userEvent.press(await screen.findByTestId("job-card-stripe:1"));
+    await userEvent.press(await screen.findByTestId("back"));
+    expect(await screen.findByTestId("job-list")).toBeTruthy();
   });
 
-  it("handles a location-less job without rendering 'null'", async () => {
-    stubFetch({ list: { jobs: [job("stripe:1", { location: null })] } });
-    render(<App initialPath="/" navigate={navigate} />);
-    await userEvent.click(await screen.findByTestId("job-card"));
+  it("renders a location-less job without printing null", async () => {
+    stubFetch({ list: [job("stripe:1", { location: null })] });
+    render(<App registerPush={registerPush} />);
+    await userEvent.press(await screen.findByTestId("job-card-stripe:1"));
     expect(await screen.findByTestId("detail-location")).toHaveTextContent("Not specified");
   });
 });
 
 describe("the application URL action", () => {
-  it("links to the original posting, unchanged", async () => {
-    stubFetch({ list: { jobs: [job("stripe:1")] } });
-    render(<App initialPath="/" navigate={navigate} />);
-    await userEvent.click(await screen.findByTestId("job-card"));
-
-    const apply = await screen.findByTestId("apply-link");
-    expect(apply).toHaveAttribute("href", "https://stripe.com/jobs/stripe:1");
-    expect(apply).toHaveTextContent("Open Application");
+  it("opens the original posting, unchanged", async () => {
+    const openUrl = jest.fn(async () => true);
+    stubFetch({ list: [job("stripe:1")] });
+    render(<App registerPush={registerPush} openUrl={openUrl} />);
+    await userEvent.press(await screen.findByTestId("job-card-stripe:1"));
+    await userEvent.press(await screen.findByTestId("apply-button"));
+    expect(openUrl).toHaveBeenCalledWith("https://stripe.com/jobs/stripe:1");
   });
 
-  it("opens in a new tab without leaking the referrer", async () => {
-    stubFetch({ list: { jobs: [job("stripe:1")] } });
-    render(<App initialPath="/" navigate={navigate} />);
-    await userEvent.click(await screen.findByTestId("job-card"));
-    const apply = await screen.findByTestId("apply-link");
-    expect(apply).toHaveAttribute("target", "_blank");
-    expect(apply.getAttribute("rel")).toContain("noopener");
-    expect(apply.getAttribute("rel")).toContain("noreferrer");
+  it("shows the destination so the user can see where they are going", async () => {
+    stubFetch({ list: [job("stripe:1")] });
+    render(<App registerPush={registerPush} />);
+    await userEvent.press(await screen.findByTestId("job-card-stripe:1"));
+    expect(await screen.findByTestId("apply-url")).toHaveTextContent("https://stripe.com/jobs/stripe:1");
   });
 
-  it("is clickable", async () => {
-    stubFetch({ list: { jobs: [job("stripe:1")] } });
-    render(<App initialPath="/" navigate={navigate} />);
-    await userEvent.click(await screen.findByTestId("job-card"));
-    const apply = await screen.findByTestId("apply-link");
-    // jsdom does not navigate; assert the click is not swallowed or prevented.
-    const clicked = apply.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
-    expect(clicked).toBe(true);
+  it("preserves query parameters in the apply URL", async () => {
+    const openUrl = jest.fn(async () => true);
+    const url = "https://boards.greenhouse.io/x/jobs/1?gh_jid=42";
+    stubFetch({ list: [job("stripe:1", { url })] });
+    render(<App registerPush={registerPush} openUrl={openUrl} />);
+    await userEvent.press(await screen.findByTestId("job-card-stripe:1"));
+    await userEvent.press(await screen.findByTestId("apply-button"));
+    expect(openUrl).toHaveBeenCalledWith(url);
   });
 });
 
 describe("notification handling", () => {
-  /** Wrapped in act(): the listener updates state synchronously. */
-  function dispatchNotification(payload: unknown) {
-    act(() => {
-      window.dispatchEvent(new CustomEvent("jobmonitor:notification", { detail: payload }));
+  it("accepts a push payload and routes to the named job", async () => {
+    stubFetch({
+      list: [job("stripe:1"), job("stripe:2")],
+      detail: { "stripe:2": job("stripe:2") },
     });
-  }
-
-  it("accepts a notification payload and routes to the named job", async () => {
-    stubFetch({ list: { jobs: [job("stripe:1"), job("stripe:2")] }, detail: { "stripe:2": job("stripe:2") } });
-    render(<App initialPath="/" navigate={navigate} />);
+    render(<App registerPush={registerPush} />);
     await screen.findByTestId("job-list");
 
-    dispatchNotification({ job_id: "stripe:2", deep_link: "https://app.test/jobs/stripe%3A2" });
+    await act(async () => {
+      tapListener()(
+        pushResponse({
+          job_id: "stripe:2",
+          deep_link: "https://app.test/jobs/stripe%3A2",
+          apply_url: "https://stripe.com/jobs/stripe:2",
+        }),
+      );
+    });
 
-    const detail = await screen.findByTestId("job-detail");
-    expect(detail).toHaveAttribute("data-job-id", "stripe:2");
-    expect(navigate).toHaveBeenCalledWith("/jobs/stripe%3A2");
+    expect(await screen.findByTestId("job-detail-stripe:2")).toBeTruthy();
+    expect(screen.getByTestId("banner")).toHaveTextContent(/notification/);
   });
 
   it("routes using deep_link alone", async () => {
-    stubFetch({ list: { jobs: [job("stripe:1")] }, detail: { "stripe:1": job("stripe:1") } });
-    render(<App initialPath="/" navigate={navigate} />);
+    stubFetch({ list: [job("stripe:1")], detail: { "stripe:1": job("stripe:1") } });
+    render(<App registerPush={registerPush} />);
     await screen.findByTestId("job-list");
 
-    dispatchNotification({ deep_link: "https://app.test/jobs/stripe%3A1" });
-    expect(await screen.findByTestId("job-detail")).toHaveAttribute("data-job-id", "stripe:1");
+    await act(async () => {
+      tapListener()(pushResponse({ deep_link: "https://app.test/jobs/stripe%3A1" }));
+    });
+    expect(await screen.findByTestId("job-detail-stripe:1")).toBeTruthy();
+  });
+
+  it("routes using a custom-scheme deep link", async () => {
+    stubFetch({ list: [job("stripe:1")], detail: { "stripe:1": job("stripe:1") } });
+    render(<App registerPush={registerPush} />);
+    await screen.findByTestId("job-list");
+
+    await act(async () => {
+      tapListener()(pushResponse({ deep_link: "internshipmonitor://jobs/stripe%3A1" }));
+    });
+    expect(await screen.findByTestId("job-detail-stripe:1")).toBeTruthy();
   });
 
   it("shows the feed for a grouped alert", async () => {
-    stubFetch({ list: { jobs: [job("a:1"), job("a:2")] } });
-    render(<App initialPath="/" navigate={navigate} />);
+    stubFetch({ list: [job("a:1"), job("a:2")] });
+    render(<App registerPush={registerPush} />);
     await screen.findByTestId("job-list");
 
-    dispatchNotification({ job_ids: "a:1,a:2", job_count: "2", deep_link: "https://app.test/" });
-
-    expect(await screen.findByTestId("banner")).toHaveTextContent("New internships found");
-    expect(screen.getByTestId("job-list")).toBeInTheDocument();
+    await act(async () => {
+      tapListener()(
+        pushResponse({ job_ids: "a:1,a:2", job_count: "2", deep_link: "https://app.test/" }),
+      );
+    });
+    expect(screen.getByTestId("banner")).toHaveTextContent(/New internships found/);
+    expect(screen.getByTestId("job-list")).toBeTruthy();
   });
 
-  it("tolerates an empty or malformed payload", async () => {
-    stubFetch({ list: { jobs: [job("a:1")] } });
-    render(<App initialPath="/" navigate={navigate} />);
-    await screen.findByTestId("job-list");
-
-    dispatchNotification(null);
-    dispatchNotification({ job_id: 42 });
-    dispatchNotification("garbage");
-
-    expect(await screen.findByTestId("job-list")).toBeInTheDocument();
+  it("replays a cold-start tap that launched the app", async () => {
+    // The app was not running; the OS delivers the response on startup.
+    (Notifications.getLastNotificationResponseAsync as jest.Mock).mockResolvedValue(
+      pushResponse({ job_id: "stripe:1" }),
+    );
+    stubFetch({ list: [], detail: { "stripe:1": job("stripe:1") } });
+    render(<App registerPush={registerPush} />);
+    expect(await screen.findByTestId("job-detail-stripe:1")).toBeTruthy();
   });
 
-  it("refetches when a notification arrives, because the backend has new data", async () => {
-    const fetchMock = stubFetch({ list: { jobs: [job("a:1")] } });
-    render(<App initialPath="/" navigate={navigate} />);
+  it("refreshes the feed when a notification arrives in the foreground", async () => {
+    const fetchMock = stubFetch({ list: [job("a:1")] });
+    render(<App registerPush={registerPush} />);
     await screen.findByTestId("job-list");
     const before = fetchMock.mock.calls.length;
 
-    dispatchNotification({ job_ids: "a:1,a:2", job_count: "2" });
+    await act(async () => {
+      receivedListener()(pushResponse({ job_id: "a:1" }));
+    });
     await waitFor(() => expect(fetchMock.mock.calls.length).toBeGreaterThan(before));
+    expect(screen.getByTestId("banner")).toHaveTextContent(/New internship found/);
+  });
+
+  it("tolerates an empty or malformed payload", async () => {
+    stubFetch({ list: [job("a:1")] });
+    render(<App registerPush={registerPush} />);
+    await screen.findByTestId("job-list");
+
+    await act(async () => {
+      const tap = tapListener();
+      tap(pushResponse({}));
+      tap({ notification: null });
+      tap(null);
+    });
+    expect(screen.getByTestId("job-list")).toBeTruthy();
   });
 
   it("duplicate notification events do not create duplicate visible items", async () => {
-    stubFetch({ list: { count: 1, limit: 50, jobs: [job("a:1")] } });
-    render(<App initialPath="/" navigate={navigate} />);
+    stubFetch({ list: [job("a:1")] });
+    render(<App registerPush={registerPush} />);
     await screen.findByTestId("job-list");
 
-    // The same alert delivered three times - a real possibility with at-least-once
-    // queue delivery plus a service-worker relay.
-    dispatchNotification({ job_ids: "a:1", job_count: "1", deep_link: "https://app.test/" });
-    dispatchNotification({ job_ids: "a:1", job_count: "1", deep_link: "https://app.test/" });
-    dispatchNotification({ job_ids: "a:1", job_count: "1", deep_link: "https://app.test/" });
+    // The same alert delivered repeatedly - a real possibility with at-least-once
+    // queue delivery plus an OS that may replay a tap.
+    await act(async () => {
+      const tap = tapListener();
+      for (let index = 0; index < 4; index += 1) {
+        tap(pushResponse({ job_ids: "a:1", job_count: "1", deep_link: "https://app.test/" }));
+      }
+    });
 
-    await waitFor(() => expect(screen.getAllByTestId("job-card")).toHaveLength(1));
-    expect(screen.getByText("1 recent")).toBeInTheDocument();
+    // Four taps, one job on screen - not four stacked detail views.
+    await waitFor(() => expect(screen.getAllByTestId("job-detail-a:1")).toHaveLength(1));
+
+    // And the feed behind it still holds exactly one card, even though every tap
+    // also triggered a refetch of the same job.
+    await userEvent.press(screen.getByTestId("back"));
+    await waitFor(() => expect(screen.getByText("1 recent")).toBeTruthy());
+    expect(screen.getAllByTestId("job-card-a:1")).toHaveLength(1);
   });
 
-  it("repeated list loads never duplicate a job", async () => {
-    stubFetch({ list: { jobs: [job("a:1"), job("a:2")] } });
-    render(<App initialPath="/" navigate={navigate} />);
+  it("repeated refreshes never duplicate a job", async () => {
+    stubFetch({ list: [job("a:1"), job("a:2")] });
+    render(<App registerPush={registerPush} />);
     await screen.findByTestId("job-list");
 
-    await userEvent.click(screen.getByTestId("refresh"));
-    await userEvent.click(screen.getByTestId("refresh"));
+    await act(async () => {
+      receivedListener()(pushResponse({}));
+      receivedListener()(pushResponse({}));
+    });
+    await waitFor(() => expect(screen.getByText("2 recent")).toBeTruthy());
+  });
 
-    await waitFor(() => expect(screen.getAllByTestId("job-card")).toHaveLength(2));
+  it("removes its listeners on unmount", () => {
+    stubFetch({ list: [] });
+    const remove = jest.fn();
+    (Notifications.addNotificationResponseReceivedListener as jest.Mock).mockReturnValue({ remove });
+    (Notifications.addNotificationReceivedListener as jest.Mock).mockReturnValue({ remove });
+    const view = render(<App registerPush={registerPush} />);
+    view.unmount();
+    expect(remove).toHaveBeenCalled();
   });
 });

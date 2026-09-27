@@ -1,4 +1,4 @@
-/** The job shape the API serves (backend `JobRecord.to_api_dict`). */
+/** The job shape the API serves (`JobRecord.to_api_dict` on the backend). */
 export interface Job {
   job_id: string;
   company: string;
@@ -23,7 +23,7 @@ export interface JobListResponse {
   jobs: Job[];
 }
 
-/** The `data` map the backend's `format_push` puts on every notification. */
+/** The `data` map a push notification carries (backend `format_push`). */
 export interface NotificationPayload {
   schema_version?: string;
   urgency?: string;
@@ -33,3 +33,8 @@ export interface NotificationPayload {
   job_count?: string;
   apply_url?: string;
 }
+
+export type LoadState<T> =
+  | { status: "loading" }
+  | { status: "ready"; data: T }
+  | { status: "error"; message: string };

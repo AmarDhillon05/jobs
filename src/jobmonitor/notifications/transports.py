@@ -7,7 +7,11 @@ Email
 
 Push
 ----
-``memory``, ``console``, ``sns`` and ``webpush``.
+``memory``, ``console``, ``sns``, ``expo`` and ``webpush``.
+
+``expo`` is the path to the React Native app in ``mobile/``: it POSTs to Expo's
+public push API over the project's own retrying HTTP client, so it needs nothing
+beyond urllib3 - already in the Lambda runtime.
 
 ``sns`` is the default deployable push path and needs **no dependency beyond
 boto3**, which the Lambda runtime already has - so the whole push pipeline is
@@ -21,6 +25,7 @@ See ARCHITECTURE.md for why Web Push was chosen over Expo/FCM.
 
 from __future__ import annotations
 
+import logging
 from abc import ABC, abstractmethod
 from collections.abc import Sequence
 from dataclasses import dataclass, field
@@ -30,6 +35,8 @@ from jobmonitor.config import EmailSettings, PushSettings
 from jobmonitor.errors import JobMonitorError
 from jobmonitor.models.record import DeviceRegistration
 from jobmonitor.notifications.formatters import EmailMessage, PushMessage
+
+logger = logging.getLogger(__name__)
 
 
 class DeliveryError(JobMonitorError):
@@ -247,6 +254,156 @@ class SnsPushTransport(PushTransport):
         return [str(response.get("MessageId", ""))]
 
 
+class ExpoPushTransport(PushTransport):
+    """Expo's push service - the path to the React Native app in ``mobile/``.
+
+    One HTTPS POST carrying up to 100 messages; Expo relays each to APNs or FCM.
+    Chosen over talking to APNs/FCM directly because it needs no signing key, no
+    extra dependency (the project's own :class:`~jobmonitor.http.HttpClient` over
+    urllib3 is enough) and no per-platform code - see ARCHITECTURE.md §6.
+
+    Two failure modes need separating, because they want opposite handling:
+
+    * a **transport/HTTP** failure (Expo down, 429, network) is retryable, so it
+      raises :class:`DeliveryError` and the queue redelivers the alert;
+    * a **per-ticket** ``DeviceNotRegistered`` means that handset uninstalled the
+      app or reinstalled with a new token. Retrying can never succeed, so the
+      device is disabled in the registry (when one was supplied) and the send
+      counts as delivered for the remaining devices. Raising here instead would
+      wedge every future alert behind one dead phone.
+    """
+
+    name = "expo"
+    #: Expo rejects a request carrying more than this many messages.
+    BATCH_SIZE = 100
+
+    def __init__(
+        self,
+        settings: PushSettings,
+        *,
+        client: Any = None,
+        device_repository: Any = None,
+    ) -> None:
+        self.settings = settings
+        self._client = client
+        self._devices = device_repository
+        #: device_ids Expo reported as gone, in order. Read by tests and logs.
+        self.stale_device_ids: list[str] = []
+
+    def _get_client(self) -> Any:
+        if self._client is None:
+            from jobmonitor.http import HttpClient
+
+            self._client = HttpClient()
+        return self._client
+
+    @staticmethod
+    def is_expo_token(token: str) -> bool:
+        text = token.strip()
+        return text.startswith(("ExponentPushToken[", "ExpoPushToken[")) and text.endswith("]")
+
+    def _messages(
+        self, message: PushMessage, devices: Sequence[DeviceRegistration]
+    ) -> list[dict[str, Any]]:
+        return [
+            {
+                "to": device.token.strip(),
+                "title": message.title,
+                "body": message.body,
+                "data": dict(message.data),
+                "sound": "default",
+                # "high" wakes the device promptly; a new internship is the whole
+                # point of the app, and the volume is a handful a day.
+                "priority": "high",
+                # Matches the channel mobile/src/notifications.ts creates.
+                "channelId": "internships",
+            }
+            for device in devices
+        ]
+
+    def send(self, message: PushMessage, *, devices: Sequence[DeviceRegistration]) -> list[str]:
+        targets = [
+            device
+            for device in devices
+            if device.transport in ("expo", "") and self.is_expo_token(device.token)
+        ]
+        skipped = len(devices) - len(targets)
+        if skipped:
+            # A mixed registry (a browser's Web Push subscription alongside a
+            # phone's Expo token) must not make this transport fail.
+            logger.info("expo push: skipped %d device(s) with a non-Expo token", skipped)
+        if not targets:
+            # Nothing to do is not a failure: the email channel still delivered,
+            # and treating it as one would leave the job pending forever.
+            return []
+
+        headers = {"Accept-Encoding": "gzip, deflate", "Content-Type": "application/json"}
+        if self.settings.expo_access_token:
+            headers["Authorization"] = f"Bearer {self.settings.expo_access_token}"
+
+        receipts: list[str] = []
+        client = self._get_client()
+        for start in range(0, len(targets), self.BATCH_SIZE):
+            batch = targets[start : start + self.BATCH_SIZE]
+            try:
+                payload = client.post_json(
+                    self.settings.expo_api_url, self._messages(message, batch), headers=headers
+                )
+            except JobMonitorError as exc:
+                raise DeliveryError(f"Expo push request failed: {exc}") from exc
+            receipts.extend(self._read_tickets(payload, batch))
+        return receipts
+
+    def _read_tickets(self, payload: Any, batch: Sequence[DeviceRegistration]) -> list[str]:
+        if not isinstance(payload, dict):
+            raise DeliveryError(f"Expo push: unexpected response {type(payload).__name__}")
+        if payload.get("errors"):
+            # A request-level error: malformed body, bad access token, ...
+            raise DeliveryError(f"Expo push rejected the request: {payload['errors']}")
+        tickets = payload.get("data")
+        if not isinstance(tickets, list):
+            raise DeliveryError("Expo push: response had no 'data' array of tickets")
+
+        receipts: list[str] = []
+        retryable: list[str] = []
+        for device, ticket in zip(batch, tickets, strict=False):
+            if not isinstance(ticket, dict):
+                retryable.append(f"{device.device_id}: malformed ticket {ticket!r}")
+                continue
+            if ticket.get("status") == "ok":
+                receipts.append(str(ticket.get("id") or f"expo-{device.device_id}"))
+                continue
+            detail = str(ticket.get("message") or "unknown error")
+            error_code = str((ticket.get("details") or {}).get("error") or "")
+            if error_code == "DeviceNotRegistered":
+                self._retire(device, detail)
+                continue
+            retryable.append(f"{device.device_id}: {detail}")
+
+        if retryable and not receipts:
+            # Every device in this batch failed for a reason that might clear:
+            # surface it so the notifier leaves the job pending and the queue
+            # retries, rather than silently reporting success.
+            raise DeliveryError("Expo push failed for every device: " + "; ".join(retryable))
+        for problem in retryable:
+            logger.warning("expo push: %s", problem)
+        return receipts
+
+    def _retire(self, device: DeviceRegistration, detail: str) -> None:
+        self.stale_device_ids.append(device.device_id)
+        logger.warning(
+            "expo push: device %s is no longer registered (%s); disabling it",
+            device.device_id,
+            detail,
+        )
+        if self._devices is None:
+            return
+        try:
+            self._devices.unregister(device.device_id)
+        except Exception:  # pragma: no cover - never let cleanup break delivery
+            logger.exception("could not unregister stale device %s", device.device_id)
+
+
 class WebPushTransport(PushTransport):
     """Web Push (VAPID) straight to the installed PWA.
 
@@ -306,7 +463,7 @@ class WebPushTransport(PushTransport):
 # ------------------------------------------------------------------- factories
 
 EMAIL_TRANSPORTS = ("memory", "console", "ses")
-PUSH_TRANSPORTS = ("memory", "console", "sns", "webpush")
+PUSH_TRANSPORTS = ("memory", "console", "sns", "expo", "webpush")
 
 
 def build_email_transport(
@@ -330,6 +487,7 @@ def build_push_transport(
     topic_arn: str | None = None,
     region: str = "us-east-1",
     endpoint_url: str | None = None,
+    device_repository: Any = None,
 ) -> PushTransport:
     choice = settings.transport.lower()
     if choice == "memory":
@@ -338,6 +496,8 @@ def build_push_transport(
         return ConsolePushTransport()
     if choice == "sns":
         return SnsPushTransport(topic_arn, region=region, endpoint_url=endpoint_url)
+    if choice == "expo":
+        return ExpoPushTransport(settings, device_repository=device_repository)
     if choice == "webpush":
         return WebPushTransport(settings)
     raise TransportUnavailable(
@@ -352,6 +512,7 @@ __all__: Sequence[str] = (
     "ConsolePushTransport",
     "DeliveryError",
     "EmailTransport",
+    "ExpoPushTransport",
     "MemoryEmailTransport",
     "MemoryPushTransport",
     "PushTransport",

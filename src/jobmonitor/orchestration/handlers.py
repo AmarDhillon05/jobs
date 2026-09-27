@@ -102,6 +102,8 @@ class Dependencies:
                 topic_arn=aws.notification_topic_arn,
                 region=aws.region,
                 endpoint_url=aws.endpoint_url,
+                # Lets the Expo transport retire a token Expo reports as gone.
+                device_repository=self.devices,
             ),
             device_repository=self.devices,
         )

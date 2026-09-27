@@ -154,6 +154,10 @@ class PushSettings:
     vapid_public_key: str | None = None
     vapid_private_key: str | None = None
     vapid_subject: str = "mailto:you@example.com"
+    #: Expo push service. The access token is only required when the Expo project
+    #: has "enhanced security for push notifications" switched on.
+    expo_api_url: str = "https://exp.host/--/api/v2/push/send"
+    expo_access_token: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -209,6 +213,8 @@ class Settings:
                 vapid_public_key=_opt_str(e, "VAPID_PUBLIC_KEY"),
                 vapid_private_key=_opt_str(e, "VAPID_PRIVATE_KEY"),
                 vapid_subject=_str(e, "VAPID_SUBJECT", "mailto:you@example.com"),
+                expo_api_url=_str(e, "EXPO_PUSH_API_URL", "https://exp.host/--/api/v2/push/send"),
+                expo_access_token=_opt_str(e, "EXPO_ACCESS_TOKEN"),
             ),
             poll_interval_minutes=_int(e, "POLL_INTERVAL_MINUTES", 10, minimum=1),
             shard_size=_int(e, "SHARD_SIZE", 8, minimum=1),

@@ -1,119 +1,121 @@
-import { describe, expect, it } from "vitest";
-import {
-  jobPath,
-  parseNotificationPayload,
-  parseRoute,
-  routeForNotification,
-} from "../routes";
-
-describe("parseRoute", () => {
-  it("maps the root and /jobs to the feed", () => {
-    expect(parseRoute("/")).toEqual({ name: "feed" });
-    expect(parseRoute("/jobs")).toEqual({ name: "feed" });
-    expect(parseRoute("/jobs/")).toEqual({ name: "feed" });
-  });
-
-  it("extracts a job id", () => {
-    expect(parseRoute("/jobs/testco:42")).toEqual({ name: "job", jobId: "testco:42" });
-  });
-
-  it("decodes a percent-encoded id, which is how deep links arrive", () => {
-    // The backend encodes the colon, so this is the real-world shape.
-    expect(parseRoute("/jobs/stripe%3A1")).toEqual({ name: "job", jobId: "stripe:1" });
-  });
-
-  it("decodes hash-style fallback ids", () => {
-    const id = "jane-street:h:0123456789abcdef0123456789abcdef";
-    expect(parseRoute(`/jobs/${encodeURIComponent(id)}`)).toEqual({ name: "job", jobId: id });
-  });
-
-  it("tolerates a malformed escape sequence instead of throwing", () => {
-    expect(parseRoute("/jobs/%E0%A4%A")).toEqual({ name: "job", jobId: "%E0%A4%A" });
-  });
-
-  it("reports unknown paths", () => {
-    expect(parseRoute("/settings")).toEqual({ name: "unknown", path: "/settings" });
-  });
-
-  it("round-trips with jobPath", () => {
-    const id = "d. e. shaw:req 1/2";
-    expect(parseRoute(jobPath(id))).toEqual({ name: "job", jobId: id });
-  });
-});
+/**
+ * Notification payload -> screen. The one path that must not break.
+ *
+ * Job ids contain a colon (`stripe:1`), so the backend percent-encodes them into
+ * deep links; getting that pair wrong is exactly the kind of fault PRD §18.2 uses
+ * as its worked example ("push notification not visible -> ... -> job ID
+ * serialization"), which is why it is tested here directly rather than only
+ * through the app.
+ */
+import { jobIdFromPath, parseNotificationPayload, routeForNotification } from "../routes";
 
 describe("routeForNotification", () => {
   it("prefers an explicit job_id", () => {
-    expect(routeForNotification({ job_id: "stripe:1" })).toEqual({
+    expect(routeForNotification({ job_id: "stripe:1", deep_link: "https://a/jobs/other%3A2" })).toEqual(
+      { name: "job", jobId: "stripe:1" },
+    );
+  });
+
+  it("falls back to the job id inside the deep link", () => {
+    expect(routeForNotification({ deep_link: "https://app.test/jobs/stripe%3A1" })).toEqual({
       name: "job",
       jobId: "stripe:1",
     });
   });
 
-  it("falls back to the path inside an absolute deep_link", () => {
-    expect(
-      routeForNotification({ deep_link: "https://app.example.com/jobs/stripe%3A1" }),
-    ).toEqual({ name: "job", jobId: "stripe:1" });
-  });
-
-  it("accepts a relative deep_link", () => {
-    expect(routeForNotification({ deep_link: "/jobs/acme%3A9" })).toEqual({
+  it("accepts the app's own scheme", () => {
+    expect(routeForNotification({ deep_link: "internshipmonitor://jobs/ramp%3A9" })).toEqual({
       name: "job",
-      jobId: "acme:9",
+      jobId: "ramp:9",
     });
   });
 
-  it("uses job_ids when it names exactly one job", () => {
-    expect(routeForNotification({ job_ids: "acme:9" })).toEqual({ name: "job", jobId: "acme:9" });
+  it("routes a single-id batch to that job", () => {
+    expect(routeForNotification({ job_ids: "datadog:7" })).toEqual({
+      name: "job",
+      jobId: "datadog:7",
+    });
   });
 
-  it("goes to the feed for a grouped alert", () => {
-    // Several jobs: there is no single right job to open.
+  it("routes a grouped alert to the feed", () => {
     expect(routeForNotification({ job_ids: "a:1,b:2,c:3", job_count: "3" })).toEqual({
       name: "feed",
     });
-    expect(routeForNotification({ deep_link: "https://app.example.com/" })).toEqual({
-      name: "feed",
+  });
+
+  it.each([null, undefined, {}, { job_id: "   " }, { deep_link: "https://app.test/" }])(
+    "routes %p to the feed rather than a broken detail screen",
+    (payload) => {
+      expect(routeForNotification(payload)).toEqual({ name: "feed" });
+    },
+  );
+
+  it("trims a padded job id", () => {
+    expect(routeForNotification({ job_id: "  stripe:1 " })).toEqual({
+      name: "job",
+      jobId: "stripe:1",
     });
   });
+});
 
-  it("goes to the feed for an empty or missing payload", () => {
-    expect(routeForNotification(null)).toEqual({ name: "feed" });
-    expect(routeForNotification(undefined)).toEqual({ name: "feed" });
-    expect(routeForNotification({})).toEqual({ name: "feed" });
+describe("jobIdFromPath", () => {
+  it.each([
+    ["https://app.test/jobs/stripe%3A1", "stripe:1"],
+    ["https://app.test/jobs/stripe%3A1?from=push", "stripe:1"],
+    ["https://app.test/jobs/stripe%3A1#top", "stripe:1"],
+    ["internshipmonitor://jobs/stripe%3A1", "stripe:1"],
+    ["/jobs/plain-id", "plain-id"],
+  ])("reads %s", (link, expected) => {
+    expect(jobIdFromPath(link)).toBe(expected);
   });
 
-  it("ignores a blank job_id", () => {
-    expect(routeForNotification({ job_id: "   " })).toEqual({ name: "feed" });
-  });
+  it.each(["https://app.test/", "https://app.test/jobs", "not a url", ""])(
+    "returns null for %p",
+    (link) => {
+      expect(jobIdFromPath(link)).toBeNull();
+    },
+  );
 
-  it("survives a nonsense deep_link", () => {
-    expect(routeForNotification({ deep_link: "::::" })).toEqual({ name: "feed" });
+  it("keeps the raw segment when the escape sequence is malformed", () => {
+    // decodeURIComponent throws on a lone %; a bad link must not crash a tap.
+    expect(jobIdFromPath("https://app.test/jobs/bad%ZZ")).toBe("bad%ZZ");
   });
 });
 
 describe("parseNotificationPayload", () => {
-  it("reads a flat data map", () => {
-    expect(parseNotificationPayload({ job_id: "a:1", deep_link: "/jobs/a%3A1" })).toEqual({
+  it("reads the Expo shape", () => {
+    const raw = { request: { content: { data: { job_id: "a:1", urgency: "immediate" } } } };
+    expect(parseNotificationPayload(raw)).toEqual({ job_id: "a:1", urgency: "immediate" });
+  });
+
+  it("reads a bare data wrapper", () => {
+    expect(parseNotificationPayload({ data: { job_id: "a:1" } })).toEqual({ job_id: "a:1" });
+  });
+
+  it("reads a flat map", () => {
+    expect(parseNotificationPayload({ job_id: "a:1" })).toEqual({ job_id: "a:1" });
+  });
+
+  it("drops unknown and non-string fields", () => {
+    expect(parseNotificationPayload({ job_id: "a:1", nonsense: 1, job_count: 3 })).toEqual({
       job_id: "a:1",
-      deep_link: "/jobs/a%3A1",
     });
   });
 
-  it("reads a nested Web Push payload", () => {
-    const push = { title: "Stripe", body: "SWE Intern", data: { job_id: "stripe:1" } };
-    expect(parseNotificationPayload(push)).toEqual({ job_id: "stripe:1" });
+  it.each([null, undefined, 7, "text", {}, { data: null }])("returns null for %p", (raw) => {
+    expect(parseNotificationPayload(raw)).toBeNull();
   });
 
-  it("drops non-string values rather than trusting them", () => {
-    expect(parseNotificationPayload({ job_id: 42, deep_link: "/jobs/x" })).toEqual({
-      deep_link: "/jobs/x",
-    });
-  });
-
-  it("returns null for unusable input", () => {
-    expect(parseNotificationPayload(null)).toBeNull();
-    expect(parseNotificationPayload("string")).toBeNull();
-    expect(parseNotificationPayload({})).toBeNull();
-    expect(parseNotificationPayload({ unrelated: "x" })).toBeNull();
+  it("carries the whole documented payload through", () => {
+    const data = {
+      schema_version: "1",
+      urgency: "immediate",
+      deep_link: "https://app.test/jobs/a%3A1",
+      job_id: "a:1",
+      job_ids: "a:1",
+      job_count: "1",
+      apply_url: "https://stripe.com/jobs/a1",
+    };
+    expect(parseNotificationPayload({ request: { content: { data } } })).toEqual(data);
   });
 });

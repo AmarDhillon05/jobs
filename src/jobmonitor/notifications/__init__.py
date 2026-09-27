@@ -1,9 +1,9 @@
 """Notification pipeline (PRD §22).
 
-Email is required in the production design; push is delivered either through SNS
-(dependency-free, the default) or Web Push straight to the installed PWA. Every
-transport is behind an interface with an in-memory fake, so the whole path is
-tested end to end without sending anything to anyone.
+Email is required in the production design; push is delivered through Expo (to
+the React Native app in ``mobile/``), SNS, or Web Push straight to the installed
+PWA. Every transport is behind an interface with an in-memory fake, so the whole
+path is tested end to end without sending anything to anyone.
 """
 
 from jobmonitor.notifications.events import (
@@ -27,6 +27,7 @@ from jobmonitor.notifications.transports import (
     ConsolePushTransport,
     DeliveryError,
     EmailTransport,
+    ExpoPushTransport,
     MemoryEmailTransport,
     MemoryPushTransport,
     PushTransport,
@@ -47,6 +48,7 @@ __all__ = [
     "DeliveryResult",
     "EmailMessage",
     "EmailTransport",
+    "ExpoPushTransport",
     "JobAlert",
     "MemoryEmailTransport",
     "MemoryPushTransport",

@@ -1,6 +1,14 @@
-import { API_BASE, API_WRITE_TOKEN } from "./config";
 import type { Job, JobListResponse } from "./types";
 import { parseJob, parseJobList } from "./validate";
+
+/**
+ * The API base URL. Injected at build time so the same bundle can point at a
+ * local server or a deployed API Gateway. No credential is ever shipped here -
+ * read endpoints are public and writes use a token the user supplies.
+ */
+export const API_BASE: string =
+  (import.meta.env?.VITE_API_BASE_URL as string | undefined)?.replace(/\/$/, "") ??
+  "http://localhost:8000";
 
 export class ApiError extends Error {
   constructor(
@@ -20,17 +28,20 @@ async function getJson(path: string, signal?: AbortSignal): Promise<unknown> {
       headers: { Accept: "application/json" },
     });
   } catch (cause) {
-    if (cause instanceof Error && cause.name === "AbortError") {
-      throw new ApiError("Request cancelled");
-    }
-    // Offline, DNS failure, wrong API URL: all need the same message.
-    throw new ApiError("Could not reach the jobs service. Check your connection.");
+    // Offline, DNS failure, CORS rejection: all indistinguishable here, and all
+    // need the same "couldn't reach the server" message.
+    throw new ApiError(
+      cause instanceof Error && cause.name === "AbortError"
+        ? "Request cancelled"
+        : "Could not reach the jobs service. Check your connection and try again.",
+    );
   }
 
   if (response.status === 404) throw new ApiError("Not found", 404);
   if (!response.ok) {
     throw new ApiError(`The jobs service returned an error (${response.status}).`, response.status);
   }
+
   try {
     return await response.json();
   } catch {
@@ -41,7 +52,8 @@ async function getJson(path: string, signal?: AbortSignal): Promise<unknown> {
 export async function fetchRecentJobs(
   options: { limit?: number; signal?: AbortSignal } = {},
 ): Promise<JobListResponse> {
-  return parseJobList(await getJson(`/jobs?limit=${options.limit ?? 50}`, options.signal));
+  const limit = options.limit ?? 50;
+  return parseJobList(await getJson(`/jobs?limit=${limit}`, options.signal));
 }
 
 export async function fetchJob(jobId: string, signal?: AbortSignal): Promise<Job> {
@@ -51,27 +63,17 @@ export async function fetchJob(jobId: string, signal?: AbortSignal): Promise<Job
   return job;
 }
 
-/** Register this device's Expo push token so the backend can alert it. */
 export async function registerDevice(
   deviceId: string,
-  expoPushToken: string,
+  token: string,
+  writeToken: string,
 ): Promise<void> {
-  if (!API_WRITE_TOKEN) {
-    throw new ApiError("No API write token is configured; cannot register for notifications.");
-  }
   const response = await fetch(`${API_BASE}/devices/register`, {
     method: "POST",
-    headers: { "Content-Type": "application/json", "X-Api-Token": API_WRITE_TOKEN },
-    body: JSON.stringify({
-      device_id: deviceId,
-      token: expoPushToken,
-      transport: "expo",
-    }),
+    headers: { "Content-Type": "application/json", "X-Api-Token": writeToken },
+    body: JSON.stringify({ device_id: deviceId, token, transport: "webpush" }),
   });
   if (!response.ok) {
-    throw new ApiError(
-      `Could not register for notifications (${response.status}).`,
-      response.status,
-    );
+    throw new ApiError(`Could not register for notifications (${response.status}).`, response.status);
   }
 }
