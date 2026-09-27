@@ -1,0 +1,9 @@
+# cfn-lint configuration.
+#
+# W3005 ("dependency already enforced by a GetAtt") is emitted for every Lambda
+# in a CDK-synthesized template: the CDK always adds an explicit DependsOn on the
+# function's service role alongside the implicit GetAtt dependency. It is
+# harmless, unavoidable from the CDK side, and would otherwise make `make
+# infra-lint` fail on output we do not control.
+ignore_checks:
+  - W3005

@@ -12,6 +12,7 @@ unless its configured source passes the appropriate scraper test").
 from __future__ import annotations
 
 import json
+import os
 from collections.abc import Iterable, Iterator, Mapping, Sequence
 from dataclasses import dataclass, field
 from enum import StrEnum
@@ -233,8 +234,25 @@ class CompanyRegistry:
 
 
 def default_registry_path() -> Path:
-    """Repo-root ``companies.json``, resolved relative to this module."""
-    return Path(__file__).resolve().parents[3] / "companies.json"
+    """Locate ``companies.json``.
+
+    It lives at the repo root in development and next to the ``jobmonitor``
+    package inside a Lambda deployment bundle, so both are checked - and
+    ``COMPANIES_PATH`` overrides either, which is how a deployment can ship a
+    different registry without rebuilding the code.
+    """
+    override = os.environ.get("COMPANIES_PATH")
+    if override:
+        return Path(override)
+    here = Path(__file__).resolve()
+    candidates = (
+        here.parents[3] / "companies.json",  # repo root (src/jobmonitor/models/..)
+        here.parents[2] / "companies.json",  # bundle root (/var/task/jobmonitor/..)
+    )
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate
+    return candidates[0]
 
 
 def load_default_registry(path: str | Path | None = None) -> CompanyRegistry:

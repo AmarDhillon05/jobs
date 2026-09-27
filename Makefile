@@ -20,7 +20,7 @@ PIP         := $(VENV)/bin/python -m pip
 PYTEST      := $(VENV)/bin/python -m pytest
 RUFF        := $(VENV)/bin/python -m ruff
 MYPY        := $(VENV)/bin/python -m mypy
-CFN_LINT    := $(VENV)/bin/python -m cfnlint
+CFN_LINT    := $(VENV)/bin/cfn-lint
 CDK         := $(REPO_ROOT)/tools/node_modules/.bin/cdk
 CDKLOCAL    := $(REPO_ROOT)/tools/node_modules/.bin/cdklocal
 MOBILE      := $(REPO_ROOT)/mobile
@@ -104,9 +104,13 @@ coverage: ## Backend tests with coverage report
 	  --cov --cov-report=term-missing --cov-report=xml -q
 
 # ---------------------------------------------------------------- infra ------
+# The CDK CLI shells out to `python3 app.py`, so the venv must be first on PATH
+# for aws_cdk to be importable.
+CDK_ENV := PATH=$(VENV)/bin:$$PATH PYTHONPATH=$(REPO_ROOT)/src:$(REPO_ROOT)/infrastructure
+
 .PHONY: infra-synth
 infra-synth: ## cdk synth into infrastructure/cdk.out
-	cd $(REPO_ROOT)/infrastructure && $(CDK) synth --all --output $(CDK_OUT) --quiet
+	cd $(REPO_ROOT)/infrastructure && $(CDK_ENV) $(CDK) synth --output $(CDK_OUT) --quiet
 
 .PHONY: infra-test
 infra-test: ## CDK assertion / template tests
