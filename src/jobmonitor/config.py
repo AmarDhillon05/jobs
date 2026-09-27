@@ -13,6 +13,7 @@ from __future__ import annotations
 import os
 from collections.abc import Mapping
 from dataclasses import dataclass, field, replace
+from datetime import timedelta
 from typing import Final
 
 Env = Mapping[str, str]
@@ -77,6 +78,15 @@ def _bool(env: Env, key: str, default: bool) -> bool:
     raise ConfigError(f"{key} must be a boolean-ish value, got {raw!r}")
 
 
+def _posting_age(env: Env) -> float | None:
+    """``MAX_POSTING_AGE_HOURS``: 24 by default; ``0`` or ``off`` disables the window."""
+    raw = env.get("MAX_POSTING_AGE_HOURS")
+    if raw is not None and raw.strip().lower() in {"off", "none", "disabled"}:
+        return None
+    hours = _float(env, "MAX_POSTING_AGE_HOURS", 24.0, minimum=0.0)
+    return None if hours == 0 else hours
+
+
 def _score(env: Env, key: str, default: int) -> int:
     value = _int(env, key, default)
     if not 0 <= value <= 100:
@@ -112,6 +122,19 @@ class FilterSettings:
     notify_threshold: int = 55
     keep_threshold: int = 35
     immediate_alert_priorities: tuple[str, ...] = ("high",)
+    #: Only postings from the last this-many hours are ever seen; older ones are
+    #: dropped before relevance scoring. ``None`` disables the window.
+    #: See ``jobmonitor.filtering.recency`` for how day-only and missing dates
+    #: are treated.
+    max_posting_age_hours: float | None = 24.0
+    #: A posting with no date cannot be shown to be old, so it is kept by default.
+    keep_undated: bool = True
+
+    @property
+    def max_posting_age(self) -> timedelta | None:
+        if self.max_posting_age_hours is None:
+            return None
+        return timedelta(hours=self.max_posting_age_hours)
 
     def __post_init__(self) -> None:
         if self.keep_threshold > self.notify_threshold:
@@ -201,6 +224,8 @@ class Settings:
                 notify_threshold=_score(e, "NOTIFY_RELEVANCE_THRESHOLD", 55),
                 keep_threshold=_score(e, "KEEP_RELEVANCE_THRESHOLD", 35),
                 immediate_alert_priorities=_csv(e, "IMMEDIATE_ALERT_PRIORITIES", ("high",)),
+                max_posting_age_hours=_posting_age(e),
+                keep_undated=_bool(e, "KEEP_UNDATED_POSTINGS", True),
             ),
             email=EmailSettings(
                 transport=_str(e, "EMAIL_TRANSPORT", "console").lower(),
@@ -238,6 +263,12 @@ def for_tests(**overrides: object) -> Settings:
             backoff_base_seconds=0.0,
             backoff_max_seconds=0.0,
         ),
+        # The posting-age window is off by default in tests, for the same reason the
+        # backoff sleeps are: saved fixtures carry fixed dates, and a test about
+        # retries or parsing must not start failing because the calendar moved on.
+        # The window has its own tests (tests/unit/test_recency.py), and the Level 8
+        # acceptance suite runs with it switched on, as production does.
+        filters=FilterSettings(max_posting_age_hours=None),
         email=EmailSettings(transport="memory"),
         push=PushSettings(transport="memory"),
         app_base_url="https://app.test",

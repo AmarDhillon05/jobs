@@ -27,6 +27,7 @@ from datetime import datetime
 
 from jobmonitor.config import Settings
 from jobmonitor.filtering import JobFilter
+from jobmonitor.filtering.recency import split_by_recency
 from jobmonitor.http import HttpClient
 from jobmonitor.models.company import Company
 from jobmonitor.models.health import PollSummary, ScraperHealth, ScraperStatus, utcnow
@@ -145,7 +146,15 @@ def process_company(
         logger.warning("%s: scraper %s (%s)", company.company, health.status.value, health.error)
         return outcome
 
-    decisions = job_filter.evaluate_all(result.jobs, company)
+    # Only postings from the last day are ever seen (FilterSettings.max_posting_age).
+    # Applied here, once, so every adapter obeys the same rule.
+    window = split_by_recency(
+        result.jobs,
+        now=timestamp,
+        max_age=settings.filters.max_posting_age,
+        keep_undated=settings.filters.keep_undated,
+    )
+    decisions = job_filter.evaluate_all(window.recent, company)
     relevant = [decision for decision in decisions if decision.keep]
 
     for decision in relevant:

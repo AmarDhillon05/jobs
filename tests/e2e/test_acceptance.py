@@ -17,7 +17,7 @@ publishes names a job the API can actually serve, with the fields the app render
 
 from __future__ import annotations
 
-from datetime import timedelta
+from datetime import UTC, datetime, timedelta
 from urllib.parse import unquote
 
 import pytest
@@ -457,7 +457,14 @@ class TestScenario7StorageAndWorkerFailure:
                                     "industry": "Testing",
                                     "priority": "high",
                                     "provider": "fixture",
-                                    "provider_config": {"jobs": [posting("1")]},
+                                    # The handler runs on the real clock, so the
+                                    # posting must be genuinely recent to get past
+                                    # the one-day window and reach storage.
+                                    "provider_config": {
+                                        "jobs": [
+                                            posting("1", date_posted=datetime.now(UTC).isoformat())
+                                        ]
+                                    },
                                     "support_status": "supported",
                                 }
                             ],
@@ -648,3 +655,85 @@ class TestParseErrorIsContained:
         assert health.ok
         assert health.jobs_malformed == 1
         assert ParseError.__name__ not in (health.error_type or "")
+
+
+# ----------------------------------------------------------- one-day window
+
+
+class TestOnlyTheLastDayIsSeen:
+    """Postings older than a day never enter the system at all.
+
+    Runs with the production window (24h) - the acceptance system is built with
+    ``FilterSettings()``, not the test default that switches it off.
+    """
+
+    def test_the_acceptance_system_runs_with_the_production_window(
+        self, memory_system: System
+    ) -> None:
+        assert memory_system.settings.filters.max_posting_age == timedelta(days=1)
+
+    def test_an_old_posting_is_never_stored_notified_or_shown(self, system: System) -> None:
+        stale = posting("old", date_posted=(T0 - timedelta(days=3)).isoformat())
+        outcome = system.poll([fixture_company(jobs=[stale])])
+
+        assert outcome.new_records == []
+        assert system.stored() == []
+        assert system.push.sent == [] and system.email.sent == []
+        assert system.feed() == []
+
+    def test_only_the_recent_posting_on_a_mixed_board_gets_through(self, system: System) -> None:
+        board = [
+            posting("fresh", date_posted=(T0 - timedelta(hours=2)).isoformat()),
+            posting("week-old", date_posted=(T0 - timedelta(days=7)).isoformat()),
+            posting("month-old", date_posted=(T0 - timedelta(days=30)).isoformat()),
+        ]
+        outcome = system.poll([fixture_company(jobs=board)])
+
+        assert [record.external_id for record in outcome.new_records] == ["fresh"]
+        assert [entry["url"] for entry in system.feed()] == [
+            "https://boards.testco.test/jobs/fresh?gh_src=feed"
+        ]
+        assert len(system.push.sent) == 1
+
+    def test_a_day_only_date_from_yesterday_is_still_seen(self, memory_system: System) -> None:
+        # Workday-style: only the day is known, recorded as midnight. At noon today
+        # that looks 36h old, but the job may have gone up late yesterday evening.
+        yesterday = (T0 - timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+        outcome = memory_system.poll(
+            [fixture_company(jobs=[posting("1", date_posted=yesterday.isoformat())])]
+        )
+        assert len(outcome.new_records) == 1
+
+    def test_an_undated_posting_is_seen_once_and_never_re_alerted(self, system: System) -> None:
+        undated = posting("1")
+        undated.pop("date_posted")
+        company = fixture_company(jobs=[undated])
+        for index in range(5):
+            system.poll([company], at=T0 + timedelta(hours=index), poll_id=f"p{index}")
+
+        assert len(system.stored()) == 1
+        assert len(system.push.sent) == 1, "the seen-before check stops a repeat alert"
+
+    def test_a_board_with_nothing_recent_is_healthy_not_failed(self, memory_system: System) -> None:
+        stale = [posting(str(i), date_posted="2026-08-01T12:00:00Z") for i in range(5)]
+        outcome = memory_system.poll([fixture_company(jobs=stale)])
+
+        assert outcome.failures == []
+        health = memory_system.health.latest()[0]
+        assert health.ok
+        # The board answered with five postings; none were recent. Both facts are
+        # visible, so "quiet day" is never confused with "broken scraper".
+        assert health.jobs_found == 5
+        assert health.relevant_jobs == 0
+
+    def test_a_posting_ages_out_after_a_day(self, memory_system: System) -> None:
+        # Seen and alerted while fresh; a day later the same posting is outside the
+        # window, so it neither re-alerts nor refreshes.
+        company = fixture_company(
+            jobs=[posting("1", date_posted=(T0 - timedelta(hours=1)).isoformat())]
+        )
+        memory_system.poll([company])
+        later = memory_system.poll([company], at=T0 + timedelta(days=2), poll_id="later")
+
+        assert later.new_records == [] and later.updated_records == []
+        assert len(memory_system.push.sent) == 1
