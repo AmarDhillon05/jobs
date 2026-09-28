@@ -13,7 +13,10 @@
     "Entries pinned with source_discovered_from 'live' were configured from the",
     "company's own careers page (which ATS it links to) and then verified against",
     "that ATS's live API, with job links checked to resolve. Their notes cite the",
-    "evidence. Entries with status 'blocked' are recorded but not polled."
+    "evidence. Entries with status 'blocked' are recorded but not polled.",
+    "`excluded` entries are companies deliberately not monitored: the registry was",
+    "trimmed to employers at or above an AWS SDE internship in SWE resume value.",
+    "The build ignores this section; moving an entry back to `monitored` restores it."
   ],
   "monitored": [
     {
@@ -86,11 +89,6 @@
       ]
     },
     {
-      "company": "Tenstorrent",
-      "industry": "AI Accelerators",
-      "priority": "medium"
-    },
-    {
       "company": "NVIDIA",
       "industry": "Semiconductors / AI",
       "priority": "high"
@@ -124,21 +122,6 @@
       "priority": "medium"
     },
     {
-      "company": "Autodesk",
-      "industry": "Design Software",
-      "priority": "medium"
-    },
-    {
-      "company": "Red Hat",
-      "industry": "Open Source Infrastructure",
-      "priority": "medium"
-    },
-    {
-      "company": "Zoom",
-      "industry": "Communications",
-      "priority": "medium"
-    },
-    {
       "company": "DoorDash",
       "industry": "Consumer Marketplace",
       "priority": "high"
@@ -146,11 +129,6 @@
     {
       "company": "Spotify",
       "industry": "Consumer Audio",
-      "priority": "medium"
-    },
-    {
-      "company": "Verkada",
-      "industry": "Physical Security",
       "priority": "medium"
     },
     {
@@ -187,24 +165,6 @@
       ]
     },
     {
-      "company": "Postman",
-      "industry": "API Tooling",
-      "priority": "medium",
-      "provider": "simplify_fallback",
-      "careers_url": "https://www.postman.com/company/careers/",
-      "support_status": "partial",
-      "notes": "left Greenhouse (board 404s, API and page); open-positions loads client-side with no discoverable public endpoint after three approaches; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
-      "provider_config": {
-        "company_names": [
-          "Postman"
-        ]
-      },
-      "source_discovered_from": [
-        "simplify",
-        "curated"
-      ]
-    },
-    {
       "company": "Snowflake",
       "industry": "Data Warehouse",
       "priority": "high"
@@ -213,16 +173,6 @@
       "company": "Confluent",
       "industry": "Streaming Data",
       "priority": "high"
-    },
-    {
-      "company": "SingleStore",
-      "industry": "Databases",
-      "priority": "medium"
-    },
-    {
-      "company": "PlanetScale",
-      "industry": "Databases",
-      "priority": "medium"
     },
     {
       "company": "CrowdStrike",
@@ -238,29 +188,6 @@
       "priority": "high"
     },
     {
-      "company": "Zscaler",
-      "industry": "Cloud Security",
-      "priority": "medium"
-    },
-    {
-      "company": "1Password",
-      "industry": "Identity / Secrets",
-      "priority": "medium",
-      "aliases": [
-        "AgileBits"
-      ]
-    },
-    {
-      "company": "Snyk",
-      "industry": "Developer Security",
-      "priority": "medium"
-    },
-    {
-      "company": "Semgrep",
-      "industry": "Code Security",
-      "priority": "medium"
-    },
-    {
       "company": "Ramp",
       "industry": "Fintech",
       "priority": "high"
@@ -271,82 +198,14 @@
       "priority": "high"
     },
     {
-      "company": "Affirm",
-      "industry": "Consumer Lending",
-      "priority": "medium"
-    },
-    {
       "company": "Robinhood",
       "industry": "Brokerage",
       "priority": "high"
     },
     {
-      "company": "Marqeta",
-      "industry": "Card Issuing",
-      "priority": "medium",
-      "provider": "simplify_fallback",
-      "careers_url": "https://www.marqeta.com/company/careers",
-      "support_status": "partial",
-      "notes": "the only observed board ('mqreferrals') is an internal referral board and now 404s; the careers page loads jobs client-side with no discoverable public endpoint; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
-      "provider_config": {
-        "company_names": [
-          "Marqeta"
-        ]
-      },
-      "source_discovered_from": [
-        "simplify",
-        "curated"
-      ]
-    },
-    {
-      "company": "Visa",
-      "industry": "Payment Networks",
-      "priority": "medium"
-    },
-    {
-      "company": "Mastercard",
-      "industry": "Payment Networks",
-      "priority": "medium"
-    },
-    {
-      "company": "Capital One",
-      "industry": "Banking / Technology",
-      "priority": "medium"
-    },
-    {
-      "company": "BlackRock",
-      "industry": "Asset Management",
-      "priority": "medium"
-    },
-    {
-      "company": "Klaviyo",
-      "industry": "Marketing Infrastructure",
-      "priority": "medium"
-    },
-    {
-      "company": "Twilio",
-      "industry": "Communications APIs",
-      "priority": "medium"
-    },
-    {
       "company": "Rippling",
       "industry": "HR / Fintech Platform",
       "priority": "high"
-    },
-    {
-      "company": "Zocdoc",
-      "industry": "Health Marketplace",
-      "priority": "medium"
-    },
-    {
-      "company": "Benchling",
-      "industry": "Life Sciences Software",
-      "priority": "medium"
-    },
-    {
-      "company": "Persona",
-      "industry": "Identity Verification",
-      "priority": "medium"
     },
     {
       "company": "Jane Street",
@@ -365,11 +224,6 @@
       "aliases": [
         "IMC"
       ]
-    },
-    {
-      "company": "Belvedere Trading",
-      "industry": "Market Making",
-      "priority": "medium"
     },
     {
       "company": "Five Rings",
@@ -397,27 +251,6 @@
       "priority": "high"
     },
     {
-      "company": "Virtu",
-      "industry": "Market Making",
-      "priority": "medium",
-      "aliases": [
-        "Virtu Financial"
-      ]
-    },
-    {
-      "company": "Man Group",
-      "industry": "Asset Management",
-      "priority": "medium"
-    },
-    {
-      "company": "PEAK6",
-      "industry": "Quantitative Trading",
-      "priority": "medium",
-      "aliases": [
-        "Peak6"
-      ]
-    },
-    {
       "company": "Zoox",
       "industry": "Autonomous Vehicles",
       "priority": "high"
@@ -426,11 +259,6 @@
       "company": "Applied Intuition",
       "industry": "Autonomy Software",
       "priority": "high"
-    },
-    {
-      "company": "Lucid Motors",
-      "industry": "Electric Vehicles",
-      "priority": "medium"
     },
     {
       "company": "SpaceX",
@@ -451,45 +279,9 @@
       ]
     },
     {
-      "company": "Rocket Lab",
-      "industry": "Aerospace",
-      "priority": "medium"
-    },
-    {
-      "company": "Astranis",
-      "industry": "Satellites",
-      "priority": "medium"
-    },
-    {
-      "company": "Varda Space Industries",
-      "industry": "Space Manufacturing",
-      "priority": "experimental",
-      "aliases": [
-        "Varda"
-      ]
-    },
-    {
-      "company": "Planet",
-      "industry": "Earth Observation",
-      "priority": "medium",
-      "aliases": [
-        "Planet Labs"
-      ]
-    },
-    {
       "company": "Shield AI",
       "industry": "Defense Autonomy",
       "priority": "high"
-    },
-    {
-      "company": "Saronic",
-      "industry": "Defense Autonomy",
-      "priority": "medium"
-    },
-    {
-      "company": "Skydio",
-      "industry": "Drones",
-      "priority": "medium"
     },
     {
       "company": "Boston Dynamics",
@@ -497,81 +289,8 @@
       "priority": "high"
     },
     {
-      "company": "Symbotic",
-      "industry": "Warehouse Robotics",
-      "priority": "medium"
-    },
-    {
-      "company": "Bright Machines",
-      "industry": "Industrial Robotics",
-      "priority": "experimental"
-    },
-    {
-      "company": "Intel",
-      "industry": "Semiconductors",
-      "priority": "medium"
-    },
-    {
-      "company": "Marvell",
-      "industry": "Semiconductors",
-      "priority": "medium",
-      "aliases": [
-        "Marvell Technology"
-      ]
-    },
-    {
-      "company": "Micron",
-      "industry": "Semiconductors",
-      "priority": "medium",
-      "aliases": [
-        "Micron Technology"
-      ],
-      "provider_config_overrides": {
-        "queries": [
-          "internship"
-        ]
-      },
-      "notes": "Workday search for 'intern' matches most of the board (RTX 2,350 / Micron 3,056 postings), past Workday's 2,000-result limit, and so does 'co-op'; 'internship' returns 465 / 329 and its results already include co-op roles (measured live 2026-09-27)."
-    },
-    {
-      "company": "Cadence",
-      "industry": "EDA",
-      "priority": "medium",
-      "aliases": [
-        "Cadence Design Systems"
-      ]
-    },
-    {
-      "company": "Analog Devices",
-      "industry": "Semiconductors",
-      "priority": "medium"
-    },
-    {
-      "company": "Astera Labs",
-      "industry": "Semiconductors",
-      "priority": "medium"
-    },
-    {
       "company": "Lightmatter",
       "industry": "Photonic Computing",
-      "priority": "experimental"
-    },
-    {
-      "company": "IonQ",
-      "industry": "Quantum Computing",
-      "priority": "experimental"
-    },
-    {
-      "company": "Rigetti",
-      "industry": "Quantum Computing",
-      "priority": "experimental",
-      "aliases": [
-        "Rigetti Computing"
-      ]
-    },
-    {
-      "company": "Quantinuum",
-      "industry": "Quantum Computing",
       "priority": "experimental"
     },
     {
@@ -585,16 +304,6 @@
     {
       "company": "ServiceNow",
       "industry": "Enterprise SaaS",
-      "priority": "medium"
-    },
-    {
-      "company": "Canva",
-      "industry": "Design Software",
-      "priority": "medium"
-    },
-    {
-      "company": "Zendesk",
-      "industry": "Customer Software",
       "priority": "medium"
     },
     {
@@ -633,278 +342,6 @@
       "aliases": [
         "G Research",
         "Gresearch"
-      ]
-    },
-    {
-      "company": "Cisco",
-      "industry": "Networking",
-      "priority": "medium",
-      "aliases": [
-        "Cisco Systems"
-      ]
-    },
-    {
-      "company": "F5",
-      "industry": "Application Networking",
-      "priority": "medium",
-      "aliases": [
-        "F5 Networks"
-      ]
-    },
-    {
-      "company": "Proofpoint",
-      "industry": "Email Security",
-      "priority": "medium"
-    },
-    {
-      "company": "Ambarella",
-      "industry": "Semiconductors",
-      "priority": "medium"
-    },
-    {
-      "company": "NXP Semiconductors",
-      "industry": "Semiconductors",
-      "priority": "medium",
-      "aliases": [
-        "NXP"
-      ]
-    },
-    {
-      "company": "Western Digital",
-      "industry": "Storage",
-      "priority": "medium"
-    },
-    {
-      "company": "Sandisk",
-      "industry": "Storage",
-      "priority": "medium",
-      "aliases": [
-        "SanDisk"
-      ]
-    },
-    {
-      "company": "GlobalFoundries",
-      "industry": "Semiconductor Manufacturing",
-      "priority": "medium"
-    },
-    {
-      "company": "Altera Corporation",
-      "industry": "Programmable Logic",
-      "priority": "medium",
-      "aliases": [
-        "Altera"
-      ]
-    },
-    {
-      "company": "KLA",
-      "industry": "Semiconductor Equipment",
-      "priority": "medium",
-      "aliases": [
-        "KLA-Tencor"
-      ]
-    },
-    {
-      "company": "Applied Materials",
-      "industry": "Semiconductor Equipment",
-      "priority": "medium"
-    },
-    {
-      "company": "Samsung Research America",
-      "industry": "Applied Research",
-      "priority": "medium",
-      "aliases": [
-        "SRA"
-      ]
-    },
-    {
-      "company": "PlusAI",
-      "industry": "Autonomous Trucking",
-      "priority": "medium",
-      "aliases": [
-        "Plus AI",
-        "Plus"
-      ]
-    },
-    {
-      "company": "Kodiak Robotics",
-      "industry": "Autonomous Trucking",
-      "priority": "medium",
-      "aliases": [
-        "Kodiak"
-      ]
-    },
-    {
-      "company": "Bedrock Robotics",
-      "industry": "Robotics",
-      "priority": "experimental"
-    },
-    {
-      "company": "Apptronik",
-      "industry": "Humanoid Robotics",
-      "priority": "medium"
-    },
-    {
-      "company": "Atomic Semi",
-      "industry": "Semiconductors",
-      "priority": "experimental",
-      "provider": "ashby",
-      "careers_url": "https://fab2.com/careers/",
-      "support_status": "supported",
-      "notes": "rebranded: atomicsemi.com/careers redirects to fab2.com/careers, which links Ashby board 'fab2' (61 postings); the old 'atomicsemi' board is gone (verified live 2026-09-27).",
-      "provider_config": {
-        "job_board_name": "fab2"
-      },
-      "source_discovered_from": [
-        "curated",
-        "live"
-      ],
-      "aliases": [
-        "Fab2"
-      ]
-    },
-    {
-      "company": "CesiumAstro",
-      "industry": "Aerospace",
-      "priority": "medium"
-    },
-    {
-      "company": "Hermeus",
-      "industry": "Aerospace",
-      "priority": "medium"
-    },
-    {
-      "company": "Voyager Technologies",
-      "industry": "Aerospace",
-      "priority": "medium",
-      "aliases": [
-        "Voyager Space"
-      ]
-    },
-    {
-      "company": "Sigma Computing",
-      "industry": "Analytics",
-      "priority": "medium"
-    },
-    {
-      "company": "Walleye Capital",
-      "industry": "Hedge Fund",
-      "priority": "medium",
-      "aliases": [
-        "Walleye"
-      ]
-    },
-    {
-      "company": "DV Trading",
-      "industry": "Proprietary Trading",
-      "priority": "medium"
-    },
-    {
-      "company": "Jain Global",
-      "industry": "Hedge Fund",
-      "priority": "medium"
-    },
-    {
-      "company": "Integra FEC",
-      "industry": "Quantitative Trading",
-      "priority": "experimental"
-    },
-    {
-      "company": "CME Group",
-      "industry": "Exchanges",
-      "priority": "medium",
-      "aliases": [
-        "CME"
-      ]
-    },
-    {
-      "company": "Nasdaq",
-      "industry": "Exchanges",
-      "priority": "medium"
-    },
-    {
-      "company": "Castleton Commodities International",
-      "industry": "Commodities Trading",
-      "priority": "medium",
-      "aliases": [
-        "Castleton Commodities"
-      ]
-    },
-    {
-      "company": "Wellington Management",
-      "industry": "Asset Management",
-      "priority": "medium"
-    },
-    {
-      "company": "Dell Technologies",
-      "industry": "Enterprise Hardware",
-      "priority": "medium",
-      "provider": "oracle_hcm",
-      "careers_url": "https://jobs.dell.com/",
-      "support_status": "supported",
-      "notes": "moved off Workday (answers 422): jobs.dell.com now redirects to Oracle Fusion. Single-site tenant - the site number is ignored, so the site code 'careers' is used, which also makes job links resolve (verified live 2026-09-27).",
-      "provider_config": {
-        "host": "enterpriseplatform.dell.com",
-        "site": "careers"
-      },
-      "source_discovered_from": [
-        "curated",
-        "live"
-      ],
-      "aliases": [
-        "Dell"
-      ]
-    },
-    {
-      "company": "Cirrus Logic",
-      "industry": "Semiconductors",
-      "priority": "medium"
-    },
-    {
-      "company": "Veeam Software",
-      "industry": "Data Protection",
-      "priority": "medium",
-      "aliases": [
-        "Veeam"
-      ]
-    },
-    {
-      "company": "Intuitive Surgical",
-      "industry": "Medical Robotics",
-      "priority": "medium",
-      "aliases": [
-        "Intuitive"
-      ]
-    },
-    {
-      "company": "AeroVironment",
-      "industry": "Defense / UAS",
-      "priority": "medium"
-    },
-    {
-      "company": "Northrop Grumman",
-      "industry": "Aerospace & Defense",
-      "priority": "medium"
-    },
-    {
-      "company": "RTX",
-      "industry": "Aerospace & Defense",
-      "priority": "medium",
-      "aliases": [
-        "Raytheon Technologies"
-      ],
-      "provider_config_overrides": {
-        "queries": [
-          "internship"
-        ]
-      },
-      "notes": "Workday search for 'intern' matches most of the board (RTX 2,350 / Micron 3,056 postings), past Workday's 2,000-result limit, and so does 'co-op'; 'internship' returns 465 / 329 and its results already include co-op roles (measured live 2026-09-27)."
-    },
-    {
-      "company": "The Boeing Company",
-      "industry": "Aerospace",
-      "priority": "medium",
-      "aliases": [
-        "Boeing"
       ]
     },
     {
@@ -1148,24 +585,6 @@
       ]
     },
     {
-      "company": "Broadcom",
-      "industry": "Semiconductors",
-      "priority": "medium",
-      "provider": "workday",
-      "careers_url": "https://www.broadcom.com/company/careers",
-      "support_status": "supported",
-      "notes": "Workday CXS API answers (verified live 2026-09-27).",
-      "provider_config": {
-        "host": "broadcom.wd1.myworkdayjobs.com",
-        "tenant": "broadcom",
-        "site": "External_Career"
-      },
-      "source_discovered_from": [
-        "curated",
-        "live"
-      ]
-    },
-    {
       "company": "Microsoft",
       "industry": "Big Tech",
       "priority": "high",
@@ -1181,40 +600,6 @@
           "internship",
           "co-op"
         ]
-      },
-      "source_discovered_from": [
-        "curated",
-        "live"
-      ]
-    },
-    {
-      "company": "Qualcomm",
-      "industry": "Semiconductors",
-      "priority": "medium",
-      "provider": "eightfold",
-      "careers_url": "https://careers.qualcomm.com/careers",
-      "support_status": "supported",
-      "notes": "careers page links to qualcomm.eightfold.ai; PCSX search API answers (verified live 2026-09-27).",
-      "provider_config": {
-        "host": "qualcomm.eightfold.ai",
-        "domain": "qualcomm.com"
-      },
-      "source_discovered_from": [
-        "curated",
-        "live"
-      ]
-    },
-    {
-      "company": "Morgan Stanley",
-      "industry": "Investment Banking",
-      "priority": "high",
-      "provider": "eightfold",
-      "careers_url": "https://www.morganstanley.com/careers",
-      "support_status": "supported",
-      "notes": "careers page links to morganstanley.eightfold.ai; PCSX search API answers (verified live 2026-09-27).",
-      "provider_config": {
-        "host": "morganstanley.eightfold.ai",
-        "domain": "morganstanley.com"
       },
       "source_discovered_from": [
         "curated",
@@ -1243,45 +628,6 @@
       ]
     },
     {
-      "company": "JPMorgan Chase",
-      "industry": "Investment Banking",
-      "priority": "high",
-      "provider": "oracle_hcm",
-      "careers_url": "https://careers.jpmorgan.com/",
-      "support_status": "supported",
-      "notes": "careers page links to jpmc.fa.oraclecloud.com Candidate Experience site CX_1001; REST API answers (verified live 2026-09-27).",
-      "provider_config": {
-        "host": "jpmc.fa.oraclecloud.com",
-        "site": "CX_1001"
-      },
-      "source_discovered_from": [
-        "curated",
-        "live"
-      ],
-      "aliases": [
-        "JPMorgan",
-        "J.P. Morgan",
-        "JP Morgan"
-      ]
-    },
-    {
-      "company": "Oracle",
-      "industry": "Enterprise Software",
-      "priority": "medium",
-      "provider": "oracle_hcm",
-      "careers_url": "https://careers.oracle.com/",
-      "support_status": "supported",
-      "notes": "careers.oracle.com runs on Oracle Fusion (eeho.fa.us2.oraclecloud.com); REST API answers (verified live 2026-09-27).",
-      "provider_config": {
-        "host": "eeho.fa.us2.oraclecloud.com",
-        "site": "CX_45001"
-      },
-      "source_discovered_from": [
-        "curated",
-        "live"
-      ]
-    },
-    {
       "company": "Uber",
       "industry": "Consumer Technology",
       "priority": "high",
@@ -1296,26 +642,6 @@
       "source_discovered_from": [
         "curated",
         "live"
-      ]
-    },
-    {
-      "company": "AMD",
-      "industry": "Semiconductors",
-      "priority": "medium",
-      "provider": "jibe",
-      "careers_url": "https://careers.amd.com/careers-home/jobs",
-      "support_status": "supported",
-      "notes": "careers.amd.com is an iCIMS Jibe site; /api/jobs answers and job pages resolve (verified live 2026-09-27).",
-      "provider_config": {
-        "host": "careers.amd.com",
-        "job_path": "/careers-home/jobs"
-      },
-      "source_discovered_from": [
-        "curated",
-        "live"
-      ],
-      "aliases": [
-        "Advanced Micro Devices"
       ]
     },
     {
@@ -1337,26 +663,6 @@
       "aliases": [
         "SIG",
         "Susquehanna"
-      ]
-    },
-    {
-      "company": "Arm",
-      "industry": "Semiconductors",
-      "priority": "medium",
-      "provider": "talentbrew",
-      "careers_url": "https://careers.arm.com/",
-      "support_status": "supported",
-      "notes": "careers.arm.com is a Radancy TalentBrew site; its search XHR answers (verified live 2026-09-27). No posting dates exposed.",
-      "provider_config": {
-        "host": "careers.arm.com"
-      },
-      "source_discovered_from": [
-        "curated",
-        "live"
-      ],
-      "aliases": [
-        "Arm Holdings",
-        "ARM"
       ]
     },
     {
@@ -1399,20 +705,6 @@
       "careers_url": "https://higher.gs.com/",
       "support_status": "supported",
       "notes": "higher.gs.com GraphQL API answers; campus roles read whole (titled 'Summer Analyst') (verified live 2026-09-27).",
-      "provider_config": {},
-      "source_discovered_from": [
-        "curated",
-        "live"
-      ]
-    },
-    {
-      "company": "IBM",
-      "industry": "Enterprise Technology",
-      "priority": "medium",
-      "provider": "ibm",
-      "careers_url": "https://www.ibm.com/careers",
-      "support_status": "supported",
-      "notes": "IBM careers search API answers (verified live 2026-09-27). No posting dates exposed.",
       "provider_config": {},
       "source_discovered_from": [
         "curated",
@@ -1728,6 +1020,811 @@
         "simplify",
         "curated"
       ]
+    }
+  ],
+  "excluded": [
+    {
+      "company": "1Password",
+      "industry": "Identity / Secrets",
+      "priority": "medium",
+      "aliases": [
+        "AgileBits"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "AeroVironment",
+      "industry": "Defense / UAS",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Affirm",
+      "industry": "Consumer Lending",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Altera Corporation",
+      "industry": "Programmable Logic",
+      "priority": "medium",
+      "aliases": [
+        "Altera"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Ambarella",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "AMD",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "provider": "jibe",
+      "careers_url": "https://careers.amd.com/careers-home/jobs",
+      "support_status": "supported",
+      "notes": "careers.amd.com is an iCIMS Jibe site; /api/jobs answers and job pages resolve (verified live 2026-09-27).",
+      "provider_config": {
+        "host": "careers.amd.com",
+        "job_path": "/careers-home/jobs"
+      },
+      "source_discovered_from": [
+        "curated",
+        "live"
+      ],
+      "aliases": [
+        "Advanced Micro Devices"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Analog Devices",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Applied Materials",
+      "industry": "Semiconductor Equipment",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Apptronik",
+      "industry": "Humanoid Robotics",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Arm",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "provider": "talentbrew",
+      "careers_url": "https://careers.arm.com/",
+      "support_status": "supported",
+      "notes": "careers.arm.com is a Radancy TalentBrew site; its search XHR answers (verified live 2026-09-27). No posting dates exposed.",
+      "provider_config": {
+        "host": "careers.arm.com"
+      },
+      "source_discovered_from": [
+        "curated",
+        "live"
+      ],
+      "aliases": [
+        "Arm Holdings",
+        "ARM"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Astera Labs",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Astranis",
+      "industry": "Satellites",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Atomic Semi",
+      "industry": "Semiconductors",
+      "priority": "experimental",
+      "provider": "ashby",
+      "careers_url": "https://fab2.com/careers/",
+      "support_status": "supported",
+      "notes": "rebranded: atomicsemi.com/careers redirects to fab2.com/careers, which links Ashby board 'fab2' (61 postings); the old 'atomicsemi' board is gone (verified live 2026-09-27).",
+      "provider_config": {
+        "job_board_name": "fab2"
+      },
+      "source_discovered_from": [
+        "curated",
+        "live"
+      ],
+      "aliases": [
+        "Fab2"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Autodesk",
+      "industry": "Design Software",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Bedrock Robotics",
+      "industry": "Robotics",
+      "priority": "experimental",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Belvedere Trading",
+      "industry": "Market Making",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Benchling",
+      "industry": "Life Sciences Software",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "BlackRock",
+      "industry": "Asset Management",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Bright Machines",
+      "industry": "Industrial Robotics",
+      "priority": "experimental",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Broadcom",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "provider": "workday",
+      "careers_url": "https://www.broadcom.com/company/careers",
+      "support_status": "supported",
+      "notes": "Workday CXS API answers (verified live 2026-09-27).",
+      "provider_config": {
+        "host": "broadcom.wd1.myworkdayjobs.com",
+        "tenant": "broadcom",
+        "site": "External_Career"
+      },
+      "source_discovered_from": [
+        "curated",
+        "live"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Cadence",
+      "industry": "EDA",
+      "priority": "medium",
+      "aliases": [
+        "Cadence Design Systems"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Canva",
+      "industry": "Design Software",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Capital One",
+      "industry": "Banking / Technology",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Castleton Commodities International",
+      "industry": "Commodities Trading",
+      "priority": "medium",
+      "aliases": [
+        "Castleton Commodities"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "CesiumAstro",
+      "industry": "Aerospace",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Cirrus Logic",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Cisco",
+      "industry": "Networking",
+      "priority": "medium",
+      "aliases": [
+        "Cisco Systems"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "CME Group",
+      "industry": "Exchanges",
+      "priority": "medium",
+      "aliases": [
+        "CME"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Dell Technologies",
+      "industry": "Enterprise Hardware",
+      "priority": "medium",
+      "provider": "oracle_hcm",
+      "careers_url": "https://jobs.dell.com/",
+      "support_status": "supported",
+      "notes": "moved off Workday (answers 422): jobs.dell.com now redirects to Oracle Fusion. Single-site tenant - the site number is ignored, so the site code 'careers' is used, which also makes job links resolve (verified live 2026-09-27).",
+      "provider_config": {
+        "host": "enterpriseplatform.dell.com",
+        "site": "careers"
+      },
+      "source_discovered_from": [
+        "curated",
+        "live"
+      ],
+      "aliases": [
+        "Dell"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "DV Trading",
+      "industry": "Proprietary Trading",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "F5",
+      "industry": "Application Networking",
+      "priority": "medium",
+      "aliases": [
+        "F5 Networks"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "GlobalFoundries",
+      "industry": "Semiconductor Manufacturing",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Hermeus",
+      "industry": "Aerospace",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "IBM",
+      "industry": "Enterprise Technology",
+      "priority": "medium",
+      "provider": "ibm",
+      "careers_url": "https://www.ibm.com/careers",
+      "support_status": "supported",
+      "notes": "IBM careers search API answers (verified live 2026-09-27). No posting dates exposed.",
+      "provider_config": {},
+      "source_discovered_from": [
+        "curated",
+        "live"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Integra FEC",
+      "industry": "Quantitative Trading",
+      "priority": "experimental",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Intel",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Intuitive Surgical",
+      "industry": "Medical Robotics",
+      "priority": "medium",
+      "aliases": [
+        "Intuitive"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "IonQ",
+      "industry": "Quantum Computing",
+      "priority": "experimental",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Jain Global",
+      "industry": "Hedge Fund",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "JPMorgan Chase",
+      "industry": "Investment Banking",
+      "priority": "high",
+      "provider": "oracle_hcm",
+      "careers_url": "https://careers.jpmorgan.com/",
+      "support_status": "supported",
+      "notes": "careers page links to jpmc.fa.oraclecloud.com Candidate Experience site CX_1001; REST API answers (verified live 2026-09-27).",
+      "provider_config": {
+        "host": "jpmc.fa.oraclecloud.com",
+        "site": "CX_1001"
+      },
+      "source_discovered_from": [
+        "curated",
+        "live"
+      ],
+      "aliases": [
+        "JPMorgan",
+        "J.P. Morgan",
+        "JP Morgan"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "KLA",
+      "industry": "Semiconductor Equipment",
+      "priority": "medium",
+      "aliases": [
+        "KLA-Tencor"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Klaviyo",
+      "industry": "Marketing Infrastructure",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Kodiak Robotics",
+      "industry": "Autonomous Trucking",
+      "priority": "medium",
+      "aliases": [
+        "Kodiak"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Lucid Motors",
+      "industry": "Electric Vehicles",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Man Group",
+      "industry": "Asset Management",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Marqeta",
+      "industry": "Card Issuing",
+      "priority": "medium",
+      "provider": "simplify_fallback",
+      "careers_url": "https://www.marqeta.com/company/careers",
+      "support_status": "partial",
+      "notes": "the only observed board ('mqreferrals') is an internal referral board and now 404s; the careers page loads jobs client-side with no discoverable public endpoint; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+      "provider_config": {
+        "company_names": [
+          "Marqeta"
+        ]
+      },
+      "source_discovered_from": [
+        "simplify",
+        "curated"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Marvell",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "aliases": [
+        "Marvell Technology"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Mastercard",
+      "industry": "Payment Networks",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Micron",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "aliases": [
+        "Micron Technology"
+      ],
+      "provider_config_overrides": {
+        "queries": [
+          "internship"
+        ]
+      },
+      "notes": "Workday search for 'intern' matches most of the board (RTX 2,350 / Micron 3,056 postings), past Workday's 2,000-result limit, and so does 'co-op'; 'internship' returns 465 / 329 and its results already include co-op roles (measured live 2026-09-27).",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Morgan Stanley",
+      "industry": "Investment Banking",
+      "priority": "high",
+      "provider": "eightfold",
+      "careers_url": "https://www.morganstanley.com/careers",
+      "support_status": "supported",
+      "notes": "careers page links to morganstanley.eightfold.ai; PCSX search API answers (verified live 2026-09-27).",
+      "provider_config": {
+        "host": "morganstanley.eightfold.ai",
+        "domain": "morganstanley.com"
+      },
+      "source_discovered_from": [
+        "curated",
+        "live"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Nasdaq",
+      "industry": "Exchanges",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Northrop Grumman",
+      "industry": "Aerospace & Defense",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "NXP Semiconductors",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "aliases": [
+        "NXP"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Oracle",
+      "industry": "Enterprise Software",
+      "priority": "medium",
+      "provider": "oracle_hcm",
+      "careers_url": "https://careers.oracle.com/",
+      "support_status": "supported",
+      "notes": "careers.oracle.com runs on Oracle Fusion (eeho.fa.us2.oraclecloud.com); REST API answers (verified live 2026-09-27).",
+      "provider_config": {
+        "host": "eeho.fa.us2.oraclecloud.com",
+        "site": "CX_45001"
+      },
+      "source_discovered_from": [
+        "curated",
+        "live"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "PEAK6",
+      "industry": "Quantitative Trading",
+      "priority": "medium",
+      "aliases": [
+        "Peak6"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Persona",
+      "industry": "Identity Verification",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Planet",
+      "industry": "Earth Observation",
+      "priority": "medium",
+      "aliases": [
+        "Planet Labs"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "PlanetScale",
+      "industry": "Databases",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "PlusAI",
+      "industry": "Autonomous Trucking",
+      "priority": "medium",
+      "aliases": [
+        "Plus AI",
+        "Plus"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Postman",
+      "industry": "API Tooling",
+      "priority": "medium",
+      "provider": "simplify_fallback",
+      "careers_url": "https://www.postman.com/company/careers/",
+      "support_status": "partial",
+      "notes": "left Greenhouse (board 404s, API and page); open-positions loads client-side with no discoverable public endpoint after three approaches; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
+      "provider_config": {
+        "company_names": [
+          "Postman"
+        ]
+      },
+      "source_discovered_from": [
+        "simplify",
+        "curated"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Proofpoint",
+      "industry": "Email Security",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Qualcomm",
+      "industry": "Semiconductors",
+      "priority": "medium",
+      "provider": "eightfold",
+      "careers_url": "https://careers.qualcomm.com/careers",
+      "support_status": "supported",
+      "notes": "careers page links to qualcomm.eightfold.ai; PCSX search API answers (verified live 2026-09-27).",
+      "provider_config": {
+        "host": "qualcomm.eightfold.ai",
+        "domain": "qualcomm.com"
+      },
+      "source_discovered_from": [
+        "curated",
+        "live"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Quantinuum",
+      "industry": "Quantum Computing",
+      "priority": "experimental",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Red Hat",
+      "industry": "Open Source Infrastructure",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Rigetti",
+      "industry": "Quantum Computing",
+      "priority": "experimental",
+      "aliases": [
+        "Rigetti Computing"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Rocket Lab",
+      "industry": "Aerospace",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "RTX",
+      "industry": "Aerospace & Defense",
+      "priority": "medium",
+      "aliases": [
+        "Raytheon Technologies"
+      ],
+      "provider_config_overrides": {
+        "queries": [
+          "internship"
+        ]
+      },
+      "notes": "Workday search for 'intern' matches most of the board (RTX 2,350 / Micron 3,056 postings), past Workday's 2,000-result limit, and so does 'co-op'; 'internship' returns 465 / 329 and its results already include co-op roles (measured live 2026-09-27).",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Samsung Research America",
+      "industry": "Applied Research",
+      "priority": "medium",
+      "aliases": [
+        "SRA"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Sandisk",
+      "industry": "Storage",
+      "priority": "medium",
+      "aliases": [
+        "SanDisk"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Saronic",
+      "industry": "Defense Autonomy",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Semgrep",
+      "industry": "Code Security",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Sigma Computing",
+      "industry": "Analytics",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "SingleStore",
+      "industry": "Databases",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Skydio",
+      "industry": "Drones",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Snyk",
+      "industry": "Developer Security",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Symbotic",
+      "industry": "Warehouse Robotics",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Tenstorrent",
+      "industry": "AI Accelerators",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "The Boeing Company",
+      "industry": "Aerospace",
+      "priority": "medium",
+      "aliases": [
+        "Boeing"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Twilio",
+      "industry": "Communications APIs",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Varda Space Industries",
+      "industry": "Space Manufacturing",
+      "priority": "experimental",
+      "aliases": [
+        "Varda"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Veeam Software",
+      "industry": "Data Protection",
+      "priority": "medium",
+      "aliases": [
+        "Veeam"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Verkada",
+      "industry": "Physical Security",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Virtu",
+      "industry": "Market Making",
+      "priority": "medium",
+      "aliases": [
+        "Virtu Financial"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Visa",
+      "industry": "Payment Networks",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Voyager Technologies",
+      "industry": "Aerospace",
+      "priority": "medium",
+      "aliases": [
+        "Voyager Space"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Walleye Capital",
+      "industry": "Hedge Fund",
+      "priority": "medium",
+      "aliases": [
+        "Walleye"
+      ],
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Wellington Management",
+      "industry": "Asset Management",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Western Digital",
+      "industry": "Storage",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Zendesk",
+      "industry": "Customer Software",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Zocdoc",
+      "industry": "Health Marketplace",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Zoom",
+      "industry": "Communications",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
+    },
+    {
+      "company": "Zscaler",
+      "industry": "Cloud Security",
+      "priority": "medium",
+      "excluded_reason": "below the bar of an AWS SDE internship for SWE resume value (user's cut, 2026-09-28)"
     }
   ]
 }

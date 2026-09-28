@@ -642,4 +642,4 @@ def test_dependencies_from_env_builds_dynamo_backed_repositories(
     assert deps.settings.aws.jobs_table == "env-jobs"
     assert deps.settings.aws.endpoint_url == "http://localhost:4566"
     assert isinstance(deps.settings.aws, AwsSettings)
-    assert len(deps.registry) >= 100
+    assert len(deps.registry) >= 50

@@ -179,30 +179,31 @@ Three different questions, deliberately three different functions:
 
 ## 4. Scraping
 
-Sixteen adapters cover 183 polled companies. Eleven are reusable ATS adapters;
+Adapters cover 91 polled companies (183 before the user's 2026-09-28 cut to
+employers at or above an AWS SDE internship). Eleven are reusable ATS adapters;
 five serve one very large employer each, whose own site is the only first-party
 source. Adding a company to an existing adapter is a registry entry, not code.
 
 | Provider | Companies | Shape |
 | --- | --- | --- |
-| `greenhouse` | 68 | `GET` board API, whole board in one response |
-| `workday` | 44 | `POST` CXS, paginated, 20/page, hard limit of 2,000 results |
-| `ashby` | 25 | `GET` posting API |
-| `lever` | 13 | `GET` postings array; US or **EU** instance (`region`) |
-| `eightfold` | 5 | `GET` search (PCSX, or the older v2 API), 10/page — Microsoft, Qualcomm, Morgan Stanley, Millennium, Netflix |
-| `smartrecruiters` | 5 | `GET`, paginated offset/limit against `totalFound` |
-| `oracle_hcm` | 4 | `GET` Fusion HCM REST, 200/page — JPMorgan Chase, Oracle, Uber, Dell |
-| `jibe` | 2 | `GET` iCIMS Jibe `/api/jobs`, 10/page — AMD, Susquehanna |
-| `talentbrew` | 1 | `GET` Radancy search XHR returning an HTML fragment — Arm |
+| `greenhouse` | 41 | `GET` board API, whole board in one response |
+| `workday` | 9 | `POST` CXS, paginated, 20/page, hard limit of 2,000 results |
+| `ashby` | 17 | `GET` posting API |
+| `lever` | 5 | `GET` postings array; US or **EU** instance (`region`) |
+| `eightfold` | 3 | `GET` search (PCSX, or the older v2 API), 10/page — Microsoft, Millennium, Netflix |
+| `smartrecruiters` | 1 | `GET`, paginated offset/limit against `totalFound` |
+| `oracle_hcm` | 1 | `GET` Fusion HCM REST, 200/page — Uber |
+| `jibe` | 1 | `GET` iCIMS Jibe `/api/jobs`, 10/page — Susquehanna International Group |
+| `talentbrew` | 0 (ready; its companies were cut) | `GET` Radancy search XHR returning an HTML fragment (was Arm) |
 | `rippling` | 1 | `GET` board array |
 | `amazon` | 1 | `GET` amazon.jobs `search.json`, 100/page |
 | `google` | 1 | `GET` results page; job data embedded in the HTML |
 | `goldman` | 1 | `POST` GraphQL (schema open to introspection), campus section read whole |
-| `ibm` | 1 | `POST` Elasticsearch-style search API |
+| `ibm` | 0 (ready; its companies were cut) | `POST` Elasticsearch-style search API |
 | `atlassian` | 1 | `GET` listings array |
 | `workable` | 0 (ready) | `GET` account widget |
 | `json_ld` | 0 (ready) | schema.org `JobPosting` in server-rendered HTML |
-| `simplify_fallback` | 10 | community feed, **secondary only** |
+| `simplify_fallback` | 8 | community feed, **secondary only** |
 
 **Searching adapters.** Greenhouse, Lever and Ashby hand over a whole board and
 the relevance filter decides. Eightfold, Oracle, Jibe, TalentBrew, Amazon, Google,
@@ -433,6 +434,15 @@ changes is made. Both are assumptions to verify on real Lambda: its network timi
 differs from this environment's, and 256 MB means proportionally less CPU for
 parsing the largest pages. Recorded rather than silently fixed, because the
 polling design is being reworked (hourly digest, per-job instant alerts).
+
+### Update - after the cut to 91 companies (2026-09-28)
+
+The user cut polling to the 91 employers at or above an AWS SDE internship for
+resume value. Summing the same 2026-09-27 per-company timings over what remains
+gives **195 s of fetching per poll** (slowest NVIDIA 44 s, Amazon 22 s,
+Salesforce 21 s); the worst shard of 8 takes 61 s. At 512 MB that is ~0.42 M
+GB-s a month, just over the free 400k: **~$0.40/month** for workers, and inside
+the free tier at 256 MB. The rest of the table above is unchanged or smaller.
 
 ## 11. Deviations from the PRD's suggestions
 

@@ -38,7 +38,7 @@ SPOT_CHECKS = [
     ("greenhouse", "Anthropic"),
     ("lever", "Palantir"),
     ("ashby", "OpenAI"),
-    ("smartrecruiters", "Canva"),
+    ("smartrecruiters", "ServiceNow"),
     ("workday", "NVIDIA"),
 ]
 

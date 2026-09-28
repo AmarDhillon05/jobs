@@ -1,6 +1,8 @@
 # Internship Job Monitor
 
-Watches 183 high-value companies for newly posted software-engineering and
+Watches 91 high-value companies (employers at or above an AWS SDE internship
+for resume value; 92 more are kept in `data/company_universe.json` under
+`excluded` and can be restored) for newly posted software-engineering and
 adjacent technical internships and alerts you within roughly one polling interval
 (default: **10 minutes**), by email and by push notification to your phone.
 
@@ -64,7 +66,7 @@ python -m jobmonitor.cli health                   # the scraper health view
 python -m jobmonitor.cli coverage                 # registry coverage summary
 ```
 
-`poll` with no `--company` polls all 183. With `EMAIL_TRANSPORT=console` and
+`poll` with no `--company` polls all 91. With `EMAIL_TRANSPORT=console` and
 `PUSH_TRANSPORT=console` you see exactly what would have been delivered.
 
 ### The whole architecture, on emulated AWS

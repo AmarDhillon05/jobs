@@ -179,12 +179,15 @@ class TestShippedRegistry:
     def test_registry_file_exists_at_repo_root(self) -> None:
         assert default_registry_path().is_file()
 
-    def test_monitors_a_broad_but_bounded_set_of_companies(self, registry: CompanyRegistry) -> None:
-        # PRD §1 asks for "approximately 100-150 high-value companies". The user then
-        # asked for 35 more by name (Google, Meta, Jane Street's peers, the banks...),
-        # which took the registry to 183. The floor still guards against a build
-        # that silently loses companies; the ceiling against one that balloons.
-        assert 100 <= len(registry.pollable()) <= 200
+    def test_monitors_a_focused_but_substantial_set_of_companies(
+        self, registry: CompanyRegistry
+    ) -> None:
+        # PRD §1 asks for "approximately 100-150 high-value companies". The user
+        # then grew the list to 183 and trimmed it to employers at or above an AWS
+        # SDE internship in resume value (91 polled): quality over breadth, by
+        # choice. The floor still catches a build that silently loses most of the
+        # registry; the ceiling one that balloons.
+        assert 50 <= len(registry.pollable()) <= 200
 
     def test_every_entry_records_where_it_was_discovered(self, registry: CompanyRegistry) -> None:
         for company in registry:
