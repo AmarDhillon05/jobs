@@ -52,13 +52,32 @@ def _age(when: datetime) -> str:
     return f"{seconds // 86400}d ago"
 
 
-def _repositories(url: str | None) -> tuple[JobRepository, HealthRepository]:
-    if url:
-        import os
+#: ``--url aws`` means the real AWS endpoints, with your normal credentials.
+REAL_AWS = "aws"
 
-        os.environ["AWS_ENDPOINT_URL"] = url
+
+def _point_at(url: str) -> None:
+    """Aim boto3 at ``url``: LocalStack (fake credentials filled in) or real AWS.
+
+    Fake credentials are only ever defaulted for a local endpoint: on real AWS
+    they would shadow the user's profile and every call would fail to sign.
+    """
+    import os
+    from urllib.parse import urlsplit
+
+    if url == REAL_AWS:
+        os.environ.pop("AWS_ENDPOINT_URL", None)
+        return
+    os.environ["AWS_ENDPOINT_URL"] = url
+    host = urlsplit(url).hostname or ""
+    if host in {"localhost", "127.0.0.1", "localstack"} or host.endswith(".localstack.cloud"):
         os.environ.setdefault("AWS_ACCESS_KEY_ID", "test")
         os.environ.setdefault("AWS_SECRET_ACCESS_KEY", "test")
+
+
+def _repositories(url: str | None) -> tuple[JobRepository, HealthRepository]:
+    if url:
+        _point_at(url)
         from jobmonitor.storage.dynamo import DynamoHealthRepository, DynamoJobRepository
 
         aws = Settings.from_env().aws
@@ -71,11 +90,7 @@ def _repositories(url: str | None) -> tuple[JobRepository, HealthRepository]:
 
 def _device_repository(url: str | None) -> DeviceRepository:
     if url:
-        import os
-
-        os.environ["AWS_ENDPOINT_URL"] = url
-        os.environ.setdefault("AWS_ACCESS_KEY_ID", "test")
-        os.environ.setdefault("AWS_SECRET_ACCESS_KEY", "test")
+        _point_at(url)
         from jobmonitor.storage.dynamo import DynamoDeviceRepository
 
         return DynamoDeviceRepository(Settings.from_env().aws)
@@ -302,7 +317,11 @@ def cmd_coverage(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="jobmon", description=__doc__)
-    parser.add_argument("--url", help="AWS endpoint URL (e.g. LocalStack at :4566)")
+    parser.add_argument(
+        "--url",
+        help="LocalStack endpoint (e.g. http://localhost:4566), or 'aws' for your deployed "
+        "stack (set JOBS_TABLE_NAME etc. from the stack outputs)",
+    )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     health = subparsers.add_parser("health", help="scraper health view")

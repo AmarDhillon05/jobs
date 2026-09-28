@@ -121,6 +121,36 @@ CDK_ENV := PATH=$(VENV)/bin:$$PATH PYTHONPATH=$(REPO_ROOT)/src:$(REPO_ROOT)/infr
 infra-synth: ## cdk synth into infrastructure/cdk.out
 	cd $(REPO_ROOT)/infrastructure && $(CDK_ENV) $(CDK) synth --output $(CDK_OUT) --quiet
 
+# ------------------------------------------------------------- deploying -----
+# For YOU to run, deliberately, against your own account (README "Setting it up
+# for real"). Never run by `make verify`. The fake account pinned above for
+# offline synth is removed here so CDK resolves your real account and region
+# from your AWS credentials.
+DEPLOY_ENV := env -u CDK_DEFAULT_ACCOUNT -u CDK_DEFAULT_REGION $(CDK_ENV)
+DEPLOY_CONTEXT = -c emailFrom=$(EMAIL_FROM) -c emailTo=$(EMAIL_TO) -c ntfyTopic=$(NTFY_TOPIC)
+
+.PHONY: deploy-check
+deploy-check:
+	@test -n "$(EMAIL_FROM)" || (echo "set EMAIL_FROM=<SES-verified sender>" >&2; exit 2)
+	@test -n "$(EMAIL_TO)" || (echo "set EMAIL_TO=<where the digest goes>" >&2; exit 2)
+	@test -n "$(NTFY_TOPIC)" || (echo "set NTFY_TOPIC=<your private ntfy topic>" >&2; exit 2)
+
+.PHONY: deploy-bootstrap
+deploy-bootstrap: ## One-time CDK bootstrap of YOUR account (needs AWS credentials)
+	cd $(REPO_ROOT)/infrastructure && $(DEPLOY_ENV) $(CDK) bootstrap
+
+.PHONY: deploy-diff
+deploy-diff: deploy-check ## Show what `make deploy` would create or change
+	cd $(REPO_ROOT)/infrastructure && $(DEPLOY_ENV) $(CDK) diff JobMonitorStack $(DEPLOY_CONTEXT)
+
+.PHONY: deploy
+deploy: deploy-check ## Deploy to YOUR account: make deploy EMAIL_FROM=.. EMAIL_TO=.. NTFY_TOPIC=..
+	cd $(REPO_ROOT)/infrastructure && $(DEPLOY_ENV) $(CDK) deploy JobMonitorStack $(DEPLOY_CONTEXT)
+
+.PHONY: destroy
+destroy: ## Remove the deployed stack (the jobs table is retained; see README)
+	cd $(REPO_ROOT)/infrastructure && $(DEPLOY_ENV) $(CDK) destroy JobMonitorStack
+
 .PHONY: infra-test
 infra-test: ## CDK assertion / template tests
 	$(PYTEST) $(REPO_ROOT)/infrastructure/tests -q

@@ -290,3 +290,35 @@ class TestParser:
     def test_an_unknown_command_is_rejected(self) -> None:
         with pytest.raises(SystemExit):
             run("teleport")
+
+
+class TestPointingAtAws:
+    """`--url` must never plant fake credentials over a real AWS profile."""
+
+    @pytest.fixture(autouse=True)
+    def clean_env(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        for key in ("AWS_ENDPOINT_URL", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"):
+            monkeypatch.delenv(key, raising=False)
+
+    def test_localstack_gets_fake_credentials(self) -> None:
+        import os
+
+        cli._point_at("http://localhost:4566")
+        assert os.environ["AWS_ENDPOINT_URL"] == "http://localhost:4566"
+        assert os.environ["AWS_ACCESS_KEY_ID"] == "test"
+
+    def test_real_aws_uses_your_own_credentials_and_endpoints(
+        self, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        import os
+
+        monkeypatch.setenv("AWS_ENDPOINT_URL", "http://localhost:4566")
+        cli._point_at("aws")
+        assert "AWS_ENDPOINT_URL" not in os.environ
+        assert "AWS_ACCESS_KEY_ID" not in os.environ
+
+    def test_a_non_local_endpoint_gets_no_fake_credentials(self) -> None:
+        import os
+
+        cli._point_at("https://dynamodb.us-east-1.amazonaws.com")
+        assert "AWS_ACCESS_KEY_ID" not in os.environ

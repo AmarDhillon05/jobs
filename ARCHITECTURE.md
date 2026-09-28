@@ -475,6 +475,14 @@ The hourly digest adds 720 short invocations a month (a query and at most one
 email, well under a second at 256 MB): a few hundred GB-s, inside the free tier.
 SES charges $0.10 per 1,000 emails; ntfy.sh is free.
 
+**Splitting the scrapers into more functions does not reduce cost.** Lambda's
+free allowance (400k GB-s and 1M requests a month) is per *account*, summed
+over every function, not per function. Lambda bills GB-seconds of wall time, so
+the same 195 s of fetching costs the same whether it runs in 12 invocations or
+91; more invocations only add cold starts and request charges. What does cut
+the bill is less of either factor: lower memory (256 MB halves it) or less
+waiting (fetching a shard's companies concurrently).
+
 ## 11. Deviations from the PRD's suggestions
 
 | PRD suggested | Built | Why |

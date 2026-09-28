@@ -15,8 +15,8 @@ nothing).
 > **LocalStack** (real Lambda containers, real SQS/SNS/DynamoDB APIs), **Moto**, or
 > **botocore stubs**. `ARCHITECTURE.md` §9 lists the exact real-vs-emulated
 > boundary; `VALIDATION_REPORT.md` maps every requirement to its evidence.
-> Deploying it is a deliberate act you perform — see [Deploying it
-> later](#deploying-it-later).
+> Deploying it is a deliberate act you perform — see [Setting it up for
+> real](#setting-it-up-for-real).
 
 ```text
 EventBridge (every 10 min) → Coordinator → SQS → Worker Lambdas → DynamoDB
@@ -256,56 +256,120 @@ LOCALSTACK_DEBUG=1 docker compose up -d localstack
 | `cdk synth` fails | The venv must be on `PATH`; `make infra-synth` does that for you |
 | A LocalStack Lambda errors on every invoke | It could not pull a runtime image. `BLOCKERS.md` BLK-003 |
 
-## Deploying it later
+## Setting it up for real
 
-**Nothing below has been run.** The stack synthesizes and passes `cfn-lint` plus 54
-template assertions; that is the extent of the claim.
+**Nothing in this section has been run by the build** — no real AWS resources
+were ever created (PRD §12). The stack synthesizes, passes `cfn-lint` and 54
+template assertions, and runs end to end on LocalStack; the first real deploy is
+yours. Allow an hour, most of it waiting for emails to arrive.
+
+### 0. What you need
+
+- An AWS account you own, and the AWS CLI configured for it (`aws configure`,
+  region `us-east-1` unless you have a reason otherwise).
+- Python 3.11+ and Node 18+ (for the CDK CLI), then `make setup` in this repo.
+- An Android phone or iPhone with the free **ntfy** app.
+
+### 1. Phone alerts: ntfy
 
 ```bash
-# 1. Configure your account and the values the stack needs
-export CDK_DEFAULT_ACCOUNT=<your account id>
-export CDK_DEFAULT_REGION=us-east-1
-
-# 2. Review what would be created
-make infra-synth
-cd infrastructure && cdk diff
-
-# 3. One-time CDK bootstrap, then deploy
-cdk bootstrap
-cdk deploy JobMonitorStack
+# A long random topic name. Anyone who knows it can read your alerts.
+python -c "import secrets;print('jobs-'+secrets.token_hex(12))"
 ```
 
-Estimated cost at 144 polls/day over the 91 polled companies, one user: well
-under **$1/month** for Lambda, itemised and measured in `ARCHITECTURE.md` §10.
-ntfy.sh is free; SES is $0.10 per 1,000 emails (≤ 720 digests a month).
+In the ntfy app: **+** → topic = that name, server = `ntfy.sh` → Subscribe. Then
+check the phone actually rings, before involving AWS at all:
 
-### Remaining manual configuration
+```bash
+PUSH_TRANSPORT=ntfy NTFY_TOPIC=<your topic> \
+  .venv/bin/python -m jobmonitor.cli push-test --sample
+```
 
-Things the IaC deliberately does not do for you:
+A "Test alert" notification should arrive within seconds; tapping it opens a
+sample page, and on Android the **Copy link** button copies it.
 
-1. **Verify an SES identity** for `EMAIL_FROM` and `EMAIL_TO`, and request
-   production access if your account is still in the SES sandbox.
-2. **Set the secrets** — `EXPO_ACCESS_TOKEN` (only if you enabled Expo's enhanced
-   push security), `VAPID_PRIVATE_KEY` (only for the web client's push), and
-   `API_WRITE_TOKEN`. Put them in SSM Parameter Store or Secrets Manager, not in
-   the template.
-3. **Choose a push transport.** Pass `-c ntfyTopic=<your topic>` to
-   `cdk deploy` for ntfy (recommended; the topic ends up in the notifier's
-   environment, visible to anyone with console access to your account), or leave
-   it unset for SNS. `expo` for the phone app, `sns` for a
-   dependency-free path through platform endpoints you subscribe yourself,
-   `webpush` for the PWA (which needs the `[push]` extra as a Lambda layer,
-   because VAPID signing needs `cryptography` and the Lambda runtime lacks it).
-4. **Point the clients at the deployed API** — `mobile/app.json` `extra.apiBaseUrl`
-   and the web client's build-time API URL.
-5. **Re-run `make validate-companies` now and then.** Every polled company was
-   validated live on 2026-09-27 (`data/validation.json`); careers sites change.
-6. **Set `APP_BASE_URL`** to wherever the web client is hosted, so notification
-   deep links resolve.
+### 2. Email: verify addresses in SES
 
-The jobs table is `RETAIN` on stack delete, on purpose: `first_seen` is the
-authoritative record of when you learned about a role, and losing it would make
-every job look new again.
+AWS console → **Amazon SES** (in the region you deploy to) → **Identities** →
+**Create identity** → *Email address*. Do it for the address the digest is sent
+**from** and the one it goes **to** (they can be the same address), then click
+the link in each verification email.
+
+- New accounts start in the SES *sandbox*: it can only send to verified
+  addresses, 200 a day. That is enough here (at most 24 digests a day), so you
+  do not need to request production access.
+- Sending *from* a `@gmail.com` address through SES can land in spam, because
+  Gmail's own authentication does not cover mail AWS sends. If a digest goes to
+  spam, mark it "Not spam" once; a domain you own avoids the problem entirely.
+
+### 3. Deploy
+
+```bash
+make deploy-bootstrap                       # once per account/region
+make deploy-diff EMAIL_FROM=you@example.com EMAIL_TO=you@example.com NTFY_TOPIC=<topic>
+make deploy      EMAIL_FROM=you@example.com EMAIL_TO=you@example.com NTFY_TOPIC=<topic>
+```
+
+`deploy-diff` lists everything that will be created: five Lambdas, three
+DynamoDB tables, four SQS queues, one SNS topic, two EventBridge schedules, an
+HTTP API, IAM roles, log groups and alarms. `make deploy` asks for confirmation
+before creating the IAM roles. Other knobs, passed the same way to
+`cdk deploy -c name=value`: `notifyThreshold` (default 55), `keepThreshold` (35),
+`shardSize` (8).
+
+### 4. Check it is working
+
+The stack polls within 10 minutes of deploying. Then:
+
+- **ntfy** — new jobs arrive one notification each.
+- **Email** — at 2 minutes past each hour, if that hour found anything.
+- **Logs** — CloudWatch → Log groups → the `Worker` and `Notifier` functions.
+  Each poll logs a JSON summary line per shard (`jobs_found`, `new_jobs`,
+  `status`).
+- **Scraper health from your machine** — copy the table names from the
+  deploy's outputs:
+
+```bash
+export JOBS_TABLE_NAME=<JobsTableName output> HEALTH_TABLE_NAME=<HealthTableName output>
+.venv/bin/python -m jobmonitor.cli --url aws health    # uses your normal AWS credentials
+.venv/bin/python -m jobmonitor.cli --url aws jobs --limit 20
+```
+
+**Expect a burst on the first poll.** The table starts empty, so the first poll
+alerts on every relevant job posted in the last 24 hours plus every undated
+posting — possibly dozens of notifications at once, and ntfy.sh may rate-limit
+some of them. From the second poll on, only genuinely new jobs alert.
+
+### 5. What it costs
+
+About **$1 a month**, mostly Lambda time and DynamoDB writes — itemised in
+`ARCHITECTURE.md` §10. Check the real figure in **Billing → Bills** after the
+first week, since the Lambda timings were measured outside AWS. To go lower,
+change the worker's `memory=512` to `256` in
+`infrastructure/stacks/job_monitor_stack.py`, which puts Lambda inside the
+free allowance.
+
+### Turning it off
+
+`make destroy` removes everything except the jobs table, which is `RETAIN` on purpose: `first_seen` is the record of when you
+learned about each role. Delete it in the DynamoDB console if you really want it
+gone.
+
+### Optional
+
+- **Other push paths.** Leave `NTFY_TOPIC` out of `cdk deploy` (call the CDK
+  directly, as `make deploy` requires it) to use SNS; `expo` targets the phone
+  app in `mobile/`, `webpush` the PWA in `web/` (needs the `[push]` extra as a
+  Lambda layer). Their secrets (`EXPO_ACCESS_TOKEN`, `VAPID_PRIVATE_KEY`,
+  `API_WRITE_TOKEN`) belong in SSM Parameter Store or Secrets Manager, never in
+  the template.
+- **The clients.** Only needed if you use them: point `mobile/app.json`
+  `extra.apiBaseUrl` and the web client's build-time API URL at the `ApiUrl`
+  output, and deploy with `-c appBaseUrl=<where the web client is hosted>` so
+  deep links resolve.
+- **Keep the company list healthy.** Re-run `make validate-companies` every few
+  weeks: a careers site that changes shape shows up there (or as `FAIL` in the
+  health view), and a scraper returning zero jobs does not raise an alarm.
 
 ## Repository layout
 
