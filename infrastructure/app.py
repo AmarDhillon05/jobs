@@ -22,7 +22,7 @@ app = cdk.App()
 JobMonitorStack(
     app,
     "JobMonitorStack",
-    description="Monitors ~150 companies for newly posted technical internships",
+    description="Monitors ~90 companies for newly posted technical internships",
     # Values a deployer will want to change, surfaced as CDK context rather than
     # buried in the stack.
     shard_size=int(app.node.try_get_context("shardSize") or 8),
@@ -31,6 +31,9 @@ JobMonitorStack(
     email_from=str(app.node.try_get_context("emailFrom") or "alerts@example.com"),
     email_to=str(app.node.try_get_context("emailTo") or "you@example.com"),
     app_base_url=str(app.node.try_get_context("appBaseUrl") or "https://app.example.com"),
+    # Your private ntfy topic (e.g. `-c ntfyTopic=...`). Leave unset for SNS push.
+    ntfy_topic=app.node.try_get_context("ntfyTopic") or None,
+    ntfy_server=str(app.node.try_get_context("ntfyServer") or "https://ntfy.sh"),
     env=cdk.Environment(
         account=os.environ.get("CDK_DEFAULT_ACCOUNT"),
         region=os.environ.get("CDK_DEFAULT_REGION", "us-east-1"),

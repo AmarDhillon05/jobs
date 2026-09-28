@@ -110,3 +110,41 @@ def test_for_tests_accepts_overrides() -> None:
     settings = for_tests(shard_size=3)
     assert settings.shard_size == 3
     assert settings.email.transport == "memory"
+
+
+def test_email_defaults_to_the_hourly_digest() -> None:
+    email = Settings.from_env({}).email
+    assert email.mode == "digest" and email.is_digest
+    assert email.digest_window_minutes == 60
+
+
+def test_instant_email_can_be_chosen() -> None:
+    settings = Settings.from_env({"EMAIL_MODE": "Instant", "EMAIL_DIGEST_MINUTES": "30"})
+    assert settings.email.mode == "instant" and not settings.email.is_digest
+    assert settings.email.digest_window_minutes == 30
+
+
+def test_an_unknown_email_mode_is_rejected() -> None:
+    with pytest.raises(ConfigError, match="EMAIL_MODE"):
+        Settings.from_env({"EMAIL_MODE": "weekly"})
+
+
+def test_ntfy_settings_are_read_and_the_server_is_normalised() -> None:
+    push = Settings.from_env(
+        {
+            "PUSH_TRANSPORT": "ntfy",
+            "NTFY_TOPIC": " my-private-topic ",
+            "NTFY_SERVER": "https://ntfy.example.org/",
+            "NTFY_TOKEN": "tk_abc",
+        }
+    ).push
+    assert push.transport == "ntfy"
+    assert push.ntfy_topic == "my-private-topic"
+    assert push.ntfy_server == "https://ntfy.example.org"
+    assert push.ntfy_token == "tk_abc"
+
+
+def test_ntfy_has_no_default_topic() -> None:
+    push = Settings.from_env({}).push
+    assert push.ntfy_topic is None and push.ntfy_token is None
+    assert push.ntfy_server == "https://ntfy.sh"

@@ -9,7 +9,7 @@ that exist to debug the last hop to a phone (``devices`` and ``push-test``).
 from __future__ import annotations
 
 import json
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
 import pytest
 
@@ -238,6 +238,39 @@ class TestPushTest:
         )
         assert run("push-test") == 1
         assert "FAILED" in capsys.readouterr().err
+
+    def test_a_sample_job_needs_nothing_stored(
+        self, stores: tuple, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+    ) -> None:
+        """`push-test --sample` checks a fresh phone set-up before any poll ran."""
+        monkeypatch.setenv("PUSH_TRANSPORT", "console")
+        _jobs, _health, devices = stores
+        devices.register(DeviceRegistration(device_id="phone", token="t", transport="expo"))
+        assert run("push-test", "--sample") == 0
+        assert "Test alert - new internship" in capsys.readouterr().out
+
+
+class TestDigest:
+    def test_emails_the_previous_hour(
+        self, stores: tuple, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+    ) -> None:
+        monkeypatch.setenv("EMAIL_TRANSPORT", "console")
+        jobs, _health, _devices = stores
+        top_of_hour = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
+        jobs.upsert(a_job(), relevance_score=90, now=top_of_hour - timedelta(minutes=30))
+        assert run("digest") == 0
+        out = capsys.readouterr().out
+        assert "[Internships] 1 new internship - Stripe" in out
+        assert '"sent": true' in out
+
+    def test_an_empty_hour_sends_nothing(
+        self, stores: tuple, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+    ) -> None:
+        monkeypatch.setenv("EMAIL_TRANSPORT", "console")
+        assert run("digest") == 0
+        out = capsys.readouterr().out
+        assert "=== EMAIL" not in out
+        assert '"skipped_empty": true' in out
 
 
 class TestCoverage:

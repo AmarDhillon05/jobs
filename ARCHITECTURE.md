@@ -53,10 +53,18 @@ that follows:
               SQS  jobmonitor-notify ───────after 3 attempts──▶  notify DLQ
                         │
                         ▼
-              Notifier Lambda ──▶ SES email  +  Expo/SNS/Web Push
-                                        │
+              Notifier Lambda ──▶ push: ntfy (one per job) / Expo / SNS / Web Push
+                                        │     (email too, only if EMAIL_MODE=instant)
                                         ▼
-                                  deep link  /jobs/<id>
+                                  apply URL + deep link  /jobs/<id>
+
+              EventBridge rule  (cron: minute 2 of every hour)
+                        │
+                        ▼
+              Digest Lambda ──▶ DynamoDB recent index, first_seen in the last
+                        │       clock hour
+                        ▼
+              SES: one summary email, or nothing when the hour was empty
 
               API Gateway HTTP API ──▶ API Lambda ──▶ DynamoDB ──▶ app + web feed
 ```
@@ -306,7 +314,26 @@ exactly what to do, and `TESTING.md` records it as a gap rather than a pass.
 because the only route that must work is the one a notification produces, and
 keeping it explicit makes that directly testable.
 
-**Push transports.** Four, all behind one interface:
+**Instant push, hourly email.** The user's choice (2026-09-28): an alert per
+job on the phone within one poll, and one email an hour listing what was found,
+with empty hours sending nothing. The digest is a separate Lambda on its own
+schedule rather than a step in the poll, because it reads only `first_seen` from
+storage: it needs no queue, cannot be blocked by a push failure, and a job whose
+push failed still reaches email. The window is the previous *clock* hour taken
+from the EventBridge event's `time`, so a late start does not open a gap and a
+retry covers the same hour. What it does not guard against is EventBridge
+delivering the same scheduled event twice (at-least-once), which would send the
+same digest twice; for one email an hour that was judged not worth a
+deduplication table.
+
+**Push transports.** Five, all behind one interface:
+
+- `ntfy` — the recommended personal path: one JSON POST per job to ntfy.sh (or
+  a self-hosted server), with the application URL as the tap target and "Open
+  application" / "Copy link" buttons. No app of ours, no keys, no dependency.
+  Because its buttons act on one link, the notifier sends one alert per job
+  rather than grouping a poll's lower-priority finds. The copy button works on
+  Android and the ntfy web app, not on iOS.
 
 - `expo` — one HTTPS POST to `exp.host` carrying up to 100 messages, over the
   project's own retrying HTTP client. No signing key, no extra dependency, no
@@ -354,7 +381,7 @@ known job look new and re-notify the entire backlog.
 ## 8. Testing strategy
 
 Full detail in [`TESTING.md`](TESTING.md). The short version: ~1,760 backend
-tests, 49 CDK template assertions, 77 client unit tests, 11 Playwright browser
+tests, 54 CDK template assertions, 77 client unit tests, 11 Playwright browser
 tests, and a LocalStack architecture suite.
 
 The design principle is that **the same pipeline code runs in-process, in a
@@ -443,6 +470,10 @@ gives **195 s of fetching per poll** (slowest NVIDIA 44 s, Amazon 22 s,
 Salesforce 21 s); the worst shard of 8 takes 61 s. At 512 MB that is ~0.42 M
 GB-s a month, just over the free 400k: **~$0.40/month** for workers, and inside
 the free tier at 256 MB. The rest of the table above is unchanged or smaller.
+
+The hourly digest adds 720 short invocations a month (a query and at most one
+email, well under a second at 256 MB): a few hundred GB-s, inside the free tier.
+SES charges $0.10 per 1,000 emails; ntfy.sh is free.
 
 ## 11. Deviations from the PRD's suggestions
 

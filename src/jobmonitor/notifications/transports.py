@@ -7,7 +7,12 @@ Email
 
 Push
 ----
-``memory``, ``console``, ``sns``, ``expo`` and ``webpush``.
+``memory``, ``console``, ``sns``, ``expo``, ``webpush`` and ``ntfy``.
+
+``ntfy`` is the recommended personal path: the phone runs the free ntfy app
+subscribed to a private topic, and each new job arrives as its own notification
+with "Open application" and "Copy link" buttons. It needs no app of ours, no
+signing keys and no dependency beyond the project's HTTP client.
 
 ``expo`` is the path to the React Native app in ``mobile/``: it POSTs to Expo's
 public push API over the project's own retrying HTTP client, so it needs nothing
@@ -153,6 +158,9 @@ class SesEmailTransport(EmailTransport):
 
 class PushTransport(ABC):
     name: str = "push"
+    #: True when each job should arrive as its own notification (so its buttons
+    #: can act on that job's link) rather than grouped per poll.
+    one_alert_per_job: bool = False
 
     @abstractmethod
     def send(self, message: PushMessage, *, devices: Sequence[DeviceRegistration]) -> list[str]:
@@ -460,10 +468,79 @@ class WebPushTransport(PushTransport):
         return receipts
 
 
+class NtfyPushTransport(PushTransport):
+    """Publish to an ntfy topic (https://docs.ntfy.sh/publish/).
+
+    One JSON POST to the server root per alert. A single-job alert carries:
+
+    * ``click`` - tapping the notification opens the application page;
+    * a ``view`` button, "Open application";
+    * a ``copy`` button, "Copy link", which puts the application URL on the
+      clipboard (supported by ntfy's Android and web apps; iOS shows the other
+      button and the tap target only).
+
+    Device registrations are not used: whoever subscribes to the topic receives
+    it. A failed publish raises :class:`DeliveryError`, leaving the job pending.
+    """
+
+    name = "ntfy"
+    one_alert_per_job = True
+    #: ntfy priorities: 3 is default, 4 is "high" (sound + heads-up on Android).
+    PRIORITY_IMMEDIATE = 4
+    PRIORITY_DEFAULT = 3
+
+    def __init__(self, settings: PushSettings, *, client: Any = None) -> None:
+        self.settings = settings
+        self._client = client
+
+    def _get_client(self) -> Any:
+        if self._client is None:
+            from jobmonitor.http import HttpClient
+
+            self._client = HttpClient()
+        return self._client
+
+    def payload(self, message: PushMessage) -> dict[str, Any]:
+        apply_url = message.data.get("apply_url", "")
+        body: dict[str, Any] = {
+            "topic": self.settings.ntfy_topic,
+            "title": message.title,
+            "message": message.body,
+            "tags": ["briefcase"],
+            "priority": self.PRIORITY_IMMEDIATE
+            if message.data.get("urgency") == "immediate"
+            else self.PRIORITY_DEFAULT,
+        }
+        if apply_url:
+            body["click"] = apply_url
+            body["actions"] = [
+                {"action": "view", "label": "Open application", "url": apply_url},
+                {"action": "copy", "label": "Copy link", "value": apply_url},
+            ]
+        elif message.deep_link:
+            body["click"] = message.deep_link
+        return body
+
+    def send(self, message: PushMessage, *, devices: Sequence[DeviceRegistration]) -> list[str]:
+        if not self.settings.ntfy_topic:
+            raise TransportUnavailable("NtfyPushTransport needs NTFY_TOPIC to be configured")
+        headers = {"Content-Type": "application/json"}
+        if self.settings.ntfy_token:
+            headers["Authorization"] = f"Bearer {self.settings.ntfy_token}"
+        try:
+            response = self._get_client().post_json(
+                self.settings.ntfy_server, self.payload(message), headers=headers
+            )
+        except JobMonitorError as exc:
+            raise DeliveryError(f"ntfy publish failed: {exc}") from exc
+        receipt = response.get("id") if isinstance(response, dict) else None
+        return [f"ntfy-{receipt or 'sent'}"]
+
+
 # ------------------------------------------------------------------- factories
 
 EMAIL_TRANSPORTS = ("memory", "console", "ses")
-PUSH_TRANSPORTS = ("memory", "console", "sns", "expo", "webpush")
+PUSH_TRANSPORTS = ("memory", "console", "sns", "expo", "webpush", "ntfy")
 
 
 def build_email_transport(
@@ -500,6 +577,8 @@ def build_push_transport(
         return ExpoPushTransport(settings, device_repository=device_repository)
     if choice == "webpush":
         return WebPushTransport(settings)
+    if choice == "ntfy":
+        return NtfyPushTransport(settings)
     raise TransportUnavailable(
         f"unknown PUSH_TRANSPORT {settings.transport!r}; expected one of {PUSH_TRANSPORTS}"
     )
@@ -515,6 +594,7 @@ __all__: Sequence[str] = (
     "ExpoPushTransport",
     "MemoryEmailTransport",
     "MemoryPushTransport",
+    "NtfyPushTransport",
     "PushTransport",
     "SesEmailTransport",
     "SnsPushTransport",

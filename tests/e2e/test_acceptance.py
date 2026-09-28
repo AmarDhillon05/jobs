@@ -74,12 +74,17 @@ class TestScenario1NewJob:
         # ... considered relevant
         assert record.relevance_score >= system.settings.filters.notify_threshold
 
-        # ... exactly one notification per configured channel
+        # ... exactly one instant alert (push), and email waits for the digest
         assert outcome.notification is not None
         assert len(outcome.notification.events) == 1
-        assert outcome.notification.delivered_channels == {Channel.EMAIL, Channel.PUSH}
-        assert len(system.email.sent) == 1
+        assert outcome.notification.delivered_channels == {Channel.PUSH}
         assert len(system.push.sent) == 1
+        assert system.email.sent == []
+
+        # ... then the hourly digest emails it, exactly once
+        digest = system.send_digest()
+        assert digest.sent and [r.job_id for r in digest.jobs] == [record.job_id]
+        assert len(system.email.sent) == 1
 
         # ... the feed contains the job
         feed = system.feed()
@@ -100,13 +105,23 @@ class TestScenario1NewJob:
         assert detail["job"]["url"] == "https://boards.testco.test/jobs/1?gh_src=feed"
         assert payload["apply_url"] == detail["job"]["url"]
 
-    def test_the_email_names_the_company_role_and_link(self, memory_system: System) -> None:
+    def test_the_digest_email_names_the_company_role_and_link(self, memory_system: System) -> None:
         memory_system.poll([fixture_company(jobs=[posting("1")])])
-        body = memory_system.email.sent[0][0].text_body
-        assert "NEW INTERNSHIP" in body
-        assert "Company: TestCo" in body
-        assert "Role: Software Engineer Intern" in body
-        assert "https://boards.testco.test/jobs/1?gh_src=feed" in body
+        memory_system.send_digest()
+        message, to, _sender = memory_system.email.sent[0]
+        assert to == "you@example.test"
+        assert "TestCo: Software Engineer Intern" in message.text_body
+        assert "STRONG MATCHES" in message.text_body
+        assert "https://boards.testco.test/jobs/1?gh_src=feed" in message.text_body
+
+    def test_the_next_hour_with_nothing_new_sends_no_email(self, system: System) -> None:
+        company = fixture_company(jobs=[posting("1")])
+        system.poll([company])
+        system.send_digest()
+        system.poll([company], at=T0 + timedelta(hours=1))
+        outcome = system.send_digest(at=T0 + timedelta(hours=2, minutes=2))
+        assert outcome.skipped and not outcome.sent
+        assert len(system.email.sent) == 1
 
     def test_a_registered_phone_is_a_push_target(self, memory_system: System) -> None:
         memory_system.register_phone()
@@ -136,6 +151,7 @@ class TestScenario2SamePollAgain:
         company = fixture_company(jobs=[posting("1")])
         first = system.poll([company])
         record = first.new_records[0]
+        system.send_digest()
 
         later = T0 + timedelta(minutes=10)
         second = system.poll([company], at=later, poll_id="poll-2")
@@ -145,6 +161,9 @@ class TestScenario2SamePollAgain:
         # 0 duplicate notifications - the assertion the PRD names explicitly.
         assert len(system.email.sent) == 1
         assert len(system.push.sent) == 1
+        # ... and the following hour's digest has nothing to say.
+        assert system.send_digest(at=T0 + timedelta(hours=2, minutes=2)).skipped
+        assert len(system.email.sent) == 1
 
         stored = system.repository.get(record.job_id)
         assert stored is not None
@@ -482,7 +501,6 @@ class TestScenario7StorageAndWorkerFailure:
     def test_a_notification_failure_leaves_the_job_pending_for_the_next_poll(
         self, memory_system: System
     ) -> None:
-        memory_system.email.fail_on_call = 1
         memory_system.push.fail_on_call = 1
         company = fixture_company(jobs=[posting("1")])
         outcome = memory_system.poll([company])
@@ -494,10 +512,9 @@ class TestScenario7StorageAndWorkerFailure:
         assert memory_system.repository.pending_notifications(limit=10)
 
         # The backstop: the next poll (or drain_pending) sends it, exactly once.
-        memory_system.email.fail_on_call = None
         memory_system.push.fail_on_call = None
         retried = memory_system.notifier.drain_pending(now=T0 + timedelta(minutes=10))
-        assert retried.emitted == 2
+        assert retried.emitted == 1  # push; email is the digest's job
         assert memory_system.repository.get(record.job_id).notification_sent is True  # type: ignore[union-attr]
         # And not a third time.
         assert memory_system.notifier.drain_pending().events == []

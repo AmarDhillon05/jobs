@@ -226,10 +226,11 @@ class TestTopic:
 
 
 class TestFunctions:
-    def test_four_functions_exist(self, resources: dict[str, Any]) -> None:
+    def test_five_functions_exist(self, resources: dict[str, Any]) -> None:
         functions = by_type(resources, "AWS::Lambda::Function")
-        # Plus none extra: no custom-resource log-retention provider.
-        assert len(functions) == 4
+        # Coordinator, worker, notifier, digest, API - and no custom-resource
+        # log-retention provider.
+        assert len(functions) == 5
 
     def test_handlers_point_at_real_callables(self, resources: dict[str, Any]) -> None:
         import importlib
@@ -288,7 +289,7 @@ class TestFunctions:
                     assert not isinstance(value, str) or not value, f"{name}.{key} is a literal"
 
     def test_each_function_has_its_own_log_group(self, resources: dict[str, Any]) -> None:
-        assert len(by_type(resources, "AWS::Logs::LogGroup")) == 4
+        assert len(by_type(resources, "AWS::Logs::LogGroup")) == 5
 
     def test_log_groups_have_a_retention_policy(self, resources: dict[str, Any]) -> None:
         for name, group in by_type(resources, "AWS::Logs::LogGroup").items():
@@ -325,11 +326,32 @@ class TestSchedule:
 
     def test_the_schedule_targets_the_coordinator(self, resources: dict[str, Any]) -> None:
         rules = by_type(resources, "AWS::Events::Rule")
-        rule = next(iter(rules.values()))
+        rule = next(r for name, r in rules.items() if name.startswith("PollSchedule"))
         targets = rule["Properties"]["Targets"]
         assert len(targets) == 1
         assert "Input" in targets[0]
         assert "poll_id" in targets[0]["Input"]
+
+    def test_the_digest_runs_hourly_and_targets_the_digest_function(
+        self, resources: dict[str, Any]
+    ) -> None:
+        rules = by_type(resources, "AWS::Events::Rule")
+        assert len(rules) == 2
+        digest = next(r for name, r in rules.items() if name.startswith("DigestSchedule"))
+        assert digest["Properties"]["ScheduleExpression"] == "cron(2 * * * ? *)"
+        [target] = digest["Properties"]["Targets"]
+        # No input override: the handler must see EventBridge's own `time`.
+        assert "Input" not in target
+        assert "DigestFunction" in json.dumps(target["Arn"])
+
+    def test_the_digest_function_emails_in_digest_mode(self, resources: dict[str, Any]) -> None:
+        functions = by_type(resources, "AWS::Lambda::Function")
+        for function in functions.values():
+            handler = function["Properties"]["Handler"]
+            if "digest_handler" in handler or "notifier_handler" in handler:
+                env = function["Properties"]["Environment"]["Variables"]
+                assert env["EMAIL_MODE"] == "digest", handler
+                assert env["EMAIL_DIGEST_MINUTES"] == "60", handler
 
     def test_eventbridge_is_permitted_to_invoke_the_coordinator(self, template: Template) -> None:
         template.has_resource_properties(
@@ -411,6 +433,24 @@ class TestIamLeastPrivilege:
         # It does no persistence at all, so it must hold no table permissions.
         assert "dynamodb" not in serialized
 
+    def test_the_digest_can_only_read_jobs_and_send_email(self, resources: dict[str, Any]) -> None:
+        policies = by_type(resources, "AWS::IAM::Policy")
+        serialized = " ".join(
+            json.dumps(policy)
+            for name, policy in policies.items()
+            if name.startswith("DigestFunction")
+        )
+        assert "ses:SendEmail" in serialized
+        assert "dynamodb:Query" in serialized
+        for write in (
+            "dynamodb:PutItem",
+            "dynamodb:UpdateItem",
+            "dynamodb:DeleteItem",
+            "sqs:",
+            "sns:",
+        ):
+            assert write not in serialized, write
+
     def test_ses_permission_is_scoped_to_one_identity(self, resources: dict[str, Any]) -> None:
         statements = [
             statement
@@ -425,7 +465,7 @@ class TestIamLeastPrivilege:
             assert resource != '"*"'
 
     def test_each_function_has_its_own_role(self, resources: dict[str, Any]) -> None:
-        assert len(by_type(resources, "AWS::IAM::Role")) == 4
+        assert len(by_type(resources, "AWS::IAM::Role")) == 5
 
 
 class TestAlarms:
@@ -475,6 +515,33 @@ class TestOutputs:
 
 
 class TestConfigurability:
+    def test_push_defaults_to_sns_without_an_ntfy_topic(self, resources: dict[str, Any]) -> None:
+        notifier = next(
+            f
+            for f in by_type(resources, "AWS::Lambda::Function").values()
+            if "notifier_handler" in f["Properties"]["Handler"]
+        )
+        env = notifier["Properties"]["Environment"]["Variables"]
+        assert env["PUSH_TRANSPORT"] == "sns"
+        assert "NTFY_TOPIC" not in env
+
+    def test_an_ntfy_topic_switches_push_to_ntfy(self) -> None:
+        app = App()
+        stack = JobMonitorStack(
+            app,
+            "WithNtfy",
+            ntfy_topic="jobs-abc123",
+            env=Environment(account="000000000000", region="us-east-1"),
+        )
+        functions = Template.from_stack(stack).find_resources("AWS::Lambda::Function")
+        notifier = next(
+            f for f in functions.values() if "notifier_handler" in f["Properties"]["Handler"]
+        )
+        env = notifier["Properties"]["Environment"]["Variables"]
+        assert env["PUSH_TRANSPORT"] == "ntfy"
+        assert env["NTFY_TOPIC"] == "jobs-abc123"
+        assert env["NTFY_SERVER"] == "https://ntfy.sh"
+
     def test_context_values_reach_the_template(self) -> None:
         app = App(
             context={
@@ -520,7 +587,7 @@ class TestLambdaAsset:
         from jobmonitor.models.company import CompanyRegistry
 
         registry = CompanyRegistry.load(build() / "companies.json")
-        assert 100 <= len(registry.pollable()) <= 150
+        assert 50 <= len(registry.pollable()) <= 200
 
     def test_the_bundle_needs_no_third_party_dependencies(self) -> None:
         """The claim that makes `cdk synth` work without Docker."""

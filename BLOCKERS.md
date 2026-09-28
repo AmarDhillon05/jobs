@@ -24,6 +24,7 @@ Severity: `critical` (blocks a hard completion gate) · `major` · `minor`
 | [BLK-010](#blk-010---eight-registry-companies-failed-live) | Registry configs | major | resolved |
 | [BLK-011](#blk-011---companies-with-no-reachable-first-party-source) | Coverage | minor | accepted-limitation |
 | [BLK-012](#blk-012---live-validation-would-have-demoted-companies-and-broken-the-gate) | Validation tooling | major | resolved |
+| [BLK-013](#blk-013---docker-hub-rate-limit-stops-localstack-creating-lambdas) | LocalStack Lambda | major | accepted-limitation |
 
 ---
 
@@ -419,4 +420,36 @@ Per PRD §18.5, every unresolved blocker was revisited before final verification
   `tests/unit/test_validation_recording.py`.
 - **Severity:** major (would have silently unmonitored healthy companies)
 - **Status:** resolved
+
+---
+
+## BLK-013 - Docker Hub rate limit stops LocalStack creating Lambdas
+
+- **Timestamp / stage:** 2026-09-28, `make verify` after adding the digest Lambda
+- **Requirement affected:** PRD §14 Level 7, Gate E
+- **Component:** LocalStack 3.8 Lambda provider, Docker Hub
+- **Observed failure:** `provision` failed on the *first* function (the
+  coordinator, unchanged), `State: Failed`, `StateReason: Error while creating
+  lambda`. With `LOCALSTACK_DEBUG=1` the cause is LocalStack re-pulling the
+  runtime image on every function create (`_ensure_runtime_image_present` pulls
+  unconditionally), and Docker Hub answering `429 Too Many Requests`:
+  `ratelimit-remaining: 0;w=3600` for anonymous pulls from this environment's
+  shared egress IP. The image itself was already cached locally.
+- **Expected behaviour:** a cached runtime image is enough to create a function.
+- **Attempts made:**
+  1. Direct `docker pull` - same 429, so not a LocalStack bug.
+  2. Read LocalStack's pull path - no setting skips the pull in 3.8.
+  3. Serve the cached image from a local, read-only registry mirror (a 50-line
+     script over `docker save` output, kept outside the repository) and start
+     `dockerd --registry-mirror=http://127.0.0.1:5000`. The forced pull resolves
+     against the mirror; nothing in the project changed.
+- **Evidence / logs:** `make verify` 20/20 afterwards, including all Level 7 tests
+  and the new `TestHourlyDigest` on a real LocalStack Lambda.
+- **Current hypothesis:** an external quota, not a defect. On a normal network, or
+  with `docker login`, it does not occur.
+- **Next actions:** none in the project. If it recurs: wait for the hourly window,
+  `docker login`, or use a registry mirror as above.
+- **Severity:** major (blocks Gate E while the quota is exhausted)
+- **Status:** accepted-limitation (environmental; worked around without changing
+  what is tested)
 

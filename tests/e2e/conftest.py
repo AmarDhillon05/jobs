@@ -9,6 +9,9 @@ router. Only two things are substituted, and only at the edges:
   500 then a 200" an assertion rather than a hope;
 * the **delivery transports**, by in-memory sinks - PRD §22 asks for exactly that.
 
+Email runs in its production mode, the hourly digest: a poll alerts by push, and
+:meth:`System.send_digest` plays the hourly schedule.
+
 Storage is parametrized over the in-memory store *and* DynamoDB under Moto, so
 every scenario is proven twice: once fast, once against real DynamoDB semantics.
 """
@@ -17,7 +20,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator, Sequence
 from dataclasses import dataclass, field
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
 import pytest
@@ -36,6 +39,7 @@ from jobmonitor.filtering import JobFilter
 from jobmonitor.models.company import Company
 from jobmonitor.models.record import DeviceRegistration
 from jobmonitor.notifications import Notifier
+from jobmonitor.notifications.digest import DigestOutcome, DigestSender
 from jobmonitor.notifications.transports import MemoryEmailTransport, MemoryPushTransport
 from jobmonitor.orchestration import PollRunner
 from jobmonitor.scrapers.base import build_source
@@ -94,6 +98,7 @@ class System:
     email: MemoryEmailTransport
     push: MemoryPushTransport
     notifier: Notifier
+    digest: DigestSender
     runner: PollRunner
     api: Api
     storage_label: str
@@ -105,6 +110,11 @@ class System:
         self, companies: Sequence[Company], *, at: datetime | None = None, poll_id: str = "poll"
     ):
         return self.runner.run(companies, poll_id=poll_id, now=at or T0)
+
+    def send_digest(self, *, at: datetime | None = None) -> DigestOutcome:
+        """Play the hourly digest schedule. Default: just after the hour that
+        contains T0, i.e. the run that covers a poll made at T0."""
+        return self.digest.send(now=at or T0 + timedelta(hours=1, minutes=2))
 
     # ---------------------------------------------------------------------- API
     def get(self, path: str, **params: str) -> tuple[int, Any]:
@@ -171,6 +181,7 @@ def build_system(
         email=email,
         push=push,
         notifier=notifier,
+        digest=DigestSender(settings, repository=repository, email_transport=email),
         runner=PollRunner(
             settings,
             repository=repository,

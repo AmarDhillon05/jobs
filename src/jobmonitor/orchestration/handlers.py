@@ -18,6 +18,10 @@ Three handlers make up the polling architecture:
     marks the records notified. Marking is conditional in the repository, so a
     redelivery is a no-op rather than a second alert.
 
+``digest_handler``
+    Triggered hourly by its own schedule. Emails everything first seen in the
+    last complete hour, or sends nothing when the hour found nothing.
+
 Every handler is a thin shell: it parses its event, builds dependencies from
 :class:`Settings`, calls into the pipeline, and returns a JSON-serialisable
 summary. The behaviour lives in modules that are testable without Lambda.
@@ -30,12 +34,14 @@ import logging
 import os
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
+from datetime import UTC, datetime
 from typing import Any
 
 from jobmonitor.config import Settings
 from jobmonitor.filtering import JobFilter
 from jobmonitor.http import HttpClient
 from jobmonitor.models.company import CompanyRegistry, load_default_registry
+from jobmonitor.notifications.digest import DigestSender
 from jobmonitor.notifications.events import NotificationEvent
 from jobmonitor.notifications.notifier import Notifier
 from jobmonitor.notifications.transports import build_email_transport, build_push_transport
@@ -106,6 +112,16 @@ class Dependencies:
                 device_repository=self.devices,
             ),
             device_repository=self.devices,
+        )
+
+    def digest_sender(self) -> DigestSender:
+        aws = self.settings.aws
+        return DigestSender(
+            self.settings,
+            repository=self.repository,
+            email_transport=build_email_transport(
+                self.settings.email, region=aws.region, endpoint_url=aws.endpoint_url
+            ),
         )
 
 
@@ -332,9 +348,44 @@ def notifier_handler(
     return {**summary, "batchItemFailures": batch_item_failures}
 
 
+# ----------------------------------------------------------------------- digest
+
+
+def _event_time(event: Mapping[str, Any] | None) -> datetime:
+    """The schedule's own timestamp (EventBridge ``time``), else now.
+
+    Using the event's time rather than the clock makes a retried invocation
+    cover the same window as the attempt it retries.
+    """
+    raw = (event or {}).get("time")
+    if isinstance(raw, str) and raw:
+        try:
+            parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        except ValueError:
+            logger.warning("digest: unreadable event time %r; using now", raw)
+        else:
+            return parsed if parsed.tzinfo else parsed.replace(tzinfo=UTC)
+    return datetime.now(UTC)
+
+
+def digest_handler(
+    event: Mapping[str, Any] | None = None,
+    context: Any = None,
+    *,
+    deps: Dependencies | None = None,
+) -> dict[str, Any]:
+    """Hourly schedule -> one summary email, or none for an empty hour."""
+    dependencies = get_dependencies(deps)
+    outcome = dependencies.digest_sender().send(now=_event_time(event))
+    summary = outcome.to_dict()
+    logger.info("digest: %s", json.dumps(summary))
+    return summary
+
+
 __all__: Sequence[str] = (
     "Dependencies",
     "coordinator_handler",
+    "digest_handler",
     "get_dependencies",
     "notifier_handler",
     "reset_dependencies",

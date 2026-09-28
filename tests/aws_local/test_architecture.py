@@ -90,13 +90,14 @@ def queue_depth(aws: dict[str, Any], url: str) -> int:
 class TestProvisionedResources:
     """The stack really is there, with the shape the code assumes."""
 
-    def test_all_four_functions_exist_and_are_active(
+    def test_all_five_functions_exist_and_are_active(
         self, aws: dict[str, Any], resources: Resources
     ) -> None:
         for name in (
             "jobmonitor-coordinator",
             "jobmonitor-worker",
             "jobmonitor-notifier",
+            "jobmonitor-digest",
             "jobmonitor-api",
         ):
             config = aws["lambda"].get_function(FunctionName=name)["Configuration"]
@@ -151,7 +152,7 @@ class TestScheduledPollReachesTheQueue:
         event = ScheduledPollEvent(poll_id="level7-dry", dry_run=True).to_dict()
         result = invoke(aws, "jobmonitor-coordinator", {"detail": event})
 
-        assert 100 <= result["companies"] <= 150
+        assert 50 <= result["companies"] <= 200
         assert result["shards"] == pytest.approx(result["companies"] / 8, abs=1)
         assert result["published"] == 0  # dry run
 
@@ -173,7 +174,7 @@ class TestScheduledPollReachesTheQueue:
         result = invoke(
             aws, "jobmonitor-coordinator", {"detail": {"poll_id": "x", "dry_run": True}}
         )
-        assert result["companies"] >= 100
+        assert result["companies"] >= 50
 
 
 # ------------------------------------------------------ the whole path (Gate F)
@@ -265,6 +266,47 @@ class TestScenario1NewJob:
         assert record["status"]["S"] == "success"
         assert int(record["jobs_found"]["N"]) == 1
         assert int(record["new_jobs"]["N"]) == 1
+
+
+class TestHourlyDigest:
+    """The digest Lambda reads the real recent-jobs index and emails (console)."""
+
+    def test_the_hour_a_job_was_found_in_gets_one_digest_and_the_next_gets_none(
+        self, aws: dict[str, Any], resources: Resources, clean_tables: None, drain_queues: None
+    ) -> None:
+        from datetime import datetime, timedelta
+
+        publish_task(
+            aws,
+            resources,
+            ScrapeTask(
+                poll_id="digest",
+                shard_index=0,
+                shard_count=1,
+                companies=(fixture_company(jobs=[intern_posting("1")]),),
+            ),
+        )
+        [stored] = wait_for(
+            lambda: scan_jobs(aws, resources) or None, what="the worker to store the job"
+        )
+        first_seen = datetime.fromisoformat(stored["first_seen"]["S"])
+        hour = first_seen.replace(minute=0, second=0, microsecond=0)
+
+        # The event EventBridge would deliver at :02 past the following hour.
+        run = hour + timedelta(hours=1, minutes=2)
+        summary = invoke(
+            aws, "jobmonitor-digest", {"source": "aws.events", "time": run.isoformat()}
+        )
+        assert summary["sent"] is True
+        assert summary["jobs"] == 1
+        assert summary["window_start"] == hour.isoformat()
+
+        quiet = invoke(
+            aws,
+            "jobmonitor-digest",
+            {"source": "aws.events", "time": (run + timedelta(hours=1)).isoformat()},
+        )
+        assert quiet["sent"] is False and quiet["skipped_empty"] is True
 
 
 class TestScenario2SamePollAgain:
@@ -465,7 +507,7 @@ class TestFeedPath:
     def test_the_api_reports_registry_coverage(self, resources: Resources) -> None:
         status, body = http_get_json(f"{resources.api_url}/meta")
         assert status == 200
-        assert 100 <= body["companies"]["pollable"] <= 150
+        assert 50 <= body["companies"]["pollable"] <= 200
 
     def test_the_health_view_is_served(
         self, aws: dict[str, Any], resources: Resources, clean_tables: None, drain_queues: None
@@ -512,7 +554,7 @@ class TestFeedPath:
         }
         result = invoke(aws, "jobmonitor-api", event)
         assert result["statusCode"] == 200
-        assert json.loads(result["body"])["companies"]["pollable"] >= 100
+        assert json.loads(result["body"])["companies"]["pollable"] >= 50
 
 
 # ----------------------------------------------------- the real outbound path

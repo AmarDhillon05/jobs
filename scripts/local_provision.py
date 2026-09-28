@@ -3,7 +3,7 @@
 
 Creates the same resource *types* the CDK stack deploys - DynamoDB tables with
 their GSIs, SQS queues with redrive policies, an SNS topic fanning out to a queue,
-four Lambda functions from the real deployment bundle, SQS event source mappings
+five Lambda functions from the real deployment bundle, SQS event source mappings
 with partial-batch responses, and an HTTP API in front of the API Lambda - so the
 Level-7 test exercises genuine AWS APIs rather than an in-process stand-in.
 
@@ -69,6 +69,7 @@ FUNCTIONS: tuple[tuple[str, str], ...] = (
     ("jobmonitor-coordinator", "jobmonitor.orchestration.handlers.coordinator_handler"),
     ("jobmonitor-worker", "jobmonitor.orchestration.handlers.worker_handler"),
     ("jobmonitor-notifier", "jobmonitor.orchestration.handlers.notifier_handler"),
+    ("jobmonitor-digest", "jobmonitor.orchestration.handlers.digest_handler"),
     ("jobmonitor-api", "jobmonitor.api.lambda_handler.handler"),
 )
 

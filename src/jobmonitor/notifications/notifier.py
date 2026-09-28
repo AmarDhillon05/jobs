@@ -10,7 +10,13 @@ Responsibilities, in order of importance:
    delivered, and a total failure leaves the record pending so the next poll (or
    a queue retry) tries again.
 3. **Respect urgency** (PRD §22): high-priority companies get an alert of their
-   own immediately; everything else found in the same poll is grouped into one.
+   own immediately; everything else found in the same poll is grouped into one -
+   unless the push transport wants one alert per job (ntfy, whose buttons act on
+   one job's link).
+
+With ``EMAIL_MODE=digest`` (the default) email is not sent per poll: the hourly
+digest (:mod:`jobmonitor.notifications.digest`) covers it, and a job counts as
+alerted once push delivers.
 """
 
 from __future__ import annotations
@@ -99,12 +105,15 @@ class Notifier:
         batched: list[JobRecord] = []
 
         for record in records:
-            if record.priority in immediate_priorities:
+            if self.push.one_alert_per_job or record.priority in immediate_priorities:
+                urgency = (
+                    Urgency.IMMEDIATE
+                    if record.priority in immediate_priorities
+                    else Urgency.BATCHED
+                )
                 events.append(
                     NotificationEvent.for_records(
-                        [record],
-                        app_base_url=self.settings.app_base_url,
-                        urgency=Urgency.IMMEDIATE,
+                        [record], app_base_url=self.settings.app_base_url, urgency=urgency
                     )
                 )
             else:
@@ -163,9 +172,15 @@ class Notifier:
     def deliver(
         self, event: NotificationEvent, *, devices: Sequence[DeviceRegistration] | None = None
     ) -> list[DeliveryResult]:
-        """Attempt every channel independently."""
+        """Attempt every channel independently.
+
+        In digest mode email is left to the hourly digest, so only push is tried.
+        """
         targets = devices if devices is not None else self._devices()
-        return [self._send_email(event), self._send_push(event, targets)]
+        push = self._send_push(event, targets)
+        if self.settings.email.is_digest:
+            return [push]
+        return [self._send_email(event), push]
 
     def _send_email(self, event: NotificationEvent) -> DeliveryResult:
         message = format_email(event)

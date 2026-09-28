@@ -88,6 +88,11 @@ RUNTIME = lambda_.Runtime.PYTHON_3_12
 #: Long enough for a shard of 8 companies with retries; far short of the 15 min max.
 WORKER_TIMEOUT = Duration.minutes(5)
 POLL_INTERVAL = Duration.minutes(10)
+#: The email digest: every hour at minute 2 (off the top of the hour, where
+#: scheduled invocations bunch up). The handler floors to the hour, so each run
+#: covers exactly the previous clock hour.
+DIGEST_SCHEDULE = events.Schedule.cron(minute="2", hour="*")
+DIGEST_WINDOW_MINUTES = 60
 #: Attempts before a message is dead-lettered.
 MAX_RECEIVE_COUNT = 3
 LOG_RETENTION = logs.RetentionDays.TWO_WEEKS
@@ -105,6 +110,8 @@ class JobMonitorStack(Stack):
         email_from: str = "alerts@example.com",
         email_to: str = "you@example.com",
         app_base_url: str = "https://app.example.com",
+        ntfy_topic: str | None = None,
+        ntfy_server: str = "https://ntfy.sh",
         **kwargs: Any,
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
@@ -212,6 +219,21 @@ class JobMonitorStack(Stack):
             )
         )
 
+        email_env = {
+            "EMAIL_TRANSPORT": "ses",
+            "EMAIL_FROM": email_from,
+            "EMAIL_TO": email_to,
+            # Instant alerts go to push; email is the hourly digest below.
+            "EMAIL_MODE": "digest",
+            "EMAIL_DIGEST_MINUTES": str(DIGEST_WINDOW_MINUTES),
+        }
+        # ntfy when a topic is given (the recommended personal setup), otherwise
+        # SNS, which needs nothing outside AWS.
+        push_env = (
+            {"PUSH_TRANSPORT": "ntfy", "NTFY_TOPIC": ntfy_topic, "NTFY_SERVER": ntfy_server}
+            if ntfy_topic
+            else {"PUSH_TRANSPORT": "sns"}
+        )
         self.notifier = self._function(
             "Notifier",
             code,
@@ -220,25 +242,22 @@ class JobMonitorStack(Stack):
             memory=256,
             environment={
                 **common_env,
-                "EMAIL_TRANSPORT": "ses",
-                "EMAIL_FROM": email_from,
-                "EMAIL_TO": email_to,
-                "PUSH_TRANSPORT": "sns",
+                **email_env,
+                **push_env,
                 "NOTIFICATION_TOPIC_ARN": self.notification_topic.topic_arn,
             },
         )
         self.jobs_table.grant_read_write_data(self.notifier)
         self.devices_table.grant_read_data(self.notifier)
         self.notification_topic.grant_publish(self.notifier)
-        self.notifier.add_to_role_policy(
-            iam.PolicyStatement(
-                actions=["ses:SendEmail", "ses:SendRawEmail"],
-                # Narrowed to the one verified identity we send as.
-                resources=[
-                    f"arn:{self.partition}:ses:{self.region}:{self.account}:identity/{email_from}"
-                ],
-            )
+        ses_send = iam.PolicyStatement(
+            actions=["ses:SendEmail", "ses:SendRawEmail"],
+            # Narrowed to the one verified identity we send as.
+            resources=[
+                f"arn:{self.partition}:ses:{self.region}:{self.account}:identity/{email_from}"
+            ],
         )
+        self.notifier.add_to_role_policy(ses_send)
         self.notifier.add_event_source(
             event_sources.SqsEventSource(
                 self.notification_queue, batch_size=5, report_batch_item_failures=True
@@ -265,6 +284,24 @@ class JobMonitorStack(Stack):
                 )
             )
 
+        self.digest = self._function(
+            "Digest",
+            code,
+            "jobmonitor.orchestration.handlers.digest_handler",
+            timeout=Duration.minutes(1),
+            memory=256,
+            environment={**common_env, **email_env},
+        )
+        # Reads the recent-jobs index and sends one email: nothing else.
+        self.jobs_table.grant_read_data(self.digest)
+        self.digest.add_to_role_policy(
+            iam.PolicyStatement(
+                actions=["dynamodb:Query"],
+                resources=[f"{self.jobs_table.table_arn}/index/{RECENT_INDEX}"],
+            )
+        )
+        self.digest.add_to_role_policy(ses_send)
+
         # -------------------------------------------------------------- trigger
         self.schedule = events.Rule(
             self,
@@ -280,6 +317,16 @@ class JobMonitorStack(Stack):
                     retry_attempts=2,
                 )
             ],
+        )
+
+        self.digest_schedule = events.Rule(
+            self,
+            "DigestSchedule",
+            description="Email everything first seen in the previous hour (nothing if empty)",
+            schedule=DIGEST_SCHEDULE,
+            # No input override: the handler reads the event's own `time`, so a
+            # retried invocation covers the same hour as the attempt it retries.
+            targets=[events_targets.LambdaFunction(self.digest, retry_attempts=2)],
         )
 
         # ------------------------------------------------------------------ api
@@ -453,6 +500,16 @@ class JobMonitorStack(Stack):
             alarm_description="Workers are erroring frequently",
             metric=self.worker.metric_errors(period=Duration.hours(1)),
             threshold=20,
+            evaluation_periods=1,
+            comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
+            treat_missing_data=cloudwatch.TreatMissingData.NOT_BREACHING,
+        )
+        cloudwatch.Alarm(
+            self,
+            "DigestFailing",
+            alarm_description="The hourly email digest is failing: summaries are not arriving",
+            metric=self.digest.metric_errors(period=Duration.hours(3)),
+            threshold=2,
             evaluation_periods=1,
             comparison_operator=cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
             treat_missing_data=cloudwatch.TreatMissingData.NOT_BREACHING,

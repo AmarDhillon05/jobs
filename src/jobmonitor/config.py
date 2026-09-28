@@ -22,6 +22,8 @@ DEFAULT_USER_AGENT: Final = (
     "internship-job-monitor/0.1 (+personal job alerting; contact: you@example.com)"
 )
 
+EMAIL_MODES: Final = ("digest", "instant")
+
 _TRUTHY: Final = frozenset({"1", "true", "yes", "on", "y"})
 _FALSEY: Final = frozenset({"0", "false", "no", "off", "n", ""})
 
@@ -169,6 +171,19 @@ class EmailSettings:
     sender: str = "alerts@example.com"
     recipient: str = "you@example.com"
     configuration_set: str | None = None
+    #: ``digest`` (the default): email is one hourly summary of everything found,
+    #: sent by the digest function and skipped when nothing was found; instant
+    #: alerts go to push only. ``instant``: every alert is also emailed.
+    mode: str = "digest"
+    digest_window_minutes: int = 60
+
+    def __post_init__(self) -> None:
+        if self.mode not in EMAIL_MODES:
+            raise ConfigError(f"EMAIL_MODE must be one of {EMAIL_MODES}, got {self.mode!r}")
+
+    @property
+    def is_digest(self) -> bool:
+        return self.mode == "digest"
 
 
 @dataclass(frozen=True, slots=True)
@@ -181,6 +196,11 @@ class PushSettings:
     #: has "enhanced security for push notifications" switched on.
     expo_api_url: str = "https://exp.host/--/api/v2/push/send"
     expo_access_token: str | None = None
+    #: ntfy (https://ntfy.sh or a self-hosted server). The topic name is the only
+    #: thing standing between the world and your alerts - treat it as a secret.
+    ntfy_server: str = "https://ntfy.sh"
+    ntfy_topic: str | None = None
+    ntfy_token: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -232,6 +252,8 @@ class Settings:
                 sender=_str(e, "EMAIL_FROM", "alerts@example.com"),
                 recipient=_str(e, "EMAIL_TO", "you@example.com"),
                 configuration_set=_opt_str(e, "SES_CONFIGURATION_SET"),
+                mode=_str(e, "EMAIL_MODE", "digest").lower(),
+                digest_window_minutes=_int(e, "EMAIL_DIGEST_MINUTES", 60, minimum=1),
             ),
             push=PushSettings(
                 transport=_str(e, "PUSH_TRANSPORT", "console").lower(),
@@ -240,6 +262,9 @@ class Settings:
                 vapid_subject=_str(e, "VAPID_SUBJECT", "mailto:you@example.com"),
                 expo_api_url=_str(e, "EXPO_PUSH_API_URL", "https://exp.host/--/api/v2/push/send"),
                 expo_access_token=_opt_str(e, "EXPO_ACCESS_TOKEN"),
+                ntfy_server=_str(e, "NTFY_SERVER", "https://ntfy.sh").rstrip("/"),
+                ntfy_topic=_opt_str(e, "NTFY_TOPIC"),
+                ntfy_token=_opt_str(e, "NTFY_TOKEN"),
             ),
             poll_interval_minutes=_int(e, "POLL_INTERVAL_MINUTES", 10, minimum=1),
             shard_size=_int(e, "SHARD_SIZE", 8, minimum=1),
@@ -269,7 +294,9 @@ def for_tests(**overrides: object) -> Settings:
         # The window has its own tests (tests/unit/test_recency.py), and the Level 8
         # acceptance suite runs with it switched on, as production does.
         filters=FilterSettings(max_posting_age_hours=None),
-        email=EmailSettings(transport="memory"),
+        # Instant email in tests: most tests are about one alert reaching every
+        # channel. The digest has its own tests (tests/integration/test_digest.py).
+        email=EmailSettings(transport="memory", mode="instant"),
         push=PushSettings(transport="memory"),
         app_base_url="https://app.test",
         api_base_url="https://api.test",

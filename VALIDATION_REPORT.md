@@ -50,10 +50,10 @@ Per-stage logs and `summary.json` in `.verify/`. Stage-by-stage:
 | `app-build` | C | PASS | `tsc --noEmit && vite build` |
 | `app-e2e` | C | PASS | 11 passed in real Chromium |
 | `infra-synth` | D | PASS | `cdk synth` |
-| `infra-test` | D | PASS | 49 template assertions |
+| `infra-test` | D | PASS | 54 template assertions |
 | `infra-lint` | D | PASS | `cfn-lint`, clean |
 | `localstack` | E | PASS | boots from `docker compose up` |
-| `provision` | E | PASS | tables, queues, topic, 4 Lambdas, event sources, REST API |
+| `provision` | E | PASS | tables, queues, topic, 5 Lambdas, event sources, REST API |
 | `e2e-aws` | E/F | PASS | 23 passed against emulated AWS, 228s |
 
 Totals: **2,170 automated tests collected** (354 unit + 1,170 scraper + 324
@@ -232,9 +232,10 @@ credentials.
 | Email required in the production design | passed | SES transport; request shape asserted under Moto |
 | Local tests use a mock sink | passed | memory and console transports |
 | PRD's email layout | tested | `test_notifications.py` asserts the example layout line by line |
-| Immediate for high priority, grouped for the rest | tested | `Notifier.plan`; asserted both ways |
-| A practical push path | passed | Expo to the phone app, SNS dependency-free, Web Push to the PWA |
-| Push provider abstracted for a fake transport | passed | `PushTransport` + `MemoryPushTransport`; five implementations behind one interface |
+| Immediate for high priority, grouped for the rest | tested | `Notifier.plan`; asserted both ways. With ntfy every job is its own alert (its buttons act on one link); high priority still rings louder |
+| Per-job vs batched email (the PRD leaves it to the agent) | tested | user's choice, 2026-09-28: instant push + an hourly email digest that is skipped when empty; `test_digest.py` (22, incl. Moto), Level 8 Scenarios 1-2, LocalStack `TestHourlyDigest` |
+| A practical push path | passed | ntfy (recommended; `test_ntfy_push.py`), Expo to the phone app, SNS dependency-free, Web Push to the PWA |
+| Push provider abstracted for a fake transport | passed | `PushTransport` + `MemoryPushTransport`; six implementations behind one interface |
 | Recent-jobs screen with the listed fields | tested | both clients |
 | Job-detail screen with the listed fields | tested | both clients; Level 8 asserts the API actually serves every field the screen renders |
 | "Open Application" opens the original page | tested | both clients; the URL is asserted unchanged, query string included |

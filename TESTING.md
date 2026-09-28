@@ -55,6 +55,9 @@ This is the table to read if you are deciding how much to trust a claim.
 | Web Push delivery | Payload tested, transport faked | **Never sent** |
 | Expo push request | Scripted transport; request body and every ticket status asserted | **Real request shape**, no network |
 | Expo push *delivery to a handset* | — | **Not tested** — needs a physical device; steps in `mobile/README.md` |
+| ntfy push request | Scripted transport; JSON body, buttons, auth header, retries asserted (`test_ntfy_push.py`) | **Real request shape**, no network |
+| ntfy *delivery to a handset* | — | **Not tested** — `cli push-test --sample` is the user's one-step check |
+| Hourly email digest | Memory store, DynamoDB under Moto, and the real Lambda on LocalStack (`test_digest.py`, `TestHourlyDigest`) | Real query + window logic; email to a console sink |
 | Real AWS | — | **Never deployed** (PRD §12) |
 
 ### The one simulated boundary

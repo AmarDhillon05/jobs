@@ -6,6 +6,8 @@
     python -m jobmonitor.cli coverage                  # registry coverage
     python -m jobmonitor.cli devices                   # registered push targets
     python -m jobmonitor.cli push-test                 # one alert to every device
+    python -m jobmonitor.cli push-test --sample        # ...using a made-up job
+    python -m jobmonitor.cli digest --url ...          # the last hour's email digest
 
 Without ``--url`` the commands run entirely in process against in-memory storage,
 so `poll` works with no AWS and no LocalStack at all. With ``--url`` they read the
@@ -18,13 +20,15 @@ import argparse
 import json
 import sys
 from collections.abc import Sequence
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
 from jobmonitor.config import Settings
 from jobmonitor.filtering import JobFilter
 from jobmonitor.models.company import SupportStatus, load_default_registry
 from jobmonitor.models.health import ScraperHealth, ScraperStatus
+from jobmonitor.models.record import JobRecord
 from jobmonitor.notifications import Notifier, build_email_transport, build_push_transport
+from jobmonitor.notifications.digest import DigestSender
 from jobmonitor.orchestration import PollRunner
 from jobmonitor.storage.base import DeviceRepository, HealthRepository, JobRepository
 
@@ -161,10 +165,32 @@ def cmd_poll(args: argparse.Namespace) -> int:
         job_filter=JobFilter(settings.filters),
     )
     print(f"polling {len(targets)} company/companies...")
+    started = datetime.now(UTC)
     outcome = runner.run(targets, poll_id="cli")
     print(json.dumps(outcome.to_dict(), indent=2))
     for failure in outcome.failures:
         print(f"  FAILED {failure.company}: {failure.health.error}", file=sys.stderr)
+    if settings.email.is_digest and not args.no_digest:
+        # In process there is no hourly schedule, so summarise this poll instead.
+        digest = DigestSender(
+            settings, repository=jobs, email_transport=build_email_transport(settings.email)
+        ).send(window=(started, datetime.now(UTC) + timedelta(seconds=1)))
+        print(f"digest: {json.dumps(digest.to_dict())}")
+    return 0
+
+
+def cmd_digest(args: argparse.Namespace) -> int:
+    """Send the email digest for the last complete window, as the hourly schedule does."""
+    settings = Settings.from_env()
+    jobs, _health = _repositories(args.url)
+    outcome = DigestSender(
+        settings,
+        repository=jobs,
+        email_transport=build_email_transport(
+            settings.email, region=settings.aws.region, endpoint_url=settings.aws.endpoint_url
+        ),
+    ).send()
+    print(json.dumps(outcome.to_dict(), indent=2))
     return 0
 
 
@@ -208,7 +234,7 @@ def cmd_push_test(args: argparse.Namespace) -> int:
         )
         return 2
 
-    records = jobs.recent(limit=1)
+    records = [_sample_record()] if args.sample else jobs.recent(limit=1)
     if not records:
         print(
             "no jobs stored yet - run a poll first, or use --url to read the deployed table",
@@ -239,6 +265,24 @@ def cmd_push_test(args: argparse.Namespace) -> int:
     print(f"accepted: {', '.join(receipts)}")
     print("\nTap the notification on the device: it must open the deep link printed above.")
     return 0
+
+
+def _sample_record() -> JobRecord:
+    """A made-up job for ``push-test --sample``, clearly labelled as a test."""
+    from jobmonitor.models.job import Job
+
+    job = Job(
+        company="Test alert",
+        title="Software Engineer Intern (sample - not a real posting)",
+        location="Anywhere",
+        url="https://example.com/jobs/sample-internship",
+        external_id="push-test-sample",
+        date_posted=None,
+        source="push-test",
+        description=None,
+        employment_type="internship",
+    )
+    return JobRecord.from_job(job, relevance_score=100)
 
 
 def cmd_coverage(args: argparse.Namespace) -> int:
@@ -275,6 +319,7 @@ def build_parser() -> argparse.ArgumentParser:
     poll.add_argument("--company", action="append", default=[])
     poll.add_argument("--provider")
     poll.add_argument("--limit", type=int)
+    poll.add_argument("--no-digest", action="store_true", help="skip the end-of-poll email digest")
     poll.set_defaults(func=cmd_poll)
 
     coverage = subparsers.add_parser("coverage", help="registry coverage summary")
@@ -287,7 +332,13 @@ def build_parser() -> argparse.ArgumentParser:
     push_test = subparsers.add_parser(
         "push-test", help="send one alert through the configured push transport"
     )
+    push_test.add_argument(
+        "--sample", action="store_true", help="send a made-up job instead of the newest stored one"
+    )
     push_test.set_defaults(func=cmd_push_test)
+
+    digest = subparsers.add_parser("digest", help="send the last hour's email digest")
+    digest.set_defaults(func=cmd_digest)
     return parser
 
 

@@ -4,7 +4,9 @@ Watches 91 high-value companies (employers at or above an AWS SDE internship
 for resume value; 92 more are kept in `data/company_universe.json` under
 `excluded` and can be restored) for newly posted software-engineering and
 adjacent technical internships and alerts you within roughly one polling interval
-(default: **10 minutes**), by email and by push notification to your phone.
+(default: **10 minutes**) with a push notification to your phone, plus one
+email per hour listing everything found that hour (no email when an hour found
+nothing).
 
 > ### This has never been deployed to a real AWS account
 >
@@ -19,9 +21,9 @@ adjacent technical internships and alerts you within roughly one polling interva
 ```text
 EventBridge (every 10 min) → Coordinator → SQS → Worker Lambdas → DynamoDB
                                                         ↓
-                                              SNS → SQS → Notifier
+                                              SNS → SQS → Notifier → ntfy push (per job)
                                                         ↓
-                                            SES email  +  Expo push
+EventBridge (hourly) → Digest Lambda → DynamoDB → SES email (skipped if empty)
                                                         ↓
                           API Gateway → API Lambda → phone app + web feed
 ```
@@ -89,6 +91,36 @@ make serve-mobile   # Expo dev server — scan the QR code with Expo Go
 
 ## Getting notifications on your phone
 
+### Recommended: ntfy (no app of ours to install)
+
+1. Install **ntfy** from the Play Store / App Store (free, open source).
+2. Pick a long random topic name — it is the only secret between the world and
+   your alerts:
+   `python -c "import secrets;print('jobs-'+secrets.token_hex(12))"`
+3. In the ntfy app, subscribe to that topic (server `ntfy.sh`).
+4. Set `PUSH_TRANSPORT=ntfy` and `NTFY_TOPIC=<your topic>`, then:
+
+```bash
+python -m jobmonitor.cli push-test --sample   # a made-up job, straight to your phone
+```
+
+Each new job arrives as its own notification. Tapping it opens the application
+page; the **Open application** and **Copy link** buttons do what they say. The
+copy button works in ntfy's Android and web apps; on iPhone, ntfy shows the
+notification and the tap target but not the copy button, so tap through and copy
+from the browser.
+
+### Email: one hourly digest
+
+With `EMAIL_MODE=digest` (the default) the poll does not email. Once an hour the
+digest function emails every job first seen in the previous clock hour — strong
+matches first, lower-relevance ones listed underneath rather than dropped — and
+sends **nothing** for an hour that found nothing. `EMAIL_MODE=instant` restores
+one email per alert. Locally, `poll` prints the digest for that poll at the end;
+`python -m jobmonitor.cli digest --url ...` runs the hourly one against stored jobs.
+
+### Alternative: the Expo app
+
 The Expo app lives in [`mobile/`](mobile) and its
 [README](mobile/README.md) is the step-by-step: install Expo Go, point
 `app.json` at an API your phone can reach, `npm start`, grant permission, set
@@ -122,7 +154,7 @@ make test-mobile       # level 5a: the Expo app (122 tests)
 make test-web          # level 5b: the web feed (77 tests)
 make test-app-e2e      # level 5c: the web feed in real Chromium (11 tests)
 make mobile-bundle     # prove the Expo app bundles (Metro + Hermes)
-make infra-validate    # cdk synth + 49 template assertions + cfn-lint
+make infra-validate    # cdk synth + 54 template assertions + cfn-lint
 make e2e-local         # level 8: the eight PRD §30 acceptance scenarios
 make e2e-aws           # level 7: the architecture on emulated AWS
 make e2e               # boot LocalStack, both of the above, tear down
@@ -226,7 +258,7 @@ LOCALSTACK_DEBUG=1 docker compose up -d localstack
 
 ## Deploying it later
 
-**Nothing below has been run.** The stack synthesizes and passes `cfn-lint` plus 49
+**Nothing below has been run.** The stack synthesizes and passes `cfn-lint` plus 54
 template assertions; that is the extent of the claim.
 
 ```bash
@@ -243,8 +275,9 @@ cdk bootstrap
 cdk deploy JobMonitorStack
 ```
 
-Estimated cost at 144 polls/day over the original 150 companies, one user: **≈ $4.70/month**,
-itemised in `ARCHITECTURE.md` §10.
+Estimated cost at 144 polls/day over the 91 polled companies, one user: well
+under **$1/month** for Lambda, itemised and measured in `ARCHITECTURE.md` §10.
+ntfy.sh is free; SES is $0.10 per 1,000 emails (≤ 720 digests a month).
 
 ### Remaining manual configuration
 
@@ -256,15 +289,17 @@ Things the IaC deliberately does not do for you:
    push security), `VAPID_PRIVATE_KEY` (only for the web client's push), and
    `API_WRITE_TOKEN`. Put them in SSM Parameter Store or Secrets Manager, not in
    the template.
-3. **Choose a push transport.** `expo` for the phone app, `sns` for a
+3. **Choose a push transport.** Pass `-c ntfyTopic=<your topic>` to
+   `cdk deploy` for ntfy (recommended; the topic ends up in the notifier's
+   environment, visible to anyone with console access to your account), or leave
+   it unset for SNS. `expo` for the phone app, `sns` for a
    dependency-free path through platform endpoints you subscribe yourself,
    `webpush` for the PWA (which needs the `[push]` extra as a Lambda layer,
    because VAPID signing needs `cryptography` and the Lambda runtime lacks it).
 4. **Point the clients at the deployed API** — `mobile/app.json` `extra.apiBaseUrl`
    and the web client's build-time API URL.
-5. **Run `make validate-companies` once** from a network that can reach ATS hosts.
-   This environment could not (BLK-001), so every `support_status` currently rests
-   on fixture-based tests and config checks rather than a live response.
+5. **Re-run `make validate-companies` now and then.** Every polled company was
+   validated live on 2026-09-27 (`data/validation.json`); careers sites change.
 6. **Set `APP_BASE_URL`** to wherever the web client is hosted, so notification
    deep links resolve.
 
@@ -281,7 +316,7 @@ src/jobmonitor/
   filtering/     relevance scoring, permissive by design
   storage/       JobRepository: in-memory and DynamoDB, one contract
   notifications/ events, formatters, 5 push + 3 email transports
-  orchestration/ pipeline, PollRunner, the four Lambda handlers
+  orchestration/ pipeline, PollRunner, the five Lambda handlers
   api/           framework-free router + Lambda and local-server adapters
 infrastructure/  AWS CDK (Python) stack + 49 assertion tests
 mobile/          the Expo / React Native phone app
