@@ -317,6 +317,12 @@ before creating the IAM roles. Other knobs, passed the same way to
 `cdk deploy -c name=value`: `notifyThreshold` (default 55), `keepThreshold` (35),
 `shardSize` (8).
 
+**If a deploy fails partway**, CloudFormation rolls the stack back. Just run
+`make deploy` again (the CDK replaces a stack stuck in `ROLLBACK_COMPLETE`; if
+it refuses, `make destroy` first). The jobs table is kept even on a rollback, so
+you may find an empty `JobMonitorStack-JobsTable...` left in DynamoDB: delete
+it in the console.
+
 ### 4. Check it is working
 
 The stack polls within 10 minutes of deploying. Then:

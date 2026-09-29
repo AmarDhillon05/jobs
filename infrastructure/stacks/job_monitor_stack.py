@@ -93,6 +93,9 @@ POLL_INTERVAL = Duration.minutes(10)
 #: covers exactly the previous clock hour.
 DIGEST_SCHEDULE = events.Schedule.cron(minute="2", hour="*")
 DIGEST_WINDOW_MINUTES = 60
+#: Shards scraped at the same time. 12 shards of ~60 s at most finish well inside
+#: one 10-minute poll interval.
+WORKER_MAX_CONCURRENCY = 5
 #: Attempts before a message is dead-lettered.
 MAX_RECEIVE_COUNT = 3
 LOG_RETENTION = logs.RetentionDays.TWO_WEEKS
@@ -203,10 +206,6 @@ class JobMonitorStack(Stack):
                 "HTTP_MAX_ATTEMPTS": "3",
                 "HTTP_TIMEOUT_SECONDS": "15",
             },
-            # Bounded so 19 shards cannot become 19 simultaneous bursts against
-            # the same ATS providers, and so one runaway poll cannot exhaust the
-            # account's concurrency.
-            reserved_concurrency=10,
         )
         self.jobs_table.grant_read_write_data(self.worker)
         self.health_table.grant_read_write_data(self.worker)
@@ -216,6 +215,12 @@ class JobMonitorStack(Stack):
                 self.scrape_queue,
                 batch_size=1,  # one shard per invocation: clean retry semantics
                 report_batch_item_failures=True,
+                # At most this many shards run at once, so a poll cannot become a
+                # burst against the same ATS providers. Deliberately NOT reserved
+                # concurrency: a new account's whole Lambda limit can be 10, and
+                # AWS refuses to reserve any of the last 10 - the first real deploy
+                # failed on exactly that (see BLOCKERS.md BLK-014).
+                max_concurrency=WORKER_MAX_CONCURRENCY,
             )
         )
 

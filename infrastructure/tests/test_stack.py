@@ -29,6 +29,7 @@ from aws_cdk.assertions import Template
 from stacks.job_monitor_stack import (
     MAX_RECEIVE_COUNT,
     POLL_INTERVAL,
+    WORKER_MAX_CONCURRENCY,
     WORKER_TIMEOUT,
     JobMonitorStack,
 )
@@ -263,14 +264,21 @@ class TestFunctions:
         assert worker["Properties"]["Timeout"] == WORKER_TIMEOUT.to_seconds()
         assert worker["Properties"]["Timeout"] < 900
 
-    def test_worker_concurrency_is_bounded(self, resources: dict[str, Any]) -> None:
-        functions = by_type(resources, "AWS::Lambda::Function")
-        worker = next(
-            function
-            for function in functions.values()
-            if "worker_handler" in function["Properties"]["Handler"]
+    def test_worker_concurrency_is_bounded_by_the_queue_not_reserved(
+        self, resources: dict[str, Any]
+    ) -> None:
+        """Reserved concurrency failed the first real deploy: a new account's
+        Lambda limit can be 10, and none of the last 10 may be reserved."""
+        for name, function in by_type(resources, "AWS::Lambda::Function").items():
+            assert "ReservedConcurrentExecutions" not in function["Properties"], name
+        mapping = next(
+            m
+            for m in by_type(resources, "AWS::Lambda::EventSourceMapping").values()
+            if m["Properties"]["BatchSize"] == 1
         )
-        assert worker["Properties"]["ReservedConcurrentExecutions"] == 10
+        assert mapping["Properties"]["ScalingConfig"] == {
+            "MaximumConcurrency": WORKER_MAX_CONCURRENCY
+        }
 
     def test_every_function_knows_the_table_names(self, resources: dict[str, Any]) -> None:
         for name, function in by_type(resources, "AWS::Lambda::Function").items():

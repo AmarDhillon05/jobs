@@ -25,6 +25,7 @@ Severity: `critical` (blocks a hard completion gate) · `major` · `minor`
 | [BLK-011](#blk-011---companies-with-no-reachable-first-party-source) | Coverage | minor | accepted-limitation |
 | [BLK-012](#blk-012---live-validation-would-have-demoted-companies-and-broken-the-gate) | Validation tooling | major | resolved |
 | [BLK-013](#blk-013---docker-hub-rate-limit-stops-localstack-creating-lambdas) | LocalStack Lambda | major | accepted-limitation |
+| [BLK-014](#blk-014---first-real-deploy-failed-on-reserved-concurrency) | Deployment | critical | resolved |
 
 ---
 
@@ -452,4 +453,25 @@ Per PRD §18.5, every unresolved blocker was revisited before final verification
 - **Severity:** major (blocks Gate E while the quota is exhausted)
 - **Status:** accepted-limitation (environmental; worked around without changing
   what is tested)
+
+---
+
+## BLK-014 - First real deploy failed on reserved concurrency
+
+- **Timestamp / stage:** 2026-09-29, the user's first `make deploy`
+- **Requirement affected:** PRD §21 (deployable IaC)
+- **Component:** `WorkerFunction` in `infrastructure/stacks/job_monitor_stack.py`
+- **Observed failure:** `CREATE_FAILED AWS::Lambda::Function WorkerFunction ...
+  is not updatable with parameters provided (NotUpdatable)`. The worker was the
+  only resource to fail and the only function with `ReservedConcurrentExecutions`
+  (10).
+- **Cause:** new AWS accounts can start with an account-wide Lambda concurrency
+  limit of 10, and Lambda refuses any reservation that leaves fewer than 10
+  unreserved. Neither LocalStack nor cfn-lint enforces account quotas, so no
+  local check could have caught it.
+- **Resolution:** reserved concurrency removed; the SQS event source's
+  `MaximumConcurrency` (5) now bounds parallel scraping, which reserves nothing.
+  `test_worker_concurrency_is_bounded_by_the_queue_not_reserved` asserts both.
+- **Severity:** critical (blocked deployment)
+- **Status:** resolved
 

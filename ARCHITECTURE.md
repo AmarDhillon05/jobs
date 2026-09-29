@@ -39,7 +39,7 @@ that follows:
               SQS  jobmonitor-scrape ──────after 3 attempts──▶  scrape DLQ
                    ╱        │        ╲
           Worker Lambda  Worker    Worker      (concurrent, 1 shard each,
-                   ╲        │        ╱          reserved concurrency 10)
+                   ╲        │        ╱          at most 5 at once)
                         ▼
               ┌──────────────────────┐
               │ DynamoDB jobs table  │  ← idempotent upsert, first_seen pinned
@@ -78,7 +78,7 @@ constraints in §1.
 | --- | --- |
 | **One Lambda polls all 150 companies** | Rejected. At a conservative 2 s per source it is ~5 minutes serially, and the tail is unbounded — one slow Workday tenant with retries can push a run past the 15-minute Lambda ceiling, at which point *the whole poll is lost*, not just that company. It also couples unrelated failures into one invocation and makes retry all-or-nothing. |
 | **EventBridge → Step Functions → parallel groups** | Rejected, narrowly. Map state concurrency is genuinely nice and the execution history is excellent for debugging. But it costs per state transition (~$0.025/1,000), needs its own IAM and error-handling vocabulary, and LocalStack's community Step Functions support is weaker than its SQS support — which would have traded real local verification for a nicer console. For a fan-out this small, SQS gives the same parallelism with better local fidelity. |
-| **EventBridge → coordinator → SQS → workers** ✅ | **Selected.** Per-message retry and dead-lettering come free and are exactly the semantics needed: one company's outage must not replay its 7 shard-mates. Reserved concurrency caps the blast radius. SQS is the best-emulated service in LocalStack community, so the architecture could actually be *exercised* rather than asserted. And it is effectively free at this volume. |
+| **EventBridge → coordinator → SQS → workers** ✅ | **Selected.** Per-message retry and dead-lettering come free and are exactly the semantics needed: one company's outage must not replay its 7 shard-mates. The queue's maximum-concurrency setting (5) caps the blast radius without reserving account capacity. SQS is the best-emulated service in LocalStack community, so the architecture could actually be *exercised* rather than asserted. And it is effectively free at this volume. |
 
 ### Decisions worth defending
 
