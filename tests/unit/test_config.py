@@ -148,3 +148,15 @@ def test_ntfy_has_no_default_topic() -> None:
     push = Settings.from_env({}).push
     assert push.ntfy_topic is None and push.ntfy_token is None
     assert push.ntfy_server == "https://ntfy.sh"
+
+
+def test_us_only_is_on_by_default_and_keeps_unknown_locations() -> None:
+    filters = Settings.from_env({}).filters
+    assert filters.us_only is True
+    assert filters.keep_unknown_locations is True
+
+
+def test_location_filter_can_be_turned_off_or_tightened() -> None:
+    filters = Settings.from_env({"US_ONLY": "false", "KEEP_UNKNOWN_LOCATIONS": "no"}).filters
+    assert filters.us_only is False
+    assert filters.keep_unknown_locations is False

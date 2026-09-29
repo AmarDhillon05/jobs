@@ -134,6 +134,7 @@ credentials.
 | Requirement | Status | Evidence |
 | --- | --- | --- |
 | Filtering separate from scraping | passed | `src/jobmonitor/filtering/` has no HTTP dependency |
+| US-only (user request, 2026-09-29) | tested | `filtering/location.py`; `test_location.py` (82 real location strings from the live boards), `TestUsOnly` in Level 8 on both storage backends |
 | Configurable relevance score 0-100 | tested | `test_filtering.py` |
 | Configurable notification threshold | tested | `FilterSettings.notify_threshold`, driven from env |
 | Permissive toward adjacent technical roles | tested | corpus test; three real bugs it caught are listed in `TESTING.md` |

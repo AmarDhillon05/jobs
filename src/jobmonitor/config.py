@@ -131,6 +131,12 @@ class FilterSettings:
     max_posting_age_hours: float | None = 24.0
     #: A posting with no date cannot be shown to be old, so it is kept by default.
     keep_undated: bool = True
+    #: Drop postings located outside the US before scoring. See
+    #: ``jobmonitor.filtering.location`` for how locations are classified.
+    us_only: bool = True
+    #: Keep postings whose location says nothing either way ("Remote",
+    #: "3 Locations", none given). PRD §2: prefer retaining when uncertain.
+    keep_unknown_locations: bool = True
 
     @property
     def max_posting_age(self) -> timedelta | None:
@@ -246,6 +252,8 @@ class Settings:
                 immediate_alert_priorities=_csv(e, "IMMEDIATE_ALERT_PRIORITIES", ("high",)),
                 max_posting_age_hours=_posting_age(e),
                 keep_undated=_bool(e, "KEEP_UNDATED_POSTINGS", True),
+                us_only=_bool(e, "US_ONLY", True),
+                keep_unknown_locations=_bool(e, "KEEP_UNKNOWN_LOCATIONS", True),
             ),
             email=EmailSettings(
                 transport=_str(e, "EMAIL_TRANSPORT", "console").lower(),
@@ -292,8 +300,9 @@ def for_tests(**overrides: object) -> Settings:
         # backoff sleeps are: saved fixtures carry fixed dates, and a test about
         # retries or parsing must not start failing because the calendar moved on.
         # The window has its own tests (tests/unit/test_recency.py), and the Level 8
-        # acceptance suite runs with it switched on, as production does.
-        filters=FilterSettings(max_posting_age_hours=None),
+        # acceptance suite runs with it switched on, as production does. The same
+        # holds for the US-only location filter (tests/unit/test_location.py).
+        filters=FilterSettings(max_posting_age_hours=None, us_only=False),
         # Instant email in tests: most tests are about one alert reaching every
         # channel. The digest has its own tests (tests/integration/test_digest.py).
         email=EmailSettings(transport="memory", mode="instant"),

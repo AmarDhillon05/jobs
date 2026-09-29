@@ -615,6 +615,37 @@ class TestScenario8AppNotificationPath:
 # ------------------------------------------------------- the whole run, once
 
 
+class TestUsOnly:
+    """Postings outside the US are never stored, alerted on, or emailed."""
+
+    def test_only_us_and_unplaced_postings_reach_the_user(self, system: System) -> None:
+        company = fixture_company(
+            jobs=[
+                posting("sf", location="San Francisco, CA"),
+                posting("london", location="London, United Kingdom"),
+                posting("both", location="New York, NY; Toronto, Canada"),
+                posting("remote", location="Remote"),
+                posting("blr", location="Bengaluru, Karnataka, IND"),
+            ]
+        )
+        outcome = system.poll([company])
+
+        stored = sorted(record.external_id for record in system.stored())
+        assert stored == ["both", "remote", "sf"]
+        assert sorted(r.external_id for r in outcome.new_records) == ["both", "remote", "sf"]
+        alerted = {
+            job_id
+            for message, _ in system.push.sent
+            for job_id in message.data["job_ids"].split(",")
+        }
+        assert not any("london" in job_id or "blr" in job_id for job_id in alerted)
+
+        digest = system.send_digest()
+        body = system.email.sent[0][0].text_body
+        assert len(digest.jobs) == 3
+        assert "London" not in body and "Bengaluru" not in body
+
+
 class TestFullRunObservability:
     """PRD §25: a poll must be able to account for itself."""
 

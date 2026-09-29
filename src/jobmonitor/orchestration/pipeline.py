@@ -27,6 +27,7 @@ from datetime import datetime
 
 from jobmonitor.config import Settings
 from jobmonitor.filtering import JobFilter
+from jobmonitor.filtering.location import split_by_location
 from jobmonitor.filtering.recency import split_by_recency
 from jobmonitor.http import HttpClient
 from jobmonitor.models.company import Company
@@ -154,7 +155,18 @@ def process_company(
         max_age=settings.filters.max_posting_age,
         keep_undated=settings.filters.keep_undated,
     )
-    decisions = job_filter.evaluate_all(window.recent, company)
+    # ... and only postings in the US (FilterSettings.us_only). Anything else is
+    # never scored, stored or alerted on.
+    placed = split_by_location(
+        window.recent,
+        us_only=settings.filters.us_only,
+        keep_unknown=settings.filters.keep_unknown_locations,
+    )
+    if placed.outside_us:
+        logger.info(
+            "%s: skipped %d posting(s) outside the US", company.company, len(placed.outside_us)
+        )
+    decisions = job_filter.evaluate_all(placed.kept, company)
     relevant = [decision for decision in decisions if decision.keep]
 
     for decision in relevant:

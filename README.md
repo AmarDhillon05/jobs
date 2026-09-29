@@ -110,6 +110,14 @@ copy button works in ntfy's Android and web apps; on iPhone, ntfy shows the
 notification and the tap target but not the copy button, so tap through and copy
 from the browser.
 
+### US only
+
+Only postings located in the US reach you; everything else is dropped before it
+is scored or stored. A role listing several offices counts if any of them is in
+the US, and a posting that gives no usable location ("Remote", "3 Locations") is
+kept rather than silently lost. `US_ONLY=false` turns this off;
+`KEEP_UNKNOWN_LOCATIONS=false` drops the unplaced ones too.
+
 ### Email: one hourly digest
 
 With `EMAIL_MODE=digest` (the default) the poll does not email. Once an hour the

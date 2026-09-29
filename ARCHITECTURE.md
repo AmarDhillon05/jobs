@@ -259,6 +259,22 @@ library, no real sleeping, and the same assertions run for every adapter.
 
 ## 5. Filtering
 
+**US only, before anything else** (`jobmonitor/filtering/location.py`). The
+user's choice (2026-09-29): postings outside the US are dropped before they are
+scored, so they are never stored, pushed or emailed. Locations are *classified*,
+not parsed, because the registry's boards describe them in dozens of shapes
+("US, WA, Seattle", "Helsinki, fi", "Bengaluru, Karnataka, IND", "SF, NY, SEA,
+Remote-US", "2 Locations"). A posting is split into places and each one scored
+for evidence: a US country token, full state name or well-known US city is
+*strong*; a bare state code is *weak* and loses to any non-US evidence, so
+"Chennai, TN" is Tamil Nadu and "Remote - Canada; Remote - CA" is Canada. Any US
+place makes the posting US (a New York-or-Toronto role is a US role); positive
+non-US evidence with no US evidence drops it; no evidence either way keeps it
+(`KEEP_UNKNOWN_LOCATIONS`, PRD §2). Tuned against every location the 91 polled
+companies returned on 2026-09-29: 26,438 postings, of which 17,936 classified
+US, 7,207 non-US and 1,290 unknown (mostly Workday's "N Locations").
+`US_ONLY=false` switches it off.
+
 A small, inspectable, configurable weighted-keyword scorer — not a learned model.
 Two reasons: every decision must be explainable (the score carries its reasons,
 which both tests and the health view read), and a personal project polling every
