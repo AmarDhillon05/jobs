@@ -145,7 +145,13 @@ deploy-diff: deploy-check ## Show what `make deploy` would create or change
 
 .PHONY: deploy
 deploy: deploy-check ## Deploy to YOUR account: make deploy EMAIL_FROM=.. EMAIL_TO=.. NTFY_TOPIC=..
-	cd $(REPO_ROOT)/infrastructure && $(DEPLOY_ENV) $(CDK) deploy JobMonitorStack $(DEPLOY_CONTEXT)
+	cd $(REPO_ROOT)/infrastructure && $(DEPLOY_ENV) $(CDK) deploy JobMonitorStack $(DEPLOY_CONTEXT) \
+	  || (echo ""; echo "Deploy failed. The underlying AWS errors, from CloudTrail:"; echo ""; \
+	      $(VENV)/bin/python $(REPO_ROOT)/scripts/diagnose_deploy.py; exit 1)
+
+.PHONY: deploy-diagnose
+deploy-diagnose: ## Show the real AWS errors behind a failed deploy (CloudTrail, read-only)
+	$(VENV)/bin/python $(REPO_ROOT)/scripts/diagnose_deploy.py --hours $(or $(HOURS),2)
 
 .PHONY: destroy
 destroy: ## Remove the deployed stack (the jobs table is retained; see README)
