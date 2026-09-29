@@ -363,6 +363,44 @@ change the worker's `memory=512` to `256` in
 `infrastructure/stacks/job_monitor_stack.py`, which puts Lambda inside the
 free allowance.
 
+### Automatic deploys (GitHub Actions)
+
+Every push to `master` runs the checks (lint, type-check, the full test suite,
+infrastructure synth + cfn-lint) on GitHub. If they pass **and** the push
+changed something that runs in AWS (`src/`, `infrastructure/`, the company
+list, ...), it deploys `JobMonitorStack`. Docs-only pushes just test. A failing
+test means no deploy. Pull requests are tested, never deployed.
+
+GitHub holds no AWS keys: the workflow trades a short-lived GitHub token (OIDC)
+for a role that trusts only this repository's `master` branch and can do nothing
+but use the roles `cdk bootstrap` already created. One-time setup:
+
+1. **Create that role** (from your laptop, with your admin credentials):
+
+   ```bash
+   make deploy-github-role                      # repo AmarDhillon05/jobs, branch master
+   # other repo/branch:  make deploy-github-role GITHUB_REPO=owner/name GITHUB_BRANCH=main
+   ```
+
+   Copy the `DeployRoleArn` it prints. If the account already has GitHub's OIDC
+   provider from another project, the deploy fails with "already exists": rerun
+   with `GITHUB_OIDC_PROVIDER_ARN=arn:aws:iam::<account>:oidc-provider/token.actions.githubusercontent.com`.
+
+2. **On GitHub:** repo → **Settings → Secrets and variables → Actions**.
+   - *Variables* tab → `AWS_DEPLOY_ROLE_ARN` = the ARN from step 1
+     (and `AWS_REGION` if you did not use `us-east-1`).
+   - *Secrets* tab → `EMAIL_FROM`, `EMAIL_TO`, `NTFY_TOPIC` (the same values you
+     pass to `make deploy`).
+
+3. **Try it:** **Actions → test-and-deploy → Run workflow**. The deploy job's
+   log shows the CloudFormation events; if it fails, it prints the real AWS
+   errors from CloudTrail, as `make deploy` does locally.
+
+Until `AWS_DEPLOY_ROLE_ARN` is set, the workflow only tests. CI deploys with
+`--require-approval never` (nobody is there to answer the prompt), so IAM
+changes in a pushed commit are applied without the interactive confirmation you
+see locally: review them in the commit instead.
+
 ### Turning it off
 
 `make destroy` removes everything except the jobs table, which is `RETAIN` on purpose: `first_seen` is the record of when you

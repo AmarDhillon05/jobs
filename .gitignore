@@ -25,7 +25,6 @@ cdk.out/
 # Node / tooling
 node_modules/
 tools/node_modules/
-tools/package-lock.json
 # mobile/ is the Expo (React Native) app; web/ is the browser feed.
 mobile/node_modules/
 mobile/.expo/

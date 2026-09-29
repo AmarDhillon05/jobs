@@ -1,0 +1,115 @@
+# Test on every push and pull request; on a push to master that changes what
+# runs in AWS, deploy JobMonitorStack.
+#
+# No AWS keys live in GitHub: the deploy job trades a short-lived OIDC token for
+# the role created once by `make deploy-github-role` (see README "Automatic
+# deploys"). Until the AWS_DEPLOY_ROLE_ARN repository variable is set, the
+# deploy job is skipped and this only tests.
+name: test-and-deploy
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch: # "Run workflow" button: redeploy without a code change
+
+permissions:
+  contents: read
+
+# One deploy at a time, in push order; a newer push waits rather than cancelling
+# a CloudFormation update half way.
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      app: ${{ steps.filter.outputs.app }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - id: filter
+        name: Did anything that runs in AWS change?
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "app=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          base="${{ github.event.before }}"
+          if [ "${{ github.event_name }}" != "push" ] || [ -z "$base" ] \
+             || [ "$base" = "0000000000000000000000000000000000000000" ] \
+             || ! git cat-file -e "$base" 2>/dev/null; then
+            base="HEAD~1"
+          fi
+          git fetch --no-tags --depth=50 origin "$base" 2>/dev/null || true
+          changed="$(git diff --name-only "$base" HEAD 2>/dev/null || echo src/)"
+          echo "$changed"
+          if echo "$changed" | grep -qE '^(src/|infrastructure/|scripts/build_lambda_bundle\.py|companies\.json|data/|pyproject\.toml|tools/package(-lock)?\.json|Makefile|\.github/workflows/deploy\.yml)'; then
+            echo "app=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "app=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: tools/package-lock.json
+      - name: Install (python + CDK CLI)
+        run: make setup-ci
+      - name: Lint
+        run: make lint
+      - name: Type-check
+        run: make typecheck
+      - name: Tests (unit, scrapers, storage, notifications, pipeline, acceptance)
+        run: make test
+      - name: Infrastructure (synth, template assertions, cfn-lint)
+        run: make infra-validate
+
+  deploy:
+    needs: [changes, test]
+    if: >-
+      github.event_name != 'pull_request'
+      && github.ref == 'refs/heads/master'
+      && needs.changes.outputs.app == 'true'
+      && vars.AWS_DEPLOY_ROLE_ARN != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      id-token: write # for the OIDC token exchanged for AWS credentials
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: tools/package-lock.json
+      - name: Install (python + CDK CLI)
+        run: make setup-ci
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION || 'us-east-1' }}
+      - name: Deploy JobMonitorStack
+        env:
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        # Values come from env, never interpolated into the script, so a secret
+        # cannot inject shell. On failure, `make deploy` prints the real AWS
+        # errors from CloudTrail.
+        run: make deploy CDK_DEPLOY_FLAGS="--require-approval never --progress events"

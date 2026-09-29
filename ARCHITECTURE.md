@@ -373,6 +373,20 @@ a refresh cannot show the same job twice.
 
 ## 7. Deployment
 
+**Continuous deployment: GitHub Actions + OIDC** (`.github/workflows/deploy.yml`,
+`infrastructure/stacks/github_deploy_stack.py`). Chosen over AWS CodePipeline/
+CodeBuild because it needs no pipeline stack, no GitHub connection resource and
+no per-run AWS cost for a one-person project; CodeDeploy was ruled out because it
+shifts traffic between versions of existing Lambdas/EC2/ECS, it does not deploy a
+CloudFormation stack. The deploy role trusts exactly `repo:<owner>/<repo>:ref:
+refs/heads/master` (StringEquals, no wildcards), holds only `sts:AssumeRole` on
+the `cdk-hnb659fds-*` bootstrap roles plus `cloudtrail:LookupEvents`, and sessions
+last at most an hour. The workflow deploys only after lint, type-check, the test
+suite and infrastructure validation pass, only on pushes to master that change
+deployed code, one at a time and never cancelled mid-update. LocalStack (Level 7)
+is not run in CI: it needs Docker Hub pulls that rate-limit (BLK-013) and adds
+~5 minutes to every push; `make verify` remains the full local gate.
+
 AWS CDK in Python — the PRD's preferred default, and the right one here because
 the stack is mostly IAM and event wiring, which CDK's `grant*` methods get right
 more reliably than hand-written policy JSON.

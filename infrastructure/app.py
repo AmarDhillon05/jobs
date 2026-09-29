@@ -15,6 +15,7 @@ import os
 
 import aws_cdk as cdk
 
+from stacks.github_deploy_stack import GitHubDeployStack
 from stacks.job_monitor_stack import JobMonitorStack
 
 app = cdk.App()
@@ -34,6 +35,21 @@ JobMonitorStack(
     # Your private ntfy topic (e.g. `-c ntfyTopic=...`). Leave unset for SNS push.
     ntfy_topic=app.node.try_get_context("ntfyTopic") or None,
     ntfy_server=str(app.node.try_get_context("ntfyServer") or "https://ntfy.sh"),
+    env=cdk.Environment(
+        account=os.environ.get("CDK_DEFAULT_ACCOUNT"),
+        region=os.environ.get("CDK_DEFAULT_REGION", "us-east-1"),
+    ),
+)
+
+# Deployed once, by hand (`make deploy-github-role`): the role GitHub Actions
+# assumes to redeploy JobMonitorStack on every push. See .github/workflows/deploy.yml.
+GitHubDeployStack(
+    app,
+    "JobMonitorGitHubDeploy",
+    description="Lets GitHub Actions (OIDC, one repo and branch) deploy JobMonitorStack",
+    repository=str(app.node.try_get_context("githubRepo") or "AmarDhillon05/jobs"),
+    branch=str(app.node.try_get_context("githubBranch") or "master"),
+    oidc_provider_arn=app.node.try_get_context("githubOidcProviderArn") or None,
     env=cdk.Environment(
         account=os.environ.get("CDK_DEFAULT_ACCOUNT"),
         region=os.environ.get("CDK_DEFAULT_REGION", "us-east-1"),

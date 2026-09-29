@@ -128,6 +128,11 @@ infra-synth: ## cdk synth into infrastructure/cdk.out
 # from your AWS credentials.
 DEPLOY_ENV := env -u CDK_DEFAULT_ACCOUNT -u CDK_DEFAULT_REGION $(CDK_ENV)
 DEPLOY_CONTEXT = -c emailFrom=$(EMAIL_FROM) -c emailTo=$(EMAIL_TO) -c ntfyTopic=$(NTFY_TOPIC)
+#: Extra `cdk deploy` flags. CI passes `--require-approval never`: nobody is
+#: there to answer the prompt, and the change was reviewed as a commit.
+CDK_DEPLOY_FLAGS ?=
+GITHUB_REPO ?= AmarDhillon05/jobs
+GITHUB_BRANCH ?= master
 
 .PHONY: deploy-check
 deploy-check:
@@ -145,13 +150,23 @@ deploy-diff: deploy-check ## Show what `make deploy` would create or change
 
 .PHONY: deploy
 deploy: deploy-check ## Deploy to YOUR account: make deploy EMAIL_FROM=.. EMAIL_TO=.. NTFY_TOPIC=..
-	cd $(REPO_ROOT)/infrastructure && $(DEPLOY_ENV) $(CDK) deploy JobMonitorStack $(DEPLOY_CONTEXT) \
+	cd $(REPO_ROOT)/infrastructure && $(DEPLOY_ENV) $(CDK) deploy JobMonitorStack $(DEPLOY_CONTEXT) $(CDK_DEPLOY_FLAGS) \
 	  || (echo ""; echo "Deploy failed. The underlying AWS errors, from CloudTrail:"; echo ""; \
 	      $(VENV)/bin/python $(REPO_ROOT)/scripts/diagnose_deploy.py; exit 1)
 
 .PHONY: deploy-diagnose
 deploy-diagnose: ## Show the real AWS errors behind a failed deploy (CloudTrail, read-only)
 	$(VENV)/bin/python $(REPO_ROOT)/scripts/diagnose_deploy.py --hours $(or $(HOURS),2)
+
+.PHONY: deploy-github-role
+deploy-github-role: ## Once: the OIDC role GitHub Actions uses to auto-deploy (GITHUB_REPO=owner/name)
+	cd $(REPO_ROOT)/infrastructure && $(DEPLOY_ENV) $(CDK) deploy JobMonitorGitHubDeploy \
+	  -c githubRepo=$(GITHUB_REPO) -c githubBranch=$(GITHUB_BRANCH) \
+	  $(if $(GITHUB_OIDC_PROVIDER_ARN),-c githubOidcProviderArn=$(GITHUB_OIDC_PROVIDER_ARN))
+
+.PHONY: setup-ci
+setup-ci: setup-python ## CI: python + the CDK CLI only (no client toolchains)
+	cd $(REPO_ROOT)/tools && npm ci --no-fund --no-audit
 
 .PHONY: destroy
 destroy: ## Remove the deployed stack (the jobs table is retained; see README)
