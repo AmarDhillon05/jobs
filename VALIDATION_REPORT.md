@@ -69,10 +69,10 @@ credentials.
 
 | Requirement | Status | Evidence |
 | --- | --- | --- |
-| ~100-150 companies monitored | deviation (user-directed) | 183 were researched and validated; on 2026-09-28 the user cut polling to the 91 at or above an AWS SDE internship for resume value (92 moved to `excluded` in `data/company_universe.json`, restorable) + 2 blocked; `test_company_model.py::test_monitors_a_focused_but_substantial_set_of_companies` asserts 50-200 |
+| ~100-150 companies monitored | deviation (user-directed) | 183 were researched and validated; on 2026-09-28 the user cut polling to the 91 at or above an AWS SDE internship for resume value (92 moved to `excluded` in `data/company_universe.json`, restorable); Bloomberg unblocked 2026-10-01 -> 92 polled + 1 blocked; `test_company_model.py::test_monitors_a_focused_but_substantial_set_of_companies` asserts 50-200 |
 | 10-minute polling interval | implemented, tested | `poll_interval_minutes=10`; the EventBridge rule's `rate(10 minutes)` is asserted in `infrastructure/tests/test_stack.py` |
 | Detect within one interval | implemented, tested | `first_seen` set on first sighting; §30 Scenario 1 in `tests/e2e` and `tests/aws_local` |
-| Prefer official company / ATS endpoints | passed | 83/91 read a first-party source; 8 use the community feed, each with its reason in `COMPANY_COVERAGE.md` and BLK-011 |
+| Prefer official company / ATS endpoints | passed | 84/92 read a first-party source; 8 use the community feed, each with its reason in `COMPANY_COVERAGE.md` and BLK-011 |
 | Normalize into one schema | tested | `Job` / `JobRecord`; `test_job_model.py`, and the contract suite asserts required fields per provider |
 | Filter for relevant technical internships | tested | `tests/unit/test_filtering.py` + a 200-title real-world corpus |
 | Persist discovered jobs | tested | `test_repository_contract.py`, run against in-memory *and* DynamoDB under Moto |
@@ -103,8 +103,8 @@ credentials.
 | Extract unique names, de-duplicate aliases | tested | `tests/unit/test_discovery.py` — exact-normalized matching plus an explicit alias table |
 | Identify official careers pages | passed | every registry entry has `careers_url` |
 | Identify the ATS/provider | passed | provider detected from observed apply URLs; `test_discovery.py` |
-| Prefer official endpoints over the feeds | passed | 8/91 read the community feed, because their own sites need tokens, block plain requests, or expose nothing (BLK-011) |
-| Reach 100-150 worthwhile companies | deviation (user-directed) | 183 researched; 91 polled after the user's resume-value cut |
+| Prefer official endpoints over the feeds | passed | 8/92 read the community feed, because their own sites need tokens, block plain requests, or expose nothing (BLK-011) |
+| Reach 100-150 worthwhile companies | deviation (user-directed) | 183 researched; 92 polled after the user's resume-value cut (91) and Bloomberg's new adapter |
 | `companies.json` with the documented schema | passed | `Company.from_item` round-trips every field; `make verify` regenerates the file identically |
 | Support statuses | passed | `supported` 139, `partial` 11 — each a checkable claim, defined in `COMPANY_COVERAGE.md` |
 
@@ -118,7 +118,7 @@ credentials.
 | No unauthorized cloud accounts | passed | none created |
 | Standard provider abstraction | tested | `JobSource` with `fetch_jobs` / `normalize` / `healthcheck` |
 | Normalized `Job` model as specified | tested | `test_job_model.py` |
-| Reusable adapters, not 183 scrapers | passed | 11 ATS adapters + 5 single-employer adapters + the fallback cover all 91 |
+| Reusable adapters, not 183 scrapers | passed | 12 ATS adapters (incl. Avature) + 5 single-employer adapters + the fallback cover all 92 |
 | Required fields validated | tested | contract suite, per provider: company, title, URL, stable id, location, date, description, source |
 | URLs syntactically valid | tested | contract suite asserts absolute `https://` |
 | Stable provider ids | tested | contract suite: identical fetches produce identical ids and hashes |

@@ -185,6 +185,12 @@
       "jobs": 214,
       "error": null
     },
+    "Bloomberg": {
+      "status": "supported",
+      "validated_on": "2026-10-01",
+      "jobs": 0,
+      "error": null
+    },
     "Blue Origin": {
       "status": "supported",
       "validated_on": "2026-09-27",

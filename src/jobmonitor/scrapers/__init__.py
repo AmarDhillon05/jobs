@@ -20,6 +20,7 @@ provider             endpoint                                registry
 ``oracle_hcm``       {tenant}.fa.oraclecloud.com (Fusion HCM) 3
 ``jibe``             {site}/api/jobs (iCIMS Jibe)            2
 ``talentbrew``       {site}/search-jobs/results (Radancy)     1
+``avature``          {site}/{portal}/sitemap.xml (Avature)    1
 ===================  ======================================  ==========
 
 Custom scrapers:
@@ -40,6 +41,7 @@ Custom scrapers:
 from jobmonitor.scrapers.amazon import AmazonJobsSource
 from jobmonitor.scrapers.ashby import AshbySource
 from jobmonitor.scrapers.atlassian import AtlassianSource
+from jobmonitor.scrapers.avature import AvatureSource
 from jobmonitor.scrapers.base import (
     FetchResult,
     JobSource,
@@ -80,6 +82,7 @@ ATS_PROVIDERS: tuple[str, ...] = (
     "oracle_hcm",
     "jibe",
     "talentbrew",
+    "avature",
 )
 #: Company/site-specific adapters.
 CUSTOM_PROVIDERS: tuple[str, ...] = (
@@ -102,6 +105,7 @@ __all__ = [
     "AmazonJobsSource",
     "AshbySource",
     "AtlassianSource",
+    "AvatureSource",
     "EightfoldSource",
     "FetchResult",
     "FixtureSource",

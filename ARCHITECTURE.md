@@ -187,7 +187,7 @@ Three different questions, deliberately three different functions:
 
 ## 4. Scraping
 
-Adapters cover 91 polled companies (183 before the user's 2026-09-28 cut to
+Adapters cover 92 polled companies (183 before the user's 2026-09-28 cut to
 employers at or above an AWS SDE internship). Eleven are reusable ATS adapters;
 five serve one very large employer each, whose own site is the only first-party
 source. Adding a company to an existing adapter is a registry entry, not code.
@@ -202,6 +202,7 @@ source. Adding a company to an existing adapter is a registry entry, not code.
 | `smartrecruiters` | 1 | `GET`, paginated offset/limit against `totalFound` |
 | `oracle_hcm` | 1 | `GET` Fusion HCM REST, 200/page — Uber |
 | `jibe` | 1 | `GET` iCIMS Jibe `/api/jobs`, 10/page — Susquehanna International Group |
+| `avature` | 1 | `GET` the portal's published sitemap (one request), then a paced detail page per internship-titled posting — Bloomberg |
 | `talentbrew` | 0 (ready; its companies were cut) | `GET` Radancy search XHR returning an HTML fragment (was Arm) |
 | `rippling` | 1 | `GET` board array |
 | `amazon` | 1 | `GET` amazon.jobs `search.json`, 100/page |

@@ -142,14 +142,15 @@ class TestPagination:
             f"skipped {result.malformed}"
         )
 
-    def test_non_paginating_providers_make_exactly_one_request(
+    def test_non_paginating_providers_make_exactly_the_declared_requests(
         self, provider_case: ProviderCase
     ) -> None:
+        """One listing request - plus, for Avature, one detail page per internship."""
         if provider_case.paginates:
             pytest.skip(f"{provider_case.provider} paginates")
         transport = provider_case.transport()
         result = provider_case.source(transport).fetch()
-        assert transport.call_count == 1
+        assert transport.call_count == provider_case.expected_requests
         assert result.pages == 1
 
 

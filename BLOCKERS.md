@@ -378,12 +378,12 @@ Per PRD §18.5, every unresolved blocker was revisited before final verification
 
   | Company | What stops it | Outcome |
   | --- | --- | --- |
-  | Meta | GraphQL needs page-issued tokens | Simplify fallback, `partial` |
+  | Meta | GraphQL needs page-issued tokens; robots.txt forbids automated collection without written permission (rechecked 2026-10-01) | Simplify fallback, `partial` |
   | ByteDance / TikTok | API needs signed requests | Simplify fallback, `partial` |
   | Tesla | 403 to a plain request (bot protection) | Simplify fallback, `partial` |
   | Marqeta | referral-only board, now gone; page loads jobs client-side | Simplify fallback, `partial` |
   | Postman | left Greenhouse; page loads jobs client-side | Simplify fallback, `partial` |
-  | Bloomberg | 403 (bot protection); absent from both seed feeds | `blocked`, not polled |
+  | Bloomberg | ~~403 (bot protection); absent from both seed feeds~~ **Resolved 2026-10-01:** the board is hosted on Avature, whose robots.txt allows `/careers` and publishes a sitemap; new `avature` adapter | `supported`, polled |
   | LinkedIn | roles behind sign-in; absent from both seed feeds | `blocked`, not polled |
 
 - **Attempts (Postman, as the worst case - three materially different):** slug

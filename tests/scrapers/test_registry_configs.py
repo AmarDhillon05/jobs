@@ -59,7 +59,7 @@ SINGLE_COMPANY_PROVIDERS = frozenset({"amazon", "google", "goldman", "ibm", "atl
 
 #: Providers whose tenant *is* the host (the host comes from the company's own
 #: config), so identity is proven by the request going to that host.
-HOST_IS_IDENTITY_PROVIDERS = frozenset({"eightfold", "oracle_hcm", "jibe", "talentbrew"})
+HOST_IS_IDENTITY_PROVIDERS = frozenset({"eightfold", "oracle_hcm", "jibe", "talentbrew", "avature"})
 
 #: Config keys that tune *how* a board is read, never *which* board it is.
 NON_IDENTIFYING_KEYS = frozenset(

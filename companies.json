@@ -218,17 +218,21 @@
   },
   {
     "company": "Bloomberg",
-    "careers_url": "https://www.bloomberg.com/company/careers/",
+    "careers_url": "https://bloomberg.avature.net/careers",
     "industry": "Financial Technology",
     "priority": "high",
-    "provider": "custom",
-    "provider_config": {},
+    "provider": "avature",
+    "provider_config": {
+      "host": "bloomberg.avature.net",
+      "portal": "careers"
+    },
     "source_discovered_from": [
       "curated",
       "live"
     ],
-    "support_status": "blocked",
-    "notes": "bloomberg.com answers a plain request with 403 (bot protection), and Bloomberg is absent from both seed feeds, so no secondary source exists either. Not polled."
+    "support_status": "supported",
+    "notes": "bloomberg.com blocks automated requests (403), but the job board is hosted on Avature (bloomberg.avature.net), whose robots.txt allows /careers and publishes a sitemap of every open job. One sitemap request per poll, then a paced detail page per internship (verified live 2026-10-01: 381 open postings, no internships open that day).",
+    "last_validated": "2026-10-01"
   },
   {
     "company": "Blue Origin",

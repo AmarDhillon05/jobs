@@ -15,7 +15,13 @@ from typing import Any
 
 import pytest
 from tests.conftest import make_company
-from tests.support.http import FakeTransport, RecordingSleeper, ScriptedResponse, load_fixture
+from tests.support.http import (
+    FakeTransport,
+    RecordingSleeper,
+    ScriptedResponse,
+    load_fixture,
+    load_fixture_bytes,
+)
 
 from jobmonitor.config import HttpSettings
 from jobmonitor.http import HttpClient, HttpRequest
@@ -280,6 +286,26 @@ def talentbrew_transport() -> FakeTransport:
     )
 
 
+AVATURE_DETAILS = {
+    "45001": "detail_intern_new_york.html",
+    "45002": "detail_intern_london.html",
+    # 45003 (the co-op) answers 404: one unreadable posting, not a broken board.
+}
+
+
+def avature_transport() -> FakeTransport:
+    def route(request: HttpRequest) -> ScriptedResponse:
+        if request.url.endswith("/careers/sitemap.xml"):
+            return ScriptedResponse.text(load_fixture_bytes("avature", "sitemap.xml").decode())
+        job_id = request.url.rstrip("/").rsplit("/", 1)[-1]
+        name = AVATURE_DETAILS.get(job_id)
+        if name is None:
+            return ScriptedResponse.error(404)
+        return ScriptedResponse.text(load_fixture_bytes("avature", name).decode())
+
+    return FakeTransport(router=route)
+
+
 def atlassian_transport() -> FakeTransport:
     return FakeTransport([ScriptedResponse.json(load_fixture("atlassian", "listings.json"))])
 
@@ -524,6 +550,22 @@ PROVIDER_CASES: tuple[ProviderCase, ...] = (
         declared_total=7,
         must_contain_titles=("Software Developer Intern",),
         last_page_marker_title="Performance Analysis Intern",
+        dated=False,
+    ),
+    ProviderCase(
+        provider="avature",
+        config={"host": "bloomberg.avature.net", "detail_delay_seconds": 0},
+        transport=avature_transport,
+        # 13 sitemap postings; 3 are internships by slug ("Internal..." and
+        # "International..." are not). 2 detail pages parse, the co-op's is 404.
+        expected_jobs=2,
+        expected_malformed=1,
+        empty_response=ScriptedResponse.text(
+            '<?xml version="1.0"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+            "</urlset>"
+        ),
+        expected_requests=4,
+        must_contain_titles=("2027 Software Engineering Intern - New York",),
         dated=False,
     ),
     ProviderCase(
