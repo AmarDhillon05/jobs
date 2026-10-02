@@ -57,11 +57,15 @@ class JobRepository(ABC):
         """Records that still need an alert sent."""
 
     @abstractmethod
-    def mark_notified(self, job_ids: Iterable[str], *, now: datetime | None = None) -> int:
+    def mark_notified(
+        self, job_ids: Iterable[str], *, now: datetime | None = None, baseline: bool = False
+    ) -> int:
         """Flag records as alerted. Returns how many were changed.
 
         Must be safe to call twice: the second call changes nothing. This is the
         backstop against a duplicate notification when a queue redelivers.
+        ``baseline`` marks them as stored silently (the first poll of a new event
+        source), which also keeps them out of the hourly digest.
         """
 
     @abstractmethod
@@ -93,6 +97,13 @@ class HealthRepository(ABC):
 
     @abstractmethod
     def for_company(self, company: str) -> ScraperHealth | None: ...
+
+    def get(self, key: str) -> ScraperHealth | None:
+        """The latest row for one ``company::provider`` key, if any.
+
+        Generic fallback over :meth:`latest`; stores with keyed lookups override it.
+        """
+        return next((health for health in self.latest() if health.key == key), None)
 
     def failures(self) -> list[ScraperHealth]:
         return [health for health in self.latest() if not health.ok]

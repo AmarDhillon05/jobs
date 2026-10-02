@@ -224,19 +224,21 @@ class DynamoJobRepository(JobRepository):
             if exc.response.get("Error", {}).get("Code") != "ConditionalCheckFailedException":
                 raise
 
-    def mark_notified(self, job_ids: Iterable[str], *, now: datetime | None = None) -> int:
+    def mark_notified(
+        self, job_ids: Iterable[str], *, now: datetime | None = None, baseline: bool = False
+    ) -> int:
         from botocore.exceptions import ClientError
 
         timestamp = (now or utcnow()).isoformat()
+        set_clause = "SET notification_sent = :true, notified_at = :at"
+        if baseline:
+            set_clause += ", baseline = :true"
         changed = 0
         for job_id in job_ids:
             try:
                 self._table.update_item(
                     Key={"job_id": job_id},
-                    UpdateExpression=(
-                        "SET notification_sent = :true, notified_at = :at "
-                        "REMOVE notification_pending"
-                    ),
+                    UpdateExpression=f"{set_clause} REMOVE notification_pending",
                     # Both guards matter: attribute_exists stops us resurrecting a
                     # deleted job, and notification_sent = :false makes a
                     # redelivered queue message a no-op instead of a second alert.
@@ -331,6 +333,10 @@ class DynamoHealthRepository(HealthRepository):
             if health.company.casefold() == folded:
                 return health
         return None
+
+    def get(self, key: str) -> ScraperHealth | None:
+        item = self._table.get_item(Key={"scraper_key": key}).get("Item")
+        return ScraperHealth.from_dict(item) if item else None
 
 
 class DynamoDeviceRepository(DeviceRepository):

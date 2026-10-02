@@ -74,7 +74,9 @@ class InMemoryJobRepository(JobRepository):
         pending.sort(key=lambda record: (record.first_seen, record.job_id))
         return pending[: max(0, limit)]
 
-    def mark_notified(self, job_ids: Iterable[str], *, now: datetime | None = None) -> int:
+    def mark_notified(
+        self, job_ids: Iterable[str], *, now: datetime | None = None, baseline: bool = False
+    ) -> int:
         timestamp = now or utcnow()
         changed = 0
         with self._lock:
@@ -83,7 +85,7 @@ class InMemoryJobRepository(JobRepository):
                 # Already-notified records are left alone: that is what makes a
                 # redelivered queue message harmless.
                 if record is not None and not record.notification_sent:
-                    self._records[job_id] = record.marked_notified(timestamp)
+                    self._records[job_id] = record.marked_notified(timestamp, baseline=baseline)
                     changed += 1
         return changed
 

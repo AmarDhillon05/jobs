@@ -40,6 +40,7 @@ from jobmonitor.discovery import (  # noqa: E402
 from jobmonitor.models.company import (  # noqa: E402
     Company,
     CompanyRegistry,
+    EventSource,
     Priority,
     SupportStatus,
 )
@@ -108,6 +109,7 @@ def resolve(
     """Turn one editorial entry into a :class:`Company`, or explain why not."""
     name = entry["company"]
     aliases = tuple(entry.get("aliases") or ())
+    event_sources = tuple(EventSource.from_dict(e) for e in entry.get("event_sources") or ())
 
     # Explicitly pinned entries (the research backlog) bypass resolution.
     if entry.get("provider"):
@@ -123,6 +125,7 @@ def resolve(
                 support_status=SupportStatus(entry.get("support_status", "research-needed")),
                 notes=entry.get("notes", ""),
                 aliases=aliases,
+                event_sources=event_sources,
             ),
             "pinned",
         )
@@ -163,6 +166,7 @@ def resolve(
                 + (f". {entry['notes']}" if entry.get("notes") else "")
             ),
             aliases=aliases,
+            event_sources=event_sources,
         ),
         "resolved",
     )

@@ -14,7 +14,7 @@ from __future__ import annotations
 import json
 import os
 from collections.abc import Iterable, Iterator, Mapping, Sequence
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from enum import StrEnum
 from pathlib import Path
 from typing import Any
@@ -47,6 +47,63 @@ class RegistryError(ValueError):
     """Raised when companies.json cannot be interpreted."""
 
 
+class EventCategory(StrEnum):
+    """What kind of events a source lists. Sets the alert's label and urgency."""
+
+    #: Info sessions, coffee chats, insight days, fellowships, student programs.
+    RECRUITING = "recruiting"
+    #: Conferences, meetups, webinars, customer events.
+    INDUSTRY = "industry"
+
+
+@dataclass(frozen=True, slots=True)
+class EventSource:
+    """One extra place a company publishes events, polled alongside its job board."""
+
+    provider: str
+    provider_config: Mapping[str, Any] = field(default_factory=dict)
+    category: EventCategory = EventCategory.INDUSTRY
+    #: Needed only when a company has two sources with the same provider: it
+    #: tells their health rows apart (``Jane Street::event_page:campus``).
+    name: str | None = None
+
+    @property
+    def label(self) -> str:
+        return f"{self.provider}:{self.name}" if self.name else self.provider
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.category, EventCategory):
+            try:
+                object.__setattr__(self, "category", EventCategory(str(self.category)))
+            except ValueError as exc:
+                raise RegistryError(f"unknown event category {self.category!r}") from exc
+        if not self.provider.strip():
+            raise RegistryError("event source provider must not be empty")
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> EventSource:
+        try:
+            provider = str(data["provider"])
+        except KeyError as exc:
+            raise RegistryError(f"event source missing required key {exc}") from exc
+        return cls(
+            provider=provider,
+            provider_config=dict(data.get("provider_config") or {}),
+            category=EventCategory(str(data.get("category", EventCategory.INDUSTRY.value))),
+            name=data.get("name") or None,
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        out: dict[str, Any] = {
+            "provider": self.provider,
+            "provider_config": dict(self.provider_config),
+            "category": self.category.value,
+        }
+        if self.name:
+            out["name"] = self.name
+        return out
+
+
 @dataclass(frozen=True, slots=True)
 class Company:
     company: str
@@ -61,6 +118,14 @@ class Company:
     aliases: tuple[str, ...] = ()
     #: ISO-8601 date of the last successful live probe, when one has happened.
     last_validated: str | None = None
+    #: Extra sources of events, polled alongside the job board (see :meth:`sources`).
+    event_sources: tuple[EventSource, ...] = ()
+    #: Set only on the per-source copies :meth:`sources` makes: the event source's
+    #: category. ``None`` means this is the company's job board.
+    event_category: EventCategory | None = None
+    #: Set only on per-source copies: the event source's :attr:`EventSource.label`,
+    #: which names its health row.
+    source_label: str | None = None
 
     def __post_init__(self) -> None:
         # Coerce the string enums so direct construction with plain strings
@@ -85,15 +150,51 @@ class Company:
             raise RegistryError(
                 f"{self.company}: careers_url must be absolute http(s), got {self.careers_url!r}"
             )
+        labels = [self.provider, *(source.label for source in self.event_sources)]
+        if len(set(labels)) != len(labels):
+            raise RegistryError(
+                f"{self.company}: two sources share the label in {labels}; "
+                "give the event sources distinct names"
+            )
 
     @property
     def key(self) -> str:
         """Stable identifier used in health records and log lines."""
-        return f"{self.company}::{self.provider}"
+        return f"{self.company}::{self.health_provider}"
+
+    @property
+    def health_provider(self) -> str:
+        """The provider column of this source's health row."""
+        return self.source_label or self.provider
 
     @property
     def is_pollable(self) -> bool:
         return self.support_status in POLLABLE_STATUSES
+
+    @property
+    def is_event_source(self) -> bool:
+        return self.event_category is not None
+
+    def sources(self) -> tuple[Company, ...]:
+        """The job board, then one copy per event source.
+
+        Each copy keeps the company's name (so an event reads "Jane Street") and
+        swaps in the event source's provider and config, so it goes through the
+        same per-company pipeline as the job board: its own fetch, retries,
+        failure isolation and health row (``company::provider``).
+        """
+        copies = tuple(
+            replace(
+                self,
+                provider=source.provider,
+                provider_config=dict(source.provider_config),
+                event_sources=(),
+                event_category=source.category,
+                source_label=source.label,
+            )
+            for source in self.event_sources
+        )
+        return (self, *copies)
 
     # ------------------------------------------------------------ (de)serial
     @classmethod
@@ -129,6 +230,13 @@ class Company:
             notes=str(data.get("notes", "")),
             aliases=tuple(data.get("aliases") or ()),
             last_validated=data.get("last_validated") or None,
+            event_sources=tuple(
+                EventSource.from_dict(entry) for entry in data.get("event_sources") or ()
+            ),
+            event_category=(
+                EventCategory(str(data["event_category"])) if data.get("event_category") else None
+            ),
+            source_label=data.get("source_label") or None,
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -147,6 +255,13 @@ class Company:
             out["aliases"] = list(self.aliases)
         if self.last_validated:
             out["last_validated"] = self.last_validated
+        if self.event_sources:
+            out["event_sources"] = [source.to_dict() for source in self.event_sources]
+        if self.event_category is not None:
+            # Only per-source copies carry this; it must survive the SQS hop.
+            out["event_category"] = self.event_category.value
+        if self.source_label:
+            out["source_label"] = self.source_label
         return out
 
 
@@ -263,6 +378,8 @@ __all__: Sequence[str] = (
     "POLLABLE_STATUSES",
     "Company",
     "CompanyRegistry",
+    "EventCategory",
+    "EventSource",
     "Priority",
     "RegistryError",
     "SupportStatus",

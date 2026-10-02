@@ -221,6 +221,22 @@ class TestNotificationState:
         assert record is not None
         assert record.notification_sent is True
 
+    def test_baseline_marking_is_stored_and_leaves_the_pending_set(
+        self, repository: JobRepository
+    ) -> None:
+        # The quiet first poll of a new event source.
+        repository.upsert(make_job("1"), now=T0)
+        repository.upsert(make_job("2"), now=T0)
+        assert repository.mark_notified([job_id(make_job("1"))], now=T0, baseline=True) == 1
+        quiet = repository.get(job_id(make_job("1")))
+        normal = repository.get(job_id(make_job("2")))
+        assert quiet is not None and quiet.notification_sent and quiet.baseline
+        assert normal is not None and not normal.baseline
+        assert [r.external_id for r in repository.pending_notifications()] == ["2"]
+        repository.upsert(make_job("1"), now=T1)
+        again = repository.get(job_id(make_job("1")))
+        assert again is not None and again.baseline  # survives later sightings
+
     def test_marking_an_unknown_id_is_harmless(self, repository: JobRepository) -> None:
         assert repository.mark_notified(["ghost:0"], now=T1) == 0
 
@@ -368,6 +384,25 @@ class TestHealthRepository:
             "HTTPError",
             "403",
         )
+
+    def test_get_by_key_and_history_fields_round_trip(
+        self, health_repository: HealthRepository
+    ) -> None:
+        health_repository.record(self.health(provider="greenhouse"))
+        health_repository.record(
+            self.health(
+                provider="event_page:campus",
+                status=ScraperStatus.FAILED,
+                ever_succeeded=True,
+                consecutive_failures=4,
+            )
+        )
+        stored = health_repository.get("TestCo::event_page:campus")
+        assert stored is not None
+        assert (stored.ever_succeeded, stored.consecutive_failures) == (True, 4)
+        board = health_repository.get("TestCo::greenhouse")
+        assert board is not None and board.ok
+        assert health_repository.get("TestCo::luma") is None
 
     def test_unknown_company_returns_none(self, health_repository: HealthRepository) -> None:
         assert health_repository.for_company("Nobody") is None

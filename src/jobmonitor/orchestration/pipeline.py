@@ -22,16 +22,17 @@ from __future__ import annotations
 import logging
 import time
 from collections.abc import Iterable, Sequence
-from dataclasses import dataclass, field
-from datetime import datetime
+from dataclasses import dataclass, field, replace
+from datetime import datetime, timedelta
 
 from jobmonitor.config import Settings
 from jobmonitor.filtering import JobFilter
 from jobmonitor.filtering.location import split_by_location
 from jobmonitor.filtering.recency import split_by_recency
 from jobmonitor.http import HttpClient
-from jobmonitor.models.company import Company
+from jobmonitor.models.company import Company, EventCategory
 from jobmonitor.models.health import PollSummary, ScraperHealth, ScraperStatus, utcnow
+from jobmonitor.models.job import EVENT_TYPE, INDUSTRY_EVENT_TYPE, Job, is_event_kind
 from jobmonitor.models.record import JobRecord
 from jobmonitor.notifications.notifier import NotificationOutcome, Notifier
 from jobmonitor.scrapers.base import JobSource, build_source, safe_fetch
@@ -49,6 +50,9 @@ class CompanyOutcome:
     new_records: list[JobRecord] = field(default_factory=list)
     updated_records: list[JobRecord] = field(default_factory=list)
     seen_records: list[JobRecord] = field(default_factory=list)
+    #: True for the first successful poll of a new event source: everything it
+    #: found was already listed before monitoring began, so it is stored silently.
+    quiet: bool = False
 
     @property
     def ok(self) -> bool:
@@ -56,6 +60,8 @@ class CompanyOutcome:
 
     @property
     def notifiable(self) -> list[JobRecord]:
+        if self.quiet:
+            return []
         return [record for record in self.new_records if not record.notification_sent]
 
 
@@ -111,11 +117,15 @@ def process_company(
     client: HttpClient | None = None,
     source: JobSource | None = None,
     now: datetime | None = None,
+    quiet: bool = False,
 ) -> CompanyOutcome:
     """Fetch, filter, fingerprint and persist one company's postings.
 
     Never raises. Whatever goes wrong becomes a health record, because a polling
     run covering 150 companies must not be abortable by any one of them.
+
+    ``quiet`` stores new records already marked as alerted (``baseline``), so
+    they reach neither push nor the digest: the first poll of a new event source.
     """
     timestamp = now or utcnow()
     started = time.perf_counter()
@@ -147,18 +157,25 @@ def process_company(
         logger.warning("%s: scraper %s (%s)", company.company, health.status.value, health.error)
         return outcome
 
-    # Only postings from the last day are ever seen (FilterSettings.max_posting_age).
-    # Applied here, once, so every adapter obeys the same rule.
-    window = split_by_recency(
-        result.jobs,
-        now=timestamp,
-        max_age=settings.filters.max_posting_age,
-        keep_undated=settings.filters.keep_undated,
-    )
+    jobs = result.jobs
+    if company.event_category is not None:
+        # Everything an event source lists is an event; its category decides which
+        # label. An adapter that already knows better (a program) keeps its tag.
+        jobs = [_as_event(job, company.event_category) for job in jobs]
+        recent = jobs  # an event's date is when it happens, not when it was posted
+    else:
+        # Only postings from the last day are ever seen (FilterSettings.max_posting_age).
+        # Applied here, once, so every adapter obeys the same rule.
+        recent = split_by_recency(
+            jobs,
+            now=timestamp,
+            max_age=settings.filters.max_posting_age,
+            keep_undated=settings.filters.keep_undated,
+        ).recent
     # ... and only postings in the US (FilterSettings.us_only). Anything else is
     # never scored, stored or alerted on.
     placed = split_by_location(
-        window.recent,
+        recent,
         us_only=settings.filters.us_only,
         keep_unknown=settings.filters.keep_unknown_locations,
     )
@@ -193,6 +210,18 @@ def process_company(
         elif upsert.is_updated:
             outcome.updated_records.append(upsert.record)
 
+    if quiet and outcome.new_records:
+        repository.mark_notified(
+            [record.job_id for record in outcome.new_records], now=timestamp, baseline=True
+        )
+        outcome.quiet = True
+        logger.info(
+            "%s: first poll of %s; stored %d existing event(s) without alerting",
+            company.company,
+            company.provider,
+            len(outcome.new_records),
+        )
+
     outcome.health = health.with_counts(
         relevant_jobs=len(relevant),
         new_jobs=len(outcome.new_records),
@@ -205,6 +234,13 @@ def process_company(
     return outcome
 
 
+def _as_event(job: Job, category: EventCategory) -> Job:
+    if is_event_kind(job.employment_type):
+        return job
+    label = EVENT_TYPE if category is EventCategory.RECRUITING else INDUSTRY_EVENT_TYPE
+    return job.with_fields(employment_type=label)
+
+
 class StorageFailure(RuntimeError):
     """Persistence failed for a company.
 
@@ -214,8 +250,19 @@ class StorageFailure(RuntimeError):
     """
 
 
+#: An event source failing this many polls in a row is polled at most once per
+#: :data:`EVENT_SOURCE_COOLDOWN` until it recovers, instead of every poll.
+EVENT_SOURCE_FAILURE_LIMIT = 3
+EVENT_SOURCE_COOLDOWN = timedelta(hours=1)
+
+
 class PollRunner:
-    """Runs a set of companies through the pipeline and sends the alerts."""
+    """Runs a set of companies through the pipeline and sends the alerts.
+
+    Each company is expanded into its sources (:meth:`Company.sources`): the job
+    board, then every event source. Each source is processed on its own, so a
+    broken events page never affects the job board, and vice versa.
+    """
 
     def __init__(
         self,
@@ -227,6 +274,7 @@ class PollRunner:
         job_filter: JobFilter | None = None,
         client: HttpClient | None = None,
         source_factory: object | None = None,
+        quiet_first_event_poll: bool = True,
     ) -> None:
         self.settings = settings
         self.repository = repository
@@ -237,6 +285,26 @@ class PollRunner:
         #: Optional ``(company) -> JobSource`` hook, used by tests and the local
         #: runner to substitute deterministic sources for real HTTP.
         self.source_factory = source_factory
+        #: Store the first successful poll of a new event source silently. Needs a
+        #: health repository to know what "new" means; without one, nothing is quiet.
+        self.quiet_first_event_poll = quiet_first_event_poll
+
+    def _previous_health(self, target: Company) -> ScraperHealth | None:
+        if self.health_repository is None or not target.is_event_source:
+            return None
+        try:
+            return self.health_repository.get(target.key)
+        except Exception:  # health is diagnostics: never let it stop a poll
+            logger.exception("%s: could not read previous health", target.key)
+            return None
+
+    @staticmethod
+    def _cooling_down(previous: ScraperHealth | None, now: datetime) -> bool:
+        return bool(
+            previous
+            and previous.consecutive_failures >= EVENT_SOURCE_FAILURE_LIMIT
+            and now - previous.timestamp < EVENT_SOURCE_COOLDOWN
+        )
 
     def run(
         self,
@@ -251,24 +319,42 @@ class PollRunner:
         outcome = PollOutcome(poll_id=poll_id)
 
         for company in companies:
-            source = None
-            if self.source_factory is not None:
-                source = self.source_factory(company)  # type: ignore[operator]
-                if source is None:
+            for target in company.sources():
+                previous = self._previous_health(target)
+                if target.is_event_source and self._cooling_down(previous, timestamp):
+                    logger.info(
+                        "%s: skipped this poll after %d failures in a row; retrying hourly",
+                        target.key,
+                        previous.consecutive_failures if previous else 0,
+                    )
                     continue
-            try:
+                source = None
+                if self.source_factory is not None:
+                    source = self.source_factory(target)  # type: ignore[operator]
+                    if source is None:
+                        continue
+                quiet = (
+                    target.is_event_source
+                    and self.quiet_first_event_poll
+                    and self.health_repository is not None
+                    and not (previous and (previous.ever_succeeded or previous.ok))
+                )
                 company_outcome = process_company(
-                    company,
+                    target,
                     settings=self.settings,
                     repository=self.repository,
                     job_filter=self.job_filter,
                     client=self.client,
                     source=source,
                     now=timestamp,
+                    quiet=quiet,
                 )
-            except StorageFailure:
-                raise
-            outcome.outcomes.append(company_outcome)
+                if target.is_event_source:
+                    # Stamped with the poll's time, which the cool-down compares against.
+                    company_outcome.health = replace(
+                        company_outcome.health, provider=target.health_provider, timestamp=timestamp
+                    ).carried_from(previous)
+                outcome.outcomes.append(company_outcome)
 
         if self.health_repository is not None:
             self.health_repository.record_many(outcome.health_records)

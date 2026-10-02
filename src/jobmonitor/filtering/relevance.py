@@ -28,7 +28,7 @@ from typing import Final
 
 from jobmonitor.config import FilterSettings
 from jobmonitor.models.company import Company, Priority
-from jobmonitor.models.job import Job
+from jobmonitor.models.job import Job, posting_kind
 
 # --------------------------------------------------------------------- signals
 
@@ -458,6 +458,14 @@ def score_job(
 # ---------------------------------------------------------------------- filter
 
 
+#: Fixed scores for postings that are not jobs (see :meth:`JobFilter.evaluate`).
+EVENT_SCORES: Final[Mapping[str, int]] = {
+    "event": 80,
+    "program": 80,
+    "industry_event": 60,
+}
+
+
 @dataclass(frozen=True, slots=True)
 class Decision:
     """What the pipeline should do with one posting."""
@@ -490,6 +498,9 @@ class JobFilter:
         self.model = model
 
     def evaluate(self, job: Job, company: Company | None = None) -> Decision:
+        kind = posting_kind(job.employment_type)
+        if kind != "internship":
+            return self._evaluate_event(job, kind, company)
         relevance = score_job(job, company, model=self.model)
         keep = relevance.score >= self.settings.keep_threshold
         notify = keep and relevance.score >= self.settings.notify_threshold
@@ -499,6 +510,28 @@ class JobFilter:
             and company.priority.value in self.settings.immediate_alert_priorities
         )
         return Decision(job=job, relevance=relevance, keep=keep, notify=notify, immediate=immediate)
+
+    def _evaluate_event(self, job: Job, kind: str, company: Company | None) -> Decision:
+        """Events and programs skip the internship scorer and are always kept.
+
+        The user wants every event, so nothing is dropped by type; the score only
+        sets urgency. Recruiting events and programs are what a student acts on,
+        so they alert immediately whatever the company's tier.
+        """
+        if kind == "industry_event":
+            score = EVENT_SCORES["industry_event"]
+            immediate = bool(
+                company is not None
+                and company.priority.value in self.settings.immediate_alert_priorities
+            )
+        else:
+            score = EVENT_SCORES[kind]
+            immediate = True
+        relevance = Relevance(
+            score=score, is_internship=False, reasons=(f"{kind.replace('_', ' ')}: always kept",)
+        )
+        notify = score >= self.settings.notify_threshold
+        return Decision(job=job, relevance=relevance, keep=True, notify=notify, immediate=immediate)
 
     def evaluate_all(self, jobs: Iterable[Job], company: Company | None = None) -> list[Decision]:
         return [self.evaluate(job, company) for job in jobs]
@@ -512,6 +545,7 @@ __all__: Sequence[str] = (
     "ADJACENT_SIGNALS",
     "CORE_ROLE_SIGNALS",
     "DEFAULT_MODEL",
+    "EVENT_SCORES",
     "INTERNSHIP_SIGNALS",
     "NEGATIVE_SIGNALS",
     "NON_SOFTWARE_ENGINEERING",

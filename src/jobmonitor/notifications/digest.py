@@ -152,7 +152,9 @@ class DigestSender:
 
     def jobs_in(self, start: datetime, end: datetime) -> list[JobRecord]:
         records = self.repository.recent(limit=MAX_DIGEST_JOBS, since=start)
-        return [r for r in records if start <= r.first_seen < end]
+        # Baseline records were already listed before their source was monitored
+        # (the quiet first poll of an event source): not news, so not in the email.
+        return [r for r in records if start <= r.first_seen < end and not r.baseline]
 
     def send(
         self,

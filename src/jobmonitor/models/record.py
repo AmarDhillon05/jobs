@@ -74,6 +74,9 @@ class JobRecord:
     feed: str = FEED_PARTITION
     #: Present only while a notification is outstanding (sparse-GSI key).
     notification_pending: str | None = PENDING_MARKER
+    #: Stored silently on the first poll of a new event source: it was already
+    #: listed before monitoring began, so neither push nor the digest mentions it.
+    baseline: bool = False
 
     # ------------------------------------------------------------- construction
     @classmethod
@@ -120,12 +123,13 @@ class JobRecord:
 
         return f"{app_base_url.rstrip('/')}/jobs/{quote(self.job_id, safe='')}"
 
-    def marked_notified(self, now: datetime | None = None) -> JobRecord:
+    def marked_notified(self, now: datetime | None = None, *, baseline: bool = False) -> JobRecord:
         return replace(
             self,
             notification_sent=True,
             notified_at=now or utcnow(),
             notification_pending=None,
+            baseline=self.baseline or baseline,
         )
 
     def seen_again(
@@ -178,6 +182,7 @@ class JobRecord:
             "employment_type": self.employment_type,
             "notified_at": _iso(self.notified_at),
             "notification_pending": self.notification_pending,
+            "baseline": True if self.baseline else None,
         }
         item.update({key: value for key, value in optional.items() if value is not None})
         return item
@@ -207,6 +212,7 @@ class JobRecord:
             industry=str(item.get("industry", "unknown")),
             feed=str(item.get("feed", FEED_PARTITION)),
             notification_pending=item.get("notification_pending"),
+            baseline=bool(item.get("baseline", False)),
         )
 
     def to_api_dict(self) -> dict[str, Any]:

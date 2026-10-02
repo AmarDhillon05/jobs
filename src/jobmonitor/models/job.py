@@ -114,6 +114,32 @@ def _coerce_datetime(value: Any, company: str) -> datetime | None:
     return None
 
 
+#: ``employment_type`` values for postings that are not jobs. They travel through
+#: the whole pipeline as ordinary postings; only scoring and alert labels differ.
+#: A recruiting event: info session, coffee chat, insight day, student event.
+EVENT_TYPE = "Event"
+#: A conference, meetup, webinar or customer event.
+INDUSTRY_EVENT_TYPE = "Industry Event"
+#: A student program found on a job board: fellowship, insight program, intensive.
+PROGRAM_TYPE = "Program"
+
+#: What an alert calls a posting, by ``employment_type``. Anything else is a job.
+POSTING_KINDS: Mapping[str, str] = {
+    EVENT_TYPE.casefold(): "event",
+    INDUSTRY_EVENT_TYPE.casefold(): "industry_event",
+    PROGRAM_TYPE.casefold(): "program",
+}
+
+
+def posting_kind(employment_type: str | None) -> str:
+    """``internship``, ``event``, ``industry_event`` or ``program``."""
+    return POSTING_KINDS.get((employment_type or "").strip().casefold(), "internship")
+
+
+def is_event_kind(employment_type: str | None) -> bool:
+    return posting_kind(employment_type) != "internship"
+
+
 @dataclass(frozen=True, slots=True)
 class Job:
     """One normalized posting. Field set is fixed by PRD §6."""
@@ -192,8 +218,14 @@ class Job:
 
 
 __all__: Sequence[str] = (
+    "EVENT_TYPE",
+    "INDUSTRY_EVENT_TYPE",
     "MAX_DESCRIPTION_CHARS",
+    "POSTING_KINDS",
+    "PROGRAM_TYPE",
     "Job",
     "clean_text",
+    "is_event_kind",
+    "posting_kind",
     "strip_html",
 )

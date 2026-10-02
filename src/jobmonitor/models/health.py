@@ -49,10 +49,31 @@ class ScraperHealth:
     updated_jobs: int = 0
     error_type: str | None = None
     error: str | None = None
+    #: Carried forward from poll to poll: has this source *ever* fetched
+    #: successfully? Only the latest row is stored, so this is what lets the first
+    #: success of a new event source be recognised (and stored without alerts)
+    #: even when earlier attempts failed.
+    ever_succeeded: bool = False
+    #: Failures in a row, carried forward; reset by a success. Event sources that
+    #: keep failing are polled hourly instead of every poll (see PollRunner).
+    consecutive_failures: int = 0
 
     @property
     def ok(self) -> bool:
         return self.status not in FAILURE_STATUSES
+
+    def carried_from(self, previous: ScraperHealth | None) -> ScraperHealth:
+        """This poll's row, with the history fields continued from ``previous``."""
+        from dataclasses import replace
+
+        before_ok = bool(previous and (previous.ever_succeeded or previous.ok))
+        if self.ok:
+            return replace(self, ever_succeeded=True, consecutive_failures=0)
+        return replace(
+            self,
+            ever_succeeded=before_ok,
+            consecutive_failures=(previous.consecutive_failures if previous else 0) + 1,
+        )
 
     @property
     def key(self) -> str:
@@ -74,6 +95,8 @@ class ScraperHealth:
             "updated_jobs": self.updated_jobs,
             "error_type": self.error_type,
             "error": self.error,
+            "ever_succeeded": self.ever_succeeded,
+            "consecutive_failures": self.consecutive_failures,
         }
 
     @classmethod
@@ -101,6 +124,8 @@ class ScraperHealth:
             updated_jobs=int(data.get("updated_jobs", 0) or 0),
             error_type=data.get("error_type") or None,
             error=data.get("error") or None,
+            ever_succeeded=bool(data.get("ever_succeeded", False)),
+            consecutive_failures=int(data.get("consecutive_failures", 0) or 0),
         )
 
     def with_counts(self, **counts: int) -> ScraperHealth:
