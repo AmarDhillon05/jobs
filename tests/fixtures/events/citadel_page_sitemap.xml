@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="//www.citadel.com/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	<url>
+		<loc>https://www.citadel.com/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/" />
+		<lastmod>2026-10-01T16:14:29+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/investing/citadel-associate-program-old/application-closed/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/investing/citadel-associate-program-old/application-closed/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/investing/citadel-associate-program-old/application-closed/" />
+		<lastmod>2023-01-10T17:45:29+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/conference-travel-grant/apply-for-the-conference-travel-grant-other/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/conference-travel-grant/apply-for-the-conference-travel-grant-other/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/conference-travel-grant/apply-for-the-conference-travel-grant-other/" />
+		<lastmod>2024-09-13T16:04:17+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/disclosure-for-residents-of-japan/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/disclosure-for-residents-of-japan/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/disclosure-for-residents-of-japan/" />
+		<lastmod>2024-10-14T22:04:20+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/engineering/site-reliability-engineering/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/engineering/site-reliability-engineering/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/engineering/site-reliability-engineering/" />
+		<lastmod>2025-04-09T23:53:36+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/career-perspectives/all-career-perspectives/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/career-perspectives/all-career-perspectives/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/career-perspectives/all-career-perspectives/" />
+		<lastmod>2025-04-11T00:27:16+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/open-opportunities/full-time/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/open-opportunities/full-time/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/open-opportunities/full-time/" />
+		<lastmod>2025-04-11T01:44:30+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/notices/usurpation-du-nom-et-de-la-marque-citadel/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/notices/usurpation-du-nom-et-de-la-marque-citadel/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/notices/usurpation-du-nom-et-de-la-marque-citadel/" />
+		<lastmod>2025-05-14T19:27:27+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/notices/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/notices/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/notices/" />
+		<lastmod>2025-05-14T19:28:29+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/notices/fraudulent-website-notice-japanese/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/notices/fraudulent-website-notice-japanese/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/notices/fraudulent-website-notice-japanese/" />
+		<lastmod>2025-05-16T16:39:25+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/notices/fraudulent-website-notice-chinese-simplified/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/notices/fraudulent-website-notice-chinese-simplified/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/notices/fraudulent-website-notice-chinese-simplified/" />
+		<lastmod>2025-05-19T16:45:10+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/notices/fraudulent-website-notice-chinese-traditional/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/notices/fraudulent-website-notice-chinese-traditional/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/notices/fraudulent-website-notice-chinese-traditional/" />
+		<lastmod>2025-05-29T14:07:28+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/who-we-are/leadership/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/who-we-are/leadership/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/who-we-are/leadership/" />
+		<lastmod>2025-11-03T14:58:05+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/who-we-are/office-locations/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/who-we-are/office-locations/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/who-we-are/office-locations/" />
+		<lastmod>2025-11-03T14:58:25+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/news/in-the-media/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/news/in-the-media/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/news/in-the-media/" />
+		<lastmod>2025-12-09T16:24:22+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/what-we-do/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/what-we-do/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/what-we-do/" />
+		<lastmod>2026-01-20T15:58:21+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/terms-of-use/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/terms-of-use/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/terms-of-use/" />
+		<lastmod>2026-04-24T16:29:35+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/gqs-phd-fellowship/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/gqs-phd-fellowship/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/gqs-phd-fellowship/" />
+		<lastmod>2026-04-27T19:57:25+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/who-we-are/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/who-we-are/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/who-we-are/" />
+		<lastmod>2026-04-27T22:30:31+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/who-we-are/our-culture/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/who-we-are/our-culture/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/who-we-are/our-culture/" />
+		<lastmod>2026-04-27T22:31:51+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/what-we-do/equities/equity-quantitative-research-eqr/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/what-we-do/equities/equity-quantitative-research-eqr/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/what-we-do/equities/equity-quantitative-research-eqr/" />
+		<lastmod>2026-05-08T15:01:15+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/the-fixed-income-macro-central-bank-challenge/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/the-fixed-income-macro-central-bank-challenge/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/the-fixed-income-macro-central-bank-challenge/" />
+		<lastmod>2026-05-14T20:28:47+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/the-trading-invitational/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/the-trading-invitational/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/the-trading-invitational/" />
+		<lastmod>2026-05-14T20:29:41+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/gqs-phd-colloquium/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/gqs-phd-colloquium/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/gqs-phd-colloquium/" />
+		<lastmod>2026-05-14T20:30:12+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/who-we-are/civic-leadership/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/who-we-are/civic-leadership/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/who-we-are/civic-leadership/" />
+		<lastmod>2026-05-27T13:47:52+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/conference-travel-grant/apply-for-the-neurips-grant/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/conference-travel-grant/apply-for-the-neurips-grant/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/conference-travel-grant/apply-for-the-neurips-grant/" />
+		<lastmod>2026-06-03T17:19:28+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/conference-travel-grant/apply-for-the-grace-hopper-celebration/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/conference-travel-grant/apply-for-the-grace-hopper-celebration/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/conference-travel-grant/apply-for-the-grace-hopper-celebration/" />
+		<lastmod>2026-06-23T20:54:58+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/privacy-notice-for-california-residents/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/privacy-notice-for-california-residents/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/privacy-notice-for-california-residents/" />
+		<lastmod>2026-06-23T22:49:22+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/california-privacy-notice-at-collection/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/california-privacy-notice-at-collection/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/california-privacy-notice-at-collection/" />
+		<lastmod>2026-06-23T23:07:30+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/privacy/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/privacy/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/privacy/" />
+		<lastmod>2026-06-30T21:03:53+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/disclosures/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/disclosures/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/disclosures/" />
+		<lastmod>2026-07-13T23:21:47+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/" />
+		<lastmod>2026-07-24T16:40:47+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/" />
+		<lastmod>2026-08-04T12:57:11+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/what-we-do/commodities/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/what-we-do/commodities/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/what-we-do/commodities/" />
+		<lastmod>2026-08-06T23:57:39+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/what-we-do/credit-and-convertibles/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/what-we-do/credit-and-convertibles/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/what-we-do/credit-and-convertibles/" />
+		<lastmod>2026-08-06T23:58:37+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/what-we-do/equities/citadel-global-equities/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/what-we-do/equities/citadel-global-equities/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/what-we-do/equities/citadel-global-equities/" />
+		<lastmod>2026-08-07T00:01:21+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/what-we-do/equities/surveyor-capital/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/what-we-do/equities/surveyor-capital/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/what-we-do/equities/surveyor-capital/" />
+		<lastmod>2026-08-07T00:03:24+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/what-we-do/equities/ashler-capital/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/what-we-do/equities/ashler-capital/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/what-we-do/equities/ashler-capital/" />
+		<lastmod>2026-08-07T00:06:58+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/what-we-do/fixed-income-and-macro/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/what-we-do/fixed-income-and-macro/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/what-we-do/fixed-income-and-macro/" />
+		<lastmod>2026-08-07T00:09:59+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/who-we-are/office-locations/new-york/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/who-we-are/office-locations/new-york/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/who-we-are/office-locations/new-york/" />
+		<lastmod>2026-08-07T01:15:07+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/who-we-are/office-locations/london/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/who-we-are/office-locations/london/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/who-we-are/office-locations/london/" />
+		<lastmod>2026-08-07T01:18:20+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/who-we-are/office-locations/hong-kong/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/who-we-are/office-locations/hong-kong/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/who-we-are/office-locations/hong-kong/" />
+		<lastmod>2026-08-07T01:18:38+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/who-we-are/office-locations/singapore/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/who-we-are/office-locations/singapore/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/who-we-are/office-locations/singapore/" />
+		<lastmod>2026-08-07T01:18:59+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/business-operations/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/business-operations/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/business-operations/" />
+		<lastmod>2026-08-10T13:49:56+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/investing/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/investing/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/investing/" />
+		<lastmod>2026-08-10T21:00:14+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/engineering/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/engineering/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/engineering/" />
+		<lastmod>2026-08-10T21:01:44+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/terminal/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/terminal/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/terminal/" />
+		<lastmod>2026-08-13T20:35:27+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/quantitative-research/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/quantitative-research/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/quantitative-research/" />
+		<lastmod>2026-08-17T16:09:33+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/eea-privacy/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/eea-privacy/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/eea-privacy/" />
+		<lastmod>2026-08-25T22:20:33+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/privacy/eea-privacy-french/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/privacy/eea-privacy-french/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/privacy/eea-privacy-french/" />
+		<lastmod>2026-08-25T22:50:48+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/internships/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/internships/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/internships/" />
+		<lastmod>2026-09-08T15:03:48+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/conference-travel-grant/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/conference-travel-grant/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/conference-travel-grant/" />
+		<lastmod>2026-09-08T15:08:55+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/datathons/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/datathons/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/datathons/" />
+		<lastmod>2026-09-09T22:04:45+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/discover-citadel/apply/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/discover-citadel/apply/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/discover-citadel/apply/" />
+		<lastmod>2026-09-09T22:06:12+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/datathons/apply-womens-datathon/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/datathons/apply-womens-datathon/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/datathons/apply-womens-datathon/" />
+		<lastmod>2026-09-09T22:09:47+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/news/policy-positions/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/news/policy-positions/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/news/policy-positions/" />
+		<lastmod>2026-09-15T22:31:13+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/what-we-do/equities/strategic-equity-investments/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/what-we-do/equities/strategic-equity-investments/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/what-we-do/equities/strategic-equity-investments/" />
+		<lastmod>2026-09-16T16:17:00+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/what-we-do/equities/citadel-international-equities/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/what-we-do/equities/citadel-international-equities/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/what-we-do/equities/citadel-international-equities/" />
+		<lastmod>2026-09-16T16:17:12+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/who-we-are/office-locations/miami/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/who-we-are/office-locations/miami/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/who-we-are/office-locations/miami/" />
+		<lastmod>2026-09-17T12:57:21+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/career-perspectives/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/career-perspectives/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/career-perspectives/" />
+		<lastmod>2026-09-18T17:48:34+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/what-we-do/equities/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/what-we-do/equities/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/what-we-do/equities/" />
+		<lastmod>2026-09-25T23:07:33+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/open-opportunities/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/open-opportunities/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/open-opportunities/" />
+		<lastmod>2026-09-26T11:00:38+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/investing/citadel-associate-program/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/investing/citadel-associate-program/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/investing/citadel-associate-program/" />
+		<lastmod>2026-09-30T23:58:55+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/news/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/news/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/news/" />
+		<lastmod>2026-10-01T16:11:44+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/what-we-do/global-quantitative-strategies/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/what-we-do/global-quantitative-strategies/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/what-we-do/global-quantitative-strategies/" />
+		<lastmod>2026-10-01T16:58:15+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/citadel-energy-marketing/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/citadel-energy-marketing/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/citadel-energy-marketing/" />
+		<lastmod>2026-10-01T20:25:09+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/discover-citadel/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/discover-citadel/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/discover-citadel/" />
+		<lastmod>2026-10-02T00:51:11+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/phd-summit/apply-for-citadel-phd-summit-london/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/phd-summit/apply-for-citadel-phd-summit-london/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/phd-summit/apply-for-citadel-phd-summit-london/" />
+		<lastmod>2026-10-02T00:54:35+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/phd-summit/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/phd-summit/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/phd-summit/" />
+		<lastmod>2026-10-02T00:55:57+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadel.com/careers/programs-and-events/discover-citadel/emea-apply/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadel.com/careers/programs-and-events/discover-citadel/emea-apply/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadel.com/careers/programs-and-events/discover-citadel/emea-apply/" />
+		<lastmod>2026-10-02T00:59:07+00:00</lastmod>
+	</url>
+</urlset>
+<!-- XML Sitemap generated by Yoast SEO -->

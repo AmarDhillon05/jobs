@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="//www.citadelsecurities.com/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	<url>
+		<loc>https://www.citadelsecurities.com/</loc>
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/" />
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/" />
+		<lastmod>2026-10-01T16:15:54+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/zh-hans/</loc>
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/" />
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/" />
+		<lastmod>2026-08-19T04:33:04+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/ja-jp/</loc>
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/" />
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/" />
+		<lastmod>2026-08-07T19:36:37+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/csec-sftp/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/csec-sftp/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/csec-sftp/" />
+		<lastmod>2019-11-12T17:23:52+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/disclosures/csec-sftp/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/disclosures/csec-sftp/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/disclosures/csec-sftp/" />
+		<lastmod>2022-12-07T22:22:37+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/disclosures/mifid-ii-rts27-bestex-report/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/disclosures/mifid-ii-rts27-bestex-report/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/disclosures/mifid-ii-rts27-bestex-report/" />
+		<lastmod>2022-12-14T19:53:39+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/business-continuity-statement/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/business-continuity-statement/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/business-continuity-statement/" />
+		<lastmod>2023-06-07T21:10:27+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/ja-jp/valuation-metrics/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/valuation-metrics/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/valuation-metrics/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/valuation-metrics/" />
+		<lastmod>2024-08-29T14:56:16+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/conference-travel-grant/apply-for-the-conference-travel-grant-other/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/conference-travel-grant/apply-for-the-conference-travel-grant-other/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/conference-travel-grant/apply-for-the-conference-travel-grant-other/" />
+		<lastmod>2024-09-13T15:59:13+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/disclosure-for-residents-of-japan/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/disclosure-for-residents-of-japan/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/disclosure-for-residents-of-japan/" />
+		<lastmod>2024-10-15T14:05:54+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/career-perspectives/all-career-perspectives/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/career-perspectives/all-career-perspectives/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/career-perspectives/all-career-perspectives/" />
+		<lastmod>2025-04-10T23:01:40+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/notices/usurpation-du-nom-et-de-la-marque-citadel-securities/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/notices/usurpation-du-nom-et-de-la-marque-citadel-securities/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/notices/usurpation-du-nom-et-de-la-marque-citadel-securities/" />
+		<lastmod>2025-05-16T16:23:40+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/notices/fraudulent-website-notice-japanese/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/notices/fraudulent-website-notice-japanese/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/notices/fraudulent-website-notice-japanese/" />
+		<lastmod>2025-05-16T16:29:14+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/ja-jp/japan/</loc>
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/japan/" />
+		<lastmod>2025-05-16T16:31:21+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/notices/fraudulent-website-notice-chinese-traditional/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/notices/fraudulent-website-notice-chinese-traditional/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/notices/fraudulent-website-notice-chinese-traditional/" />
+		<lastmod>2025-05-19T16:48:52+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/notices/fraudulent-website-notice-chinese-simplified/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/notices/fraudulent-website-notice-chinese-simplified/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/notices/fraudulent-website-notice-chinese-simplified/" />
+		<lastmod>2025-05-19T16:51:10+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/notices/india-fraudulent-website-notice/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/notices/india-fraudulent-website-notice/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/notices/india-fraudulent-website-notice/" />
+		<lastmod>2025-06-02T16:34:37+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/who-we-are/office-locations/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/office-locations/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/office-locations/" />
+		<lastmod>2025-06-27T18:08:58+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/privacy/eea-privacy-french/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/privacy/eea-privacy-french/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/privacy/eea-privacy-french/" />
+		<lastmod>2025-07-03T00:20:47+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/what-we-do/what-is-a-market-maker/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/what-we-do/what-is-a-market-maker/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/what-is-a-market-maker/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/what-we-do/what-is-a-market-maker/" />
+		<lastmod>2025-07-29T12:01:41+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/valuation-metrics/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/valuation-metrics/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/valuation-metrics/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/valuation-metrics/" />
+		<lastmod>2025-07-31T14:42:02+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/ja-jp/what-we-do/what-is-a-market-maker/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/what-we-do/what-is-a-market-maker/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/what-is-a-market-maker/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/what-we-do/what-is-a-market-maker/" />
+		<lastmod>2025-08-05T21:26:38+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/ja-jp/who-we-are/leadership/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/leadership/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/who-we-are/leadership/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/leadership/" />
+		<lastmod>2025-08-15T17:29:19+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/ja-jp/who-we-are/our-culture/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/our-culture/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/who-we-are/our-culture/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/our-culture/" />
+		<lastmod>2025-08-22T18:38:53+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/quantitative-research/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/quantitative-research/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/quantitative-research/" />
+		<lastmod>2025-08-27T16:02:18+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/ja-jp/who-we-are/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/who-we-are/" />
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/who-we-are/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/" />
+		<lastmod>2025-09-03T00:14:01+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/ja-jp/what-we-do/fixed-income-and-fx/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/what-we-do/fixed-income-and-fx/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/fixed-income-and-fx/" />
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/what-we-do/fixed-income-and-fx/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/what-we-do/fixed-income-and-fx/" />
+		<lastmod>2025-11-26T21:17:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/zh-hans/what-we-do/fixed-income-and-fx/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/what-we-do/fixed-income-and-fx/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/fixed-income-and-fx/" />
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/what-we-do/fixed-income-and-fx/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/what-we-do/fixed-income-and-fx/" />
+		<lastmod>2026-01-07T23:19:18+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/ja-jp/what-we-do/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/what-we-do/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/" />
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/what-we-do/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/what-we-do/" />
+		<lastmod>2026-01-28T15:02:36+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/zh-hans/who-we-are/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/who-we-are/" />
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/who-we-are/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/" />
+		<lastmod>2026-01-29T17:40:49+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/who-we-are/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/who-we-are/" />
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/who-we-are/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/" />
+		<lastmod>2026-02-03T18:23:56+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/eea-privacy/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/eea-privacy/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/eea-privacy/" />
+		<lastmod>2026-02-13T15:30:07+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/what-we-do/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/what-we-do/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/" />
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/what-we-do/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/what-we-do/" />
+		<lastmod>2026-02-17T18:07:02+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/disclosures/dodd-frank-material-disclosure-statement/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/disclosures/dodd-frank-material-disclosure-statement/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/disclosures/dodd-frank-material-disclosure-statement/" />
+		<lastmod>2026-02-26T01:01:49+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/zh-hans/what-we-do/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/what-we-do/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/" />
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/what-we-do/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/what-we-do/" />
+		<lastmod>2026-03-03T13:32:29+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/who-we-are/our-culture/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/our-culture/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/who-we-are/our-culture/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/our-culture/" />
+		<lastmod>2026-03-16T17:22:27+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/terms-of-use/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/terms-of-use/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/terms-of-use/" />
+		<lastmod>2026-04-24T16:28:13+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/disclosures/global-sales-and-trading-disclosures/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/disclosures/global-sales-and-trading-disclosures/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/disclosures/global-sales-and-trading-disclosures/" />
+		<lastmod>2026-04-24T19:13:28+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/ja-jp/what-we-do/options/</loc>
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/options/" />
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/what-we-do/options/" />
+		<lastmod>2026-05-19T22:14:24+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/zh-hans/what-we-do/options/</loc>
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/options/" />
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/what-we-do/options/" />
+		<lastmod>2026-05-19T22:16:36+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/conference-travel-grant/apply-for-the-neurips-grant/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/conference-travel-grant/apply-for-the-neurips-grant/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/conference-travel-grant/apply-for-the-neurips-grant/" />
+		<lastmod>2026-06-03T17:22:47+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/who-we-are/civic-leadership/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/civic-leadership/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/civic-leadership/" />
+		<lastmod>2026-06-09T15:52:25+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/conference-travel-grant/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/conference-travel-grant/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/conference-travel-grant/" />
+		<lastmod>2026-06-23T20:54:11+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/conference-travel-grant/apply-for-the-grace-hopper-celebration-travel-grant/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/conference-travel-grant/apply-for-the-grace-hopper-celebration-travel-grant/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/conference-travel-grant/apply-for-the-grace-hopper-celebration-travel-grant/" />
+		<lastmod>2026-06-23T20:55:19+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/privacy-notice-for-california-residents/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/privacy-notice-for-california-residents/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/privacy-notice-for-california-residents/" />
+		<lastmod>2026-06-23T22:48:54+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/california-privacy-notice-at-collection/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/california-privacy-notice-at-collection/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/california-privacy-notice-at-collection/" />
+		<lastmod>2026-06-23T23:05:05+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/privacy/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/privacy/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/privacy/" />
+		<lastmod>2026-06-30T21:03:51+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/campus-sponsorships/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/campus-sponsorships/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/campus-sponsorships/" />
+		<lastmod>2026-07-24T16:15:19+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/" />
+		<lastmod>2026-07-24T16:41:46+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/ja-jp/what-we-do/equities/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/what-we-do/equities/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/equities/" />
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/what-we-do/equities/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/what-we-do/equities/" />
+		<lastmod>2026-08-07T00:34:49+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/zh-hans/what-we-do/equities/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/what-we-do/equities/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/equities/" />
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/what-we-do/equities/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/what-we-do/equities/" />
+		<lastmod>2026-08-07T00:34:53+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/what-we-do/equities/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/what-we-do/equities/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/equities/" />
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/what-we-do/equities/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/what-we-do/equities/" />
+		<lastmod>2026-08-07T00:34:56+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/ja-jp/what-we-do/equities/designated-market-maker-dmm/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/what-we-do/equities/designated-market-maker-dmm/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/equities/designated-market-maker-dmm/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/what-we-do/equities/designated-market-maker-dmm/" />
+		<lastmod>2026-08-07T00:38:10+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/what-we-do/equities/designated-market-maker-dmm/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/what-we-do/equities/designated-market-maker-dmm/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/equities/designated-market-maker-dmm/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/what-we-do/equities/designated-market-maker-dmm/" />
+		<lastmod>2026-08-07T00:38:16+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/what-we-do/options/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/what-we-do/options/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/what-we-do/options/" />
+		<lastmod>2026-08-07T00:53:02+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/what-we-do/fixed-income-and-fx/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/what-we-do/fixed-income-and-fx/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/what-we-do/fixed-income-and-fx/" />
+		<xhtml:link rel="alternate" hreflang="zh-cn" href="https://www.citadelsecurities.com/zh-hans/what-we-do/fixed-income-and-fx/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/what-we-do/fixed-income-and-fx/" />
+		<lastmod>2026-08-07T00:56:33+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/footnotes/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/footnotes/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/footnotes/" />
+		<lastmod>2026-08-07T01:01:50+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/who-we-are/office-locations/new-york/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/office-locations/new-york/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/office-locations/new-york/" />
+		<lastmod>2026-08-07T01:03:27+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/who-we-are/office-locations/london/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/office-locations/london/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/office-locations/london/" />
+		<lastmod>2026-08-07T01:03:47+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/who-we-are/office-locations/hong-kong/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/office-locations/hong-kong/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/office-locations/hong-kong/" />
+		<lastmod>2026-08-07T01:04:08+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/who-we-are/office-locations/singapore/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/office-locations/singapore/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/office-locations/singapore/" />
+		<lastmod>2026-08-07T01:04:26+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/who-we-are/office-locations/sydney/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/office-locations/sydney/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/office-locations/sydney/" />
+		<lastmod>2026-08-07T01:04:52+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/the-trading-invitational/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/the-trading-invitational/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/the-trading-invitational/" />
+		<lastmod>2026-08-13T20:40:49+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/terminal/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/terminal/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/terminal/" />
+		<lastmod>2026-08-13T20:41:16+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/" />
+		<lastmod>2026-08-14T17:26:04+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/who-we-are/leadership/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/leadership/" />
+		<xhtml:link rel="alternate" hreflang="ja-jp" href="https://www.citadelsecurities.com/ja-jp/who-we-are/leadership/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/leadership/" />
+		<lastmod>2026-08-14T17:32:54+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/news-and-insights/in-the-media/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/news-and-insights/in-the-media/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/news-and-insights/in-the-media/" />
+		<lastmod>2026-08-14T17:33:56+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/career-perspectives/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/career-perspectives/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/career-perspectives/" />
+		<lastmod>2026-08-14T20:04:54+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/engineering/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/engineering/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/engineering/" />
+		<lastmod>2026-08-14T20:27:08+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/markets-and-trading/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/markets-and-trading/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/markets-and-trading/" />
+		<lastmod>2026-09-09T20:25:31+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/datathons/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/datathons/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/datathons/" />
+		<lastmod>2026-09-09T22:03:53+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/discover-citadel-securities/apply/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/discover-citadel-securities/apply/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/discover-citadel-securities/apply/" />
+		<lastmod>2026-09-09T22:07:34+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/datathons/apply-womens-datathon/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/datathons/apply-womens-datathon/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/datathons/apply-womens-datathon/" />
+		<lastmod>2026-09-09T22:10:33+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/internships/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/internships/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/internships/" />
+		<lastmod>2026-09-16T14:16:27+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/who-we-are/office-locations/miami/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/who-we-are/office-locations/miami/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/who-we-are/office-locations/miami/" />
+		<lastmod>2026-09-17T13:01:13+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/ignite-womens-trading-program/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/ignite-womens-trading-program/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/ignite-womens-trading-program/" />
+		<lastmod>2026-09-17T19:52:51+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/ignite-womens-trading-program/apply-ignite/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/ignite-womens-trading-program/apply-ignite/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/ignite-womens-trading-program/apply-ignite/" />
+		<lastmod>2026-09-17T19:53:04+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/open-opportunities/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/open-opportunities/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/open-opportunities/" />
+		<lastmod>2026-09-28T14:55:40+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/news-and-insights/policy-positions/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/news-and-insights/policy-positions/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/news-and-insights/policy-positions/" />
+		<lastmod>2026-09-29T16:28:34+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/rule-605-606-statements/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/rule-605-606-statements/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/rule-605-606-statements/" />
+		<lastmod>2026-09-30T23:55:12+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/the-citadel-securities-quant-invitational/apply-emea-quant-invitational/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/the-citadel-securities-quant-invitational/apply-emea-quant-invitational/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/the-citadel-securities-quant-invitational/apply-emea-quant-invitational/" />
+		<lastmod>2026-10-02T00:25:48+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/the-citadel-securities-quant-invitational/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/the-citadel-securities-quant-invitational/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/the-citadel-securities-quant-invitational/" />
+		<lastmod>2026-10-02T00:28:16+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/discover-citadel-securities/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/discover-citadel-securities/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/discover-citadel-securities/" />
+		<lastmod>2026-10-02T00:50:32+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/phd-summit/apply-for-citadel-securities-phd-summit-london/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/phd-summit/apply-for-citadel-securities-phd-summit-london/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/phd-summit/apply-for-citadel-securities-phd-summit-london/" />
+		<lastmod>2026-10-02T00:56:50+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/phd-summit/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/phd-summit/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/phd-summit/" />
+		<lastmod>2026-10-02T00:57:27+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/careers/programs-and-events/discover-citadel-securities/emea-apply/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/careers/programs-and-events/discover-citadel-securities/emea-apply/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/careers/programs-and-events/discover-citadel-securities/emea-apply/" />
+		<lastmod>2026-10-02T00:59:24+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://www.citadelsecurities.com/news-and-insights/</loc>
+		<xhtml:link rel="alternate" hreflang="en" href="https://www.citadelsecurities.com/news-and-insights/" />
+		<xhtml:link rel="alternate" hreflang="x-default" href="https://www.citadelsecurities.com/news-and-insights/" />
+		<lastmod>2026-10-02T17:30:49+00:00</lastmod>
+	</url>
+</urlset>
+<!-- XML Sitemap generated by Yoast SEO -->

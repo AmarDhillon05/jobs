@@ -36,6 +36,9 @@ Custom scrapers:
                      fallback only, for the 11 companies whose own
                      endpoint could not be configured (PRD §4.3)
 ===================  =====================================================
+
+Event adapters (``scrapers/events/``, polled as a company's ``event_sources``):
+``event_page``, ``avature_events``, ``luma``, ``sitemap_watch``.
 """
 
 from jobmonitor.scrapers.amazon import AmazonJobsSource
@@ -56,6 +59,13 @@ from jobmonitor.scrapers.custom.fixture import FixtureSource
 from jobmonitor.scrapers.custom.json_ld import JsonLdSource
 from jobmonitor.scrapers.custom.simplify_fallback import SimplifyFallbackSource
 from jobmonitor.scrapers.eightfold import EightfoldSource
+from jobmonitor.scrapers.events import (
+    EVENT_PROVIDERS,
+    AvatureEventsSource,
+    EventPageSource,
+    LumaSource,
+    SitemapWatchSource,
+)
 from jobmonitor.scrapers.goldman import GoldmanSachsSource
 from jobmonitor.scrapers.google import GoogleCareersSource
 from jobmonitor.scrapers.greenhouse import GreenhouseSource
@@ -101,12 +111,15 @@ TEST_PROVIDERS: tuple[str, ...] = ("fixture",)
 __all__ = [
     "ATS_PROVIDERS",
     "CUSTOM_PROVIDERS",
+    "EVENT_PROVIDERS",
     "TEST_PROVIDERS",
     "AmazonJobsSource",
     "AshbySource",
     "AtlassianSource",
+    "AvatureEventsSource",
     "AvatureSource",
     "EightfoldSource",
+    "EventPageSource",
     "FetchResult",
     "FixtureSource",
     "GoldmanSachsSource",
@@ -117,9 +130,11 @@ __all__ = [
     "JobSource",
     "JsonLdSource",
     "LeverSource",
+    "LumaSource",
     "OracleHcmSource",
     "RipplingSource",
     "SimplifyFallbackSource",
+    "SitemapWatchSource",
     "SmartRecruitersSource",
     "TalentBrewSource",
     "WorkableSource",
