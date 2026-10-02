@@ -313,6 +313,7 @@ digest. Recruiting events and programs come first, but all events are included.
 | Quiet first poll, no duplicate alerts | tested | `tests/integration/test_event_pipeline.py`; Level 8 `TestEvents::test_the_whole_story` on both storages |
 | Event-source failure isolated from the job board | tested | `TestIsolation` in `test_event_pipeline.py`; Level 8 `test_a_broken_events_page_never_touches_the_job_board` |
 | Failing sources back off to hourly | tested | `TestCoolDown` in `test_event_pipeline.py` |
+| Whole system with events | passed | `make clean && make verify` on 2026-10-02: 20/20 stages, RESULT: PASS (555 unit, 1,275 scraper, 404 integration, 60 acceptance, 71 template assertions, emulated-AWS end-to-end) |
 | Companies with no readable source | blocked (accepted) | 66, each with its reason in `COMPANY_COVERAGE.md`; BLK-015 |
 
 ---
