@@ -28,6 +28,7 @@ from datetime import datetime, timedelta
 from jobmonitor.config import Settings
 from jobmonitor.filtering import JobFilter
 from jobmonitor.filtering.location import split_by_location
+from jobmonitor.filtering.programs import tag_programs
 from jobmonitor.filtering.recency import split_by_recency
 from jobmonitor.http import HttpClient
 from jobmonitor.models.company import Company, EventCategory
@@ -172,6 +173,8 @@ def process_company(
             max_age=settings.filters.max_posting_age,
             keep_undated=settings.filters.keep_undated,
         ).recent
+        # Student programs posted as jobs (fellowships, discovery programs...).
+        recent = tag_programs(recent)
     # ... and only postings in the US (FilterSettings.us_only). Anything else is
     # never scored, stored or alerted on.
     placed = split_by_location(
