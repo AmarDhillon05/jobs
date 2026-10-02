@@ -22,6 +22,21 @@ MAX_PUSH_JOBS = 5
 """Ids carried in a push payload. More than this and the client should just open
 the feed."""
 
+#: How each kind of posting is named in alerts.
+KIND_LABELS: dict[str, str] = {
+    "internship": "new internship",
+    "event": "new event",
+    "program": "new program",
+    "industry_event": "industry event",
+}
+#: The heading of one item in an email, by kind.
+KIND_HEADERS: dict[str, str] = {
+    "internship": "NEW INTERNSHIP",
+    "event": "NEW EVENT",
+    "program": "NEW PROGRAM",
+    "industry_event": "INDUSTRY EVENT",
+}
+
 
 @dataclass(frozen=True, slots=True)
 class EmailMessage:
@@ -31,7 +46,7 @@ class EmailMessage:
 
     @property
     def job_count(self) -> int:
-        return self.text_body.count("NEW INTERNSHIP")
+        return sum(self.text_body.count(header) for header in KIND_HEADERS.values())
 
 
 @dataclass(frozen=True, slots=True)
@@ -51,12 +66,16 @@ def _location(alert: JobAlert) -> str:
     return alert.location or "Location not specified"
 
 
+def _role_label(alert: JobAlert) -> str:
+    return "Program" if alert.kind == "program" else "Event" if alert.is_event else "Role"
+
+
 def _format_one_text(alert: JobAlert) -> str:
     lines = [
-        "NEW INTERNSHIP",
+        KIND_HEADERS.get(alert.kind, "NEW INTERNSHIP"),
         "",
         f"Company: {alert.company}",
-        f"Role: {alert.title}",
+        f"{_role_label(alert)}: {alert.title}",
         f"Location: {_location(alert)}",
         f"First Seen: {alert.first_seen or 'unknown'}",
     ]
@@ -64,10 +83,12 @@ def _format_one_text(alert: JobAlert) -> str:
     # rather than printing an empty field.
     if alert.date_posted:
         lines.append(f"Posted: {alert.date_posted}")
-    lines.append(f"Relevance: {alert.relevance_score}/100")
+    if not alert.is_event:
+        lines.append(f"Relevance: {alert.relevance_score}/100")
     if alert.description_preview:
         lines += ["", alert.description_preview]
-    lines += ["", "Apply:", alert.url, "", "Open in app:", alert.deep_link]
+    action = "Details:" if alert.is_event else "Apply:"
+    lines += ["", action, alert.url, "", "Open in app:", alert.deep_link]
     return "\n".join(lines)
 
 
@@ -75,13 +96,14 @@ def _format_one_html(alert: JobAlert) -> str:
     escape = html.escape
     rows = [
         ("Company", escape(alert.company)),
-        ("Role", escape(alert.title)),
+        (_role_label(alert), escape(alert.title)),
         ("Location", escape(_location(alert))),
         ("First seen", escape(alert.first_seen or "unknown")),
     ]
     if alert.date_posted:
         rows.append(("Posted", escape(alert.date_posted)))
-    rows.append(("Relevance", f"{alert.relevance_score}/100"))
+    if not alert.is_event:
+        rows.append(("Relevance", f"{alert.relevance_score}/100"))
     cells = "".join(
         f'<tr><td style="padding:2px 12px 2px 0;color:#666">{label}</td>'
         f'<td style="padding:2px 0"><strong>{value}</strong></td></tr>'
@@ -99,10 +121,28 @@ def _format_one_html(alert: JobAlert) -> str:
         f"{preview}"
         f'<p><a href="{escape(alert.url)}" '
         'style="display:inline-block;padding:9px 16px;background:#1a56db;color:#fff;'
-        'border-radius:6px;text-decoration:none">Open Application</a>'
+        f'border-radius:6px;text-decoration:none">{_button(alert)}</a>'
         f'&nbsp;&nbsp;<a href="{escape(alert.deep_link)}" style="color:#1a56db">View in app</a></p>'
         "</div>"
     )
+
+
+def _button(alert: JobAlert) -> str:
+    if alert.kind == "program":
+        return "Open Program"
+    return "Open Event" if alert.is_event else "Open Application"
+
+
+def _found(alerts: Sequence[JobAlert]) -> str:
+    """ "3 new internships", "2 events", "1 new internship and 2 events"."""
+    jobs = sum(1 for alert in alerts if not alert.is_event)
+    events = len(alerts) - jobs
+    parts = []
+    if jobs:
+        parts.append(f"{jobs} new internship" + ("" if jobs == 1 else "s"))
+    if events:
+        parts.append(f"{events} event" + ("" if events == 1 else "s"))
+    return " and ".join(parts)
 
 
 def format_email(event: NotificationEvent) -> EmailMessage:
@@ -110,23 +150,29 @@ def format_email(event: NotificationEvent) -> EmailMessage:
     alerts = event.jobs
     if event.is_single:
         alert = alerts[0]
-        subject = f"[Internship] {alert.company} - {alert.title}"
+        tag = {"program": "Program", "event": "Event", "industry_event": "Event"}.get(
+            alert.kind, "Internship"
+        )
+        subject = f"[{tag}] {alert.company} - {alert.title}"
     else:
         companies = sorted({alert.company for alert in alerts})
         shown = ", ".join(companies[:3])
         if len(companies) > 3:
             shown += f" +{len(companies) - 3} more"
-        subject = f"[Internships] {len(alerts)} new roles - {shown}"
+        if all(alert.is_event for alert in alerts):
+            subject = f"[Events] {len(alerts)} new events - {shown}"
+        else:
+            subject = f"[Internships] {len(alerts)} new roles - {shown}"
 
     text_sections = [_format_one_text(alert) for alert in alerts]
     text_body = ("\n\n" + "-" * 56 + "\n\n").join(text_sections)
     if not event.is_single:
-        text_body = (
-            f"{len(alerts)} new internships found in this poll.\n\n" + "=" * 56 + "\n\n" + text_body
-        )
+        text_body = f"{_found(alerts)} found in this poll.\n\n" + "=" * 56 + "\n\n" + text_body
 
     heading = (
-        "New internship" if event.is_single else f"{len(alerts)} new internships found in this poll"
+        KIND_LABELS.get(alerts[0].kind, "new internship").capitalize()
+        if event.is_single
+        else f"{_found(alerts)} found in this poll"
     )
     html_body = (
         '<div style="max-width:640px;margin:0 auto;padding:20px">'
@@ -143,14 +189,14 @@ def format_push(event: NotificationEvent) -> PushMessage:
     alerts = event.jobs
     if event.is_single:
         alert = alerts[0]
-        title = f"{alert.company} - new internship"
+        title = f"{alert.company} - {KIND_LABELS.get(alert.kind, 'new internship')}"
         body = alert.title
         if alert.location:
             body = f"{body} ({alert.location})"
         deep_link = alert.deep_link
     else:
         companies = sorted({alert.company for alert in alerts})
-        title = f"{len(alerts)} new internships"
+        title = _found(alerts)
         body = ", ".join(f"{alert.company}: {alert.title}" for alert in alerts[:3])
         if len(alerts) > 3:
             body += f" +{len(alerts) - 3} more"
@@ -171,6 +217,7 @@ def format_push(event: NotificationEvent) -> PushMessage:
     if event.is_single:
         data["job_id"] = alerts[0].job_id
         data["apply_url"] = alerts[0].url
+        data["kind"] = alerts[0].kind
     return PushMessage(title=title, body=body, data=data)
 
 
@@ -189,6 +236,8 @@ def summarize(event: NotificationEvent) -> str:
 
 
 __all__: Sequence[str] = (
+    "KIND_HEADERS",
+    "KIND_LABELS",
     "MAX_PUSH_BODY_CHARS",
     "MAX_PUSH_JOBS",
     "EmailMessage",

@@ -24,8 +24,9 @@ from dataclasses import dataclass, field
 from datetime import UTC, datetime, timedelta
 
 from jobmonitor.config import Settings
+from jobmonitor.models.job import is_event_kind, posting_kind
 from jobmonitor.models.record import JobRecord
-from jobmonitor.notifications.formatters import EmailMessage
+from jobmonitor.notifications.formatters import KIND_LABELS, EmailMessage
 from jobmonitor.notifications.transports import EmailTransport
 from jobmonitor.storage.base import JobRepository
 
@@ -75,28 +76,52 @@ def _fmt_time(value: datetime) -> str:
     return value.astimezone(UTC).strftime("%Y-%m-%d %H:%M UTC")
 
 
+def _plural(count: int, noun: str) -> str:
+    return f"{count} {noun}" if count == 1 else f"{count} {noun}s"
+
+
 def format_digest(
     records: Sequence[JobRecord], *, window_start: datetime, window_end: datetime, strong: int
 ) -> EmailMessage:
-    """Render the window's jobs. ``strong`` is the push threshold: jobs at or above
-    it were also sent to the phone; the rest were kept because the filter is
-    deliberately loose, and are listed separately."""
+    """Render the window's jobs, then its events and programs.
+
+    ``strong`` is the push threshold: internships at or above it were also sent
+    to the phone; the rest were kept because the filter is deliberately loose,
+    and are listed separately. Events and programs get their own section, after
+    the jobs, recruiting ones (scored higher) first.
+    """
     if not records:
         raise ValueError("a digest needs at least one job; empty windows are skipped")
     ordered = _sorted(records)
-    strong_jobs = [r for r in ordered if r.relevance_score >= strong]
-    other_jobs = [r for r in ordered if r.relevance_score < strong]
+    jobs = [r for r in ordered if not is_event_kind(r.employment_type)]
+    events = [r for r in ordered if is_event_kind(r.employment_type)]
+    strong_jobs = [r for r in jobs if r.relevance_score >= strong]
+    other_jobs = [r for r in jobs if r.relevance_score < strong]
 
     companies = sorted({r.company for r in ordered}, key=str.lower)
     shown = ", ".join(companies[:3]) + (
         f" +{len(companies) - 3} more" if len(companies) > 3 else ""
     )
-    noun = "internship" if len(ordered) == 1 else "internships"
-    subject = f"[Internships] {len(ordered)} new {noun} - {shown}"
+    counts = [
+        part
+        for part in (
+            _plural(len(jobs), "new internship") if jobs else "",
+            _plural(len(events), "event") if events else "",
+        )
+        if part
+    ]
+    summary = ", ".join(counts)
+    tag = "Internships" if jobs else "Events"
+    subject = f"[{tag}] {summary} - {shown}"
     span = f"{_fmt_time(window_start)} - {_fmt_time(window_end)}"
+
+    def label(record: JobRecord) -> str:
+        return KIND_LABELS[posting_kind(record.employment_type)]
 
     def text_line(record: JobRecord) -> str:
         where = f" ({record.location})" if record.location else ""
+        if is_event_kind(record.employment_type):
+            return f"- {record.company}: {record.title}{where}\n  {label(record)}\n  {record.url}"
         posted = f", posted {record.date_posted.date().isoformat()}" if record.date_posted else ""
         return (
             f"- {record.company}: {record.title}{where}\n"
@@ -104,20 +129,27 @@ def format_digest(
             f"  {record.url}"
         )
 
-    text_parts = [f"{len(ordered)} new {noun} first seen {span}.", ""]
+    text_parts = [f"{summary} first seen {span}.", ""]
     if strong_jobs:
         text_parts += ["STRONG MATCHES", *(text_line(r) for r in strong_jobs), ""]
     if other_jobs:
         text_parts += ["ALSO FOUND (lower relevance)", *(text_line(r) for r in other_jobs), ""]
+    if events:
+        text_parts += ["EVENTS & PROGRAMS", *(text_line(r) for r in events), ""]
     text_body = "\n".join(text_parts).rstrip() + "\n"
 
     def html_row(record: JobRecord) -> str:
         e = html.escape
         where = f" &middot; {e(record.location)}" if record.location else ""
+        detail = (
+            e(label(record))
+            if is_event_kind(record.employment_type)
+            else f"{record.relevance_score}/100"
+        )
         return (
             '<li style="margin:0 0 12px">'
             f"<strong>{e(record.company)}</strong>: {e(record.title)}"
-            f'<span style="color:#666">{where} &middot; {record.relevance_score}/100</span><br>'
+            f'<span style="color:#666">{where} &middot; {detail}</span><br>'
             f'<a href="{e(record.url)}" style="color:#1a56db">{e(record.url)}</a></li>'
         )
 
@@ -132,10 +164,11 @@ def format_digest(
 
     html_body = (
         '<div style="max-width:640px;margin:0 auto;padding:20px;font-family:system-ui,sans-serif">'
-        f'<h1 style="font-size:20px;margin:0 0 4px">{len(ordered)} new {noun}</h1>'
+        f'<h1 style="font-size:20px;margin:0 0 4px">{html.escape(summary)}</h1>'
         f'<p style="color:#666;margin:0">First seen {html.escape(span)}</p>'
         + html_section("Strong matches", strong_jobs)
         + html_section("Also found (lower relevance)", other_jobs)
+        + html_section("Events & programs", events)
         + '<p style="color:#888;font-size:12px;margin-top:24px">Sent by your internship '
         "monitor. Hours with nothing new send no email.</p></div>"
     )

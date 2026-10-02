@@ -27,6 +27,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 
 from jobmonitor.config import Settings
+from jobmonitor.models.job import posting_kind
 from jobmonitor.models.record import DeviceRegistration, JobRecord
 from jobmonitor.notifications.events import (
     Channel,
@@ -98,19 +99,25 @@ class Notifier:
         """Group records into the events we intend to send.
 
         High-priority companies get one event each (immediate); everything else is
-        collapsed into a single grouped event for the poll.
+        collapsed into a single grouped event for the poll. Recruiting events and
+        programs are always immediate, whatever the company's tier; industry events
+        (conferences, webinars) never are.
         """
         immediate_priorities = set(self.settings.filters.immediate_alert_priorities)
         events: list[NotificationEvent] = []
         batched: list[JobRecord] = []
 
+        def is_immediate(record: JobRecord) -> bool:
+            kind = posting_kind(record.employment_type)
+            if kind in {"event", "program"}:
+                return True
+            if kind == "industry_event":
+                return False
+            return record.priority in immediate_priorities
+
         for record in records:
-            if self.push.one_alert_per_job or record.priority in immediate_priorities:
-                urgency = (
-                    Urgency.IMMEDIATE
-                    if record.priority in immediate_priorities
-                    else Urgency.BATCHED
-                )
+            if self.push.one_alert_per_job or is_immediate(record):
+                urgency = Urgency.IMMEDIATE if is_immediate(record) else Urgency.BATCHED
                 events.append(
                     NotificationEvent.for_records(
                         [record], app_base_url=self.settings.app_base_url, urgency=urgency

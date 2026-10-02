@@ -18,6 +18,7 @@ from datetime import UTC, datetime
 from enum import StrEnum
 from typing import Any
 
+from jobmonitor.models.job import posting_kind
 from jobmonitor.models.record import JobRecord
 
 SCHEMA_VERSION = 1
@@ -56,6 +57,13 @@ class JobAlert:
     relevance_score: int = 0
     priority: str = "medium"
     description_preview: str | None = None
+    #: ``internship``, ``event``, ``industry_event`` or ``program``. Optional in
+    #: the payload (absent means an internship), so no schema bump was needed.
+    kind: str = "internship"
+
+    @property
+    def is_event(self) -> bool:
+        return self.kind != "internship"
 
     @classmethod
     def from_record(cls, record: JobRecord, *, app_base_url: str) -> JobAlert:
@@ -78,6 +86,7 @@ class JobAlert:
             relevance_score=record.relevance_score,
             priority=record.priority,
             description_preview=preview,
+            kind=posting_kind(record.employment_type),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -93,6 +102,7 @@ class JobAlert:
             "relevance_score": self.relevance_score,
             "priority": self.priority,
             "description_preview": self.description_preview,
+            "kind": self.kind,
         }
 
     @classmethod
@@ -109,6 +119,7 @@ class JobAlert:
             relevance_score=int(data.get("relevance_score", 0) or 0),
             priority=str(data.get("priority", "medium")),
             description_preview=data.get("description_preview"),
+            kind=str(data.get("kind") or "internship"),
         )
 
 

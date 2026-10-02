@@ -500,13 +500,19 @@ class NtfyPushTransport(PushTransport):
             self._client = HttpClient()
         return self._client
 
+    #: ntfy tags (shown as emoji) by kind of posting.
+    TAGS = {"event": "date", "industry_event": "date", "program": "mortar_board"}
+    #: The "open" button's label by kind of posting.
+    OPEN_LABELS = {"event": "Open event", "industry_event": "Open event", "program": "Open program"}
+
     def payload(self, message: PushMessage) -> dict[str, Any]:
         apply_url = message.data.get("apply_url", "")
+        kind = message.data.get("kind", "internship")
         body: dict[str, Any] = {
             "topic": self.settings.ntfy_topic,
             "title": message.title,
             "message": message.body,
-            "tags": ["briefcase"],
+            "tags": [self.TAGS.get(kind, "briefcase")],
             "priority": self.PRIORITY_IMMEDIATE
             if message.data.get("urgency") == "immediate"
             else self.PRIORITY_DEFAULT,
@@ -514,7 +520,11 @@ class NtfyPushTransport(PushTransport):
         if apply_url:
             body["click"] = apply_url
             body["actions"] = [
-                {"action": "view", "label": "Open application", "url": apply_url},
+                {
+                    "action": "view",
+                    "label": self.OPEN_LABELS.get(kind, "Open application"),
+                    "url": apply_url,
+                },
                 {"action": "copy", "label": "Copy link", "value": apply_url},
             ]
         elif message.deep_link:
