@@ -96,6 +96,19 @@ class TestEventPage:
         assert "first- and second-year" in (bridge.description or "")
         assert "ACCEPTING APPLICATIONS" in (bridge.description or "")
 
+    def test_a_page_of_programs_labels_them_programs(self) -> None:
+        plain = source(
+            "event_page", FakeTransport([html("janestreet_programs.html")]), **JANE_STREET
+        )
+        assert {job.employment_type for job in plain.fetch_jobs()} == {None}
+        programs = source(
+            "event_page",
+            FakeTransport([html("janestreet_programs.html")]),
+            **JANE_STREET,
+            kind="program",
+        )
+        assert {job.employment_type for job in programs.fetch_jobs()} == {"Program"}
+
     def test_ids_are_stable_across_fetches(self) -> None:
         def run() -> list[str | None]:
             src = source(

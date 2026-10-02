@@ -2,7 +2,8 @@
   "_comment": [
     "Observed, not editorial: the last conclusive live verdict per company,",
     "written by scripts/validate_companies.py --write and merged into",
-    "companies.json by scripts/build_company_registry.py."
+    "companies.json by scripts/build_company_registry.py. event_sources holds",
+    "the same for each company's event sources (--events)."
   ],
   "companies": {
     "1Password": {
@@ -1101,6 +1102,357 @@
       "status": "supported",
       "validated_on": "2026-09-27",
       "jobs": 380,
+      "error": null
+    }
+  },
+  "event_sources": {
+    "Anthropic::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 4,
+      "sample": [
+        "Anthropic at AWS re:Invent 2026 · Oct 14, 2026",
+        "Claude Founder House Stockholm · Oct 14, 2026",
+        "Claude Founder House San Francisco · Oct 6, 2026"
+      ],
+      "error": null
+    },
+    "Anthropic::luma": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 90,
+      "sample": [
+        "Madrid | 48-hour Claude Code Hackathon · Oct 2, 2026",
+        "Tokyo | Claude Meetup for Healthcare Professionals · Oct 3, 2026",
+        "Milan | Claude Impact Lab · Oct 3, 2026"
+      ],
+      "error": null
+    },
+    "Atlassian::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 2,
+      "sample": [
+        "AI at the Speed of Live: How to Lead Your Digital Ensemble · Sep 30, 2026",
+        "Build AI Agents (Zero Code!) & Get the Inside Scoop on Team '26 Europe! · Oct 15, 2026"
+      ],
+      "error": null
+    },
+    "Bloomberg::avature_events": {
+      "category": "recruiting",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 10,
+      "sample": [
+        "Discover Bloomberg: Barcelona · Oct 6, 2026",
+        "Discover Bloomberg: Milan · Oct 13, 2026",
+        "Discover Bloomberg: Geneva · Oct 26, 2026"
+      ],
+      "error": null
+    },
+    "Brex::luma": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 2,
+      "sample": [
+        "Brex Supper Club NYC · Oct 8, 2026",
+        "Brex Supper Club NYC · Oct 15, 2026"
+      ],
+      "error": null
+    },
+    "Citadel Securities::sitemap_watch": {
+      "category": "recruiting",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 18,
+      "sample": [
+        "Conference Travel Grant · Apply for the Conference Travel Grant Other",
+        "Conference Travel Grant · Apply for the NeurIPS Grant",
+        "Conference Travel Grant"
+      ],
+      "error": null
+    },
+    "Citadel::sitemap_watch": {
+      "category": "recruiting",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 16,
+      "sample": [
+        "Conference Travel Grant · Apply for the Conference Travel Grant Other",
+        "GQS PhD Fellowship",
+        "The Fixed Income Macro Central Bank Challenge"
+      ],
+      "error": null
+    },
+    "Cohere::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 4,
+      "sample": [
+        "NVDIA GTC Berlin · Oct 20, 2026",
+        "Emnlp 2026",
+        "Microsoft Ignite 2026"
+      ],
+      "error": null
+    },
+    "CrowdStrike::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 8,
+      "sample": [
+        "Fal.Con Europe 2026",
+        "CrowdTour",
+        "Fal.Con Vegas"
+      ],
+      "error": null
+    },
+    "Databricks::luma": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 7,
+      "sample": [
+        "Databricks DevConnect | Washington, DC · Oct 14, 2026",
+        "Databricks DevConnect | Bangalore · Oct 15, 2026",
+        "Databricks DevConnect | Boston · Oct 15, 2026"
+      ],
+      "error": null
+    },
+    "Dropbox::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 2,
+      "sample": [
+        "How IT helps sales move faster without losing control · Oct 13, 2026",
+        "How small businesses move faster with Dropbox in ChatGPT · Nov 10, 2026"
+      ],
+      "error": null
+    },
+    "Figma::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 76,
+      "sample": [
+        "Putting Code Connect to the Test: Coinbase's Agent-Ready Design System",
+        "Introducing Weave",
+        "Designer to Builder Series"
+      ],
+      "error": null
+    },
+    "G-Research::event_page": {
+      "category": "recruiting",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 6,
+      "sample": [
+        "Berkeley quant challenge 2026 · Oct 8, 2026",
+        "ML in PL conference 2026 · Oct 13, 2026",
+        "Cambridge quant challenge 2026 · Oct 13, 2026"
+      ],
+      "error": null
+    },
+    "Jane Street::event_page": {
+      "category": "recruiting",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 12,
+      "sample": [
+        "AMP",
+        "Bridge",
+        "FOCUS"
+      ],
+      "error": null
+    },
+    "Lightmatter::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 7,
+      "sample": [
+        "2026 OCP Global Summit Booth; Presentations: Bijan Nowroozi, Ecosystem Development Director · Oct 12, 2026",
+        "IMAPS SiPhotonics Packaging Summit 2026 · Oct 1, 2026",
+        "ITC 2026 · Oct 11, 2026"
+      ],
+      "error": null
+    },
+    "Microsoft::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 1,
+      "sample": [
+        "Microsoft Ignite · Nov 17, 2026"
+      ],
+      "error": null
+    },
+    "NVIDIA::luma": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 11,
+      "sample": [
+        "Build-A-Claw: Barcelona · Oct 13, 2026",
+        "Build-A-Claw: Paris · Oct 13, 2026",
+        "Claw Agent Challenge: Paris · Oct 13, 2026"
+      ],
+      "error": null
+    },
+    "Optiver::event_page": {
+      "category": "recruiting",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 4,
+      "sample": [
+        "The Optiver & Cambridge Trading Academy · Oct 23, 2026",
+        "The Optiver & Oxford Trading Academy · Oct 26, 2026",
+        "The Trading Floor · Nov 13, 2026"
+      ],
+      "error": null
+    },
+    "Pinterest::event_page": {
+      "category": "recruiting",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 3,
+      "sample": [
+        "Velocity 2026 · Oct 7, 2026",
+        "Women in Product 2026 · Oct 13, 2026",
+        "AISES 2026 · Oct 15, 2026"
+      ],
+      "error": null
+    },
+    "Plaid::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 9,
+      "sample": [
+        "Annual conference",
+        "Transfer New Standard Bank Payments Tech Talk",
+        "Database Auth Tech Talk"
+      ],
+      "error": null
+    },
+    "Rippling::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 1,
+      "sample": [
+        "Rippling XFN · Apr 7, 2027"
+      ],
+      "error": null
+    },
+    "Salesforce::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 9,
+      "sample": [
+        "AIforce World Tour London · Oct 15, 2026",
+        "AIforce World Tour Essentials Sydney · Oct 20, 2026",
+        "AIforce World Tour Essentials Melbourne · Oct 27, 2027"
+      ],
+      "error": null
+    },
+    "Samsara::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 15,
+      "sample": [
+        "Green Freight Innovation Forum · Sep 30, 2026",
+        "APWA Western Snow & Ice Conference · Oct 4, 2026",
+        "National Electrical Contractors Association (NECA) Show 2026 · Oct 4, 2026"
+      ],
+      "error": null
+    },
+    "Scale AI::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 19,
+      "sample": [
+        "COLM 2026 · Oct 6, 2026",
+        "AUSA · Oct 12, 2026",
+        "Money 20/20 USA · Oct 18, 2026"
+      ],
+      "error": null
+    },
+    "Sentry::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 1,
+      "sample": [
+        "GitHub Universe 2026 · Oct 28, 2026"
+      ],
+      "error": null
+    },
+    "Together AI::event_page": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 4,
+      "sample": [
+        "The Science of Speed · Oct 9, 2026",
+        "Together Table: AI Leaders · Oct 13, 2026",
+        "GTC Berlin · Oct 20, 2026"
+      ],
+      "error": null
+    },
+    "Together AI::luma": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 4,
+      "sample": [
+        "Open by Design: NYC Developer Meetup | Together AI × NVIDIA × Reflection · Oct 14, 2026",
+        "Open Haus Berlin: An evening for people who build in the open · Oct 20, 2026",
+        "UNTERGRUND, An evening for the people building the next generation of open source. · Oct 21, 2026"
+      ],
+      "error": null
+    },
+    "Two Sigma::avature_events": {
+      "category": "recruiting",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 1,
+      "sample": [
+        "University of Chicago: Two Sigma's Quant Research Meet & Greet Fall 2026 · Oct 5, 2026"
+      ],
+      "error": null
+    },
+    "Vercel::luma:community": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 3,
+      "sample": [
+        "Fast Forward · Oct 14, 2026",
+        "Marketing Engineer Meetup SF · Oct 14, 2026",
+        "Design Night · Oct 14, 2026"
+      ],
+      "error": null
+    },
+    "Vercel::luma:events": {
+      "category": "industry",
+      "status": "success",
+      "validated_on": "2026-10-02",
+      "events": 6,
+      "sample": [
+        "AI SYD · Oct 8, 2026",
+        "Fast Forward · Oct 14, 2026",
+        "Design Night · Oct 14, 2026"
+      ],
       "error": null
     }
   }

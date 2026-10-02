@@ -785,3 +785,89 @@ class TestOnlyTheLastDayIsSeen:
 
         assert later.new_records == [] and later.updated_records == []
         assert len(memory_system.push.sent) == 1
+
+
+# ------------------------------------------------------------------ Events
+
+
+def with_events(*events: dict[str, object], fail: str | None = None, **board: object):  # type: ignore[no-untyped-def]
+    """TestCo with one internship board and one recruiting event source."""
+    from jobmonitor.models.company import EventCategory, EventSource
+
+    config: dict[str, object] = {"fail": fail} if fail else {"jobs": list(events)}
+    source = EventSource(
+        provider="fixture", provider_config=config, category=EventCategory.RECRUITING, name="events"
+    )
+    return fixture_company(jobs=[posting("1")], event_sources=(source,), **board)
+
+
+def event(identifier: str, title: str) -> dict[str, object]:
+    return {
+        "title": title,
+        "url": f"https://testco.test/events/{identifier}",
+        "external_id": f"event:{identifier}",
+        "location": "New York, NY",
+        "date_posted": None,
+    }
+
+
+class TestEvents:
+    """A company's events ride the same pipeline: stored, labelled, alerted once.
+
+    The first poll of a new event source stores what it already lists without
+    alerting (those events predate monitoring); events that appear afterwards are
+    pushed as "new event" and listed in the digest's own section.
+    """
+
+    def test_the_whole_story(self, system: System) -> None:
+        listed = event("a", "Info Session · Oct 20, 2026")
+        first = system.poll([with_events(listed)])
+
+        # The internship alerts; the event already on the page is stored silently.
+        assert len(first.new_records) == 2
+        assert [m.title for m, _ in system.push.sent] == ["TestCo - new internship"]
+        assert {job["title"] for job in system.feed()} == {
+            "Software Engineer Intern",
+            "Info Session · Oct 20, 2026",
+        }
+
+        # A new event appears on the next poll: one push, labelled as an event.
+        added = event("b", "Coffee Chat · Oct 27, 2026")
+        second = system.poll([with_events(listed, added)], at=T0 + timedelta(minutes=10))
+        assert [r.title for r in second.new_records] == ["Coffee Chat · Oct 27, 2026"]
+        assert [m.title for m, _ in system.push.sent][-1] == "TestCo - new event"
+        payload = system.push_payloads[-1]
+        assert payload["kind"] == "event" and payload["urgency"] == "immediate"
+        status, body = system.get(f"/jobs/{payload['job_id']}")
+        assert status == 200 and body["job"]["title"] == "Coffee Chat · Oct 27, 2026"
+
+        # The same page again: nothing new, nothing sent.
+        system.poll([with_events(listed, added)], at=T0 + timedelta(minutes=20))
+        assert len(system.push.sent) == 2
+
+        # The digest lists the internship and the new event, not the baseline one.
+        digest = system.send_digest()
+        text = system.email.sent[-1][0].text_body
+        assert digest.sent
+        assert "EVENTS & PROGRAMS" in text
+        assert "Coffee Chat" in text and "Info Session" not in text
+        assert "Software Engineer Intern" in text
+
+    def test_a_broken_events_page_never_touches_the_job_board(self, system: System) -> None:
+        outcome = system.poll([with_events(fail="events page returned a maintenance page")])
+        assert [r.title for r in outcome.new_records] == ["Software Engineer Intern"]
+        assert len(system.push.sent) == 1
+        failed = [h for h in outcome.health_records if not h.ok]
+        assert [(h.company, h.provider) for h in failed] == [("TestCo", "fixture:events")]
+
+    def test_a_program_on_the_job_board_alerts_as_a_program(self, system: System) -> None:
+        company = fixture_company(
+            jobs=[
+                posting("1"),
+                posting("2", title="LINK 2027: Software Development Intensive Program"),
+            ]
+        )
+        outcome = system.poll([company])
+        assert len(outcome.new_records) == 2
+        titles = sorted(m.title for m, _ in system.push.sent)
+        assert titles == ["TestCo - new internship", "TestCo - new program"]

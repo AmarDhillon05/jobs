@@ -244,3 +244,37 @@ class TestRegistryWideInvariants:
                 key = str(name).casefold()
                 assert key not in claimed, f"{company.company} and {claimed[key]} both claim {name}"
                 claimed[key] = company.company
+
+
+EVENT_SOURCES = [source for company in POLLABLE for source in company.sources()[1:]]
+
+
+class TestEventSources:
+    """Every configured event source, against its adapter and its live verdict."""
+
+    def test_there_are_event_sources(self) -> None:
+        assert len(EVENT_SOURCES) >= 25
+
+    @pytest.mark.parametrize("target", EVENT_SOURCES, ids=lambda t: t.key)
+    def test_builds_its_adapter(self, target: Company) -> None:
+        from jobmonitor.scrapers import EVENT_PROVIDERS
+
+        assert target.provider in EVENT_PROVIDERS
+        source = build_source(target, build_client(FakeTransport([])))
+        assert source.company.company == target.company
+        url = str(target.provider_config.get("url") or target.provider_config.get("calendar"))
+        if url.startswith("http"):
+            assert urlsplit(url).scheme == "https", target.key
+
+    @pytest.mark.parametrize("target", EVENT_SOURCES, ids=lambda t: t.key)
+    def test_was_validated_live(self, target: Company) -> None:
+        """Recorded by ``scripts/validate_companies.py --events --write``."""
+        import json
+        from pathlib import Path
+
+        validation = json.loads(
+            (Path(__file__).resolve().parents[2] / "data" / "validation.json").read_text()
+        )
+        verdict = validation.get("event_sources", {}).get(target.key)
+        assert verdict is not None, f"{target.key} has never been validated live"
+        assert verdict["status"] in {"success", "empty"}, verdict

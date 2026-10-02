@@ -31,7 +31,8 @@ London") marks the event as outside the US, so the US filter drops it.
 ``require_date`` keeps only items with a date - on a busy marketing page, what
 separates event cards from navigation. ``exclude_titles`` (regex) drops items a
 link pattern cannot tell apart from events ("On demand" recordings). ``location`` sets one location
-for every item, for pages that only list events in one place.
+for every item, for pages that only list events in one place. ``"kind": "program"``
+labels every item a program rather than an event (a page of programs).
 
 Captured live into ``tests/fixtures/events/``.
 """
@@ -49,7 +50,7 @@ from urllib.parse import urldefrag, urljoin
 from jobmonitor.errors import InvalidJobError, ParseError, ProviderConfigError
 from jobmonitor.filtering.location import Region, classify_location
 from jobmonitor.models.health import utcnow
-from jobmonitor.models.job import Job
+from jobmonitor.models.job import PROGRAM_TYPE, Job
 from jobmonitor.scrapers._parse import as_mapping
 from jobmonitor.scrapers.base import JobSource, register
 from jobmonitor.scrapers.events._common import (
@@ -328,7 +329,9 @@ class EventPageSource(JobSource):
             external_id=event_id(str(record.get("id") or record.get("url"))),
             date_posted=None,
             description=record.get("description"),
-            employment_type=None,  # the pipeline labels it by the source's category
+            # The pipeline labels it by the source's category, unless the page is
+            # known to list programs ("kind": "program", Jane Street).
+            employment_type=PROGRAM_TYPE if self.config.get("kind") == "program" else None,
         )
 
 

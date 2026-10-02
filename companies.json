@@ -123,7 +123,24 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 5 observed posting URL(s); seed name(s): Anthropic",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://www.anthropic.com/events",
+          "link_pattern": "anthropic\\.com/events/[a-z0-9-]+"
+        },
+        "category": "industry"
+      },
+      {
+        "provider": "luma",
+        "provider_config": {
+          "calendar": "claudecommunity"
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "Apple",
@@ -193,7 +210,18 @@
     ],
     "support_status": "supported",
     "notes": "atlassian.com careers listings endpoint answers (verified live 2026-09-27). Only updated dates exposed.",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://www.atlassian.com/company/events",
+          "link_pattern": "atlassian\\.com/(?:company/events/|events/)[a-z0-9-]+",
+          "require_date": true
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "Block",
@@ -232,7 +260,16 @@
     ],
     "support_status": "supported",
     "notes": "bloomberg.com blocks automated requests (403), but the job board is hosted on Avature (bloomberg.avature.net), whose robots.txt allows /careers and publishes a sitemap of every open job. One sitemap request per poll, then a paced detail page per internship (verified live 2026-10-01: 381 open postings, no internships open that day).",
-    "last_validated": "2026-10-01"
+    "last_validated": "2026-10-01",
+    "event_sources": [
+      {
+        "provider": "avature_events",
+        "provider_config": {
+          "url": "https://bloomberg.avature.net/events/EventsList"
+        },
+        "category": "recruiting"
+      }
+    ]
   },
   {
     "company": "Blue Origin",
@@ -285,7 +322,16 @@
     ],
     "support_status": "supported",
     "notes": "Greenhouse board 'brex': 259 postings, every apply URL on brex.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "luma",
+        "provider_config": {
+          "calendar": "brexevents"
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "ByteDance / TikTok",
@@ -344,7 +390,17 @@
     ],
     "support_status": "partial",
     "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "sitemap_watch",
+        "provider_config": {
+          "url": "https://www.citadel.com/page-sitemap.xml",
+          "path_prefix": "/careers/programs-and-events/"
+        },
+        "category": "recruiting"
+      }
+    ]
   },
   {
     "company": "Citadel Securities",
@@ -363,7 +419,17 @@
     ],
     "support_status": "partial",
     "notes": "company-owned careers site; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "sitemap_watch",
+        "provider_config": {
+          "url": "https://www.citadelsecurities.com/page-sitemap.xml",
+          "path_prefix": "/careers/programs-and-events/"
+        },
+        "category": "recruiting"
+      }
+    ]
   },
   {
     "company": "Cloudflare",
@@ -396,7 +462,17 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 5 observed posting URL(s); seed name(s): Cohere",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://cohere.com/events",
+          "link_pattern": "cohere\\.com/events/[a-z0-9-]+"
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "Coinbase",
@@ -454,7 +530,18 @@
     "aliases": [
       "Crowdstrike"
     ],
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://www.crowdstrike.com/en-us/events/",
+          "link_pattern": "events\\.crowdstrike\\.com/|crowdstrike\\.com/en-us/events/[a-z0-9-]+",
+          "exclude_link_pattern": "/register/?$"
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "Databricks",
@@ -475,7 +562,16 @@
     ],
     "support_status": "supported",
     "notes": "Greenhouse board on a company-owned domain. Evidence: 3 observed postings are boards.greenhouse.io embed job_app URLs, which proves the provider but never the board token. Candidate tokens are resolved against the live API on first fetch (databricks, databricks1); run `make validate-companies` to pin the winner and promote to supported.",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "luma",
+        "provider_config": {
+          "calendar": "databricks"
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "Datadog",
@@ -548,7 +644,19 @@
     ],
     "support_status": "supported",
     "notes": "Greenhouse board 'dropbox': 44 postings, every apply URL on jobs.dropbox.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://events.dropbox.com/",
+          "link_pattern": "events\\.dropbox\\.com/[a-z0-9-]+",
+          "require_date": true,
+          "exclude_link_pattern": "search-events"
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "DRW",
@@ -599,7 +707,18 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 8 observed posting URL(s); seed name(s): Figma",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://www.figma.com/events-and-webinars/",
+          "link_pattern": "figma\\.com/(?:events|webinars)/[a-z0-9-]+",
+          "exclude_link_pattern": "figma\\.com/[a-z]{2}-[a-z]{2}/"
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "Figure",
@@ -657,7 +776,17 @@
       "G Research",
       "Gresearch"
     ],
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://www.gresearch.com/events/",
+          "link_pattern": "gresearch\\.com/events/[a-z0-9-]+/?$"
+        },
+        "category": "recruiting"
+      }
+    ]
   },
   {
     "company": "Goldman Sachs",
@@ -760,7 +889,18 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 37 observed posting URL(s); seed name(s): Jane Street",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://www.janestreet.com/join-jane-street/programs-and-events/",
+          "link_pattern": "/programs-and-events/[a-z0-9-]+/?$",
+          "kind": "program"
+        },
+        "category": "recruiting"
+      }
+    ]
   },
   {
     "company": "Jump Trading",
@@ -793,7 +933,17 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 5 observed posting URL(s); seed name(s): Lightmatter",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://lightmatter.co/events/",
+          "link_pattern": "lightmatter\\.co/event/[a-z0-9-]+"
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "LinkedIn",
@@ -865,7 +1015,19 @@
       "live"
     ],
     "support_status": "supported",
-    "notes": "careers page runs on Eightfold; PCSX search API answers, 98 intern postings (verified live 2026-09-27). Eightfold rate-limits this tenant after ~20-30 requests (429s observed twice); the bank-title terms ('summer analyst', 'summer associate') are dropped - Microsoft does not use them, and they returned 73 fuzzy matches - bringing a poll to ~22 requests."
+    "notes": "careers page runs on Eightfold; PCSX search API answers, 98 intern postings (verified live 2026-09-27). Eightfold rate-limits this tenant after ~20-30 requests (429s observed twice); the bank-title terms ('summer analyst', 'summer associate') are dropped - Microsoft does not use them, and they returned 73 fuzzy matches - bringing a poll to ~22 requests.",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://www.microsoft.com/en-us/events",
+          "link_pattern": "^(?!https://www\\.microsoft\\.com/en-us/(?!events))",
+          "require_date": true,
+          "exclude_link_pattern": "search-catalog"
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "Millennium",
@@ -978,7 +1140,16 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 83 observed posting URL(s); seed name(s): NVIDIA",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "luma",
+        "provider_config": {
+          "calendar": "nvidia-events"
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "OpenAI",
@@ -1011,7 +1182,17 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 16 observed posting URL(s); seed name(s): Optiver",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://www.optiver.com/join-us/events/",
+          "link_pattern": "optiver\\.com/join-us/events/[a-z0-9-]+/?$"
+        },
+        "category": "recruiting"
+      }
+    ]
   },
   {
     "company": "Palantir",
@@ -1101,7 +1282,18 @@
     ],
     "support_status": "supported",
     "notes": "Greenhouse board 'pinterest': 152 postings, every apply URL on pinterestcareers.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://www.pinterestcareers.com/events/",
+          "link_pattern": "beamery\\.com/Pinterest/",
+          "date_position": "before"
+        },
+        "category": "recruiting"
+      }
+    ]
   },
   {
     "company": "Plaid",
@@ -1118,7 +1310,18 @@
     ],
     "support_status": "supported",
     "notes": "Ashby board 'plaid': 121 postings (verified live 2026-09-27).",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://plaid.com/events/",
+          "link_pattern": "plaid\\.com/events/[a-z0-9-]+",
+          "exclude_titles": "(?i)on demand"
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "Point72",
@@ -1219,7 +1422,17 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 10 observed posting URL(s); seed name(s): Rippling",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://www.rippling.com/events",
+          "link_pattern": "rippling\\.com/(?:events|webinars?)/[a-z0-9-]+"
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "Robinhood",
@@ -1271,7 +1484,18 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 28 observed posting URL(s); seed name(s): Salesforce",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://www.salesforce.com/events/?bc=OTH",
+          "link_pattern": "salesforce\\.com/(?:[a-z]{2}/)?(?:events|dreamforce|world-tour)",
+          "require_date": true
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "Samsara",
@@ -1288,7 +1512,18 @@
     ],
     "support_status": "supported",
     "notes": "Greenhouse board 'samsara': 249 postings, every apply URL on samsara.com (verified live 2026-09-27). Ownership checked by apply-URL domain, not just by the slug answering.",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://www.samsara.com/events/live",
+          "link_pattern": "^(?!https://(?:www\\.)?samsara\\.com/)https?://",
+          "require_date": true
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "Scale AI",
@@ -1305,7 +1540,18 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 5 observed posting URL(s); seed name(s): Scale AI",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://scale.com/events",
+          "link_pattern": "^(?!https://(?:[a-z]+\\.)?scale\\.com/(?!events/)).",
+          "require_date": true
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "Schonfeld",
@@ -1343,7 +1589,17 @@
     "aliases": [
       "Functional Software"
     ],
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://sentry.io/events/",
+          "link_pattern": "sentry\\.io/events/[a-z0-9-]+"
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "ServiceNow",
@@ -1542,7 +1798,25 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 16 observed posting URL(s); seed name(s): Together AI",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "event_page",
+        "provider_config": {
+          "url": "https://www.together.ai/events",
+          "link_pattern": "^(?!https://www\\.together\\.ai/(?!events/)).",
+          "require_date": true
+        },
+        "category": "industry"
+      },
+      {
+        "provider": "luma",
+        "provider_config": {
+          "calendar": "together-ai"
+        },
+        "category": "industry"
+      }
+    ]
   },
   {
     "company": "Toyota Research Institute",
@@ -1580,7 +1854,16 @@
     ],
     "support_status": "partial",
     "notes": "Avature tenant; no stable public feed; monitored via the Simplify community feed as a SECONDARY fallback only (PRD §4.3) - lags the employer board and may miss roles",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "avature_events",
+        "provider_config": {
+          "url": "https://careers.twosigma.com/events/SearchEvents?eventRecordsPerPage=50"
+        },
+        "category": "recruiting"
+      }
+    ]
   },
   {
     "company": "Uber",
@@ -1614,7 +1897,25 @@
     ],
     "support_status": "supported",
     "notes": "config recovered from 3 observed posting URL(s); seed name(s): Vercel",
-    "last_validated": "2026-09-27"
+    "last_validated": "2026-09-27",
+    "event_sources": [
+      {
+        "provider": "luma",
+        "provider_config": {
+          "calendar": "vercel-events"
+        },
+        "category": "industry",
+        "name": "events"
+      },
+      {
+        "provider": "luma",
+        "provider_config": {
+          "calendar": "vercelcommunity"
+        },
+        "category": "industry",
+        "name": "community"
+      }
+    ]
   },
   {
     "company": "Waymo",

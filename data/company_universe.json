@@ -22,7 +22,24 @@
     {
       "company": "Anthropic",
       "industry": "AI Labs",
-      "priority": "high"
+      "priority": "high",
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://www.anthropic.com/events",
+            "link_pattern": "anthropic\\.com/events/[a-z0-9-]+"
+          }
+        },
+        {
+          "provider": "luma",
+          "category": "industry",
+          "provider_config": {
+            "calendar": "claudecommunity"
+          }
+        }
+      ]
     },
     {
       "company": "OpenAI",
@@ -32,12 +49,33 @@
     {
       "company": "Scale AI",
       "industry": "AI Data Infrastructure",
-      "priority": "high"
+      "priority": "high",
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://scale.com/events",
+            "link_pattern": "^(?!https://(?:[a-z]+\\.)?scale\\.com/(?!events/)).",
+            "require_date": true
+          }
+        }
+      ]
     },
     {
       "company": "Cohere",
       "industry": "AI Labs",
-      "priority": "high"
+      "priority": "high",
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://cohere.com/events",
+            "link_pattern": "cohere\\.com/events/[a-z0-9-]+"
+          }
+        }
+      ]
     },
     {
       "company": "Mistral AI",
@@ -58,7 +96,25 @@
     {
       "company": "Together AI",
       "industry": "AI Infrastructure",
-      "priority": "high"
+      "priority": "high",
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://www.together.ai/events",
+            "link_pattern": "^(?!https://www\\.together\\.ai/(?!events/)).",
+            "require_date": true
+          }
+        },
+        {
+          "provider": "luma",
+          "category": "industry",
+          "provider_config": {
+            "calendar": "together-ai"
+          }
+        }
+      ]
     },
     {
       "company": "Sierra",
@@ -91,7 +147,16 @@
     {
       "company": "NVIDIA",
       "industry": "Semiconductors / AI",
-      "priority": "high"
+      "priority": "high",
+      "event_sources": [
+        {
+          "provider": "luma",
+          "category": "industry",
+          "provider_config": {
+            "calendar": "nvidia-events"
+          }
+        }
+      ]
     },
     {
       "company": "Netflix",
@@ -119,7 +184,18 @@
     {
       "company": "Salesforce",
       "industry": "Enterprise SaaS",
-      "priority": "medium"
+      "priority": "medium",
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://www.salesforce.com/events/?bc=OTH",
+            "link_pattern": "salesforce\\.com/(?:[a-z]{2}/)?(?:events|dreamforce|world-tour)",
+            "require_date": true
+          }
+        }
+      ]
     },
     {
       "company": "DoorDash",
@@ -139,12 +215,41 @@
     {
       "company": "Vercel",
       "industry": "Developer Platform",
-      "priority": "high"
+      "priority": "high",
+      "event_sources": [
+        {
+          "provider": "luma",
+          "category": "industry",
+          "provider_config": {
+            "calendar": "vercel-events"
+          },
+          "name": "events"
+        },
+        {
+          "provider": "luma",
+          "category": "industry",
+          "provider_config": {
+            "calendar": "vercelcommunity"
+          },
+          "name": "community"
+        }
+      ]
     },
     {
       "company": "Figma",
       "industry": "Design Tools",
-      "priority": "high"
+      "priority": "high",
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://www.figma.com/events-and-webinars/",
+            "link_pattern": "figma\\.com/(?:events|webinars)/[a-z0-9-]+",
+            "exclude_link_pattern": "figma\\.com/[a-z]{2}-[a-z]{2}/"
+          }
+        }
+      ]
     },
     {
       "company": "Notion",
@@ -162,6 +267,16 @@
       "priority": "high",
       "aliases": [
         "Functional Software"
+      ],
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://sentry.io/events/",
+            "link_pattern": "sentry\\.io/events/[a-z0-9-]+"
+          }
+        }
       ]
     },
     {
@@ -180,6 +295,17 @@
       "priority": "high",
       "aliases": [
         "Crowdstrike"
+      ],
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://www.crowdstrike.com/en-us/events/",
+            "link_pattern": "events\\.crowdstrike\\.com/|crowdstrike\\.com/en-us/events/[a-z0-9-]+",
+            "exclude_link_pattern": "/register/?$"
+          }
+        }
       ]
     },
     {
@@ -205,17 +331,48 @@
     {
       "company": "Rippling",
       "industry": "HR / Fintech Platform",
-      "priority": "high"
+      "priority": "high",
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://www.rippling.com/events",
+            "link_pattern": "rippling\\.com/(?:events|webinars?)/[a-z0-9-]+"
+          }
+        }
+      ]
     },
     {
       "company": "Jane Street",
       "industry": "Quantitative Trading",
-      "priority": "high"
+      "priority": "high",
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "recruiting",
+          "provider_config": {
+            "url": "https://www.janestreet.com/join-jane-street/programs-and-events/",
+            "link_pattern": "/programs-and-events/[a-z0-9-]+/?$",
+            "kind": "program"
+          }
+        }
+      ]
     },
     {
       "company": "Optiver",
       "industry": "Market Making",
-      "priority": "high"
+      "priority": "high",
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "recruiting",
+          "provider_config": {
+            "url": "https://www.optiver.com/join-us/events/",
+            "link_pattern": "optiver\\.com/join-us/events/[a-z0-9-]+/?$"
+          }
+        }
+      ]
     },
     {
       "company": "IMC Trading",
@@ -291,7 +448,17 @@
     {
       "company": "Lightmatter",
       "industry": "Photonic Computing",
-      "priority": "experimental"
+      "priority": "experimental",
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://lightmatter.co/events/",
+            "link_pattern": "lightmatter\\.co/event/[a-z0-9-]+"
+          }
+        }
+      ]
     },
     {
       "company": "Palantir",
@@ -342,6 +509,16 @@
       "aliases": [
         "G Research",
         "Gresearch"
+      ],
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "recruiting",
+          "provider_config": {
+            "url": "https://www.gresearch.com/events/",
+            "link_pattern": "gresearch\\.com/events/[a-z0-9-]+/?$"
+          }
+        }
       ]
     },
     {
@@ -390,6 +567,17 @@
       "source_discovered_from": [
         "curated",
         "live"
+      ],
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "recruiting",
+          "provider_config": {
+            "url": "https://www.pinterestcareers.com/events/",
+            "link_pattern": "beamery\\.com/Pinterest/",
+            "date_position": "before"
+          }
+        }
       ]
     },
     {
@@ -492,6 +680,18 @@
       "source_discovered_from": [
         "curated",
         "live"
+      ],
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://events.dropbox.com/",
+            "link_pattern": "events\\.dropbox\\.com/[a-z0-9-]+",
+            "require_date": true,
+            "exclude_link_pattern": "search-events"
+          }
+        }
       ]
     },
     {
@@ -528,6 +728,15 @@
       "source_discovered_from": [
         "curated",
         "live"
+      ],
+      "event_sources": [
+        {
+          "provider": "luma",
+          "category": "industry",
+          "provider_config": {
+            "calendar": "brexevents"
+          }
+        }
       ]
     },
     {
@@ -544,6 +753,17 @@
       "source_discovered_from": [
         "curated",
         "live"
+      ],
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://www.samsara.com/events/live",
+            "link_pattern": "^(?!https://(?:www\\.)?samsara\\.com/)https?://",
+            "require_date": true
+          }
+        }
       ]
     },
     {
@@ -560,6 +780,17 @@
       "source_discovered_from": [
         "curated",
         "live"
+      ],
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://plaid.com/events/",
+            "link_pattern": "plaid\\.com/events/[a-z0-9-]+",
+            "exclude_titles": "(?i)on demand"
+          }
+        }
       ]
     },
     {
@@ -604,6 +835,18 @@
       "source_discovered_from": [
         "curated",
         "live"
+      ],
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://www.microsoft.com/en-us/events",
+            "link_pattern": "^(?!https://www\\.microsoft\\.com/en-us/(?!events))",
+            "require_date": true,
+            "exclude_link_pattern": "search-catalog"
+          }
+        }
       ]
     },
     {
@@ -723,6 +966,17 @@
       "source_discovered_from": [
         "curated",
         "live"
+      ],
+      "event_sources": [
+        {
+          "provider": "event_page",
+          "category": "industry",
+          "provider_config": {
+            "url": "https://www.atlassian.com/company/events",
+            "link_pattern": "atlassian\\.com/(?:company/events/|events/)[a-z0-9-]+",
+            "require_date": true
+          }
+        }
       ]
     },
     {
@@ -796,6 +1050,15 @@
       "source_discovered_from": [
         "curated",
         "live"
+      ],
+      "event_sources": [
+        {
+          "provider": "avature_events",
+          "category": "recruiting",
+          "provider_config": {
+            "url": "https://bloomberg.avature.net/events/EventsList"
+          }
+        }
       ]
     },
     {
@@ -852,6 +1115,15 @@
         "simplify",
         "ouckah",
         "curated"
+      ],
+      "event_sources": [
+        {
+          "provider": "luma",
+          "category": "industry",
+          "provider_config": {
+            "calendar": "databricks"
+          }
+        }
       ]
     },
     {
@@ -910,6 +1182,16 @@
       "source_discovered_from": [
         "simplify",
         "curated"
+      ],
+      "event_sources": [
+        {
+          "provider": "sitemap_watch",
+          "category": "recruiting",
+          "provider_config": {
+            "url": "https://www.citadel.com/page-sitemap.xml",
+            "path_prefix": "/careers/programs-and-events/"
+          }
+        }
       ]
     },
     {
@@ -928,6 +1210,16 @@
       "source_discovered_from": [
         "simplify",
         "curated"
+      ],
+      "event_sources": [
+        {
+          "provider": "sitemap_watch",
+          "category": "recruiting",
+          "provider_config": {
+            "url": "https://www.citadelsecurities.com/page-sitemap.xml",
+            "path_prefix": "/careers/programs-and-events/"
+          }
+        }
       ]
     },
     {
@@ -966,6 +1258,15 @@
       "source_discovered_from": [
         "simplify",
         "curated"
+      ],
+      "event_sources": [
+        {
+          "provider": "avature_events",
+          "category": "recruiting",
+          "provider_config": {
+            "url": "https://careers.twosigma.com/events/SearchEvents?eventRecordsPerPage=50"
+          }
+        }
       ]
     },
     {

@@ -33,6 +33,12 @@ editorial universe plus those observations by ``build_company_registry.py``, whi
 this script then re-runs. Writing the registry in place would make the build's
 ``--check`` - and so ``make verify`` - fail the moment validation ran.
 
+``--events`` probes every company's *event sources* instead (events pages, Luma
+calendars, Avature events portals, sitemaps) and, with ``--write``, records each
+one's verdict and a sample of current events under ``event_sources`` in the same
+file. An event source with nothing listed today is fine (events are seasonal);
+one that fails is reported.
+
 Companies whose provider has no adapter (recorded as ``blocked``, e.g. Bloomberg)
 are listed and skipped. The probe is deliberately gentle: sequential, with a pause
 between companies, and it never retries a 403.
@@ -47,6 +53,7 @@ import time
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "src"))
@@ -149,6 +156,101 @@ def probe(company: Company, client: HttpClient) -> Outcome:
     )
 
 
+@dataclass
+class EventOutcome:
+    key: str
+    company: str
+    provider: str
+    category: str
+    status: str
+    events: int
+    sample: list[str]
+    error: str | None
+    inconclusive: bool = False
+
+    @property
+    def ok(self) -> bool:
+        return self.status in {ScraperStatus.SUCCESS.value, ScraperStatus.EMPTY.value}
+
+
+def probe_event_source(target: Company, client: HttpClient) -> EventOutcome:
+    result = safe_fetch(build_source(target, client))
+    health = result.health
+    assert health is not None
+    return EventOutcome(
+        key=target.key,
+        company=target.company,
+        provider=target.health_provider,
+        category=target.event_category.value if target.event_category else "",
+        status=health.status.value,
+        events=len(result.jobs),
+        sample=[job.title for job in result.jobs[:3]],
+        error=health.error,
+        inconclusive=(
+            health.status is ScraperStatus.FAILED and (health.error_type or "") in TRANSIENT_ERRORS
+        ),
+    )
+
+
+def validate_events(registry: CompanyRegistry, args: argparse.Namespace) -> int:
+    targets = [source for company in registry for source in company.sources()[1:]]
+    if args.provider:
+        targets = [t for t in targets if t.provider == args.provider]
+    if args.company:
+        match = registry.get(args.company)
+        targets = [t for t in targets if match and t.company == match.company]
+    if args.limit:
+        targets = targets[: args.limit]
+    if not targets:
+        print("no event sources matched the filters", file=sys.stderr)
+        return 2
+
+    client = HttpClient(Settings.from_env().http)
+    today = datetime.now(UTC).date().isoformat()
+    outcomes: list[EventOutcome] = []
+    print(f"probing {len(targets)} event sources (delay {args.delay}s)\n")
+    for index, target in enumerate(targets, start=1):
+        outcome = probe_event_source(target, client)
+        outcomes.append(outcome)
+        marker = "?" if outcome.inconclusive else (" " if outcome.ok else "!")
+        print(
+            f"{marker} [{index:>2}/{len(targets)}] {target.company:<20} {outcome.provider:<22} "
+            f"{outcome.status:<9} events={outcome.events:<3} "
+            f"{outcome.error or '; '.join(outcome.sample)}"[:170]
+        )
+        if args.delay and index < len(targets):
+            time.sleep(args.delay)
+
+    failed = [o for o in outcomes if not o.ok and not o.inconclusive]
+    print(
+        f"\n{len(outcomes) - len(failed)}/{len(outcomes)} event sources answered; validated {today}"
+    )
+    if args.json:
+        args.json.write_text(
+            json.dumps({"validated_on": today, "outcomes": [vars(o) for o in outcomes]}, indent=2)
+            + "\n",
+            encoding="utf-8",
+        )
+    if args.write:
+        data = _load_validation()
+        recorded = data.setdefault("event_sources", {})
+        for outcome in outcomes:
+            if outcome.inconclusive:
+                continue
+            recorded[outcome.key] = {
+                "category": outcome.category,
+                "status": outcome.status,
+                "validated_on": today,
+                "events": outcome.events,
+                "sample": outcome.sample,
+                "error": outcome.error,
+            }
+        data["event_sources"] = dict(sorted(recorded.items()))
+        _write_validation(data)
+        print(f"{VALIDATION_PATH.relative_to(REPO_ROOT)} updated")
+    return 1 if failed else 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--registry", type=Path, default=default_registry_path())
@@ -167,9 +269,14 @@ def main(argv: list[str] | None = None) -> int:
         help="record verdicts in data/validation.json and regenerate companies.json",
     )
     parser.add_argument("--json", type=Path, help="write a machine-readable report here")
+    parser.add_argument(
+        "--events", action="store_true", help="probe event sources instead of job boards"
+    )
     args = parser.parse_args(argv)
 
     registry = CompanyRegistry.load(args.registry)
+    if args.events:
+        return validate_events(registry, args)
     adapters = set(registered_providers())
     skipped = [c for c in registry if c.provider not in adapters]
     targets = [c for c in registry if c.provider in adapters]
@@ -268,9 +375,8 @@ def record_verdicts(outcomes: list[Outcome], today: str) -> None:
     inconclusive outcomes are not written, so a rate limit never overwrites the
     last real verdict.
     """
-    existing: dict[str, dict[str, object]] = {}
-    if VALIDATION_PATH.exists():
-        existing = json.loads(VALIDATION_PATH.read_text(encoding="utf-8")).get("companies", {})
+    data = _load_validation()
+    existing: dict[str, dict[str, object]] = data.get("companies", {})
     for outcome in outcomes:
         if outcome.inconclusive:
             continue
@@ -280,21 +386,32 @@ def record_verdicts(outcomes: list[Outcome], today: str) -> None:
             "jobs": outcome.jobs,
             "error": outcome.error,
         }
+    data["companies"] = dict(sorted(existing.items()))
+    _write_validation(data)
+
+
+def _load_validation() -> dict[str, Any]:
+    if VALIDATION_PATH.exists():
+        loaded: dict[str, Any] = json.loads(VALIDATION_PATH.read_text(encoding="utf-8"))
+        return loaded
+    return {}
+
+
+def _write_validation(data: dict[str, Any]) -> None:
+    """Write both sections, so validating jobs never erases event verdicts or back."""
+    out = {
+        "_comment": [
+            "Observed, not editorial: the last conclusive live verdict per company,",
+            "written by scripts/validate_companies.py --write and merged into",
+            "companies.json by scripts/build_company_registry.py. event_sources holds",
+            "the same for each company's event sources (--events).",
+        ],
+        "companies": data.get("companies", {}),
+    }
+    if data.get("event_sources"):
+        out["event_sources"] = data["event_sources"]
     VALIDATION_PATH.write_text(
-        json.dumps(
-            {
-                "_comment": [
-                    "Observed, not editorial: the last conclusive live verdict per company,",
-                    "written by scripts/validate_companies.py --write and merged into",
-                    "companies.json by scripts/build_company_registry.py.",
-                ],
-                "companies": dict(sorted(existing.items())),
-            },
-            indent=2,
-            ensure_ascii=False,
-        )
-        + "\n",
-        encoding="utf-8",
+        json.dumps(out, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
 
 
