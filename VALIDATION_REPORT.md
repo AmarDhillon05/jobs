@@ -297,6 +297,26 @@ can be are *also* run on emulated AWS through real Lambdas and real queues.
 
 ---
 
+## Events (user request, 2026-10-01)
+
+Events at the monitored companies, delivered through the same ntfy push and hourly
+digest. Recruiting events and programs come first, but all events are included.
+
+| Requirement | Status | Evidence |
+| --- | --- | --- |
+| Find every company's public event sources before building | passed | Crawl of all 92 companies plus a deeper blog/university search; report artifact; `data/event_coverage.json` |
+| Event sources configured | passed | 30 sources at 27 companies (`event_sources` in `data/company_universe.json`) |
+| Each source live-validated | passed | 30/30 answered on 2026-10-02 (`scripts/validate_companies.py --events`, `data/validation.json`); `test_registry_configs.py::TestEventSources` requires a verdict for every source |
+| Adapters parse real pages | tested | `tests/scrapers/test_event_adapters.py`: live captures of 13 pages; titles, dates, past events skipped, pagination (Bloomberg, Luma API), retries, 429, malformed input |
+| Programs on job boards | tested | `tests/unit/test_programs.py`: 41 real titles, including "Program Manager" and "Teaching Assistant" rejected |
+| Events labelled and prioritised | tested | `tests/integration/test_event_notifications.py`: push titles, ntfy priority 4 vs 3, email headings, digest section |
+| Quiet first poll, no duplicate alerts | tested | `tests/integration/test_event_pipeline.py`; Level 8 `TestEvents::test_the_whole_story` on both storages |
+| Event-source failure isolated from the job board | tested | `TestIsolation` in `test_event_pipeline.py`; Level 8 `test_a_broken_events_page_never_touches_the_job_board` |
+| Failing sources back off to hourly | tested | `TestCoolDown` in `test_event_pipeline.py` |
+| Companies with no readable source | blocked (accepted) | 66, each with its reason in `COMPANY_COVERAGE.md`; BLK-015 |
+
+---
+
 ## What is not verified
 
 Stated plainly, because the rest of this document is a list of things that are.
@@ -319,3 +339,7 @@ Stated plainly, because the rest of this document is a list of things that are.
 7. **DynamoDB TTL expiry.** Configured and asserted in the template; real expiry
    takes up to 48 h and is not emulated. Affects health-record cleanup only.
 8. **Anything at all on real AWS.** Intentionally prohibited (PRD §12).
+9. **That event pages keep their markup.** `event_page` reads each page with a
+   per-company link pattern. A redesign can leave a page reading as empty rather
+   than failing. `validate_companies.py --events` shows the count per source, so
+   a sudden drop to 0 is visible.

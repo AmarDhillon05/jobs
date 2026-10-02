@@ -118,6 +118,31 @@ the US, and a posting that gives no usable location ("Remote", "3 Locations") is
 kept rather than silently lost. `US_ONLY=false` turns this off;
 `KEEP_UNKNOWN_LOCATIONS=false` drops the unplaced ones too.
 
+### Events and programs
+
+The same alerts cover **events** at the monitored companies. Recruiting events
+and student programs (info sessions, coffee chats, insight and discovery days,
+fellowships, campus challenges) arrive as **"new event"** or **"new program"** at
+ntfy's high priority, whatever the company's tier. Conferences, meetups and webinars
+arrive as **"industry event"** at normal priority. The digest lists them under
+their own **EVENTS & PROGRAMS** heading.
+
+Events come from two places:
+
+- each company's **event sources** (`event_sources` in `data/company_universe.json`):
+  its events page, Luma calendar, Avature events portal or published sitemap. There
+  are 30 of them at 27 companies, listed with their live check in
+  `COMPANY_COVERAGE.md`;
+- **programs posted as jobs** on any monitored board ("Discovery Program: Capital
+  Markets", "Perplexity Research Fellowship"), recognised by title. "Program
+  Manager" and "Teaching Assistant, Academy..." are not programs.
+
+An event source's first successful poll is stored without alerting, because
+everything it lists predates monitoring. Only events that appear after that alert.
+A source that fails three polls in a row is retried hourly until it recovers, and
+it never affects the company's job board. Past events are skipped, and the US
+filter applies to events as it does to jobs.
+
 ### Email: one hourly digest
 
 With `EMAIL_MODE=digest` (the default) the poll does not email. Once an hour the
@@ -220,6 +245,29 @@ what is emulated.
 `scripts/build_company_registry.py`. `make companies` regenerates it; `make
 validate-companies` probes every configured source live and rewrites each
 `support_status` from what actually answered.
+
+### Adding an event source
+
+Add an `event_sources` list to the company's entry in `data/company_universe.json`,
+then `make companies`:
+
+```json
+"event_sources": [
+  {"provider": "event_page", "category": "recruiting",
+   "provider_config": {"url": "https://example.com/careers/events/",
+                       "link_pattern": "example\\.com/careers/events/[a-z0-9-]+/?$"}},
+  {"provider": "luma", "category": "industry",
+   "provider_config": {"calendar": "example-events"}}
+]
+```
+
+`category` is `recruiting` (student events and programs) or `industry`. The
+adapters are `event_page` (a server-rendered list of event links; see its
+docstring for `require_date`, `date_position`, `exclude_titles` and `kind`),
+`luma`, `avature_events` and `sitemap_watch`. Two sources with the same provider
+need distinct `name`s. Then run `python scripts/validate_companies.py --events
+--company Example --write`: the registry tests require a successful live check
+for every event source.
 
 ## Adding a provider
 

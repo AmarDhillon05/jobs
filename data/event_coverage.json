@@ -1,0 +1,276 @@
+{
+  "_comment": [
+    "Editorial: why a company has no configured event source, from the 2026-10-01/02",
+    "event-source research (its own site, sitemaps, platforms, blogs, university calendars).",
+    "Rendered into COMPANY_COVERAGE.md by scripts/company_coverage.py.",
+    "reason: board = programs are caught on its job board; page-only = a static program page,",
+    "no list (page-change alerts are deliberately not built); browser = list drawn by JavaScript;",
+    "no-list = no upcoming list in the HTML; blocked = refused or prohibited; none = nothing public."
+  ],
+  "companies": {
+    "AQR Capital Management": {
+      "reason": "none",
+      "note": "Info sessions appear only on university calendars and Handshake."
+    },
+    "Abridge": {
+      "reason": "page-only",
+      "note": "Early career program page only."
+    },
+    "Adobe": {
+      "reason": "no-list",
+      "note": "adobe.com/events timed out; careers events are talent-community sign-ups, not events."
+    },
+    "Airbnb": {
+      "reason": "none",
+      "note": "Connect is an apprenticeship for non-degree engineers, not a student program."
+    },
+    "Akuna Capital": {
+      "reason": "blocked",
+      "note": "Info-session sign-ups are on akunacapital.hiringplatform.com, whose robots.txt disallows everything."
+    },
+    "Amazon": {
+      "reason": "none",
+      "note": "Info sessions appear only on university calendars and Handshake (sign-in)."
+    },
+    "Anduril": {
+      "reason": "browser",
+      "note": "anduril.com/early-careers renders with JavaScript; info sessions are on university calendars and Handshake."
+    },
+    "Apple": {
+      "reason": "no-list",
+      "note": "apple.com/apple-events lists past keynotes only; new ones are announced days ahead."
+    },
+    "Applied Intuition": {
+      "reason": "none",
+      "note": "Students or early-careers pages exist but list no events."
+    },
+    "Block": {
+      "reason": "page-only",
+      "note": "Builder Fellowship page only."
+    },
+    "Blue Origin": {
+      "reason": "blocked",
+      "note": "429 on every request, never easing."
+    },
+    "Boston Dynamics": {
+      "reason": "no-list",
+      "note": "Events page lists only a 2023 event."
+    },
+    "ByteDance / TikTok": {
+      "reason": "none",
+      "note": "TechJam and info sessions are APAC/EMEA, which the US filter would drop."
+    },
+    "Chicago Trading Company": {
+      "reason": "page-only",
+      "note": "Campus page links to a virtual-events site (recsolu.com) this environment could not reach."
+    },
+    "Cloudflare": {
+      "reason": "browser",
+      "note": "cloudflare.com/events loads its list with JavaScript."
+    },
+    "Coinbase": {
+      "reason": "browser",
+      "note": "coinbase.com/events loads its list with JavaScript."
+    },
+    "Confluent": {
+      "reason": "no-list",
+      "note": "The Luma calendar named Confluent appears to be run by a third-party group."
+    },
+    "DE Shaw": {
+      "reason": "browser",
+      "note": "deshaw.com/careers/events renders its list with JavaScript."
+    },
+    "DRW": {
+      "reason": "page-only",
+      "note": "Only blog posts and a third-party list (openquant.co) mention Discover DRW."
+    },
+    "Datadog": {
+      "reason": "browser",
+      "note": "datadoghq.com/events-webinars loads its list with JavaScript."
+    },
+    "DoorDash": {
+      "reason": "board",
+      "note": "AI Research Fellowship is posted on its Greenhouse board; the company site answers 403."
+    },
+    "Etched": {
+      "reason": "browser",
+      "note": "etched.com/events renders with JavaScript."
+    },
+    "Figure": {
+      "reason": "none",
+      "note": "Students or early-careers pages exist but list no events."
+    },
+    "Five Rings": {
+      "reason": "board",
+      "note": "LINK intensive program is posted on its Greenhouse board; robots.txt disallows crawling the site."
+    },
+    "Goldman Sachs": {
+      "reason": "board",
+      "note": "Apprentice programmes are posted on higher.gs.com; goldmansachs.com answers 403."
+    },
+    "Google": {
+      "reason": "blocked",
+      "note": "robots.txt disallows google.com/careers and /events; the student site needs a browser."
+    },
+    "Harvey": {
+      "reason": "none",
+      "note": "Customer webinars only."
+    },
+    "Hudson River Trading": {
+      "reason": "page-only",
+      "note": "Student opportunities page describes programs in prose; no list to read."
+    },
+    "IMC Trading": {
+      "reason": "board",
+      "note": "Chess Academy interest forms are on its Greenhouse board. The US events page renders client-side; the readable campus pages are APAC-only."
+    },
+    "Jump Trading": {
+      "reason": "page-only",
+      "note": "Fellowship page only; no list of events."
+    },
+    "LinkedIn": {
+      "reason": "blocked",
+      "note": "Its events are on linkedin.com, which needs a sign-in and whose terms prohibit automated collection."
+    },
+    "Mercury": {
+      "reason": "browser",
+      "note": "mercury.com/events loads its list with JavaScript."
+    },
+    "Meta": {
+      "reason": "blocked",
+      "note": "robots.txt forbids automated collection without written permission."
+    },
+    "Millennium": {
+      "reason": "page-only",
+      "note": "Meet Millennium page only. Its events are Eightfold pages with no public list, so new ones cannot be discovered."
+    },
+    "Mistral AI": {
+      "reason": "none",
+      "note": "Students or early-careers pages exist but list no events."
+    },
+    "MongoDB": {
+      "reason": "none",
+      "note": "Runs 'MongoDB Summits' but no public page lists them."
+    },
+    "Netflix": {
+      "reason": "blocked",
+      "note": "robots.txt disallows its careers site."
+    },
+    "Notion": {
+      "reason": "none",
+      "note": "Students or early-careers pages exist but list no events."
+    },
+    "OpenAI": {
+      "reason": "blocked",
+      "note": "403 on every request (bot protection)."
+    },
+    "Palantir": {
+      "reason": "board",
+      "note": "Neurodivergent Fellowship is posted on its Lever board; palantir.com/events renders client-side."
+    },
+    "Palo Alto Networks": {
+      "reason": "none",
+      "note": "Events appear only on Prosple, a graduate-events site, with none listed."
+    },
+    "Perplexity AI": {
+      "reason": "board",
+      "note": "Research Fellowship is posted on its Ashby board; the company site answers 403."
+    },
+    "Physical Intelligence": {
+      "reason": "blocked",
+      "note": "429 on every request, never easing."
+    },
+    "Point72": {
+      "reason": "board",
+      "note": "Academy case competition, insight programme and coffee chats are posted on its Greenhouse board."
+    },
+    "Radix Trading": {
+      "reason": "none",
+      "note": "Students or early-careers pages exist but list no events."
+    },
+    "Ramp": {
+      "reason": "no-list",
+      "note": "Webinars only; its Luma calendar is empty."
+    },
+    "Reddit": {
+      "reason": "none",
+      "note": "Students or early-careers pages exist but list no events."
+    },
+    "Replit": {
+      "reason": "none",
+      "note": "Students or early-careers pages exist but list no events."
+    },
+    "Robinhood": {
+      "reason": "browser",
+      "note": "robinhood.com/careers/events loads its list with JavaScript."
+    },
+    "Roblox": {
+      "reason": "blocked",
+      "note": "careers.roblox.com timed out on every attempt."
+    },
+    "Schonfeld": {
+      "reason": "none",
+      "note": "A PhD summit is mentioned only in news posts; its sophomore internships are on its job board."
+    },
+    "ServiceNow": {
+      "reason": "browser",
+      "note": "careers.servicenow.com/events loads its list with JavaScript."
+    },
+    "Shield AI": {
+      "reason": "none",
+      "note": "Students or early-careers pages exist but list no events."
+    },
+    "Sierra": {
+      "reason": "page-only",
+      "note": "Early career program page and a customer summit page; no list."
+    },
+    "Snap": {
+      "reason": "no-list",
+      "note": "Snap Academies lists dated info sessions seasonally (March-April); empty on 2026-10-02, so its markup could not be checked. Add it when sessions are listed."
+    },
+    "Snowflake": {
+      "reason": "no-list",
+      "note": "snowflake.com/events shows world-tour cards without names in the HTML; its careers events list (Phenom) is empty; no Luma calendar found."
+    },
+    "SpaceX": {
+      "reason": "browser",
+      "note": "spacex.com/careers renders with JavaScript; info sessions are on university calendars and Handshake."
+    },
+    "Spotify": {
+      "reason": "page-only",
+      "note": "Tech Fellowship site only."
+    },
+    "Stripe": {
+      "reason": "none",
+      "note": "Recruits through ColorStack, Rewriting the Code, Grace Hopper and AfroTech; no list of its own."
+    },
+    "Susquehanna International Group": {
+      "reason": "board",
+      "note": "Discovery Programs are posted on its Jibe board; careers.sig.com/events needs a browser."
+    },
+    "Tesla": {
+      "reason": "blocked",
+      "note": "403 on every request (bot protection)."
+    },
+    "Toyota Research Institute": {
+      "reason": "none",
+      "note": "Students or early-careers pages exist but list no events."
+    },
+    "Uber": {
+      "reason": "page-only",
+      "note": "Uber Career Prep fellowship page only; its events page is Uber for Business marketing."
+    },
+    "Waymo": {
+      "reason": "none",
+      "note": "Students or early-careers pages exist but list no events."
+    },
+    "XTX Markets": {
+      "reason": "none",
+      "note": "Student programs are UK-based."
+    },
+    "Zoox": {
+      "reason": "browser",
+      "note": "Renders with JavaScript."
+    }
+  }
+}

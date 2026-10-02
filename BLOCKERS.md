@@ -475,3 +475,46 @@ Per PRD §18.5, every unresolved blocker was revisited before final verification
 - **Severity:** critical (blocked deployment)
 - **Status:** resolved
 
+
+---
+
+## BLK-015 - Some companies' events cannot be read within the rules
+
+- **Timestamp / stage:** 2026-10-01/02, event-source discovery and build
+- **Requirement affected:** the user's request to monitor events at every
+  monitored company (PRD §5 rules apply)
+- **Component:** event sources (`scrapers/events/`, `data/event_coverage.json`)
+- **Observed failure:** 27 of the 93 registry companies have event sources; 66
+  do not (`data/event_coverage.json`). Of those 66, 8 post their programs on the
+  job board, where they are caught anyway. 10 refuse or prohibit reading: robots.txt
+  or terms (Meta, Google, Netflix, LinkedIn, Akuna's sign-up site), or a
+  permanent 403/429/timeout wall (Tesla, OpenAI, Blue Origin, Physical
+  Intelligence, Roblox). 11 draw their list with JavaScript (DE Shaw, SpaceX,
+  Anduril, Cloudflare, Datadog and others). 10 have only a static program page,
+  7 list no upcoming events in their HTML, and 20 publish nothing: their info
+  sessions live on Handshake (sign-in) or university calendars.
+- **Expected behaviour:** an alert for every public event, named and linked.
+- **Attempts made:**
+  1. Crawl of every company's own site: seeds, sitemaps, linked pages up to
+     depth 2, with per-host backoff, three passes over 30 minutes for blocked hosts.
+  2. Platforms linked from those pages (Luma, Avature, Eightfold, Phenom,
+     Eventbrite), probed where robots.txt allows.
+  3. Deeper search through blogs, newsrooms and third-party lists, plus ten
+     public university Localist calendars. Those returned 0 matching sessions in
+     180 days for the companies tested, because the sessions are on Handshake.
+  4. Programs posted as jobs are recognised on every job board instead
+     (`filtering/programs.py`). That covers SIG, Point72, Five Rings, Palantir,
+     Perplexity, DoorDash, IMC and Goldman without their events pages.
+- **Not done, by rule:** no CAPTCHA solving, no identity or IP rotation, no
+  browser spoofing past bot protection, no logins, no ignoring robots.txt or
+  terms. "Page changed" alerts for static program pages were offered and
+  declined by the user (every alert must name an event).
+- **Evidence:** `COMPANY_COVERAGE.md` ("Events") lists every company without an
+  event source and why; `data/validation.json` holds the live check for each of
+  the 30 configured sources (30/30 answered, 2026-10-02).
+- **Next actions:** add a source when a company publishes a list (Snap Academies
+  lists dated sessions each spring). A headless-browser adapter would cover the
+  JavaScript-only lists. It is not built: it costs far more per poll, and nothing
+  else in the system needs a browser.
+- **Severity:** minor (events are an addition; job monitoring is unaffected)
+- **Status:** accepted-limitation

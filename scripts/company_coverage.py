@@ -30,6 +30,8 @@ from jobmonitor.models.company import (  # noqa: E402
 
 OUTPUT = REPO_ROOT / "COMPANY_COVERAGE.md"
 SNAPSHOT = REPO_ROOT / "data" / "seed" / "discovery_snapshot.json"
+VALIDATION = REPO_ROOT / "data" / "validation.json"
+EVENT_NOTES = REPO_ROOT / "data" / "event_coverage.json"
 
 PROVIDER_ENDPOINTS = {
     "greenhouse": "`GET boards-api.greenhouse.io/v1/boards/{token}/jobs`",
@@ -184,6 +186,8 @@ def build(registry: CompanyRegistry) -> str:
             )
         lines.append("")
 
+    lines += events_section(registry)
+
     caveated = [c for c in registry if c.support_status is not SupportStatus.SUPPORTED]
     if caveated:
         lines += [
@@ -201,6 +205,82 @@ def build(registry: CompanyRegistry) -> str:
         lines.append("")
 
     return "\n".join(lines).rstrip() + "\n"
+
+
+EVENT_REASONS = {
+    "board": "Programs caught on its job board",
+    "page-only": "A program page, but no list of events",
+    "no-list": "No upcoming list in the page",
+    "browser": "List drawn by JavaScript (needs a browser)",
+    "blocked": "Refused or prohibited",
+    "none": "Nothing public",
+}
+
+
+def events_section(registry: CompanyRegistry) -> list[str]:
+    """Which companies' events are monitored, from where, and why not elsewhere."""
+    validation = json.loads(VALIDATION.read_text(encoding="utf-8")) if VALIDATION.exists() else {}
+    verdicts = validation.get("event_sources", {})
+    notes = json.loads(EVENT_NOTES.read_text(encoding="utf-8")).get("companies", {})
+    sources = [source for company in registry.pollable() for source in company.sources()[1:]]
+    covered = sorted({s.company for s in sources}, key=str.casefold)
+    recruiting = sorted(
+        {s.company for s in sources if s.event_category and s.event_category.value == "recruiting"},
+        key=str.casefold,
+    )
+    lines = [
+        "## Events",
+        "",
+        "Events are polled from each company's own **event sources** (`event_sources` in "
+        'the registry) and alerted like internships, labelled "new event", "new '
+        'program" or "industry event". Separately, student programs posted as jobs '
+        "(fellowships, discovery and insight programs, hackathons) are recognised on "
+        "**every** monitored job board.",
+        "",
+        f"- Companies with event sources: **{len(covered)}** "
+        f"({len(sources)} sources; {len(recruiting)} with recruiting events or programs)",
+        f"- Live-validated: **{sum(1 for s in sources if s.key in verdicts)}** of {len(sources)}",
+        "",
+        "| Company | Category | Source | Live check | Sample |",
+        "| --- | --- | --- | --- | --- |",
+    ]
+    order = {"recruiting": 0, "industry": 1}
+    for source in sorted(
+        sources,
+        key=lambda s: (
+            order.get(s.event_category.value if s.event_category else "", 2),
+            s.company.casefold(),
+        ),
+    ):
+        verdict = verdicts.get(source.key, {})
+        check = (
+            f"{verdict.get('status')}, {verdict.get('events')} listed "
+            f"({verdict.get('validated_on')})"
+            if verdict
+            else "not yet"
+        )
+        sample = "; ".join(verdict.get("sample", [])[:2]).replace("|", "/")
+        category = source.event_category.value if source.event_category else ""
+        lines.append(
+            f"| {source.company} | {category} | `{source.health_provider}` | {check} | {sample} |"
+        )
+
+    lines += [
+        "",
+        "### Companies without an event source, and why",
+        "",
+        "| Company | Reason | Detail |",
+        "| --- | --- | --- |",
+    ]
+    configured = set(covered)
+    for company in sorted(registry.pollable(), key=lambda c: c.company.casefold()):
+        if company.company in configured:
+            continue
+        note = notes.get(company.company, {})
+        reason = EVENT_REASONS.get(note.get("reason", ""), "Not researched")
+        lines.append(f"| {company.company} | {reason} | {note.get('note', '')} |")
+    lines.append("")
+    return lines
 
 
 def main(argv: list[str] | None = None) -> int:

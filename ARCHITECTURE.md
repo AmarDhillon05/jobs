@@ -258,6 +258,55 @@ real failure, neither disguised as a bad guess.
 sequence and a `429 + Retry-After` are ordinary unit tests: no network, no mocking
 library, no real sleeping, and the same assertions run for every adapter.
 
+### Events
+
+Events (decided 2026-10-02) reuse the whole job pipeline rather than a second
+one. An event is a `Job` whose `employment_type` is `Event`, `Industry Event` or
+`Program`, so sharding, retries, failure isolation, health, dedup by stable id,
+`first_seen`, the US filter, ntfy and the digest all apply unchanged.
+
+- **Event sources.** A registry entry may list `event_sources`. `PollRunner`
+  expands each company into its job board plus one copy per event source
+  (`Company.sources()`: same name, the source's provider and config). Each copy is
+  an ordinary `process_company` call, with its own health row keyed
+  `company::provider[:name]`, so a broken events page never marks the board as
+  failing. The copy carries `event_category` and `source_label` through
+  `to_dict`, so it survives the SQS hop to the worker.
+- **Adapters** (`scrapers/events/`): `event_page` (a generic reader for
+  server-rendered pages of event cards, configured per company by a link
+  regex), `avature_events` (Bloomberg, Two Sigma), `luma` (public calendars:
+  the page's embedded JSON, then the public `api.lu.ma` endpoint when there are
+  more), and `sitemap_watch` (Citadel's pages answer 403 but the sitemap they
+  publish names each program page). Event adapters set `date_posted=None` and
+  put the event's own date in the title. A posting date fed to the one-day window
+  would drop or mis-handle events, and `first_seen` drives detection. Past events
+  are skipped at parse time, and ids are prefixed `event:`.
+- **Programs on job boards** (`filtering/programs.py`) are tagged `Program` by
+  title before filtering, with role titles ("Program Manager") and internships
+  excluded. No extra requests.
+- **Scoring.** Events skip the internship scorer and are always kept (the user
+  wants every event). Recruiting events and programs score 80 and alert
+  immediately at any tier; industry events score 60 and are never immediate, so
+  ntfy rings them at priority 3 instead of 4.
+- **Quiet first poll.** An events page already lists many current events (Figma
+  about 76, the Claude community calendar 90). The first successful poll of a
+  new event source therefore stores what it finds as `baseline` (marked notified,
+  excluded from the digest). The health row carries `ever_succeeded` forward, so
+  this also holds for a source whose first attempts failed, and for sources added
+  later.
+- **Cool-down.** An event source that fails three polls in a row is polled at
+  most hourly until it succeeds (`consecutive_failures`, carried forward in the
+  health row).
+- **Not built:** "page changed" alerts for static program pages (the user ruled
+  them out: every alert must name an event), browser automation for
+  JavaScript-only lists, and anything behind a login (Handshake) or a robots/terms
+  prohibition (Meta, Akuna's sign-up site). `COMPANY_COVERAGE.md` gives the reason
+  for every company without an event source.
+
+Cost: 30 more small GETs per poll (Luma's API adds one or two for large
+calendars). That is a few seconds of Lambda time per poll and well under $1 a
+month.
+
 ## 5. Filtering
 
 **US only, before anything else** (`jobmonitor/filtering/location.py`). The
