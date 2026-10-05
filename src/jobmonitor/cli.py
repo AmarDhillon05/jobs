@@ -116,8 +116,11 @@ def cmd_health(args: argparse.Namespace) -> int:
         return 0
 
     width = max(len(record.company) for record in records)
+    # A company can have several sources (job board, events page, Luma calendar),
+    # each with its own row: the source column tells them apart.
+    source_width = max(len(record.provider) for record in records)
     failing = 0
-    for record in sorted(records, key=lambda r: (r.ok, r.company)):
+    for record in sorted(records, key=lambda r: (r.ok, r.company, r.provider)):
         mark = STATUS_MARK.get(record.status, record.status.value.upper())
         detail = ""
         if not record.ok:
@@ -125,7 +128,10 @@ def cmd_health(args: argparse.Namespace) -> int:
             detail = f"  {record.error_type or ''}: {(record.error or '')[:70]}"
         elif record.jobs_found:
             detail = f"  {record.jobs_found} found, {record.new_jobs} new"
-        print(f"{record.company:<{width}}  {mark:<8}  {_age(record.timestamp):<9}{detail}")
+        print(
+            f"{record.company:<{width}}  {record.provider:<{source_width}}  "
+            f"{mark:<8}  {_age(record.timestamp):<9}{detail}"
+        )
     print(f"\n{len(records)} scraper(s), {failing} failing")
     return 1 if failing and args.strict else 0
 

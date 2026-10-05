@@ -92,6 +92,35 @@ class TestHealthView:
         assert "Company X" in out and "BLOCKED" in out and "403" in out
         assert "2 scraper(s), 1 failing" in out
 
+    def test_each_source_of_a_company_is_named(
+        self, stores: tuple, capsys: pytest.CaptureFixture[str]
+    ) -> None:
+        _jobs, health, _devices = stores
+        health.record_many(
+            [
+                ScraperHealth(
+                    company="Anthropic",
+                    provider="greenhouse",
+                    status=ScraperStatus.SUCCESS,
+                    timestamp=T0,
+                    jobs_found=40,
+                ),
+                ScraperHealth(
+                    company="Anthropic",
+                    provider="event_page:campus",
+                    status=ScraperStatus.FAILED,
+                    timestamp=T0,
+                    error="maintenance page",
+                    error_type="ParseError",
+                ),
+            ]
+        )
+        assert run("health") == 0
+        lines = [line for line in capsys.readouterr().out.splitlines() if line.strip()]
+        assert "event_page:campus" in lines[0] and "FAIL" in lines[0]  # failures first
+        assert "greenhouse" in lines[1] and "OK" in lines[1]
+        assert "2 scraper(s), 1 failing" in lines[-1]
+
     def test_strict_exits_non_zero_when_a_scraper_is_failing(self, stores: tuple) -> None:
         _jobs, health, _devices = stores
         health.record(
