@@ -74,6 +74,12 @@ class SimplifyFallbackSource(JobSource):
             row
             for row in payload
             if normalize_company_name(str(as_mapping(row).get("company_name") or "")) in wanted
+            # A closed or hidden listing is history, not a malformed record: the feed
+            # keeps every listing it ever had (Meta: 45 closed), and counting them as
+            # malformed marked every fallback source DEGRADED. Its link is dead, so it
+            # must never be notified about either.
+            and as_mapping(row).get("active") is not False
+            and as_mapping(row).get("is_visible") is not False
         ]
         yield mine
 
@@ -81,12 +87,6 @@ class SimplifyFallbackSource(JobSource):
         record = as_mapping(raw_job)
         if not record:
             raise InvalidJobError(f"{self.describe()}: listing was not an object")
-
-        # A closed or hidden listing must not be notified about: the link is dead.
-        if record.get("active") is False or record.get("is_visible") is False:
-            raise InvalidJobError(
-                f"{self.describe()}: listing {record.get('id')} is inactive/hidden, skipping"
-            )
 
         url = text_of(record, "url")
         if not url:

@@ -118,6 +118,29 @@ the US, and a posting that gives no usable location ("Remote", "3 Locations") is
 kept rather than silently lost. `US_ONLY=false` turns this off;
 `KEEP_UNKNOWN_LOCATIONS=false` drops the unplaced ones too.
 
+### Companies the monitor can't read: forward their own alerts
+
+Nine companies' own career sites forbid or block automated reading: Apple,
+ByteDance/TikTok, Citadel, Citadel Securities, DE Shaw, LinkedIn, Meta, Tesla and
+Two Sigma. Their jobs are seen only second-hand, through the Simplify community feed,
+which can lag the company by hours. In October 2026 Meta's software engineering
+internships reached the feed hours after Meta posted them. The fastest legitimate
+source is the company's **own job alerts**. Forward those emails to ntfy and they ring
+your phone like everything else:
+
+1. On the company's careers site, sign in and save a search (e.g. "intern") with
+   email alerts on. Meta: metacareers.com → Jobs → search → **Create job alert**.
+2. Gmail → Settings → **Forwarding and POP/IMAP** → *Add a forwarding address* →
+   `ntfy-<your topic>@ntfy.sh`. Gmail sends a confirmation code to that address. It
+   arrives as an ntfy notification; type it into Gmail.
+3. Make a filter for the alert sender (e.g. `from:(metacareers.com)`) with **Forward
+   it to** that address.
+
+ntfy uses the email's subject as the title and its text as the body (see ntfy's
+"E-mail publishing" docs). These notifications are the company's emails passed
+straight through, so they skip this monitor's dedup, US filter and digest. If your
+topic needs a token, use `ntfy-<topic>+<token>@ntfy.sh`.
+
 ### Events and programs
 
 The same alerts cover **events** at the monitored companies. Recruiting events

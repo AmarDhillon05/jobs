@@ -417,10 +417,11 @@ PROVIDER_CASES: tuple[ProviderCase, ...] = (
         provider="simplify_fallback",
         config={"company_names": ["Stripe"]},
         transport=simplify_transport,
-        # 5 Stripe rows (a 6th belongs to another company): 1 closed, 1 hidden,
-        # 1 without a url -> 2 jobs.
+        # 5 Stripe rows (a 6th belongs to another company): 1 closed and 1 hidden
+        # (skipped, not malformed: the feed keeps closed listings forever), 1 without
+        # a url (malformed) -> 2 jobs.
         expected_jobs=2,
-        expected_malformed=3,
+        expected_malformed=1,
         empty_response=ScriptedResponse.json([]),
         must_contain_titles=("Software Engineer Intern",),
     ),
