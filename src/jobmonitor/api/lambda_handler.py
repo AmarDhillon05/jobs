@@ -86,7 +86,7 @@ def handler(
         "isBase64Encoded": False,
     }
     if response.status != 204:
-        result["body"] = response.json()
+        result["body"] = response.payload()
     return result
 
 

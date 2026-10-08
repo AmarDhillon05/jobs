@@ -88,14 +88,22 @@ class Response:
     status: int
     body: Any = None
     headers: Mapping[str, str] = field(default_factory=dict)
+    #: ``application/json`` for the API; the Apply kit page returns HTML.
+    content_type: str = "application/json"
 
     def json(self) -> str:
         return json.dumps(self.body if self.body is not None else {})
 
+    def payload(self) -> str:
+        """The body as sent: JSON-encoded, or as-is for any other content type."""
+        if self.content_type == "application/json":
+            return self.json()
+        return "" if self.body is None else str(self.body)
+
     @property
     def all_headers(self) -> dict[str, str]:
         return {
-            "Content-Type": "application/json",
+            "Content-Type": self.content_type,
             "Cache-Control": "no-store",
             **CORS_HEADERS,
             **self.headers,

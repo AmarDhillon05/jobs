@@ -95,10 +95,13 @@ def devices_table_spec(table_name: str) -> dict[str, Any]:
 
 
 def all_specs(settings: AwsSettings) -> list[dict[str, Any]]:
+    from jobmonitor.apply.store import apply_table_spec
+
     return [
         jobs_table_spec(settings.jobs_table),
         health_table_spec(settings.health_table),
         devices_table_spec(settings.devices_table),
+        apply_table_spec(settings.apply_table),
     ]
 
 

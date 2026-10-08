@@ -159,6 +159,10 @@ class AwsSettings:
     jobs_table: str = "jobmonitor-jobs"
     health_table: str = "jobmonitor-scraper-health"
     devices_table: str = "jobmonitor-devices"
+    #: The Apply kit's drafts, saved answers and draft budget.
+    apply_table: str = "jobmonitor-apply"
+    #: Private bucket holding the user's profile.json and resume.pdf.
+    apply_bucket: str | None = None
     scrape_queue_url: str | None = None
     scrape_dlq_url: str | None = None
     notification_topic_arn: str | None = None
@@ -233,6 +237,8 @@ class Settings:
                 jobs_table=_str(e, "JOBS_TABLE_NAME", "jobmonitor-jobs"),
                 health_table=_str(e, "HEALTH_TABLE_NAME", "jobmonitor-scraper-health"),
                 devices_table=_str(e, "DEVICES_TABLE_NAME", "jobmonitor-devices"),
+                apply_table=_str(e, "APPLY_TABLE_NAME", "jobmonitor-apply"),
+                apply_bucket=_opt_str(e, "APPLY_BUCKET_NAME"),
                 scrape_queue_url=_opt_str(e, "SCRAPE_QUEUE_URL"),
                 scrape_dlq_url=_opt_str(e, "SCRAPE_DLQ_URL"),
                 notification_topic_arn=_opt_str(e, "NOTIFICATION_TOPIC_ARN"),

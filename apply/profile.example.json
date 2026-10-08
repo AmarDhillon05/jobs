@@ -1,0 +1,48 @@
+{
+  "_comment": "Copy to apply/profile.json (gitignored), fill in, then `make apply-setup`. Every field is optional; the kit shows what you fill. Choices for dropdowns are written as the option you would pick.",
+  "first_name": "Alex",
+  "last_name": "Rivera",
+  "preferred_name": "",
+  "email": "alex.rivera@example.edu",
+  "phone": "(555) 010-0199",
+  "phone_type": "Mobile",
+  "address": {
+    "line1": "123 College Ave",
+    "city": "Berkeley",
+    "state": "California",
+    "postal_code": "94704",
+    "country": "United States of America"
+  },
+  "school": "University of California, Berkeley",
+  "degree": "Bachelor of Science",
+  "major": "Electrical Engineering and Computer Sciences",
+  "minor": "",
+  "graduation": "May 2028",
+  "gpa": "3.8",
+  "skills": ["Python", "Java", "Go", "SQL", "AWS", "React"],
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/alex-rivera-example",
+    "github": "https://github.com/alex-rivera-example",
+    "website": "",
+    "scholar": ""
+  },
+  "work_authorization": "Yes",
+  "sponsorship_now": "No",
+  "sponsorship_future": "No",
+  "over_18": "Yes",
+  "how_did_you_hear": "Company Website",
+  "previously_employed": "No",
+  "relatives_at_company": "No",
+  "non_compete": "No",
+  "earliest_start": "Summer 2027 (May-August)",
+  "disclosures": {
+    "gender": "I do not wish to answer",
+    "hispanic": "I do not wish to answer",
+    "race": "I do not wish to answer",
+    "veteran": "I am not a veteran",
+    "disability": "I do not want to answer"
+  },
+  "answers": {
+    "Why are you interested in this internship?": ""
+  }
+}

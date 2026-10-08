@@ -47,3 +47,7 @@ volume/
 # Scratch / reports
 .verify/
 *.log
+
+# Apply kit: your profile and resume never go in git
+apply/profile.json
+apply/*.pdf
