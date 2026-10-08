@@ -517,7 +517,17 @@ class NtfyPushTransport(PushTransport):
             if message.data.get("urgency") == "immediate"
             else self.PRIORITY_DEFAULT,
         }
-        if apply_url:
+        kit_url = message.data.get("kit_url", "")
+        if apply_url and kit_url:
+            # Tapping opens the Apply kit: the answers, in the form's order, with
+            # an "Open application" button at the top. ntfy allows three actions.
+            body["click"] = kit_url
+            body["actions"] = [
+                {"action": "view", "label": "Apply kit", "url": kit_url},
+                {"action": "view", "label": "Open application", "url": apply_url},
+                {"action": "copy", "label": "Copy link", "value": apply_url},
+            ]
+        elif apply_url:
             body["click"] = apply_url
             body["actions"] = [
                 {

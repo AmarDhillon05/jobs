@@ -22,7 +22,7 @@ alerted once push delivers.
 from __future__ import annotations
 
 import logging
-from collections.abc import Iterable, Sequence
+from collections.abc import Callable, Iterable, Sequence
 from dataclasses import dataclass, field
 from datetime import datetime
 
@@ -87,9 +87,12 @@ class Notifier:
         email_transport: EmailTransport | None = None,
         push_transport: PushTransport | None = None,
         device_repository: DeviceRepository | None = None,
+        kit_link: Callable[[str], str] | None = None,
     ) -> None:
         self.settings = settings
         self.repository = repository
+        #: Signs a job's Apply-kit link; ``None`` when the kit isn't configured.
+        self.kit_link = kit_link
         self.email = email_transport or MemoryEmailTransport()
         self.push = push_transport or MemoryPushTransport()
         self.devices = device_repository
@@ -120,7 +123,10 @@ class Notifier:
                 urgency = Urgency.IMMEDIATE if is_immediate(record) else Urgency.BATCHED
                 events.append(
                     NotificationEvent.for_records(
-                        [record], app_base_url=self.settings.app_base_url, urgency=urgency
+                        [record],
+                        app_base_url=self.settings.app_base_url,
+                        urgency=urgency,
+                        kit_link=self.kit_link,
                     )
                 )
             else:
@@ -129,7 +135,10 @@ class Notifier:
         if batched:
             events.append(
                 NotificationEvent.for_records(
-                    batched, app_base_url=self.settings.app_base_url, urgency=Urgency.BATCHED
+                    batched,
+                    app_base_url=self.settings.app_base_url,
+                    urgency=Urgency.BATCHED,
+                    kit_link=self.kit_link,
                 )
             )
         return events

@@ -12,7 +12,7 @@ that discovers a job is not the process that sends the alert.
 from __future__ import annotations
 
 import json
-from collections.abc import Mapping, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from enum import StrEnum
@@ -60,13 +60,21 @@ class JobAlert:
     #: ``internship``, ``event``, ``industry_event`` or ``program``. Optional in
     #: the payload (absent means an internship), so no schema bump was needed.
     kind: str = "internship"
+    #: Signed link to this job's Apply kit, when the kit is configured (internships).
+    kit_url: str | None = None
 
     @property
     def is_event(self) -> bool:
         return self.kind != "internship"
 
     @classmethod
-    def from_record(cls, record: JobRecord, *, app_base_url: str) -> JobAlert:
+    def from_record(
+        cls,
+        record: JobRecord,
+        *,
+        app_base_url: str,
+        kit_link: Callable[[str], str] | None = None,
+    ) -> JobAlert:
         preview = None
         if record.description:
             preview = (
@@ -87,6 +95,11 @@ class JobAlert:
             priority=record.priority,
             description_preview=preview,
             kind=posting_kind(record.employment_type),
+            kit_url=(
+                kit_link(record.job_id)
+                if kit_link and posting_kind(record.employment_type) == "internship"
+                else None
+            ),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -103,6 +116,7 @@ class JobAlert:
             "priority": self.priority,
             "description_preview": self.description_preview,
             "kind": self.kind,
+            "kit_url": self.kit_url,
         }
 
     @classmethod
@@ -120,6 +134,7 @@ class JobAlert:
             priority=str(data.get("priority", "medium")),
             description_preview=data.get("description_preview"),
             kind=str(data.get("kind") or "internship"),
+            kit_url=data.get("kit_url") or None,
         )
 
 
@@ -189,9 +204,13 @@ class NotificationEvent:
         *,
         app_base_url: str,
         urgency: Urgency = Urgency.BATCHED,
+        kit_link: Callable[[str], str] | None = None,
     ) -> NotificationEvent:
         return cls(
-            jobs=tuple(JobAlert.from_record(r, app_base_url=app_base_url) for r in records),
+            jobs=tuple(
+                JobAlert.from_record(r, app_base_url=app_base_url, kit_link=kit_link)
+                for r in records
+            ),
             urgency=urgency,
         )
 

@@ -32,7 +32,7 @@ from __future__ import annotations
 import json
 import logging
 import os
-from collections.abc import Mapping, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from typing import Any
@@ -112,6 +112,7 @@ class Dependencies:
                 device_repository=self.devices,
             ),
             device_repository=self.devices,
+            kit_link=kit_linker(),
         )
 
     def digest_sender(self) -> DigestSender:
@@ -122,7 +123,15 @@ class Dependencies:
             email_transport=build_email_transport(
                 self.settings.email, region=aws.region, endpoint_url=aws.endpoint_url
             ),
+            kit_link=kit_linker(),
         )
+
+
+def kit_linker() -> Callable[[str], str] | None:
+    """Apply-kit links for alerts, when ``KIT_BASE_URL`` and the secret are set."""
+    from jobmonitor.apply.links import KitLinker
+
+    return KitLinker.from_env()
 
 
 #: Reused across warm invocations; ``None`` until the first call.

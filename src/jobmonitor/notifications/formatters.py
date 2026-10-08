@@ -88,7 +88,10 @@ def _format_one_text(alert: JobAlert) -> str:
     if alert.description_preview:
         lines += ["", alert.description_preview]
     action = "Details:" if alert.is_event else "Apply:"
-    lines += ["", action, alert.url, "", "Open in app:", alert.deep_link]
+    lines += ["", action, alert.url]
+    if alert.kit_url:
+        lines += ["", "Apply kit (your answers, ready to paste):", alert.kit_url]
+    lines += ["", "Open in app:", alert.deep_link]
     return "\n".join(lines)
 
 
@@ -122,7 +125,13 @@ def _format_one_html(alert: JobAlert) -> str:
         f'<p><a href="{escape(alert.url)}" '
         'style="display:inline-block;padding:9px 16px;background:#1a56db;color:#fff;'
         f'border-radius:6px;text-decoration:none">{_button(alert)}</a>'
-        f'&nbsp;&nbsp;<a href="{escape(alert.deep_link)}" style="color:#1a56db">View in app</a></p>'
+        + (
+            f'&nbsp;&nbsp;<a href="{escape(alert.kit_url)}" style="color:#1a56db">Apply kit</a>'
+            if alert.kit_url
+            else ""
+        )
+        + f'&nbsp;&nbsp;<a href="{escape(alert.deep_link)}" style="color:#1a56db">'
+        "View in app</a></p>"
         "</div>"
     )
 
@@ -218,6 +227,8 @@ def format_push(event: NotificationEvent) -> PushMessage:
         data["job_id"] = alerts[0].job_id
         data["apply_url"] = alerts[0].url
         data["kind"] = alerts[0].kind
+        if alerts[0].kit_url:
+            data["kit_url"] = alerts[0].kit_url
     return PushMessage(title=title, body=body, data=data)
 
 

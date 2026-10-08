@@ -19,7 +19,7 @@ from __future__ import annotations
 
 import html
 import logging
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime, timedelta
 
@@ -81,7 +81,12 @@ def _plural(count: int, noun: str) -> str:
 
 
 def format_digest(
-    records: Sequence[JobRecord], *, window_start: datetime, window_end: datetime, strong: int
+    records: Sequence[JobRecord],
+    *,
+    window_start: datetime,
+    window_end: datetime,
+    strong: int,
+    kit_link: Callable[[str], str] | None = None,
 ) -> EmailMessage:
     """Render the window's jobs, then its events and programs.
 
@@ -123,10 +128,11 @@ def format_digest(
         if is_event_kind(record.employment_type):
             return f"- {record.company}: {record.title}{where}\n  {label(record)}\n  {record.url}"
         posted = f", posted {record.date_posted.date().isoformat()}" if record.date_posted else ""
+        kit = f"\n  Apply kit: {kit_link(record.job_id)}" if kit_link else ""
         return (
             f"- {record.company}: {record.title}{where}\n"
             f"  relevance {record.relevance_score}/100{posted}\n"
-            f"  {record.url}"
+            f"  {record.url}{kit}"
         )
 
     text_parts = [f"{summary} first seen {span}.", ""]
@@ -141,16 +147,18 @@ def format_digest(
     def html_row(record: JobRecord) -> str:
         e = html.escape
         where = f" &middot; {e(record.location)}" if record.location else ""
-        detail = (
-            e(label(record))
-            if is_event_kind(record.employment_type)
-            else f"{record.relevance_score}/100"
+        is_event = is_event_kind(record.employment_type)
+        detail = e(label(record)) if is_event else f"{record.relevance_score}/100"
+        kit = (
+            f' &middot; <a href="{e(kit_link(record.job_id))}" style="color:#1a56db">Apply kit</a>'
+            if kit_link and not is_event
+            else ""
         )
         return (
             '<li style="margin:0 0 12px">'
             f"<strong>{e(record.company)}</strong>: {e(record.title)}"
             f'<span style="color:#666">{where} &middot; {detail}</span><br>'
-            f'<a href="{e(record.url)}" style="color:#1a56db">{e(record.url)}</a></li>'
+            f'<a href="{e(record.url)}" style="color:#1a56db">{e(record.url)}</a>{kit}</li>'
         )
 
     def html_section(title: str, rows: Sequence[JobRecord]) -> str:
@@ -177,11 +185,17 @@ def format_digest(
 
 class DigestSender:
     def __init__(
-        self, settings: Settings, *, repository: JobRepository, email_transport: EmailTransport
+        self,
+        settings: Settings,
+        *,
+        repository: JobRepository,
+        email_transport: EmailTransport,
+        kit_link: Callable[[str], str] | None = None,
     ) -> None:
         self.settings = settings
         self.repository = repository
         self.email = email_transport
+        self.kit_link = kit_link
 
     def jobs_in(self, start: datetime, end: datetime) -> list[JobRecord]:
         records = self.repository.recent(limit=MAX_DIGEST_JOBS, since=start)
@@ -213,6 +227,7 @@ class DigestSender:
             window_start=start,
             window_end=end,
             strong=self.settings.filters.notify_threshold,
+            kit_link=self.kit_link,
         )
         outcome.receipt = self.email.send(
             message, to=self.settings.email.recipient, sender=self.settings.email.sender
