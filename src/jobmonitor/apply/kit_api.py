@@ -38,6 +38,7 @@ PAGE_HEADERS: Mapping[str, str] = {
     "Referrer-Policy": "no-referrer",
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "DENY",
+    "Cache-Control": "no-store",
 }
 RESUME_LINK_SECONDS = 600
 

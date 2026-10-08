@@ -126,6 +126,7 @@ class TestPage:
         assert response.content_type.startswith("text/html")
         headers = response.all_headers
         assert headers["Referrer-Policy"] == "no-referrer"
+        assert headers["Cache-Control"] == "no-store"
         assert "noindex" in headers["X-Robots-Tag"]
         page = response.payload()
         for step in ("My Information", "My Experience", "Application Questions", "Self Identify"):

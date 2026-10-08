@@ -198,6 +198,78 @@ Push. It exists because it is the only client whose notification deep links can 
 exercised in a **real browser** in this environment, which is why it was kept
 rather than deleted. Both clients read the same API.
 
+## Applying from your phone: the Apply kit
+
+Tapping an internship alert opens that job's **Apply kit**: a phone page with
+everything the application form will ask, in the form's own order, each answer one
+tap to copy. The kit never fills in or submits the form. You still paste your
+answers and press Submit yourself (PRD §33).
+
+What the kit shows, top to bottom:
+
+- The job, with a big **Open application** button that goes to the real posting.
+- **Download resume**, through a 10-minute private link. Save the file to Files
+  once and every ATS file picker can attach it.
+- **The form, by ATS** (detected from the apply URL):
+  - **Workday** (Salesforce, NVIDIA, Adobe, ...): one card per Workday page. The
+    pages are *My Information*, *My Experience* ("Autofill with Resume"),
+    *Application Questions*, *Voluntary Disclosures*, *Self Identify* and
+    *Review*. Dropdowns read "Select: No", and a "Step 3 of 6" bar keeps your
+    place. The top tip says: applied there before? Choose **Use My Last
+    Application**.
+  - **Greenhouse**: the job's real questions, fetched from Greenhouse's public API.
+    Standard questions are filled from your profile, and free-text ones get drafts.
+  - **Lever, Ashby, others**: your details and the common questions.
+- **Paste any other question → Draft**: Claude writes an answer from **your
+  resume** and the job description.
+  - A draft uses only facts from your resume and profile. Where the resume has
+    nothing to back an answer, it says `[add: ...]` rather than inventing
+    experience.
+- **Every answer is an editable box.** Write your own or edit a draft, then tap
+  **Save**. "Save for next time" adds the answer to your library, so the same
+  question on the next job shows your answer instead of a new draft.
+
+Set it up once, **after `make deploy`**, with your own AWS credentials:
+
+```bash
+cp apply/profile.example.json apply/profile.json   # gitignored: fill in what you want shown
+make apply-setup RESUME=~/Documents/resume.pdf ANTHROPIC_API_KEY=sk-ant-...
+```
+
+`make apply-setup` does three things:
+
+- uploads `apply/profile.json` and the PDF to the stack's private `ApplyBucket`;
+- stores the API key in SSM as a SecureString (`/jobmonitor/anthropic-api-key`);
+- creates the link-signing secret `/jobmonitor/kit-secret`.
+
+Run it again whenever your resume or profile changes. Leave out
+`ANTHROPIC_API_KEY` on reruns to keep the stored key. `--rotate-secret` (via
+`python scripts/apply_setup.py`) invalidates every kit link already sent. Alerts
+carry kit links once the secret exists, within a few minutes of setup.
+
+- **Cost:**
+  - Each drafted answer is one Claude Opus 5.5 call (low effort, resume cached),
+    about 2¢.
+  - Library answers and profile fields cost nothing.
+  - Drafts are capped at 60 a day (`DRAFT_DAILY_LIMIT`), so a leaked link can't run
+    up a bill.
+  - Drafts use server-side model fallbacks (`fallbacks: "default"`): if Opus 5.5
+    is overloaded, the API answers with a fallback model rather than failing.
+- **Privacy:**
+  - Your profile, resume and answers stay in your own AWS account: a private S3
+    bucket (all public access blocked, TLS only) and a DynamoDB table.
+  - Each kit link is signed for one job (HMAC). Any other or altered link is a
+    plain 404.
+  - Pages send `no-referrer`, so the link never leaks to the ATS, and `noindex`.
+- **Preview it locally:** `.venv/bin/python -m jobmonitor.api.local_server --seed`
+  prints kit links for the demo jobs, including a Salesforce Workday one. It reads `APPLY_PROFILE` (default:
+  the example profile) and uses a sample drafter unless `ANTHROPIC_API_KEY` and
+  `APPLY_RESUME` are set.
+
+What it can't do: Workday's pages are still Workday's pages, behind each company's
+own sign-in. The kit turns every page into a few copy taps instead of a typing
+session. It doesn't remove the pages.
+
 ## Test commands
 
 ```bash
@@ -389,9 +461,9 @@ make deploy-diff EMAIL_FROM=you@example.com EMAIL_TO=you@example.com NTFY_TOPIC=
 make deploy      EMAIL_FROM=you@example.com EMAIL_TO=you@example.com NTFY_TOPIC=<topic>
 ```
 
-`deploy-diff` lists everything that will be created: five Lambdas, three
-DynamoDB tables, four SQS queues, one SNS topic, two EventBridge schedules, an
-HTTP API, IAM roles, log groups and alarms. `make deploy` asks for confirmation
+`deploy-diff` lists everything that will be created: six Lambdas (one is the
+Apply kit), four DynamoDB tables, a private S3 bucket, four SQS queues, one SNS
+topic, two EventBridge schedules, an HTTP API, IAM roles, log groups and alarms. `make deploy` asks for confirmation
 before creating the IAM roles. Other knobs, passed the same way to
 `cdk deploy -c name=value`: `notifyThreshold` (default 55), `keepThreshold` (35),
 `shardSize` (8).

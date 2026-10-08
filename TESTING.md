@@ -11,17 +11,17 @@ Run everything with `make verify`. Run the fast part with `make test`.
 
 | Level | What | Where | Count | Command |
 | --- | --- | --- | --- | --- |
-| 1 | Pure units: normalization, filtering, identity, canonical URLs, scoring, retry/backoff maths, config | `tests/unit/` | 354 | `make test-unit` |
-| 2 | Providers: parsing, required fields, pagination, malformed records, retries, rate limits, per-company configs | `tests/scrapers/` | 1,170 | `make test-scrapers` |
-| 3 | Persistence: insert, reinsert, `first_seen` stability, `last_seen`, notification state, idempotency | `tests/integration/` | 324 total | `make test-integration` |
-| 4 | Notifications: payloads, formatters, deep links, failed delivery, duplicate suppression, the Expo push transport | `tests/integration/` | (same 324) | `make test-integration` |
+| 1 | Pure units: normalization, filtering, identity, canonical URLs, scoring, retry/backoff maths, config | `tests/unit/` | 599 | `make test-unit` |
+| 2 | Providers: parsing, required fields, pagination, malformed records, retries, rate limits, per-company configs | `tests/scrapers/` | 1,319 | `make test-scrapers` |
+| 3 | Persistence: insert, reinsert, `first_seen` stability, `last_seen`, notification state, idempotency | `tests/integration/` | 444 total | `make test-integration` |
+| 4 | Notifications: payloads, formatters, deep links, failed delivery, duplicate suppression, the Expo push transport | `tests/integration/` | (same 444) | `make test-integration` |
 | 5a | Expo app: render, data loading, empty/error states, detail, apply action, push registration, tap routing | `mobile/src/__tests__/` | 122 | `make test-mobile` |
 | 5b | Web client: the same list, in jsdom | `web/src/__tests__/` | 77 | `make test-web` |
 | 5c | Web client in a real browser | `web/e2e/` | 11 | `make test-app-e2e` |
-| 6 | Backend pipeline: the ten required cases, handlers, queue semantics, API, CLI | `tests/integration/` | (same 324) | `make test-integration` |
-| 7 | The architecture on emulated AWS | `tests/aws_local/` | 23 | `make e2e-aws` |
-| D | Infrastructure: synth, template assertions, cfn-lint | `infrastructure/tests/` | 49 | `make infra-validate` |
-| 8 | The eight PRD §30 acceptance scenarios, end to end | `tests/e2e/` | 40 | `make e2e-local` |
+| 6 | Backend pipeline: the ten required cases, handlers, queue semantics, API, CLI | `tests/integration/` | (same 444) | `make test-integration` |
+| 7 | The architecture on emulated AWS, including the Apply kit Lambda | `tests/aws_local/` | 25 | `make e2e-aws` |
+| D | Infrastructure: synth, template assertions, cfn-lint | `infrastructure/tests/` | 78 | `make infra-validate` |
+| 8 | The eight PRD §30 acceptance scenarios end to end, plus alert → Apply kit → saved answer reused | `tests/e2e/` | 62 | `make e2e-local` |
 
 Markers: `unit`, `scrapers`, `integration`, `aws_local`, `e2e`, `infra`, `live`.
 `make test` excludes `aws_local` and `live`, so the default run needs no Docker and
@@ -37,6 +37,8 @@ This is the table to read if you are deciding how much to trust a claim.
 | HTTP retry / backoff / `Retry-After` | Injected scripted transport | Real client logic, **fake network** |
 | Provider response shapes | Saved fixtures | Real parser, **hand-authored payloads** (see BLK-002) |
 | Live ATS endpoints | `-m live`, opt-in | **Blocked in this environment** (BLK-001) |
+| Apply kit drafts (Claude) | Request shape asserted against a fake client; `SampleDrafter` in integration, LocalStack and E2E | Real request building and refusal handling, **no real API call** (no key used here) |
+| Apply kit page, links, answers, library, quota | Kit router in process (memory + Moto), the Kit Lambda on LocalStack, headless Chromium for copy/draft/save | **Real code**, emulated AWS |
 | DynamoDB behaviour | Moto, and the same suite in-memory | **Real semantics**, emulated service |
 | DynamoDB request shape | botocore `Stubber` | **Real requests**, asserted byte-for-byte |
 | SQS / SNS / SES behaviour | Moto | Emulated service |

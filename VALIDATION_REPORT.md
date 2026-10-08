@@ -278,7 +278,10 @@ can be are *also* run on emulated AWS through real Lambdas and real queues.
 
 | Requirement | Status |
 | --- | --- |
-| Optional phase, not to be prioritized | N/A — **not built**, by design. No profile storage, no form filling, no submission. Monitoring's gates come first, and the PRD says so |
+| Optional phase, not to be prioritized | Built **after** every monitoring gate passed, at the user's request (2026-10-08): the **Apply kit**, which prepares answers only. See the section below |
+| notification → open job → prepare → prefill → user reviews → user submits | implemented | alert tap opens the kit; profile fields, the form by ATS (Workday's six pages, Greenhouse's real questions), resume drafts; the user copies, edits and submits. `tests/e2e/test_apply_kit_acceptance.py` |
+| Never submit without explicit approval | implemented | the kit has no code path to any ATS: it never posts a form, logs in or touches a CAPTCHA |
+| Stored profile fields (name, email, phone, resume, school, graduation, work authorization, LinkedIn, GitHub, portfolio) | implemented | `apply/profile.example.json`; the real profile and resume are gitignored and live in the user's private bucket |
 
 ## §35 Prohibited shortcuts — self-audit
 
@@ -344,3 +347,24 @@ Stated plainly, because the rest of this document is a list of things that are.
    per-company link pattern. A redesign can leave a page reading as empty rather
    than failing. `validate_companies.py --events` shows the count per source, so
    a sudden drop to 0 is visible.
+10. **A real Claude draft.** No Anthropic API key was used in this environment. The
+    request (model, effort, fallbacks, the resume document block, refusal handling)
+    is asserted against a fake client, and every other part of the kit runs for
+    real. The first real draft happens after `make apply-setup`.
+
+---
+
+## Apply kit (user request, 2026-10-08)
+
+| Requirement | Status | Evidence |
+| --- | --- | --- |
+| Apply easily from the phone (Workday: too many pages/questions) | implemented | kit page per job; Workday walkthrough by page; `tests/integration/test_apply_kit.py` |
+| Tapping an alert opens the kit | tested | ntfy `click` = kit URL; `test_kit_notifications.py`, Level 8 |
+| Answers drafted from the resume | implemented | resume PDF as a `document` block; `tests/unit/test_apply.py` (drafter request shape, fake client) |
+| Write and edit custom answers | tested | every answer editable; save, and save to library; Level 7 + Level 8 |
+| A saved answer is reused on the next job | tested | `test_apply_kit_acceptance.py` (no second draft) |
+| Links can't be guessed or reused for another job | tested | HMAC per job; wrong or forged token gives 404 (integration, Level 7, Level 8) |
+| Spend is bounded | tested | 60 drafts/day, atomic counter; quota test in `test_apply_kit.py` |
+| Infrastructure | passed | Kit Lambda, layer, private bucket, apply table, SSM grants; `infrastructure/tests/test_stack.py::TestApplyKit`, cfn-lint |
+| On emulated AWS | passed | `tests/aws_local/test_architecture.py::TestApplyKit` (sample drafter; see ARCHITECTURE §9) |
+| `make apply-setup` | tested | `tests/integration/test_apply_setup.py` under Moto; run only by the user |

@@ -490,6 +490,8 @@ for it.
 | **Expo push delivery** | Never sent | The request Expo would receive is asserted byte-for-byte against a scripted transport, as is the handling of every ticket status it can return. That APNs/FCM then wakes a handset needs a physical device — `mobile/README.md`. |
 | **Live ATS endpoints** | **Blocked** | This environment's egress policy refuses every ATS host (`BLOCKERS.md` BLK-001), so provider fixtures were authored to documented response shapes rather than captured (BLK-002). The deployed worker's outbound path *is* proven — a Level-7 test polls a real company and asserts the health record names the real endpoint. `make validate-companies` closes the rest in one command. |
 | **DynamoDB TTL expiry** | Not observed | TTL is configured and asserted in the template; actual expiry takes up to 48 h on real AWS and is not emulated. It only affects cleanup of health diagnostics. |
+| **Apply kit drafter** | Sample drafter locally | LocalStack's Lambda runtime is x86 Python 3.11, while the deployed `anthropic` layer is built for ARM Python 3.12. So the local Kit Lambda runs without the layer, with `KIT_DRAFTER=sample`. Everything else is real on LocalStack: the page, the signed link, the S3 profile and resume, the draft quota, the answers and library in DynamoDB, and the presigned resume redirect. The Claude request itself (model, effort, fallbacks, resume `document` block with `cache_control`, refusal handling) is asserted against a fake client. No real draft was made, because no API key was used in this environment. |
+| **SSM SecureStrings** | Env var locally | `make apply-setup` writes them under Moto in tests. The local Kit Lambda reads `KIT_SECRET` from its environment. The template test asserts the deployed functions get only `/jobmonitor/...` parameter names and `ssm:GetParameter` on exactly those. |
 | **Real AWS deployment** | **Intentionally not done** | Hard constraint, PRD §12. |
 
 ## 10. Cost estimate
@@ -563,6 +565,17 @@ the same 195 s of fetching costs the same whether it runs in 12 invocations or
 the bill is less of either factor: lower memory (256 MB halves it) or less
 waiting (fetching a shard's companies concurrently).
 
+### Apply kit
+
+Opening a kit costs a Lambda invocation and a few DynamoDB reads, which falls in
+the free tier. A drafted answer is one Opus 5.5 call at low effort: the resume PDF
+plus the job description in, at most a few hundred words out, about **2¢**. The
+resume block is prompt-cached, so the second and later drafts in one sitting cost
+less. Saved and library answers cost nothing. Drafts are capped at 60 a day
+(`DRAFT_DAILY_LIMIT`, an atomic DynamoDB counter), which bounds the worst case at
+about $1.20 a day even if a link leaked. The S3 bucket holds two small files:
+<$0.01.
+
 ## 11. Deviations from the PRD's suggestions
 
 | PRD suggested | Built | Why |
@@ -572,3 +585,63 @@ waiting (fetching a shard's companies concurrently).
 | EventBridge Scheduler | EventBridge rule | §2 — same function, better emulation. |
 | DynamoDB (default) | DynamoDB | Kept. Nothing about this workload argues for anything else. |
 | `cdklocal` to provision LocalStack | boto3 provisioner | Provisions in seconds instead of minutes, needs no CloudFormation bootstrap, and fails with an error that names the resource. Table schemas are shared with the CDK stack and asserted against its template, so the two cannot diverge. |
+
+## 12. The Apply kit (applying from the phone)
+
+The user's problem: applying to Salesforce on **Workday** from a phone. There were
+too many pages and too many questions. The kit doesn't remove Workday's pages; it
+makes each one a few copy taps.
+
+```text
+ntfy alert ──tap──▶ GET /kit/{job_id}?t=HMAC ──▶ Kit Lambda ──▶ HTML page
+                                                  │  jobs table (read)
+                                                  │  ApplyTable: form cache, answers,
+                                                  │    library, daily draft quota
+                                                  │  ApplyBucket: profile.json, resume.pdf
+                                                  │  SSM: kit secret, Anthropic key
+                                                  └▶ Claude (anthropic SDK layer)
+                                                     only on POST /kit/{id}/draft
+```
+
+- **A separate Lambda.** The jobs API keeps its read-only role. Only the Kit
+  Lambda can read the bucket and the Anthropic key, and only it carries the
+  `anthropic` layer (24 MB, built for aarch64 by `pip --platform` with no Docker).
+  Every other function stays dependency-free. Template tests assert all of this.
+- **The form by ATS** (`apply/forms.py`), detected from the apply URL:
+  - **Workday**: its six pages, as data.
+  - **Greenhouse**: the real form, from the public `?questions=true` API, cached
+    per job.
+  - **Others**: the common questions.
+- **Answer precedence**, highest first:
+  1. your answer for this job;
+  2. a cached draft;
+  3. your saved library answer;
+  4. a profile field;
+  5. a new draft.
+
+  Only required free-text questions draft automatically. Everything else drafts
+  on a tap.
+- **Drafts.** The model is `claude-opus-5-5` at `effort: low`, with server-side
+  `fallbacks: "default"`, so an overloaded model degrades instead of failing. Your
+  resume goes in as a `document` block. The system prompt forbids invented
+  experience and marks gaps `[add: ...]`. Refusals and API errors become a
+  message on the page; you can always type the answer yourself.
+- **Security:**
+  - Links are HMAC-signed per job, compared in constant time. A wrong link
+    returns 404.
+  - Pages send `no-referrer`, `noindex`, `nosniff` and `DENY`, with
+    `Cache-Control: no-store`.
+  - Secrets live only in SSM SecureStrings, created by the user's `make
+    apply-setup` and never by CloudFormation.
+  - The profile and resume are gitignored and stored in a private, TLS-only,
+    versioned bucket.
+- **No automatic submission** (PRD §33). The kit never touches the ATS: no form
+  filling, no login, no CAPTCHA. The user pastes the answers and submits.
+- **Tests:**
+  - unit tests (tokens, profile matcher, Greenhouse parsing, forms, drafter
+    request shape);
+  - integration tests (routes, page, quota, library, S3 and DynamoDB under Moto,
+    `make apply-setup`);
+  - Level 7 on LocalStack (`TestApplyKit`);
+  - Level 8 (`tests/e2e/test_apply_kit_acceptance.py`: alert → kit → draft →
+    save → reused on the next job → digest link).
