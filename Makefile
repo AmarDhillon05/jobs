@@ -164,6 +164,11 @@ deploy-github-role: ## Once: the OIDC role GitHub Actions uses to auto-deploy (G
 	  -c githubRepo=$(GITHUB_REPO) -c githubBranch=$(GITHUB_BRANCH) \
 	  $(if $(GITHUB_OIDC_PROVIDER_ARN),-c githubOidcProviderArn=$(GITHUB_OIDC_PROVIDER_ARN))
 
+.PHONY: apply-setup
+apply-setup: ## Once, after deploy: upload your profile + resume for the Apply kit (PROFILE=.. RESUME=.. ANTHROPIC_API_KEY=..)
+	@test -n "$(RESUME)" || (echo "usage: make apply-setup RESUME=~/resume.pdf [PROFILE=apply/profile.json] [ANTHROPIC_API_KEY=sk-ant-...]"; exit 2)
+	$(PY) $(REPO_ROOT)/scripts/apply_setup.py --resume "$(RESUME)" $(if $(PROFILE),--profile "$(PROFILE)")
+
 .PHONY: setup-ci
 setup-ci: setup-python ## CI: python + the CDK CLI only (no client toolchains)
 	cd $(REPO_ROOT)/tools && npm ci --no-fund --no-audit

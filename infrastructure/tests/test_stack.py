@@ -98,7 +98,7 @@ class TestSynthesis:
 
 class TestStorage:
     def test_three_tables_exist(self, template: Template) -> None:
-        template.resource_count_is("AWS::DynamoDB::Table", 3)
+        template.resource_count_is("AWS::DynamoDB::Table", 4)  # + the Apply kit's
 
     def test_tables_are_on_demand(self, resources: dict[str, Any]) -> None:
         for name, table in by_type(resources, "AWS::DynamoDB::Table").items():
@@ -231,7 +231,7 @@ class TestFunctions:
         functions = by_type(resources, "AWS::Lambda::Function")
         # Coordinator, worker, notifier, digest, API - and no custom-resource
         # log-retention provider.
-        assert len(functions) == 5
+        assert len(functions) == 6  # + the Apply kit
 
     def test_handlers_point_at_real_callables(self, resources: dict[str, Any]) -> None:
         import importlib
@@ -292,12 +292,17 @@ class TestFunctions:
         forbidden = ("SECRET", "PASSWORD", "PRIVATE_KEY", "TOKEN", "ACCESS_KEY")
         for name, function in by_type(resources, "AWS::Lambda::Function").items():
             for key, value in function["Properties"]["Environment"]["Variables"].items():
+                if key.endswith("_PARAMETER"):
+                    # The *name* of an SSM parameter (`/jobmonitor/kit-secret`): the
+                    # secret itself is read at runtime and never in the template.
+                    assert str(value).startswith("/jobmonitor/"), f"{name}.{key}"
+                    continue
                 if any(marker in key.upper() for marker in forbidden):
                     # A reference is fine; a literal is not.
                     assert not isinstance(value, str) or not value, f"{name}.{key} is a literal"
 
     def test_each_function_has_its_own_log_group(self, resources: dict[str, Any]) -> None:
-        assert len(by_type(resources, "AWS::Logs::LogGroup")) == 5
+        assert len(by_type(resources, "AWS::Logs::LogGroup")) == 6
 
     def test_log_groups_have_a_retention_policy(self, resources: dict[str, Any]) -> None:
         for name, group in by_type(resources, "AWS::Logs::LogGroup").items():
@@ -473,7 +478,7 @@ class TestIamLeastPrivilege:
             assert resource != '"*"'
 
     def test_each_function_has_its_own_role(self, resources: dict[str, Any]) -> None:
-        assert len(by_type(resources, "AWS::IAM::Role")) == 5
+        assert len(by_type(resources, "AWS::IAM::Role")) == 6
 
 
 class TestAlarms:
@@ -603,6 +608,9 @@ class TestLambdaAsset:
 
         from build_lambda_bundle import build
 
+        #: Imported only by the Apply kit's drafter, inside a function, and shipped
+        #: only to the Kit Lambda, as a layer (see TestApplyKit).
+        layered = {("drafter.py", "anthropic")}
         allowed = {
             "boto3",
             "botocore",
@@ -620,7 +628,7 @@ class TestLambdaAsset:
                 elif isinstance(node, ast.ImportFrom) and node.module and node.level == 0:
                     roots = [node.module.split(".")[0]]
                 for root in roots:
-                    if root in allowed:
+                    if root in allowed or (path.name, root) in layered:
                         continue
                     # Anything else must be in the standard library.
                     import sys
@@ -629,3 +637,85 @@ class TestLambdaAsset:
                         continue
                     offenders.append(f"{path.name}: {root}")
         assert not offenders, f"non-stdlib imports in the Lambda bundle: {sorted(set(offenders))}"
+
+
+class TestApplyKit:
+    """The Apply kit: its own function, layer, private bucket and table."""
+
+    def kit(self, resources: dict[str, Any]) -> dict[str, Any]:
+        (function,) = [
+            f
+            for f in by_type(resources, "AWS::Lambda::Function").values()
+            if f["Properties"]["Handler"] == "jobmonitor.apply.kit_api.handler"
+        ]
+        return function
+
+    def test_only_the_kit_function_gets_the_anthropic_layer(
+        self, resources: dict[str, Any]
+    ) -> None:
+        layers = by_type(resources, "AWS::Lambda::LayerVersion")
+        assert len(layers) == 1
+        (layer,) = layers.values()
+        assert layer["Properties"]["CompatibleArchitectures"] == ["arm64"]
+        assert layer["Properties"]["CompatibleRuntimes"] == ["python3.12"]
+        with_layers = [
+            f for f in by_type(resources, "AWS::Lambda::Function").values()
+            if f["Properties"].get("Layers")
+        ]  # fmt: skip
+        assert with_layers == [self.kit(resources)]
+
+    def test_kit_fits_inside_api_gateway(self, resources: dict[str, Any]) -> None:
+        assert self.kit(resources)["Properties"]["Timeout"] <= 29
+
+    def test_kit_reads_its_secrets_from_ssm(self, resources: dict[str, Any]) -> None:
+        env = self.kit(resources)["Properties"]["Environment"]["Variables"]
+        assert env["KIT_SECRET_PARAMETER"] == "/jobmonitor/kit-secret"
+        assert env["ANTHROPIC_KEY_PARAMETER"] == "/jobmonitor/anthropic-api-key"
+        assert "ANTHROPIC_API_KEY" not in env and "KIT_SECRET" not in env
+
+    def test_the_bucket_is_private_and_encrypted(self, resources: dict[str, Any]) -> None:
+        (bucket,) = by_type(resources, "AWS::S3::Bucket").values()
+        block = bucket["Properties"]["PublicAccessBlockConfiguration"]
+        assert all(
+            block[k]
+            for k in (
+                "BlockPublicAcls",
+                "BlockPublicPolicy",
+                "IgnorePublicAcls",
+                "RestrictPublicBuckets",
+            )
+        )
+        assert bucket["Properties"]["BucketEncryption"]
+        assert bucket["DeletionPolicy"] == "Retain"
+        policy = json.dumps(by_type(resources, "AWS::S3::BucketPolicy"))
+        assert "aws:SecureTransport" in policy  # TLS only
+
+    def test_kit_route(self, resources: dict[str, Any]) -> None:
+        routes = {
+            r["Properties"]["RouteKey"]
+            for r in by_type(resources, "AWS::ApiGatewayV2::Route").values()
+        }
+        assert {"GET /kit/{proxy+}", "POST /kit/{proxy+}"} <= routes
+
+    def test_only_the_kit_reads_the_bucket_and_the_anthropic_key(
+        self, resources: dict[str, Any]
+    ) -> None:
+        policies = by_type(resources, "AWS::IAM::Policy")
+        readers_of_key = [
+            name for name, p in policies.items() if "anthropic-api-key" in json.dumps(p)
+        ]
+        readers_of_bucket = [
+            name for name, p in policies.items()
+            if "ApplyBucket" in json.dumps(p) and "s3:GetObject" in json.dumps(p)
+        ]  # fmt: skip
+        assert len(readers_of_key) == 1 and readers_of_key[0].startswith("KitFunction")
+        assert len(readers_of_bucket) == 1 and readers_of_bucket[0].startswith("KitFunction")
+
+    def test_alerts_get_kit_links(self, resources: dict[str, Any]) -> None:
+        for prefix in ("NotifierFunction", "DigestFunction"):
+            (function,) = [
+                f for name, f in by_type(resources, "AWS::Lambda::Function").items()
+                if name.startswith(prefix)
+            ]  # fmt: skip
+            env = function["Properties"]["Environment"]["Variables"]
+            assert "KIT_BASE_URL" in env and env["KIT_SECRET_PARAMETER"] == "/jobmonitor/kit-secret"

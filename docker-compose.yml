@@ -16,7 +16,7 @@ services:
       # listed: its community emulation is unreliable, so the scheduled trigger
       # boundary is simulated by injecting the identical event payload.
       # See ARCHITECTURE.md -> "Local emulation gaps".
-      - SERVICES=dynamodb,sqs,sns,lambda,apigateway,events,iam,logs,sts,cloudformation
+      - SERVICES=dynamodb,sqs,sns,lambda,apigateway,events,iam,logs,sts,cloudformation,s3
       - DEBUG=${LOCALSTACK_DEBUG:-0}
       - LAMBDA_RUNTIME_ENVIRONMENT_TIMEOUT=120
       # Run Lambdas as sibling containers on the host docker socket.

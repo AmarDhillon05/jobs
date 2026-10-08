@@ -71,6 +71,15 @@ FUNCTIONS: tuple[tuple[str, str], ...] = (
     ("jobmonitor-notifier", "jobmonitor.orchestration.handlers.notifier_handler"),
     ("jobmonitor-digest", "jobmonitor.orchestration.handlers.digest_handler"),
     ("jobmonitor-api", "jobmonitor.api.lambda_handler.handler"),
+    ("jobmonitor-kit", "jobmonitor.apply.kit_api.handler"),
+)
+APPLY_BUCKET = "jobmonitor-apply-local"
+#: Local only; the deployed secret lives in SSM (`make apply-setup`).
+LOCAL_KIT_SECRET = "local-kit-secret"
+#: Smallest well-formed PDF: enough for the kit's resume link locally.
+LOCAL_RESUME = (
+    b"%PDF-1.1\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj\n"
+    b"2 0 obj<</Type/Pages/Kids[]/Count 0>>endobj\ntrailer<</Root 1 0 R>>\n%%EOF\n"
 )
 
 TRUST_POLICY = {
@@ -94,6 +103,8 @@ class Resources:
     jobs_table: str = JOBS_TABLE
     health_table: str = HEALTH_TABLE
     devices_table: str = DEVICES_TABLE
+    apply_table: str = "jobmonitor-apply"
+    apply_bucket: str = APPLY_BUCKET
     scrape_queue_url: str = ""
     scrape_dlq_url: str = ""
     notification_queue_url: str = ""
@@ -111,6 +122,8 @@ class Resources:
             jobs_table=self.jobs_table,
             health_table=self.health_table,
             devices_table=self.devices_table,
+            apply_table=self.apply_table,
+            apply_bucket=self.apply_bucket,
             scrape_queue_url=self.scrape_queue_url or None,
             scrape_dlq_url=self.scrape_dlq_url or None,
             notification_topic_arn=self.notification_topic_arn or None,
@@ -288,9 +301,25 @@ def function_environment(resources: Resources) -> dict[str, str]:
         "EMAIL_TRANSPORT": "console",
         "PUSH_TRANSPORT": "console",
         "API_WRITE_TOKEN": "local-dev-token",
+        # The Apply kit, with the sample drafter (no Anthropic key, no layer here).
+        "APPLY_TABLE_NAME": resources.apply_table,
+        "APPLY_BUCKET_NAME": resources.apply_bucket,
+        "KIT_SECRET": LOCAL_KIT_SECRET,
+        "KIT_DRAFTER": "sample",
         "LOG_LEVEL": "INFO",
         "PYTHONUNBUFFERED": "1",
     }
+
+
+def provision_apply_bucket(resources: Resources) -> None:
+    """The kit's private bucket, with the example profile and a stand-in resume."""
+    s3 = client("s3", resources.endpoint_url, resources.region)
+    with contextlib.suppress(Exception):
+        s3.create_bucket(Bucket=resources.apply_bucket)
+    profile = (REPO_ROOT / "apply" / "profile.example.json").read_bytes()
+    s3.put_object(Bucket=resources.apply_bucket, Key="profile.json", Body=profile)
+    s3.put_object(Bucket=resources.apply_bucket, Key="resume.pdf", Body=LOCAL_RESUME)
+    print(f"  bucket: {resources.apply_bucket} (example profile + stand-in resume)")
 
 
 def provision_functions(resources: Resources) -> None:
@@ -451,6 +480,7 @@ def provision(endpoint_url: str, region: str = "us-east-1") -> Resources:
     provision_queues(resources)
     provision_topic(resources)
     provision_role(resources)
+    provision_apply_bucket(resources)
     provision_functions(resources)
     provision_event_sources(resources)
     provision_api(resources)
@@ -499,6 +529,12 @@ def teardown(endpoint_url: str, region: str = "us-east-1") -> None:
         aws_secret_access_key="test",
     )
     delete_tables(dynamodb, Resources(endpoint_url=endpoint_url).to_settings())
+
+    s3 = client("s3", endpoint_url, region)
+    with contextlib.suppress(ClientError):
+        for item in s3.list_objects_v2(Bucket=APPLY_BUCKET).get("Contents", []):
+            s3.delete_object(Bucket=APPLY_BUCKET, Key=item["Key"])
+        s3.delete_bucket(Bucket=APPLY_BUCKET)
 
     if RESOURCES_PATH.exists():
         RESOURCES_PATH.unlink()

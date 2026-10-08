@@ -227,7 +227,12 @@ def build_app(env: Mapping[str, str] | None = None) -> KitApp:
     from jobmonitor.models.company import load_default_registry
     from jobmonitor.storage.dynamo import DynamoJobRepository
 
-    files = S3Files(settings.aws.apply_bucket or "")
+    s3_kwargs: dict[str, Any] = {"region_name": settings.aws.region}
+    if settings.aws.endpoint_url:  # LocalStack
+        s3_kwargs["endpoint_url"] = settings.aws.endpoint_url
+    import boto3
+
+    files = S3Files(settings.aws.apply_bucket or "", client=boto3.client("s3", **s3_kwargs))
     profile_cache: dict[str, Profile] = {}
 
     def profile() -> Profile:
@@ -236,6 +241,9 @@ def build_app(env: Mapping[str, str] | None = None) -> KitApp:
         return profile_cache["p"]
 
     def drafter() -> Drafter:
+        if e.get("KIT_DRAFTER") == "sample":
+            # LocalStack: no Anthropic key and no layer there (its runtime is x86).
+            return SampleDrafter()
         key = e.get("ANTHROPIC_API_KEY") or (
             _ssm_parameter(e["ANTHROPIC_KEY_PARAMETER"])
             if e.get("ANTHROPIC_KEY_PARAMETER")

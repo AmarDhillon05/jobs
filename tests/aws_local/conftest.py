@@ -90,6 +90,14 @@ def clean_tables(resources: Resources, aws: dict[str, Any]) -> Iterator[None]:
             scanned = aws["dynamodb"].scan(TableName=table, ProjectionExpression=key)
             for item in scanned.get("Items", []):
                 aws["dynamodb"].delete_item(TableName=table, Key={key: item[key]})
+        # The Apply kit's table (pk/sk), when this provisioning has one.
+        apply_table = getattr(resources, "apply_table", "")
+        if apply_table:
+            scanned = aws["dynamodb"].scan(TableName=apply_table, ProjectionExpression="pk, sk")
+            for item in scanned.get("Items", []):
+                aws["dynamodb"].delete_item(
+                    TableName=apply_table, Key={"pk": item["pk"], "sk": item["sk"]}
+                )
 
     purge()
     yield

@@ -64,6 +64,7 @@ from aws_cdk import aws_iam as iam
 from aws_cdk import aws_lambda as lambda_
 from aws_cdk import aws_lambda_event_sources as event_sources
 from aws_cdk import aws_logs as logs
+from aws_cdk import aws_s3 as s3
 from aws_cdk import aws_sns as sns
 from aws_cdk import aws_sns_subscriptions as sns_subscriptions
 from aws_cdk import aws_sqs as sqs
@@ -74,6 +75,7 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 sys.path.insert(0, str(REPO_ROOT / "scripts"))
 
 from build_lambda_bundle import build as build_lambda_bundle  # noqa: E402
+from build_lambda_bundle import build_layer  # noqa: E402
 from jobmonitor.storage.dynamo import (  # noqa: E402
     COMPANY_INDEX,
     PENDING_INDEX,
@@ -99,6 +101,13 @@ WORKER_MAX_CONCURRENCY = 5
 #: Attempts before a message is dead-lettered.
 MAX_RECEIVE_COUNT = 3
 LOG_RETENTION = logs.RetentionDays.TWO_WEEKS
+#: The Apply kit. API Gateway allows an integration 30 s; a draft must fit inside.
+KIT_TIMEOUT = Duration.seconds(29)
+#: SecureString parameters written by `make apply-setup` (CloudFormation cannot
+#: create SecureStrings, and secrets do not belong in a template anyway).
+KIT_SECRET_PARAMETER = "/jobmonitor/kit-secret"
+ANTHROPIC_KEY_PARAMETER = "/jobmonitor/anthropic-api-key"
+DRAFT_DAILY_LIMIT = 60
 
 
 class JobMonitorStack(Stack):
@@ -126,6 +135,8 @@ class JobMonitorStack(Stack):
         self.jobs_table = self._jobs_table()
         self.health_table = self._health_table()
         self.devices_table = self._devices_table()
+        self.apply_table = self._apply_table()
+        self.apply_bucket = self._apply_bucket()
 
         # -------------------------------------------------------------- queues
         self.scrape_dlq = sqs.Queue(
@@ -334,6 +345,8 @@ class JobMonitorStack(Stack):
             targets=[events_targets.LambdaFunction(self.digest, retry_attempts=2)],
         )
 
+        self.kit_function = self._kit_function(code, common_env)
+
         # ------------------------------------------------------------------ api
         self.http_api = apigw.HttpApi(
             self,
@@ -362,6 +375,20 @@ class JobMonitorStack(Stack):
                 "ApiIntegration", handler=self.api_function
             ),
         )
+        # The Apply kit: its own function, so only it can read the user's profile,
+        # resume and Anthropic key. More specific than /{proxy+}, so it wins.
+        self.http_api.add_routes(
+            path="/kit/{proxy+}",
+            methods=[apigw.HttpMethod.GET, apigw.HttpMethod.POST],
+            integration=apigw_integrations.HttpLambdaIntegration(
+                "KitIntegration", handler=self.kit_function
+            ),
+        )
+        # Alerts carry signed kit links: the API's URL plus the kit secret.
+        for function in (self.notifier, self.digest):
+            function.add_environment("KIT_BASE_URL", self.http_api.api_endpoint)
+            function.add_environment("KIT_SECRET_PARAMETER", KIT_SECRET_PARAMETER)
+            function.add_to_role_policy(self._read_parameters(KIT_SECRET_PARAMETER))
 
         self._alarms()
         self._outputs()
@@ -386,6 +413,7 @@ class JobMonitorStack(Stack):
         memory: int,
         environment: dict[str, str],
         reserved_concurrency: int | None = None,
+        layers: list[lambda_.ILayerVersion] | None = None,
     ) -> lambda_.Function:
         kwargs: dict[str, Any] = {
             "runtime": RUNTIME,
@@ -408,6 +436,8 @@ class JobMonitorStack(Stack):
         }
         if reserved_concurrency is not None:
             kwargs["reserved_concurrent_executions"] = reserved_concurrency
+        if layers:
+            kwargs["layers"] = layers
         return lambda_.Function(self, f"{name}Function", **kwargs)
 
     def _jobs_table(self) -> dynamodb.Table:
@@ -453,6 +483,75 @@ class JobMonitorStack(Stack):
             time_to_live_attribute=HEALTH_TTL_ATTRIBUTE,
             removal_policy=RemovalPolicy.DESTROY,
         )
+
+    def _apply_table(self) -> dynamodb.Table:
+        return dynamodb.Table(
+            self,
+            "ApplyTable",
+            partition_key=dynamodb.Attribute(name="pk", type=dynamodb.AttributeType.STRING),
+            sort_key=dynamodb.Attribute(name="sk", type=dynamodb.AttributeType.STRING),
+            billing_mode=dynamodb.BillingMode.PAY_PER_REQUEST,
+            # Draft-budget rows expire on their own.
+            time_to_live_attribute="expires_at",
+            # The user's own written and saved answers: kept if the stack goes.
+            removal_policy=RemovalPolicy.RETAIN,
+        )
+
+    def _apply_bucket(self) -> s3.Bucket:
+        """The user's profile.json and resume.pdf. Private, encrypted, TLS only."""
+        return s3.Bucket(
+            self,
+            "ApplyBucket",
+            block_public_access=s3.BlockPublicAccess.BLOCK_ALL,
+            encryption=s3.BucketEncryption.S3_MANAGED,
+            enforce_ssl=True,
+            versioned=True,
+            removal_policy=RemovalPolicy.RETAIN,
+        )
+
+    def _read_parameters(self, *names: str) -> iam.PolicyStatement:
+        return iam.PolicyStatement(
+            actions=["ssm:GetParameter"],
+            resources=[
+                f"arn:{self.partition}:ssm:{self.region}:{self.account}:parameter{name}"
+                for name in names
+            ],
+        )
+
+    def _kit_function(self, code: lambda_.Code, common_env: dict[str, str]) -> lambda_.Function:
+        layer = lambda_.LayerVersion(
+            self,
+            "AnthropicLayer",
+            code=lambda_.Code.from_asset(str(build_layer())),
+            compatible_runtimes=[RUNTIME],
+            compatible_architectures=[lambda_.Architecture.ARM_64],
+            description="Anthropic SDK for the Apply kit's drafter",
+        )
+        function = self._function(
+            "Kit",
+            code,
+            "jobmonitor.apply.kit_api.handler",
+            timeout=KIT_TIMEOUT,
+            memory=512,
+            environment={
+                **common_env,
+                "APPLY_TABLE_NAME": self.apply_table.table_name,
+                "APPLY_BUCKET_NAME": self.apply_bucket.bucket_name,
+                "KIT_SECRET_PARAMETER": KIT_SECRET_PARAMETER,
+                "ANTHROPIC_KEY_PARAMETER": ANTHROPIC_KEY_PARAMETER,
+                "DRAFT_DAILY_LIMIT": str(DRAFT_DAILY_LIMIT),
+                "HTTP_TIMEOUT_SECONDS": "8",
+            },
+            layers=[layer],
+        )
+        # Reads jobs (never writes them); owns its own table; reads the bucket.
+        self.jobs_table.grant_read_data(function)
+        self.apply_table.grant_read_write_data(function)
+        self.apply_bucket.grant_read(function)
+        function.add_to_role_policy(
+            self._read_parameters(KIT_SECRET_PARAMETER, ANTHROPIC_KEY_PARAMETER)
+        )
+        return function
 
     def _devices_table(self) -> dynamodb.Table:
         return dynamodb.Table(
@@ -535,6 +634,13 @@ class JobMonitorStack(Stack):
             value=self.http_api.api_endpoint,
             description="Set this as VITE_API_BASE_URL when building the client",
         )
+        CfnOutput(
+            self,
+            "ApplyBucketName",
+            value=self.apply_bucket.bucket_name,
+            description="make apply-setup uploads profile.json and resume.pdf here",
+        )
+        CfnOutput(self, "ApplyTableName", value=self.apply_table.table_name)
 
 
 __all__ = ["JobMonitorStack"]

@@ -90,7 +90,7 @@ def queue_depth(aws: dict[str, Any], url: str) -> int:
 class TestProvisionedResources:
     """The stack really is there, with the shape the code assumes."""
 
-    def test_all_five_functions_exist_and_are_active(
+    def test_all_six_functions_exist_and_are_active(
         self, aws: dict[str, Any], resources: Resources
     ) -> None:
         for name in (
@@ -99,6 +99,7 @@ class TestProvisionedResources:
             "jobmonitor-notifier",
             "jobmonitor-digest",
             "jobmonitor-api",
+            "jobmonitor-kit",
         ):
             config = aws["lambda"].get_function(FunctionName=name)["Configuration"]
             assert config["State"] == "Active", f"{name}: {config.get('StateReason')}"
@@ -555,6 +556,87 @@ class TestFeedPath:
         result = invoke(aws, "jobmonitor-api", event)
         assert result["statusCode"] == 200
         assert json.loads(result["body"])["companies"]["pollable"] >= 50
+
+
+# ------------------------------------------------------------- the Apply kit
+
+
+def kit_event(method: str, path: str, token: str, body: Any = None) -> dict[str, Any]:
+    """An HTTP API (v2) event, as the deployed stack's /kit/{proxy+} route sends."""
+    return {
+        "version": "2.0",
+        "rawPath": path,
+        "requestContext": {"http": {"method": method, "path": path}, "stage": "$default"},
+        "queryStringParameters": {"t": token},
+        "body": json.dumps(body) if body is not None else None,
+    }
+
+
+class TestApplyKit:
+    """A stored job's Apply kit, served by the real Kit Lambda on emulated AWS.
+
+    The kit reads the profile from the LocalStack bucket and keeps answers in the
+    LocalStack table. Drafts use the sample drafter here: there is no Anthropic key
+    in LocalStack, and the deployed layer is built for ARM while LocalStack's
+    runtime is x86 (ARCHITECTURE.md, local emulation gaps). The drafter itself is
+    covered by request-shape tests.
+    """
+
+    def test_kit_page_draft_save_and_resume(
+        self, aws: dict[str, Any], resources: Resources, clean_tables: None, drain_queues: None
+    ) -> None:
+        from jobmonitor.apply import tokens
+
+        publish_task(
+            aws,
+            resources,
+            ScrapeTask(
+                poll_id="kit",
+                shard_index=0,
+                shard_count=1,
+                companies=(fixture_company(jobs=[intern_posting("1")]),),
+            ),
+        )
+        wait_for(lambda: get_job(aws, resources, "testco:1"), what="the job to be stored")
+        token = tokens.sign("testco:1", "local-kit-secret")
+        path = f"/kit/{quote('testco:1', safe='')}"
+
+        page = invoke(aws, "jobmonitor-kit", kit_event("GET", path, token))
+        assert page["statusCode"] == 200
+        assert page["headers"]["Content-Type"].startswith("text/html")
+        assert "alex.rivera@example.edu" in page["body"]  # profile read from S3
+        assert "Common questions" in page["body"]
+
+        drafted = invoke(
+            aws,
+            "jobmonitor-kit",
+            kit_event("POST", f"{path}/draft", token, {"question": "Why TestCo?"}),
+        )
+        assert drafted["statusCode"] == 200
+        assert json.loads(drafted["body"])["answer"]["source"] == "draft"
+
+        saved = invoke(
+            aws,
+            "jobmonitor-kit",
+            kit_event(
+                "POST",
+                f"{path}/answers",
+                token,
+                {"question": "Why TestCo?", "answer": "My words.", "save_to_library": True},
+            ),
+        )
+        assert saved["statusCode"] == 200
+        items = aws["dynamodb"].scan(TableName=resources.apply_table)["Items"]
+        keys = {(item["pk"]["S"], item["sk"]["S"].split("#")[0]) for item in items}
+        assert ("JOB#testco:1", "Q") in keys and ("LIBRARY", "Q") in keys
+        assert any(item.get("text", {}).get("S") == "My words." for item in items)
+
+        resume = invoke(aws, "jobmonitor-kit", kit_event("GET", f"{path}/resume", token))
+        assert resume["statusCode"] == 302
+        assert "resume.pdf" in resume["headers"]["Location"]
+
+        refused = invoke(aws, "jobmonitor-kit", kit_event("GET", path, "wrong-token"))
+        assert refused["statusCode"] == 404
 
 
 # ----------------------------------------------------- the real outbound path
