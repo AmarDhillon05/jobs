@@ -8,12 +8,14 @@ adjacent technical internships and alerts you within roughly one polling interva
 email per hour listing everything found that hour (no email when an hour found
 nothing).
 
-> ### This has never been deployed to a real AWS account
+> ### Built and verified without touching AWS, then deployed
 >
-> That is a deliberate constraint of the build, not an oversight. Every AWS
-> behaviour claimed anywhere in this repository was exercised against
+> Building against a real AWS account was ruled out on purpose. Every AWS
+> behaviour claimed in this repository was exercised against
 > **LocalStack** (real Lambda containers, real SQS/SNS/DynamoDB APIs), **Moto**, or
-> **botocore stubs**. `ARCHITECTURE.md` §9 lists the exact real-vs-emulated
+> **botocore stubs**. The first real deploy turned up one problem no emulator
+> checks: an account-level Lambda concurrency quota. It is fixed and has a
+> regression test ([BLK-014](BLOCKERS.md#blk-014---first-real-deploy-failed-on-reserved-concurrency)). `ARCHITECTURE.md` §9 lists the exact real-vs-emulated
 > boundary; `VALIDATION_REPORT.md` maps every requirement to its evidence.
 > Deploying it is a deliberate act you perform — see [Setting it up for
 > real](#setting-it-up-for-real).
@@ -588,7 +590,7 @@ scripts/         registry build, live validation, provisioning, verify
 
 | File | Contents |
 | --- | --- |
-| `CLAUDE.md` | The product requirements this build was specified by |
+| `PRD.md` | The product requirements this build was specified by |
 | `ARCHITECTURE.md` | Chosen design, alternatives weighed, emulation gaps, cost |
 | `TESTING.md` | The pyramid, and what is real vs mocked vs emulated |
 | `COMPANY_COVERAGE.md` | Coverage report, and what each support status asserts |
