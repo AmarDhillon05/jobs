@@ -4,10 +4,11 @@ How the internship monitor is built, why it is built that way, what the
 alternatives were, and — importantly — exactly which parts of the AWS story were
 verified against emulated infrastructure rather than the real thing.
 
-> **This system has never been deployed to a real AWS account.** That was a hard
-> constraint of the build (PRD §12). Every AWS claim below was verified under
-> Moto, botocore stubs, or LocalStack, and the boundaries are named in
-> [Local emulation gaps](#local-emulation-gaps).
+> **This system was built and verified without deploying to a real AWS account.**
+> That was a hard constraint of the build (PRD §12). Every AWS claim below was
+> verified under Moto, botocore stubs, or LocalStack, and the boundaries are named
+> in [Local emulation gaps](#local-emulation-gaps). The first real deploy afterwards
+> hit an account quota no emulator enforces; see BLK-014 in `BLOCKERS.md`.
 
 ---
 

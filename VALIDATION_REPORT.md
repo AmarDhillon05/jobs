@@ -157,7 +157,7 @@ credentials.
 | LocalStack for higher-level integration | passed | 23 Level-7 tests, real Lambda containers |
 | Architecture documented with alternatives | passed | `ARCHITECTURE.md` §2 weighs one-Lambda, Step Functions and SQS fan-out |
 | Lambda duration / concurrency / retries / cost evaluated | passed | `ARCHITECTURE.md` §2 and §10 |
-| **No real AWS deployment** | N/A — intentionally prohibited | PRD §12. Nothing was created; `.claude/settings.json` additionally denies `cdk deploy`, `terraform apply` and the `aws` CLI |
+| **No real AWS deployment** | N/A — intentionally prohibited | PRD §12. Nothing was created during the build. The first real deploy came later and is recorded as BLK-014 |
 | botocore `Stubber` for request shape | tested | `test_aws_request_shape.py` — asserts the exact DynamoDB requests |
 | LocalStack service coverage | passed | Lambda, DynamoDB, SQS, SNS, API Gateway, CloudWatch Logs |
 | Paid-feature limitations documented, not silently claimed | passed | API Gateway v2 is Pro → REST v1 locally (BLK-004); EventBridge scheduler simulated (BLK-005). Both in `ARCHITECTURE.md` §9 |

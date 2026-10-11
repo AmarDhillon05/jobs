@@ -1,1 +1,0 @@
-   {"permissions": {"deny": ["Bash(terraform apply:*)", "Bash(cdk deploy:*)", "Bash(aws:*)"]}}
